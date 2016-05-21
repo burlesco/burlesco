@@ -1,18 +1,37 @@
 # burlesco
 
-Extensão para o Google Chrome que remove de maneira transparente o paywall de grandes sites de notícia.
+Extensão para navegadores que remove de maneira transparente o paywall de grandes sites de notícia.
 
-[Obtenha a extensão **burlesco** na Chrome Web Store.](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh)
+[Adicione **burlesco** ao Chrome](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh)  
+[Adicione **burlesco** ao Firefox](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 
-## Como funciona?
+Burla a restrição para assinantes de:
+
+- O Estado de S. Paulo
+- Folha de S.Paulo
+- O Globo (incluindo Acervo)
+- Gazeta do Povo
+- Zero Hora
+- Diário Catarinense
+
+## O que é Paywall?
 
 Paywall é um sistema de assinatura usado por jornais e outros veículos de comunicação digitais que restringe o acesso aos não assinantes. É uma maneira desses veículos aumentarem suas receitas, seguindo uma tendência internacional que criou a medida depois da diminuição das tiragens impressas.
 
-Se o veículo deseja lucrar mais com a paywall, existem alguns ônus, entre eles a perda de classificação no Google. Isso ocorre porque muitos textos deixam de ser indexados, já que requerem uma assinatura para serem lidos (e os robôs do Google não são assinantes).
+Se o veículo deseja lucrar mais com a paywall existem alguns ônus, entre eles a perda de classificação no Google. Isso ocorre porque muitos textos deixam de ser indexados, já que requerem uma assinatura para serem lidos (e os robôs do Google não são assinantes).
 
 Assim, alguns sites obtêm vantagem indevida: para não perder ranking no Google, abrem propositalmente brechas para que os robôs dos mecanismos de busca possam entrar e fazer o seu trabalho. Quando o usuário chega na notícia, no entanto, algum truque feio é realizado para dificultar o acesso.
 
-Essa extensão quer desarmar esses truques feios.
+Essa extensão desarma esses truques feios.
+
+Jornais como o Valor Econômico usam um mecanismo bem mais honesto: notícias restritas a assinantes são, de fato, restritas a assinantes. Elas não são indexadas pelo Google; a notícia só é carregada se um usuário assinante estiver logado. Obviamente, essa extensão não funciona com esse tipo de site.
+
+
+## Como funciona?
+
+Após servir a página com o conteúdo, os sites de notícia incluem um JavaScript responsável por ocultar o texto. Escolher como um conteúdo deve ser apresentado em nossos computadores é, no entanto, uma garantia e uma premissa da web aberta.
+
+Tudo que essa extensão faz é garantir que o conteúdo que já é disponibilizado pelos próprios sites de notícia sejam exibidos de maneira legível. A única diferença é que, de forma conveniente, ela permite que o usuário leia o conteúdo diretamente em um navegador, ainda que esteja com o JavaScript habilitado.
 
 
 ## burlesco

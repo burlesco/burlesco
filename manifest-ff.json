@@ -1,0 +1,42 @@
+{
+    "manifest_version": 2,
+    "name": "burlesco",
+    "version": "2.0",
+    "description": "Remove de maneira transparente o paywall de grandes sites de notícia",
+
+    "author": "Rodrigo Orem (rodorgas)",
+
+    "icons": {
+        "128": "icone.png"
+    },
+
+    "background": {
+        "scripts": ["background.js"]
+    },
+
+    "content_scripts": [{
+        "js": ["content.js"],
+        "run_at": "document_idle",
+        "matches": [
+            "*://*.oglobo.globo.com/*"
+        ]
+    }],
+
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        
+        "*://*.estadao.com.br/",
+        "*://*.folha.uol.com.br/",
+        "*://*.globo.com/",
+        "*://*.gazetadopovo.com.br/",
+        "*://zh.clicrbs.com.br/",
+        "*://dc.clicrbs.com.br/"
+    ],
+
+    "applications": {
+        "gecko": {
+            "id": "burlesco@burlesco.com"
+        }
+    }
+}
