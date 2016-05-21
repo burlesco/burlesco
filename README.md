@@ -1,11 +1,11 @@
 # burlesco
 
-Extensão para navegadores que remove de maneira transparente o paywall de grandes sites de notícia.
+Extensão para navegadores que remove de maneira transparente o paywall dos sites de notícia.
 
 [Adicione **burlesco** ao Chrome](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh)  
 [Adicione **burlesco** ao Firefox](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 
-Burla a restrição para assinantes de:
+Burla a restrição para assinantes dos jornais:
 
 - O Estado de S. Paulo
 - Folha de S.Paulo
@@ -13,6 +13,7 @@ Burla a restrição para assinantes de:
 - Gazeta do Povo
 - Zero Hora
 - Diário Catarinense
+- Correio Popular
 
 ## O que é Paywall?
 

@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.0",
-    "description": "Remove de maneira transparente o paywall de grandes sites de notícia",
+    "version": "2.1",
+    "description": "Remove de maneira transparente o paywall dos sites de notícia",
 
     "author": "Rodrigo Orem (rodorgas)",
 
@@ -31,7 +31,8 @@
         "*://*.globo.com/",
         "*://*.gazetadopovo.com.br/",
         "*://zh.clicrbs.com.br/",
-        "*://dc.clicrbs.com.br/"
+        "*://dc.clicrbs.com.br/",
+        "*://correio.rac.com.br/"
     ],
 
     "applications": {

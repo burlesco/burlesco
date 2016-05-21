@@ -13,7 +13,9 @@ chrome.webRequest.onBeforeRequest.addListener(
             "*://*.gazetadopovo.com.br/conta/public/js/connect_api.js*",
             "*://*.gazetadopovo.com.br/conta/going/api/paywall/*",
 
-            "*://zh.clicrbs.com.br/it/js/paid-content-config.js*"
+            "*://zh.clicrbs.com.br/it/js/paid-content-config.js*",
+
+            "*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*"
         ],
         types: ["script"]
     },
