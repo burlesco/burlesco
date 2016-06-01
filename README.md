@@ -2,9 +2,7 @@
 
 Extensão para navegadores que remove de maneira transparente o paywall dos sites de notícia.
 
-[Adicione **burlesco** ao Chrome](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh)  
-[Adicione **burlesco** ao Firefox](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
-[Adicione **burlesco** ao Opera](https://addons.opera.com/pt-br/extensions/details/burlesco/?display=pt)
+Adicione o **burlesco** ao [Chrome](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh), [Firefox](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/) ou [Opera](https://addons.opera.com/pt-br/extensions/details/burlesco/).
 
 Burla a restrição para assinantes dos jornais:
 
