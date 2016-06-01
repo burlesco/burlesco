@@ -20,11 +20,9 @@ Paywall é um sistema de assinatura usado por jornais e outros veículos de comu
 
 Se o veículo deseja lucrar mais com a paywall existem alguns ônus, entre eles a perda de classificação no Google. Isso ocorre porque muitos textos deixam de ser indexados, já que requerem uma assinatura para serem lidos (e os robôs do Google não são assinantes).
 
-Assim, alguns sites obtêm vantagem indevida: para não perder ranking no Google, abrem propositalmente brechas para que os robôs dos mecanismos de busca possam entrar e fazer o seu trabalho. Quando o usuário chega na notícia, no entanto, algum truque feio é realizado para dificultar o acesso.
+Assim, alguns sites obtêm vantagem indevida: para não perder ranking no Google, abrem propositalmente brechas para que os robôs dos mecanismos de busca possam entrar e fazer o seu trabalho. Quando o usuário chega na notícia, no entanto, algum truque feio é realizado para dificultar o acesso. Essa trapaça é conhecida como cloaking e é uma [violação grave das diretrizes do Google](https://support.google.com/webmasters/answer/66355?hl=pt-BR), pois além de enganar o usuário, prejudica veículos de comunicação menores.
 
-Essa extensão desarma esses truques feios.
-
-Jornais como o Valor Econômico usam um mecanismo bem mais honesto: notícias restritas a assinantes são, de fato, restritas a assinantes. Elas não são indexadas pelo Google; a notícia só é carregada se um usuário assinante estiver logado. Obviamente, essa extensão não funciona com esse tipo de site.
+Jornais como o Valor Econômico e O Popular usam um mecanismo bem mais honesto: notícias restritas a assinantes são, de fato, restritas a assinantes. Elas não são indexadas pelo Google; a notícia só é carregada se um usuário assinante estiver logado. Obviamente, essa extensão não funciona com esse tipo de site.
 
 
 ## Como funciona?
