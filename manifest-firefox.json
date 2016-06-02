@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.1",
-    "description": "Remove de maneira transparente o paywall dos sites de notícia",
+    "version": "2.2",
+    "description": "Leia notícias sem ser assinante, burle o paywall",
 
     "author": "Rodrigo Orem (rodorgas)",
 
