@@ -28,7 +28,9 @@ chrome.webRequest.onBeforeRequest.addListener(
     },
     {
         urls: [
-            "http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*"
+            "http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*",
+            "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*"
+
         ],
         types: ["xmlhttprequest"]
     },

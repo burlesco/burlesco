@@ -4,25 +4,26 @@ Extensão para navegadores que remove de maneira transparente o paywall dos site
 
 Adicione o **burlesco** ao [Chrome](https://chrome.google.com/webstore/detail/lpamnanbhgpgkkpmilbifikmikfghlgh), [Firefox](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/) ou [Opera](https://addons.opera.com/pt-br/extensions/details/burlesco/).
 
-Burla a restrição para assinantes dos jornais:
+Funciona com os seguintes sites de notícia:
 
-- O Estado de S. Paulo
-- Folha de S.Paulo
-- O Globo (incluindo Acervo)
-- Gazeta do Povo
-- Zero Hora
-- Diário Catarinense
-- Correio Popular
+- *O Estado de S. Paulo*
+- *Folha de S.Paulo*
+- *O Globo* (incluindo Acervo)
+- *Gazeta do Povo*
+- *Zero Hora*
+- *Diário Catarinense*
+- *Jornal de Santa Catarina*
+- *Correio Popular*
 
 ## O que é Paywall?
 
-Paywall é um sistema de assinatura usado por jornais e outros veículos de comunicação digitais que restringe o acesso aos não assinantes. É uma maneira desses veículos aumentarem suas receitas, seguindo uma tendência internacional que criou a medida depois da diminuição das tiragens impressas.
+Paywall é um sistema de assinatura usado por jornais e outros veículos de comunicação digital que restringe o acesso aos não assinantes. É uma maneira desses veículos aumentarem suas receitas, seguindo uma tendência internacional que criou a medida depois da diminuição das tiragens impressas.
 
 Se o veículo deseja lucrar mais com a paywall existem alguns ônus, entre eles a perda de classificação no Google. Isso ocorre porque muitos textos deixam de ser indexados, já que requerem uma assinatura para serem lidos (e os robôs do Google não são assinantes).
 
-Assim, alguns sites obtêm vantagem indevida: para não perder ranking no Google, abrem propositalmente brechas para que os robôs dos mecanismos de busca possam entrar e fazer o seu trabalho. Quando o usuário chega na notícia, no entanto, algum truque feio é realizado para dificultar o acesso. Essa trapaça é conhecida como cloaking e é uma [violação grave das diretrizes do Google](https://support.google.com/webmasters/answer/66355?hl=pt-BR), pois além de enganar o usuário, prejudica veículos de comunicação menores.
+Assim, o jornal obtêm vantagem indevida: para não perder ranking no Google, abre propositalmente brechas para que os robôs dos mecanismos de busca possam entrar e fazer o seu trabalho. Quando o usuário chega na notícia, no entanto, algum truque feio é realizado para dificultar o acesso. Essa trapaça é conhecida como cloaking e é uma [violação grave das diretrizes do Google](https://support.google.com/webmasters/answer/66355?hl=pt-BR), pois além de enganar o usuário, prejudica veículos de comunicação menores.
 
-Jornais como o Valor Econômico e O Popular usam um mecanismo bem mais honesto: notícias restritas a assinantes são, de fato, restritas a assinantes. Elas não são indexadas pelo Google; a notícia só é carregada se um usuário assinante estiver logado. Obviamente, essa extensão não funciona com esse tipo de site.
+Jornais como o Valor Econômico e O Popular usam um mecanismo bem mais honesto: notícias restritas a assinantes são, de fato, restritas a assinantes. Elas não são indexadas pelo Google; a notícia só é carregada se um usuário assinante estiver logado. Obviamente, essa extensão não funciona com esse tipo de bloqueio.
 
 
 ## Como funciona?

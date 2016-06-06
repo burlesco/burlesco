@@ -32,7 +32,8 @@
         "*://*.gazetadopovo.com.br/",
         "*://zh.clicrbs.com.br/",
         "*://dc.clicrbs.com.br/",
-        "*://correio.rac.com.br/"
+        "*://correio.rac.com.br/",
+        "*://jornaldesantacatarina.clicrbs.com.br/"
     ],
 
     "applications": {
