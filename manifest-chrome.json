@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.2",
+    "version": "2.3",
     "description": "Leia notícias sem ser assinante, burle o paywall",
 
     "author": "Rodrigo Orem (rodorgas)",
