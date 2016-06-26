@@ -243,3 +243,9 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+.fa {
+  font-size: 2.5rem !important;
+  vertical-align: middle;
+  margin-right: 10px;
+}
