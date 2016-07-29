@@ -6,8 +6,8 @@ Adicione o **burlesco** ao [Chrome](https://chrome.google.com/webstore/detail/lp
 
 Funciona com os seguintes sites de notícia:
 
-- *O Estado de S. Paulo*
 - *Folha de S.Paulo*
+- *O Estado de S. Paulo*
 - *O Globo* (incluindo Acervo)
 - *Gazeta do Povo*
 - *Zero Hora*
