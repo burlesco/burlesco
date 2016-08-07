@@ -25,7 +25,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        return {cancel: true}
+        return {cancel: true};
     },
     {
         urls: [

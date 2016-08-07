@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.3",
+    "version": "2.4",
     "description": "Leia notícias sem ser assinante, burle o paywall",
 
     "author": "Rodrigo Orem (rodorgas)",
@@ -26,14 +26,15 @@
         "webRequest",
         "webRequestBlocking",
 
-        "*://*.estadao.com.br/",
         "*://*.folha.uol.com.br/",
+        "*://*.estadao.com.br/",
         "*://*.globo.com/",
         "*://*.gazetadopovo.com.br/",
         "*://zh.clicrbs.com.br/",
         "*://dc.clicrbs.com.br/",
         "*://correio.rac.com.br/",
-        "*://jornaldesantacatarina.clicrbs.com.br/"
+        "*://jornaldesantacatarina.clicrbs.com.br/",
+        "*://www.rbsonline.com.br/"
     ],
 
     "applications": {
