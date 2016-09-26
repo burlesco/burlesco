@@ -17,6 +17,9 @@ chrome.webRequest.onBeforeRequest.addListener(
             "*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*",
 
             "*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*"
+            
+            "*://www.jornalnh.com.br/includes/js/paywall.js*"
+            "*://blockv2.fivewall.com.br/*"
         ],
         types: ["script"]
     },
