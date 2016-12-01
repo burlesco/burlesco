@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.4",
+    "version": "2.7",
     "description": "Leia notícias sem ser assinante, burle o paywall",
-
-    "author": "Rodrigo Orem (rodorgas)",
+    "homepage_url": "http://burles.co",
+    "author": "Rodrigo Orem",
 
     "icons": {
         "128": "icone.png"
@@ -18,7 +18,9 @@
         "js": ["content.js"],
         "run_at": "document_idle",
         "matches": [
-            "*://*.oglobo.globo.com/*"
+            "*://*.oglobo.globo.com/*",
+            "*://www.economist.com/*",
+            "*://foreignpolicy.com/*"
         ]
     }],
 
@@ -34,7 +36,11 @@
         "*://dc.clicrbs.com.br/",
         "*://correio.rac.com.br/",
         "*://jornaldesantacatarina.clicrbs.com.br/",
-        "*://www.rbsonline.com.br/"
+        "*://www.rbsonline.com.br/",
+
+        "*://www.economist.com/",
+        "*://foreignpolicy.com/",
+        "*://*.tinypass.com/"
     ],
 
     "applications": {
