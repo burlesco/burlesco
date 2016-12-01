@@ -6,4 +6,4 @@ Extensão para navegadores que remove de maneira transparente o paywall dos maio
 
 Esse código funciona em navegadores baseados no Chromium ou compatíveis com sua Extension API.
 
-Para instalar no seu navegador ou para mais informações sobre o projeto, visite https://burlesco.github.io
+Para instalar no seu navegador ou para mais informações sobre o projeto, visite http://burles.co

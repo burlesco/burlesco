@@ -5,6 +5,9 @@ if (/([^\/].)?oglobo\.globo\.com/.test(document.location.host))
 else if (/www\.economist\.com/.test(document.location.host))
     code = 'document.cookie = "ec_limit=allow";';
 
+else if (/foreignpolicy\.com/.test(document.location.host))
+    code = 'window.FPMarketingSettings.__meta.disable_paywall = true;';
+
 if (code !== null) {
     var script = document.createElement('script');
     script.textContent = code;
