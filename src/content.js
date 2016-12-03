@@ -12,7 +12,6 @@ else if (/foreignpolicy\.com/.test(document.location.host)) {
 }
 
 if (code !== null) {
-    code = 'console.log("Burlando paywall com Burlesco");' + code;
     var script = document.createElement('script');
     script.textContent = code;
     (document.head||document.documentElement).appendChild(script);
