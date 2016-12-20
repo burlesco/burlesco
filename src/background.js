@@ -41,3 +41,20 @@ chrome.webRequest.onBeforeRequest.addListener(
     },
     ["blocking"]
 );
+
+chrome.webRequest.onBeforeRequest.addListener(
+    function(details) {
+        chrome.cookies.remove({
+            'url': 'http://jota.info/*',
+            'name': 'articles'
+        }, function () {
+            console.log(document.cookie);
+        })
+    },
+    {
+        urls: [
+            "http://jota.info/*",
+        ],
+        types: ["main_frame"]
+    }
+)
