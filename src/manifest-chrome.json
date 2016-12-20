@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.7",
+    "version": "2.8",
     "description": "Leia notícias sem ser assinante, burle o paywall",
     "homepage_url": "http://burles.co",
     "author": "Rodrigo Orem",
@@ -28,19 +28,6 @@
         "webRequest",
         "webRequestBlocking",
         "cookies",
-
-        "*://*.folha.uol.com.br/",
-        "*://*.estadao.com.br/",
-        "*://*.globo.com/",
-        "*://*.gazetadopovo.com.br/",
-        "*://zh.clicrbs.com.br/",
-        "*://dc.clicrbs.com.br/",
-        "*://correio.rac.com.br/",
-        "*://jornaldesantacatarina.clicrbs.com.br/",
-        "*://www.rbsonline.com.br/",
-
-        "*://www.economist.com/",
-        "*://foreignpolicy.com/",
-        "*://*.tinypass.com/"
+        "<all_urls>"
     ]
 }
