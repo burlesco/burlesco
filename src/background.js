@@ -47,8 +47,6 @@ chrome.webRequest.onBeforeRequest.addListener(
         chrome.cookies.remove({
             'url': 'http://jota.info/*',
             'name': 'articles'
-        }, function () {
-            console.log(document.cookie);
         })
     },
     {
