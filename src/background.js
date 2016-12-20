@@ -7,6 +7,7 @@ chrome.webRequest.onBeforeRequest.addListener(
             "*://*.estadao.com.br/paywall/*",
 
             "*://paywall.folha.uol.com.br/*",
+            "*://static.folha.uol.com.br/paywall/*",
 
             "*://*.globo.com/plataforma/js/*/minificados/paywall/controla-acesso.js",
 
