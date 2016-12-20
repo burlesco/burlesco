@@ -27,6 +27,7 @@
     "permissions": [
         "webRequest",
         "webRequestBlocking",
+        "cookies",
 
         "*://*.folha.uol.com.br/",
         "*://*.estadao.com.br/",
