@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
     "name": "burlesco",
-    "version": "2.8",
+    "version": "2.9",
     "description": "Leia notícias sem ser assinante, burle o paywall",
     "homepage_url": "http://burles.co",
-    "author": "Rodrigo Orem",
+    "author": "rodorgas",
 
     "icons": {
         "128": "icone.png"
@@ -27,6 +27,7 @@
     "permissions": [
         "webRequest",
         "webRequestBlocking",
+        "cookies",
         "<all_urls>"
     ],
 

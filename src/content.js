@@ -6,9 +6,12 @@ else if (/www\.economist\.com/.test(document.location.host))
     code = 'document.cookie = "ec_limit=allow";';
 
 else if (/foreignpolicy\.com/.test(document.location.host)) {
-    code = 'window.FPMarketingSettings.__meta.disable_paywall = true;';
-    code += 'window.Drupal.settings.ec_wallpage.ec_wallpage_paywall_name = ' +
-        '"article paywall registered"';
+    code = '\
+		document.getElementById("paywall_bg").remove();\
+        document.body.classList.remove("overlay-no-scroll");\
+		document.body.style.overflow = "visible";\
+		document.documentElement.classList.remove("overlay-no-scroll");\
+    ';
 }
 
 if (code !== null) {
