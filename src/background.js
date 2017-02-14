@@ -1,3 +1,4 @@
+// Script blocking
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         return {cancel: true};
@@ -20,13 +21,16 @@ chrome.webRequest.onBeforeRequest.addListener(
 
             "*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*",
 
-            "*://dashboard.tinypass.com/xbuilder/experience/load*"
+            "*://dashboard.tinypass.com/xbuilder/experience/load*",
+
+            "http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js"
         ],
         types: ["script"]
     },
     ["blocking"]
 );
 
+// XHR blocking
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         return {cancel: true};
@@ -42,12 +46,13 @@ chrome.webRequest.onBeforeRequest.addListener(
     ["blocking"]
 );
 
+// Cookie injection
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         chrome.cookies.remove({
             'url': 'http://jota.info/*',
             'name': 'articles'
-        })
+        });
     },
     {
         urls: [
@@ -55,4 +60,4 @@ chrome.webRequest.onBeforeRequest.addListener(
         ],
         types: ["main_frame"]
     }
-)
+);

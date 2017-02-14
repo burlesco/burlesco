@@ -16,7 +16,7 @@
 
     "content_scripts": [{
         "js": ["content.js"],
-        "run_at": "document_idle",
+        "run_at": "document",
         "matches": [
             "*://*.oglobo.globo.com/*",
             "*://www.economist.com/*",
