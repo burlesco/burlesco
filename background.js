@@ -20,6 +20,10 @@ chrome.webRequest.onBeforeRequest.addListener(
             
             "*://www.jornalnh.com.br/includes/js/paywall.js*"
             "*://blockv2.fivewall.com.br/*"
+            
+            "*://www.portalnews.com.br/includes/js/paywall.js*"
+            "*://www.tribunadeindaia.com.br/includes/js/paywall.js*"
+
         ],
         types: ["script"]
     },
