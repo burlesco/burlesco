@@ -23,7 +23,10 @@ chrome.webRequest.onBeforeRequest.addListener(
 
             "*://dashboard.tinypass.com/xbuilder/experience/load*",
 
-            "http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js"
+            "http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js",
+
+            "*://www.jornalnh.com.br/includes/js/paywall.js*",
+            "*://blockv2.fivewall.com.br/*"
         ],
         types: ["script"]
     },
