@@ -72,8 +72,57 @@ chrome.webRequest.onBeforeRequest.addListener(
     {
         urls: [
             // JOTA
-            "http://jota.info/*",
+            "http://jota.info/*"
         ],
         types: ["main_frame"]
     }
+);
+
+// Referer injection
+function insertHeader(name, value, requestHeaders) {
+    /**
+     * @param {string} name - Name of the header to be inserted
+     * @param {string} value - Value of the header to be inserted
+     * @param {Object[]} requestHeaders - Provided by webRequest
+     *     listeners in callback arg `details.requestHeader`
+     * @param {string} requestHeaders[].name
+     * @param {string} requestHeaders[].value
+     */
+    var headerIndex = requestHeaders.findIndex(x => x.name == name);
+
+    var newHeader = {name: name, value: value};
+    if (headerIndex == -1)
+        requestHeaders.push(newHeader);
+    else
+        requestHeaders[headerIndex] = newHeader;
+}
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+    function(details) {
+        var headers = ['Referer'];
+
+        //if (/https?:\/\/access\.nexojornal\.com/.test(details.url))
+            //headers.push('X-Article-Referrer')
+
+        headers.forEach(header =>
+            insertHeader(
+                header,
+                'https://www.google.com.br/',
+                details.requestHeaders
+            )
+        );
+
+        return {requestHeaders: details.requestHeaders};
+    },
+    {
+        urls: [
+            // Nexo
+            //"*://access.nexojornal.com.br/access/content/*",
+
+            // Financial Times
+            "*://www.ft.com/*"
+        ],
+        types: ["xmlhttprequest", "main_frame"]
+    },
+    ["blocking", "requestHeaders"]
 );
