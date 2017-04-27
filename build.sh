@@ -1,12 +1,16 @@
-rm -rf dist/burlesco-chrome.zip dist/burlesco-firefox.zip
-mkdir dist
+DIST="dist"
+BROWSERS=("chrome" "firefox" "opera")
 
-cp -r src/* dist/firefox
-rm dist/firefox/manifest-chrome.json
-mv dist/firefox/manifest-firefox.json dist/firefox/manifest.json
-zip -j dist/burlesco-firefox.zip dist/firefox/*
 
-cp -r src/* dist/chrome
-rm dist/chrome/manifest-firefox.json
-mv dist/chrome/manifest-chrome.json dist/chrome/manifest.json
-zip -j dist/burlesco-chrome.zip dist/chrome/*
+for i in "${BROWSERS[@]}"
+do
+  mkdir -p "$DIST/$i/src"
+
+  rm -rf "$DIST/$i/src/*"
+  rm "$DIST/$i/extension.zip"
+
+  cp -r src/* "$DIST/$i/src"
+  mv "$DIST/$i/manifest-$i.json" "$DIST/$i/manifest.json"
+  rm -f "$DIST/$i/manifest-*"
+  zip -j "$DIST/$i/extension.zip" "$DIST/$i/src/*"
+done
