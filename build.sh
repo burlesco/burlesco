@@ -4,13 +4,15 @@ BROWSERS=("firefox" "opera")
 
 for i in "${BROWSERS[@]}"
 do
-  mkdir -p "$DIST/$i/src"
+  DIR=$DIST/$i
 
-  rm -rf "$DIST/$i/src/"*
-  rm "$DIST/$i/extension.zip"
+  mkdir -p $DIR/src
 
-  cp -r src/* "$DIST/$i/src"
-  mv "$DIST/$i/manifest-$i.json" "$DIST/$i/manifest.json"
-  rm -f "$DIST/$i/"manifest-*
-  zip -j "$DIST/$i/extension.zip" "$DIST/$i/src/"*
+  rm -rf "$DIR/*"
+
+  echo $DIR/src
+  cp -r src/* $DIR/src
+  mv $DIR/src/manifest-$i.json $DIR/src/manifest.json
+  rm -f $DIR/src/manifest-*
+  zip -j $DIR/extension.zip $DIR/src/*
 done
