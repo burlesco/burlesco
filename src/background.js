@@ -34,6 +34,9 @@ chrome.webRequest.onBeforeRequest.addListener(
       // Jornal de Novo Hamburgo
       "*://www.jornalnh.com.br/includes/js/paywall.js*",
       "*://blockv2.fivewall.com.br/*"
+
+      // Diário de Santa Maria
+      "*://www.rbsonline.com.br/cdn/scripts/SLoader.js"
     ],
     types: ["script"]
   },
