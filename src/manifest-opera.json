@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "burlesco",
+  "version": "2.14",
+  "description": "Leia notícias sem ser assinante, burle o paywall",
+  "homepage_url": "http://burles.co",
+  "author": "rodorgas",
+
+  "icons": {
+    "128": "icone.png"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [{
+    "js": ["content.js"],
+    "run_at": "document_idle",
+    "matches": [
+      "*://*.oglobo.globo.com/*",
+      "*://www.economist.com/*",
+      "*://foreignpolicy.com/*"
+    ]
+  }],
+
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "cookies",
+    "<all_urls>"
+  ],
+
+  "applications": {
+    "gecko": {
+      "id": "burlesco@burlesco.com"
+    }
+  }
+}
