@@ -5,6 +5,7 @@
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "http://burles.co",
   "author": "rodorgas",
+  "update_url": "https://github.com/Burlesco/chromium/blob/master/updates.xml",
 
   "icons": {
     "128": "icone.png"
