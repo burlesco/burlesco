@@ -17,7 +17,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://cdn.tinypass.com/api/tinypass.min.js",
 
       // Gazeta do Povo
-      "*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*"
+      "*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*",
 
       // Zero Hora
       "*://zh.clicrbs.com.br/it/js/paid-content-config.js*",
