@@ -1,3 +1,4 @@
+#!/bin/bash
 DIST="dist"
 BROWSERS=("firefox" "opera")
 
@@ -14,5 +15,12 @@ do
   cp -r src/* $DIR/src
   mv $DIR/src/manifest-$i.json $DIR/src/manifest.json
   rm -f $DIR/src/manifest-*
+
+  file="extension.zip"
+  if [ i == "firefox" ]
+    then
+      file="extension.xpi"
+  fi
+
   zip -j $DIR/extension.zip $DIR/src/*
 done
