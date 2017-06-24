@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Burlesco - Leia notícias sem ser assinante</title>
+  <title>Instruções para o Chrome | Burlesco - Leia notícias sem ser assinante</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -12,6 +12,14 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
 
   <link rel="stylesheet" href="node_modules/octicons/build/octicons.css">
+  <style>
+  #paywall td:nth-child(1) {
+    white-space: nowrap;
+  }
+  #home-link:link    { color: white; }
+  #home-link:hover    { text-decoration: none; }
+  #home-link:visited { color: white; }
+  </style>
   <script>
     (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
@@ -32,63 +40,32 @@
 
 <body>
   <section class="page-header">
-    <h1 class="project-name">Burlesco</h1>
+    <h1 class="project-name"><a href="/" id="home-link">Burlesco</a></h1>
     <h2 class="project-tagline">Leia notícias sem ser assinante, burle o paywall</h2>
-
   </section>
 
   <article class="main-content">
 
-    <blockquote>
-      <p>"Você atingiu o limite de 2 notícias por mês. Pague a assinatura ou caia fora."</p>
-    </blockquote>
+    <h1>Instruções para usar o Burlesco no Chrome</h1>
+    <em>29 de abril de 2017</em>
 
-    <p>Se esse tipo de mensagem é comum na sua vida, você vai amar essa extensão. Ela burla o bloqueio dos maiores jornais do Brasil, que restringem o acesso às notícias quando você ultrapassa uma quantia mensal de acesso.</p>
+    <p>Siga os seguintes passos para instalar o Burlesco no Chrome:</p>
 
-    <h3>No computador</h3>
-    <p>
-        <a href="https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/" class="btn">
-          <i class="fa fa-firefox"></i> Mozilla Firefox
-        </a>
-        <a href="https://addons.opera.com/pt-br/extensions/details/burlesco/" class="btn">
-          <i class="fa fa-opera"></i> Opera
-        </a>
-        <a href="http://goo.gl/Vtm7Xp" class="btn">
-          <i class="fa fa-safari"></i> Safari
-        </a>
-    </p>
+    <ol>
+      <li><a href="https://github.com/Burlesco/chromium/releases" target="_blank">Baixe o arquivo <code>burlesco-chrome.zip</code></a></li>
+      <li>Descompacte</li>
+      <li>Digite <code>chrome://extensions/</code> na barra de endereços do Chrome</li>
+      <li>Ative o <strong>Modo do desenvolvedor</strong> no canto superior direito</li>
+      <li>Clique em <strong>Carregar extensão expandida...</strong></li>
+      <li>Selecione a pasta onde o <code>burlesco-chrome</code> foi descompactado</li>
+    </ol>
 
-    <h3>No celular ou tablet</h3>
-    <p><strong>Android</strong>: Instale o <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox">Firefox</a> (versão >=52) e então adicione a extensão Burlesco para Firefox acima.</p>
+    <p>Note que o Chrome vai pedir para você desativar o modo do desenvolvedor sempre que for aberto. Estamos <a href="https://github.com/Burlesco/chromium/issues/18">buscando alguma solução mais legal</a>, porém as perspectivas não são muito boas.</p>
 
-    <p><strong>iOS</strong>: Atualmente sem solução, já que o 1Blocker passou a ser pago. <a href="ios.html">Veja a solução antiga</a>.</p>
+    <p>Pessoalmente, estou deixando de usar o Chrome como meu navegador principal. Você também podia considerar trocar para um <a href="https://firefox.com/">navegador que respeita sua liberdade</a> né?</p>
 
-    <hr>
-
-    <p>Funciona com os seguintes sites de notícia:</p>
-
-    <ul>
-      <li><em>Folha de S.Paulo</em></li>
-      <li><em>O Estado de S. Paulo</em></li>
-      <li><em>O Globo</em> (incluindo o acervo)</li>
-      <li><em>Gazeta do Povo</em></li>
-      <li><em>Zero Hora</em></li>
-      <li><em>Diário Catarinense</em></li>
-      <li><em>Jornal de Santa Catarina</em></li>
-      <li><em>Correio Popular</em></li>
-      <li><em>JOTA</em></li>
-      <li><em>O Estado do Maranhão</em></li>
-      <li><em>Jornal NH</em></li>
-      <li><em>Diário de Santa Maria</em></li>
-      <li><em>The Economist</em></li>
-      <li><em>Foreign Policy</em></li>
-      <li><em>Financial Times</em></li>
-    </ul>
-
-    <p><strong>Atenção</strong>: você realmente deveria pagar por estas publicações. A democracia depende disso. Se por algum motivo você acabar utilizando o Burlesco, não use com adblockers. Os jornais precisam ser financiados de alguma forma.</p>
-    <p>Saiba mais sobre o projeto nas <a href="faq.html">perguntas frequentes</a>.</p>
     <br>
-
+    <p><a href="/">Voltar para página inicial</a></p>
 
 
 
@@ -101,8 +78,8 @@
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
     var disqus_config = function () {
-    this.page.url = 'http://burles.co';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'dxm10zcw_index.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    this.page.url = 'http://burles.co/instrucoes-chrome.html';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'ca781hd0a_instrucoes-chrome.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -118,7 +95,11 @@
 
       <br>
       <div id="share">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="small">Tweet</a>
+
         <a href="https://github.com/Burlesco/chromium"><img src="https://img.shields.io/github/stars/burlesco/chromium.svg?style=social&label=Star&maxAge=2592000"></a>
+
+        <a href="https://chrome.google.com/webstore/detail/burlesco/lpamnanbhgpgkkpmilbifikmikfghlgh"><img src="https://img.shields.io/chrome-web-store/d/lpamnanbhgpgkkpmilbifikmikfghlgh.svg?maxAge=2592000&style=social" alt="Chrome Web Store"></a>
       </div>
       <br>
 

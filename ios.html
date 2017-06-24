@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>iOS | Burlesco - Leia notícias sem ser assinante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+  <link rel="stylesheet" href="node_modules/octicons/build/octicons.css">
+  <style>
+  #paywall td:nth-child(1) {
+    white-space: nowrap;
+  }
+  #home-link:link    { color: white; }
+  #home-link:hover    { text-decoration: none; }
+  #home-link:visited { color: white; }
+  </style>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-40344048-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+  <section class="page-header">
+    <h1 class="project-name"><a href="/" id="home-link">Burlesco</a></h1>
+    <h2 class="project-tagline">Leia notícias sem ser assinante, burle o paywall</h2>
+  </section>
+
+  <article class="main-content">
+
+    <h1>Burlesco no iOS</h1>
+
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="large" style="float: right">Tweet</a>
+    <p>Requer o iOS 9 ou posterior.</p>
+
+    <p><strong>NOTA:</strong> Esse método depende do aplicativo 1Blocker, que passou a cobrar para ativar a funcionalidade de bloqueio de URLs personalizadas. Quem já tinha baixado o app quando era gratuito continua com acesso a essa funcionalidade e as instruções para configuração estão a seguir.</p>
+
+    <p>Instruções para burlar o paywall no iPhone ou iPad:</p>
+    <ol>
+      <li>Instale o <a href="https://itunes.apple.com/br/app/1blocker-block-ads-tracking/id1025729002">1Blocker</a> e ative ele em <em>Ajustes > Safari > Bloqueadores de Conteúdo</em></li>
+      <li>Abra o 1Blocker, vá na seção <em>Configurable</em>, toque em <em>Block URLs</em></li>
+      <li>No canto superior direito, toque no <strong>+</strong></li>
+      <li>Preencha os campos Blocker Name e URL filter de acordo com o site que deseja burlar:</li>
+      <table id="paywall">
+          <tbody>
+            <tr>
+              <td>Folha</td>
+              <td>http://paywall\.folha\.uol\.com\.br/.*</td>
+            </tr>
+            <tr>
+              <td>Estadão</td>
+              <td>http://.*\.?estadao\.com\.br/paywall</td>
+            </tr>
+            <tr>
+              <td>O Globo</td>
+              <td>
+                https?://ogjs\.infoglobo\.com\.br/.*/js/controla-acesso-aux\.js<br>
+                https?://cdn\.tinypass\.com/api/tinypass\.min\.js
+              </td>
+            </tr>
+            <tr>
+              <td>Gazeta do Povo</td>
+              <td>
+                https?://.*\.?gazetadopovo\.com\.br/conta/public/js/connect_api\.js.*<br>
+                https?://.*\.?gazetadopovo\.com\.br/conta/going/api/paywall/.*
+              </td>
+            </tr>
+            <tr>
+              <td>Zero Hora*</td>
+              <td>https?://zh\.clicrbs\.com\.br/it/js/paid-content-config\.js.*</td>
+            </tr>
+            <tr>
+              <td>Correio Popular</td>
+              <td>
+                https?://www\.rbsonline\.com\.br/cdn/scripts/paywall\.min\.js.*<br>
+                https?://correio\.rac\.com\.br/includes/js/novo_cp/fivewall\.js.*
+              </td>
+            </tr>
+          </tbody>
+      </table>
+    </ol>
+
+
+    <br>
+    <p><a href="/">Voltar para página inicial</a></p>
+    <br>
+
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function () {
+    this.page.url = 'http://burles.co/ios.html';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'cn81wali_ios.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'http://burlesco.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    <footer class="site-footer">
+      <span class="site-footer-owner">Feito com ♥ por <a href="https://github.com/rodorgas">rodorgas</a>.</span>
+
+      <br>
+      <div id="share">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="small">Tweet</a>
+
+        <a href="https://github.com/Burlesco/chromium"><img src="https://img.shields.io/github/stars/burlesco/chromium.svg?style=social&label=Star&maxAge=2592000"></a>
+
+        <a href="https://chrome.google.com/webstore/detail/burlesco/lpamnanbhgpgkkpmilbifikmikfghlgh"><img src="https://img.shields.io/chrome-web-store/d/lpamnanbhgpgkkpmilbifikmikfghlgh.svg?maxAge=2592000&style=social" alt="Chrome Web Store"></a>
+      </div>
+      <br>
+
+      <span class="site-footer-credits">Essa página foi gerada pelo <a href="https://pages.github.com">GitHub Pages</a> usando o <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> do <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
+
+  </article>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    ! function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'twitter-wjs');
+  </script>
+</body>
+
+</html>
