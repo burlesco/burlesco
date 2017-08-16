@@ -50,6 +50,10 @@ chrome.webRequest.onBeforeRequest.addListener(
   },
   {
     urls: [
+      // Folha de S.Paulo
+      "*://paywall.folha.uol.com.br/*",
+      "*://static.folha.uol.com.br/paywall/*",
+
       // Diário Catarinense
       "http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*",
 
@@ -104,9 +108,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   function(details) {
     var headers = ['Referer'];
 
-    //if (/https?:\/\/access\.nexojornal\.com/.test(details.url))
-      //headers.push('X-Article-Referrer')
-
     headers.forEach(header =>
       insertHeader(
         header,
@@ -119,9 +120,6 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   },
   {
     urls: [
-      // Nexo
-      //"*://access.nexojornal.com.br/access/content/*",
-
       // Financial Times
       "*://www.ft.com/*"
     ],
