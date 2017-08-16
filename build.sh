@@ -17,10 +17,10 @@ do
   rm -f $DIR/src/manifest-*
 
   file="extension.zip"
-  if [ i == "firefox" ]
+  if [ $i == "firefox" ]
     then
       file="extension.xpi"
   fi
 
-  zip -j $DIR/extension.zip $DIR/src/*
+  zip -j $DIR/$file $DIR/src/*
 done
