@@ -228,7 +228,7 @@ a {
 
 @media screen and (min-width: 64em) {
   .main-content {
-    max-width: 64rem;
+    max-width: 69rem;
     padding: 2rem 6rem;
     margin: 0 auto;
     font-size: 1.1rem; } }
@@ -282,4 +282,29 @@ a {
 
 #twitter-widget-0 {
   float: right;
+}
+
+#suporte, #twitter-timeline {
+  float: left;
+}
+
+@media (min-width: 480px) {
+  #suporte {
+    width: 60%;
+    float: left;
+  }
+  #twitter-timeline {
+    width: 40%;
+    float: right;
+  }
+}
+@media (min-width: 673px) {
+  #suporte {
+    width: 65%;
+    float: left;
+  }
+  #twitter-timeline {
+    width: 30%;
+    float: right;
+  }
 }

@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <title>Burlesco - Leia notícias sem ser assinante</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:dnt" content="on">
   <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
   <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-
   <link rel="stylesheet" href="node_modules/octicons/build/octicons.css">
   <script>
     (function(i, s, o, g, r, a, m) {
@@ -58,8 +58,10 @@
     <h3>No Android</h3>
     <p>Instale o <a href="https://play.google.com/store/apps/details?id=org.mozilla.firefox">Firefox</a> (versão >=52) e então adicione a extensão Burlesco para Firefox acima.</p>
     <hr>
-
-    <p>Funciona com os seguintes sites de notícia:</p>
+    <div>
+      <div id="suporte">
+    <h3>Sites suportados</h3>
+    <p>O Burlesco funciona com os seguintes sites de notícia:</p>
 
     <ul>
       <li><em>Folha de S.Paulo</em></li>
@@ -83,13 +85,19 @@
 
     <p><strong>Atenção</strong>: você realmente deveria pagar por estas publicações. A democracia depende disso. Se por algum motivo você acabar utilizando o Burlesco, não use com adblockers. Os jornais precisam ser financiados de alguma forma.</p>
     <p>Saiba mais sobre o projeto nas <a href="faq.html">perguntas frequentes</a>.</p>
+
+    <p>Esse projeto não está adicionando novos sites atualmente, mas está atualizando os atuais quando necessário. O Burlesco é open source e <a href="https://github.com/rodorgas/burlesco/graphs/contributors">agradece as contribuições</a>, então se você conseguir burlar algum site novo, pode deixar a lista maior ;)</p>
     <br>
-
-
-
-
     <br>
-    <a href="#comentarios"></a>
+  </div>
+  <div id="twitter-timeline">
+    <a class="twitter-timeline" href="https://twitter.com/BurlescoExt">Tweets by BurlescoExt</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+  </div>
+
+
+
+    <a href="#comentarios" id="disqus"></a>
     <div id="disqus_thread"></div>
     <script>
 
