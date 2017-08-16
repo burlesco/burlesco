@@ -284,10 +284,6 @@ a {
   float: right;
 }
 
-#suporte, #twitter-timeline {
-  float: left;
-}
-
 @media (min-width: 480px) {
   #suporte {
     width: 60%;
