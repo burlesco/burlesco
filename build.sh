@@ -1,6 +1,6 @@
 #!/bin/bash
 DIST="dist"
-BROWSERS=("firefox" "opera")
+BROWSERS=("firefox" "opera" "chrome")
 
 
 for i in "${BROWSERS[@]}"
