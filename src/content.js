@@ -15,6 +15,15 @@ else if (/foreignpolicy\.com/.test(document.location.host)) {
   ';
 }
 
+else if (/folha.uol.com.br/.test(document.location.host)) {
+  code = 'omtrClickUOL = function(){};function showText() {\
+            $("#bt-read-more-content").next().show();\
+            $("#bt-read-more-content").next().show().prev().remove();\
+          } \
+          setTimeout(showText, 100);';
+}
+
+
 if (code !== null) {
   var script = document.createElement('script');
   script.textContent = code;

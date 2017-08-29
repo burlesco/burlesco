@@ -43,9 +43,15 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // XHR blocking
+WHITELIST = [
+  'http://paywall.folha.uol.com.br/status.php'
+];
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    return {cancel: true};
+    if (WHITELIST.indexOf(details.url) !== -1)
+      return {cancel: false};
+    else
+      return {cancel: true};
   },
   {
     urls: [
