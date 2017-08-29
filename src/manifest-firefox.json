@@ -20,7 +20,10 @@
     "matches": [
       "*://*.oglobo.globo.com/*",
       "*://www.economist.com/*",
-      "*://foreignpolicy.com/*"
+      "*://foreignpolicy.com/*",
+      "*://*.folha.uol.com.br/*",
+      "*://*.folha.com.br/*"
+
     ]
   }],
 
