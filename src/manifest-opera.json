@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "2.17",
+  "version": "2.19",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "http://burles.co",
   "author": "rodorgas",
@@ -33,6 +33,7 @@
     "cookies",
 
     "*://correio.rac.com.br/*",
+    "*://dc.clicrbs.com.br/*",
     "*://www.economist.com/*",
     "*://*.estadao.com.br/*",
     "*://foreignpolicy.com/*",
