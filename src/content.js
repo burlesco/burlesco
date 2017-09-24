@@ -23,6 +23,14 @@ else if (/folha.uol.com.br/.test(document.location.host)) {
           setTimeout(showText, 100);';
 }
 
+else if (/ft.com/.text(document.location.host)) {
+  code = 'document.cookie = "";\
+          localStorage.clear();\
+          sessionStorage.clear();\
+          indexedDB.deleteDatabase("next-flags");\
+          indexedDB.deleteDatabase("next:ads");';
+}
+
 
 if (code !== null) {
   var script = document.createElement('script');

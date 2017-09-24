@@ -73,7 +73,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
-// Cookie injection
+// Cookie blocking
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     chrome.cookies.remove({
@@ -90,25 +90,27 @@ chrome.webRequest.onBeforeRequest.addListener(
   }
 );
 
+chrome.webRequest.onHeadersReceived.addListener(
+  function (details) {
+    details.responseHeaders.forEach(function(responseHeader) {
+      if (responseHeader.name.toLowerCase() == "set-cookie") {
+        responseHeader.value = '';
+      }
+    });
+    return {
+      responseHeaders: details.responseHeaders
+    };
+  },
+  {
+    urls: [
+      // Financial Times
+      "*://*.ft.com/*"
+    ]
+  },
+  ['blocking','responseHeaders']
+);
+
 // Referer injection
-function insertHeader(name, value, requestHeaders) {
-  /**
-   * @param {string} name - Name of the header to be inserted
-   * @param {string} value - Value of the header to be inserted
-   * @param {Object[]} requestHeaders - Provided by webRequest
-   *   listeners in callback arg `details.requestHeader`
-   * @param {string} requestHeaders[].name
-   * @param {string} requestHeaders[].value
-   */
-  var headerIndex = requestHeaders.findIndex(x => x.name == name);
-
-  var newHeader = {name: name, value: value};
-  if (headerIndex == -1)
-    requestHeaders.push(newHeader);
-  else
-    requestHeaders[headerIndex] = newHeader;
-}
-
 chrome.webRequest.onBeforeSendHeaders.addListener(
   function(details) {
     var headers = ['Referer'];
@@ -132,3 +134,21 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   },
   ["blocking", "requestHeaders"]
 );
+
+function insertHeader(name, value, requestHeaders) {
+  /**
+   * @param {string} name - Name of the header to be inserted
+   * @param {string} value - Value of the header to be inserted
+   * @param {Object[]} requestHeaders - Provided by webRequest
+   *   listeners in callback arg `details.requestHeader`
+   * @param {string} requestHeaders[].name
+   * @param {string} requestHeaders[].value
+   */
+  var headerIndex = requestHeaders.findIndex(x => x.name == name);
+
+  var newHeader = {name: name, value: value};
+  if (headerIndex == -1)
+    requestHeaders.push(newHeader);
+  else
+    requestHeaders[headerIndex] = newHeader;
+}
