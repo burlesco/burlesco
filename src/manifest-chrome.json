@@ -23,7 +23,8 @@
       "*://foreignpolicy.com/*",
       "*://*.folha.uol.com.br/*",
       "*://*.folha.com.br/*",
-      "*://*.ft.com/*"
+      "*://*.ft.com/*",
+      "*://gauchazh.clicrbs.com.br/*"
     ]
   }],
 
@@ -51,6 +52,6 @@
     "*://www.rbsonline.com.br/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
-    "*://zh.clicrbs.com.br/*"
+    "*://gauchazh.clicrbs.com.br/*"
   ]
 }

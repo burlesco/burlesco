@@ -19,10 +19,6 @@ chrome.webRequest.onBeforeRequest.addListener(
       // Gazeta do Povo
       "*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*",
 
-      // Zero Hora
-      "*://zh.clicrbs.com.br/it/js/paid-content-config.js*",
-      "*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*",
-
       // Correio Popular
       "*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*",
 
@@ -90,7 +86,37 @@ chrome.webRequest.onBeforeRequest.addListener(
   }
 );
 
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    console.log(details);
+    removeCookies('https://gauchazh.clicrbs.com.br');
+    removeCookies('https://www.ft.com');
+  },
+  {
+    urls: [
+      // Financial Times
+      "*://*.ft.com/*",
+
+      // Zero Hora
+      "*://gauchazh.clicrbs.com.br/*"
+    ],
+    types: ["main_frame"]
+  }
+);
+
+function removeCookies(url) {
+  chrome.cookies.getAll({}, function(cookies) {
+    cookies.forEach(function(cookie, index, array) {
+      chrome.cookies.remove({
+        'url': url,
+        'name': cookie.name
+      });
+    });
+  });
+}
+
 chrome.webRequest.onHeadersReceived.addListener(
+  // Block cookies from being set
   function (details) {
     details.responseHeaders.forEach(function(responseHeader) {
       if (responseHeader.name.toLowerCase() == "set-cookie") {
@@ -104,11 +130,15 @@ chrome.webRequest.onHeadersReceived.addListener(
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*"
+      "*://*.ft.com/*",
+
+      // Zero Hora
+      "*://gauchazh.clicrbs.com.br/*"
     ]
   },
   ['blocking','responseHeaders']
 );
+
 
 // Referer injection
 chrome.webRequest.onBeforeSendHeaders.addListener(

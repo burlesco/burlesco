@@ -23,12 +23,18 @@ else if (/folha.uol.com.br/.test(document.location.host)) {
           setTimeout(showText, 100);';
 }
 
-else if (/ft.com/.text(document.location.host)) {
+else if (/ft.com/.test(document.location.host)) {
   code = 'document.cookie = "";\
           localStorage.clear();\
           sessionStorage.clear();\
           indexedDB.deleteDatabase("next-flags");\
           indexedDB.deleteDatabase("next:ads");';
+}
+
+else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
+  code = 'document.cookie = "";\
+          localStorage.clear();\
+          sessionStorage.clear();';
 }
 
 
