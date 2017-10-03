@@ -49,3 +49,16 @@ body {
     position: absolute;
     right: calc(100% + 1rem);
 }
+
+@media (max-width: 768px) {
+    .intro .main {
+        flex-direction: column;
+        text-align: center;
+    }
+    .intro .main .title {
+        font-size: 3rem;
+    }
+    .content ul.horizontal {
+        column-count: 1;
+    }
+}
