@@ -1,0 +1,64 @@
+body {
+    font-family: Raleway, BlinkMacSystemFont,-apple-system,"Ubuntu","Droid Sans","Helvetica Neue","Helvetica","Segoe UI","Arial",sans-serif;
+}
+
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main .title {
+    font-size: 5rem;
+}
+.main .subtitle {
+    font-size: 1rem;
+    font-style: italic;
+}
+.main .logo {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 30px;
+}
+
+.intro .hero-body {
+    flex-direction: column;
+    align-items: center;
+}
+.features {
+    background-color: #7962bd !important;
+}
+.features .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.content ul.horizontal {
+    column-count: 3;
+    column-gap: 20px;
+    list-style-position: inside;
+}
+
+.narrow {
+    max-width: 912px;
+    margin: 0 auto;
+}
+.bd-anchor-link {
+    position: absolute;
+    right: calc(100% + 1rem);
+}
+
+@media (max-width: 768px) {
+    .intro .main {
+        flex-direction: column;
+        text-align: center;
+    }
+    .intro .main .title {
+        font-size: 3rem;
+    }
+    .content ul.horizontal {
+        column-count: 1;
+    }
+}

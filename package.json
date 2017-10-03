@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "bulma": "^0.5.3",
+    "gulp": "^3.9.1",
+    "gulp-csso": "^3.0.0",
+    "gulp-sass": "^3.1.0"
+  }
+}
