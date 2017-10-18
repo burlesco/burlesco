@@ -24,7 +24,8 @@
       "*://*.folha.uol.com.br/*",
       "*://*.folha.com.br/*",
       "*://*.ft.com/*",
-      "*://gauchazh.clicrbs.com.br/*"
+      "*://gauchazh.clicrbs.com.br/*",
+      "*://www.nexojornal.com.br/*"
     ]
   }],
 

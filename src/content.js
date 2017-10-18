@@ -37,6 +37,21 @@ else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
           sessionStorage.clear();';
 }
 
+else if (/www.nexojornal.com.br/.test(document.location.host)) {
+  code = "paywallContainer = document.getElementsByClassName('new-paywall-container')[0];\
+          paywallContent = paywallContainer.getAttribute('data-paywall-content');\
+          nexoApiURL = paywallContainer.getAttribute('data-paywall-check');\
+          xmlhttp = new XMLHttpRequest();\
+          xmlhttp.onreadystatechange = function() {\
+          if (this.readyState == 4 && (this.status == 200 || this.status == 201 || this.status == 401)) {\
+          access_token = JSON.parse(this.responseText)['access_token'];\
+          paywallContainer.className = 'wf-placeholder';\
+          paywallContainer.setAttribute('data-loadURL', paywallContent.replace('{access_token}', access_token));\
+          paywallContainer.setAttribute('data-skip-profiles', '');\
+          WFLazyLoader.loadFragment()}};\
+          xmlhttp.open('GET', nexoApiURL, true);\
+          xmlhttp.send();";
+}
 
 if (code !== null) {
   var script = document.createElement('script');
