@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "2.20",
+  "version": "2.21",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "http://burles.co",
   "author": "rodorgas",
