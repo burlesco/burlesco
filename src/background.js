@@ -34,7 +34,12 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://www.rbsonline.com.br/cdn/scripts/SLoader.js",
 
       // New York Times
-      "*://*.nyt.com/js/mtr.js"
+      "*://*.nyt.com/js/mtr.js",
+
+      // Washington Post
+
+      "*://*.washingtonpost.com/*pwapi/*.js*",
+      "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*"
     ],
     types: ["script"]
   },

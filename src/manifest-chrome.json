@@ -54,6 +54,7 @@
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
     "*://gauchazh.clicrbs.com.br/*",
-    "*://*.nyt.com/*"
+    "*://*.nyt.com/*",
+    "*://*.washingtonpost.com/*"
   ]
 }
