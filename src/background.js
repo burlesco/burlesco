@@ -140,8 +140,9 @@ chrome.webRequest.onHeadersReceived.addListener(
       "*://*.ft.com/*",
 
       // Zero Hora
-      "*://gauchazh.clicrbs.com.br/*"
-    ]
+      "*://*.clicrbs.com.br/*"
+    ],
+    types: ['xmlhttprequest']
   },
   ['blocking', 'responseHeaders']
 );
@@ -154,8 +155,12 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   {
     urls: [
       // Jornal Nexo
-      '*://api.nexojornal.com.br/*'
-    ]
+      '*://api.nexojornal.com.br/*',
+
+      // Zero Hora
+      "*://api.clicrbs.com.br/*"
+    ],
+    types: ['xmlhttprequest']
   },
   ['blocking', 'requestHeaders']
 );
