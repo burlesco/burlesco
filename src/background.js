@@ -19,10 +19,6 @@ chrome.webRequest.onBeforeRequest.addListener(
       // Gazeta do Povo
       "*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*",
 
-      // Zero Hora
-      "*://zh.clicrbs.com.br/it/js/paid-content-config.js*",
-      "*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*",
-
       // Correio Popular
       "*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*",
 
@@ -35,7 +31,15 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://blockv2.fivewall.com.br/*",
 
       // Diário de Santa Maria
-      "*://www.rbsonline.com.br/cdn/scripts/SLoader.js"
+      "*://www.rbsonline.com.br/cdn/scripts/SLoader.js",
+
+      // New York Times
+      "*://*.nyt.com/js/mtr.js",
+
+      // Washington Post
+
+      "*://*.washingtonpost.com/*pwapi/*.js*",
+      "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*"
     ],
     types: ["script"]
   },
@@ -43,12 +47,22 @@ chrome.webRequest.onBeforeRequest.addListener(
 );
 
 // XHR blocking
+WHITELIST = [
+  'http://paywall.folha.uol.com.br/status.php'
+];
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
-    return {cancel: true};
+    if (WHITELIST.indexOf(details.url) !== -1)
+      return {cancel: false};
+    else
+      return {cancel: true};
   },
   {
     urls: [
+      // Folha de S.Paulo
+      "*://paywall.folha.uol.com.br/*",
+      "*://static.folha.uol.com.br/paywall/*",
+
       // Diário Catarinense
       "http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*",
 
@@ -63,7 +77,7 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
-// Cookie injection
+// Cookie blocking
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     chrome.cookies.remove({
@@ -80,7 +94,85 @@ chrome.webRequest.onBeforeRequest.addListener(
   }
 );
 
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    console.log(details);
+    removeCookies('https://gauchazh.clicrbs.com.br');
+    removeCookies('https://www.ft.com');
+  },
+  {
+    urls: [
+      // Financial Times
+      "*://*.ft.com/*",
+
+      // Zero Hora
+      "*://gauchazh.clicrbs.com.br/*"
+    ],
+    types: ["main_frame"]
+  }
+);
+
+function removeCookies(url) {
+  chrome.cookies.getAll({}, function(cookies) {
+    cookies.forEach(function(cookie, index, array) {
+      chrome.cookies.remove({
+        'url': url,
+        'name': cookie.name
+      });
+    });
+  });
+}
+
+chrome.webRequest.onHeadersReceived.addListener(
+  // Block cookies from being set
+  function (details) {
+    details.responseHeaders.forEach(function(responseHeader) {
+      if (responseHeader.name.toLowerCase() == "set-cookie") {
+        responseHeader.value = '';
+      }
+    });
+    return {
+      responseHeaders: details.responseHeaders
+    };
+  },
+  {
+    urls: [
+      // Financial Times
+      "*://*.ft.com/*",
+
+      // Zero Hora
+      "*://gauchazh.clicrbs.com.br/*"
+    ]
+  },
+  ['blocking','responseHeaders']
+);
+
+
 // Referer injection
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    var headers = ['Referer'];
+
+    headers.forEach(header =>
+      insertHeader(
+        header,
+        'https://www.google.com.br/',
+        details.requestHeaders
+      )
+    );
+
+    return {requestHeaders: details.requestHeaders};
+  },
+  {
+    urls: [
+      // Financial Times
+      "*://www.ft.com/*"
+    ],
+    types: ["xmlhttprequest", "main_frame"]
+  },
+  ["blocking", "requestHeaders"]
+);
+
 function insertHeader(name, value, requestHeaders) {
   /**
    * @param {string} name - Name of the header to be inserted
@@ -98,33 +190,3 @@ function insertHeader(name, value, requestHeaders) {
   else
     requestHeaders[headerIndex] = newHeader;
 }
-
-chrome.webRequest.onBeforeSendHeaders.addListener(
-  function(details) {
-    var headers = ['Referer'];
-
-    //if (/https?:\/\/access\.nexojornal\.com/.test(details.url))
-      //headers.push('X-Article-Referrer')
-
-    headers.forEach(header =>
-      insertHeader(
-        header,
-        'https://www.google.com.br/',
-        details.requestHeaders
-      )
-    );
-
-    return {requestHeaders: details.requestHeaders};
-  },
-  {
-    urls: [
-      // Nexo
-      //"*://access.nexojornal.com.br/access/content/*",
-
-      // Financial Times
-      "*://www.ft.com/*"
-    ],
-    types: ["xmlhttprequest", "main_frame"]
-  },
-  ["blocking", "requestHeaders"]
-);

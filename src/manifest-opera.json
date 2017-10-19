@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "2.15",
+  "version": "2.23",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "http://burles.co",
   "author": "rodorgas",
@@ -20,7 +20,12 @@
     "matches": [
       "*://*.oglobo.globo.com/*",
       "*://www.economist.com/*",
-      "*://foreignpolicy.com/*"
+      "*://foreignpolicy.com/*",
+      "*://*.folha.uol.com.br/*",
+      "*://*.folha.com.br/*",
+      "*://*.ft.com/*",
+      "*://gauchazh.clicrbs.com.br/*",
+      "*://www.nexojornal.com.br/*"
     ]
   }],
 
@@ -28,7 +33,29 @@
     "webRequest",
     "webRequestBlocking",
     "cookies",
-    "<all_urls>"
+
+    "*://correio.rac.com.br/*",
+    "*://dc.clicrbs.com.br/*",
+    "*://www.economist.com/*",
+    "*://*.estadao.com.br/*",
+    "*://foreignpolicy.com/*",
+    "*://blockv2.fivewall.com.br/*",
+    "*://*.folha.uol.com.br/*",
+    "*://*.folha.com.br/*",
+    "*://*.ft.com/*",
+    "*://*.gazetadopovo.com.br/*",
+    "*://assets.imirante.com/*",
+    "*://ogjs.infoglobo.com.br/*",
+    "*://jota.info/*",
+    "*://jornaldesantacatarina.clicrbs.com.br/*",
+    "*://www.jornalnh.com.br/*",
+    "*://*.oglobo.globo.com/*",
+    "*://www.rbsonline.com.br/*",
+    "*://cdn.tinypass.com/*",
+    "*://dashboard.tinypass.com/*",
+    "*://gauchazh.clicrbs.com.br/*",
+    "*://*.nyt.com/*",
+    "*://*.washingtonpost.com/*"
   ],
 
   "applications": {

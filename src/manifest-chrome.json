@@ -56,11 +56,5 @@
     "*://gauchazh.clicrbs.com.br/*",
     "*://*.nyt.com/*",
     "*://*.washingtonpost.com/*"
-  ],
-
-  "applications": {
-    "gecko": {
-      "id": "burlesco@burlesco.com"
-    }
-  }
+  ]
 }
