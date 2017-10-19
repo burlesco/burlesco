@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "2.23",
+  "version": "3.0",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "http://burles.co",
   "author": "rodorgas",
@@ -24,8 +24,7 @@
       "*://*.folha.uol.com.br/*",
       "*://*.folha.com.br/*",
       "*://*.ft.com/*",
-      "*://gauchazh.clicrbs.com.br/*",
-      "*://www.nexojornal.com.br/*"
+      "*://gauchazh.clicrbs.com.br/*"
     ]
   }],
 
@@ -43,18 +42,18 @@
     "*://*.folha.uol.com.br/*",
     "*://*.folha.com.br/*",
     "*://*.ft.com/*",
+    "*://gauchazh.clicrbs.com.br/*",
     "*://*.gazetadopovo.com.br/*",
     "*://assets.imirante.com/*",
     "*://ogjs.infoglobo.com.br/*",
     "*://jota.info/*",
     "*://jornaldesantacatarina.clicrbs.com.br/*",
     "*://www.jornalnh.com.br/*",
+    "*://*.nyt.com/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
-    "*://gauchazh.clicrbs.com.br/*",
-    "*://*.nyt.com/*",
     "*://*.washingtonpost.com/*"
   ],
 
