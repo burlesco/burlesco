@@ -53,7 +53,8 @@
     "*://www.rbsonline.com.br/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
-    "*://gauchazh.clicrbs.com.br/*"
+    "*://gauchazh.clicrbs.com.br/*",
+    "*://*.nyt.com/*"
   ],
 
   "applications": {

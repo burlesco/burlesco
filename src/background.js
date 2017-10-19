@@ -31,7 +31,10 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://blockv2.fivewall.com.br/*",
 
       // Diário de Santa Maria
-      "*://www.rbsonline.com.br/cdn/scripts/SLoader.js"
+      "*://www.rbsonline.com.br/cdn/scripts/SLoader.js",
+
+      // New York Times
+      "*://*.nyt.com/js/mtr.js"
     ],
     types: ["script"]
   },
