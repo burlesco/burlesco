@@ -49,6 +49,7 @@
     "*://jota.info/*",
     "*://jornaldesantacatarina.clicrbs.com.br/*",
     "*://www.jornalnh.com.br/*",
+    "*://*.nexojornal.com.br/*",
     "*://*.nyt.com/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
