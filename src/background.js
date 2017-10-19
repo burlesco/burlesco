@@ -37,7 +37,6 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.nyt.com/js/mtr.js",
 
       // Washington Post
-
       "*://*.washingtonpost.com/*pwapi/*.js*",
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*"
     ],
@@ -144,21 +143,30 @@ chrome.webRequest.onHeadersReceived.addListener(
       "*://gauchazh.clicrbs.com.br/*"
     ]
   },
-  ['blocking','responseHeaders']
+  ['blocking', 'responseHeaders']
 );
 
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    injectHeader('Cookie', '', details.requestHeaders);
+    return {requestHeaders: details.requestHeaders};
+  },
+  {
+    urls: [
+      // Jornal Nexo
+      '*://api.nexojornal.com.br/*'
+    ]
+  },
+  ['blocking', 'requestHeaders']
+);
 
 // Referer injection
 chrome.webRequest.onBeforeSendHeaders.addListener(
   function(details) {
-    var headers = ['Referer'];
-
-    headers.forEach(header =>
-      insertHeader(
-        header,
-        'https://www.google.com.br/',
-        details.requestHeaders
-      )
+    injectHeader(
+      'Referer',
+      'https://www.google.com.br/',
+      details.requestHeaders
     );
 
     return {requestHeaders: details.requestHeaders};
@@ -173,7 +181,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   ["blocking", "requestHeaders"]
 );
 
-function insertHeader(name, value, requestHeaders) {
+function injectHeader(name, value, requestHeaders) {
   /**
    * @param {string} name - Name of the header to be inserted
    * @param {string} value - Value of the header to be inserted
@@ -182,7 +190,8 @@ function insertHeader(name, value, requestHeaders) {
    * @param {string} requestHeaders[].name
    * @param {string} requestHeaders[].value
    */
-  var headerIndex = requestHeaders.findIndex(x => x.name == name);
+  var headerIndex = requestHeaders.findIndex(
+    x => x.name.toLowerCase() == name.toLowerCase());
 
   var newHeader = {name: name, value: value};
   if (headerIndex == -1)
