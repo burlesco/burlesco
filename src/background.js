@@ -26,7 +26,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js",
 
       // Jornal de Novo Hamburgo
-      "*://jornalnh.com.br/includes/js/paywall.js*",
+      "*://*.jornalnh.com.br/includes/js/paywall.js*",
       "*://blockv2.fivewall.com.br/*",
 
       // Diário de Santa Maria
