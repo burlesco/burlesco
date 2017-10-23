@@ -55,7 +55,8 @@
     "*://www.rbsonline.com.br/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
-    "*://*.washingtonpost.com/*"
+    "*://*.washingtonpost.com/*",
+    "*://*.exame.abril.com.br/*"
   ],
 
   "applications": {

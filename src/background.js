@@ -14,7 +14,6 @@ chrome.webRequest.onBeforeRequest.addListener(
 
       // O Globo
       "*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js",
-      "*://cdn.tinypass.com/api/tinypass.min.js",
 
       // Gazeta do Povo
       "*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*",
@@ -27,7 +26,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js",
 
       // Jornal de Novo Hamburgo
-      "*://www.jornalnh.com.br/includes/js/paywall.js*",
+      "*://*.jornalnh.com.br/includes/js/paywall.js*",
       "*://blockv2.fivewall.com.br/*",
 
       // Diário de Santa Maria
@@ -38,7 +37,10 @@ chrome.webRequest.onBeforeRequest.addListener(
 
       // Washington Post
       "*://*.washingtonpost.com/*pwapi/*.js*",
-      "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*"
+      "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
+      
+      // O Globo e Exame
+      "*://cdn.tinypass.com/api/tinypass.min.js"
     ],
     types: ["script"]
   },
@@ -68,7 +70,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       // Jornal de Santa Catarina
       "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*",
 
-      // O Globo
+      // Tinypass (O Globo, Exame e outros)
       "*://cdn.tinypass.com/api/tinypass.min.js"
     ],
     types: ["xmlhttprequest"]
