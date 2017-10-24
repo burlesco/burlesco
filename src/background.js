@@ -39,7 +39,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.washingtonpost.com/*pwapi/*.js*",
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
       
-      // O Globo e Exame
+      // O Globo, Exame e Super Interessante
       "*://cdn.tinypass.com/api/tinypass.min.js"
     ],
     types: ["script"]
