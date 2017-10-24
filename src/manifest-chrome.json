@@ -54,6 +54,7 @@
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
     "*://*.washingtonpost.com/*",
-    "*://*.exame.abril.com.br/*"
+    "*://*.exame.abril.com.br/*",
+    "*://super.abril.com.br/*"
   ]
 }
