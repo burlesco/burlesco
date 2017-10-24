@@ -56,8 +56,8 @@
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
     "*://*.washingtonpost.com/*",
-    "*://super.abril.com.br/*"
-
+    "*://super.abril.com.br/*",
+    "*://veja.abril.com.br/*"
   ],
 
   "applications": {
