@@ -5,9 +5,9 @@
 </p>
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.com/burlesco/Lobby)
-[![Mozilla Add-on](https://img.shields.io/amo/v/burlesco.svg)]()
-[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/burlesco.svg)]()
-[![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)]()
+[![Mozilla Add-on](https://img.shields.io/amo/v/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
+[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
+[![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 
 
 Extensão para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
