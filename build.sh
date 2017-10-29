@@ -19,8 +19,8 @@ do
   elif [ $i == "chrome" ]; then
     perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s'\
       $DIR/src/manifest.json > $DIR/src/manifest-chrome.json
-   rm $DIR/src/manifest.json
-   mv $DIR/src/manifest-chrome.json $DIR/src/manifest.json
+    rm $DIR/src/manifest.json
+    mv $DIR/src/manifest-chrome.json $DIR/src/manifest.json
   fi
 
   zip -j $DIR/$file $DIR/src/*
