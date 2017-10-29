@@ -1,7 +1,50 @@
-# burlesco
+<p align="center">
+  <a href="https://burles.co">
+    <img width="533" height="152" src="cover.png">
+  </a>
+</p>
 
-Extensão para navegadores que remove de maneira transparente o paywall dos maiores sites de notícia brasileiros.
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.com/burlesco/Lobby)
+[![Mozilla Add-on](https://img.shields.io/amo/v/burlesco.svg)]()
+[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/burlesco.svg)]()
+[![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)]()
 
-Esse código funciona em navegadores baseados no Chromium ou compatíveis com sua Extension API.
 
-Para instalar no seu navegador ou para mais informações sobre o projeto, visite http://burles.co
+Extensão para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
+
+Para instalar no seu navegador e para mais informações sobre o projeto, visite https://burles.co
+
+# Desenvolvimento
+
+O código-fonte possui basicamente três arquivos, na pasta `src/`:
+
+- `manifest.json`: descreve a extensão para os navegadores e define as permissões;
+- `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
+- `content.js`: injeta scripts para impedir a ativação do paywall.
+
+Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome, que não aceita uma chave específica usada pelo Firefox e Opera.
+
+Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/burlesco/Lobby).
+
+# Publicações suportadas
+
+O Burlesco funciona com os seguintes sites de notícia:
+
+- Folha de S.Paulo
+- O Estado de S. Paulo
+- O Globo (incluindo o acervo)
+- Gazeta do Povo
+- Diário Catarinense
+- Jornal de Santa Catarina
+- Correio Popular
+- JOTA
+- O Estado do Maranhão
+- Jornal NH
+- Diário de Santa Maria
+- Nexo
+- Exame
+- The Economist
+- Foreign Policy
+- Financial Times
+- The New York Times
+- Washington Post
