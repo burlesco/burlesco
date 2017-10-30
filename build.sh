@@ -16,11 +16,11 @@ do
   file="extension.zip"
   if [ $i == "firefox" ]; then
     file="extension.xpi"
-  elif [ $i == "chrome" ]; then
+  else
     perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s'\
-      $DIR/src/manifest.json > $DIR/src/manifest-chrome.json
+      $DIR/src/manifest.json > $DIR/src/_manifest.json
     rm $DIR/src/manifest.json
-    mv $DIR/src/manifest-chrome.json $DIR/src/manifest.json
+    mv $DIR/src/_manifest.json $DIR/src/manifest.json
   fi
 
   zip -j $DIR/$file $DIR/src/*
