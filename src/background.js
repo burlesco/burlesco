@@ -157,10 +157,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   {
     urls: [
       // Jornal Nexo
-      '*://api.nexojornal.com.br/*',
-
-      // Zero Hora
-      "*://api.clicrbs.com.br/*"
+      '*://api.nexojornal.com.br/*'
     ],
     types: ['xmlhttprequest']
   },

@@ -32,9 +32,13 @@ else if (/ft.com/.test(document.location.host)) {
 }
 
 else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
-  code = 'document.cookie = "";\
-          localStorage.clear();\
-          sessionStorage.clear();';
+  code = 'function removeSiData() {\
+          document.cookie = "pwsi__zh=;path=/;domain=clicrbs.com.br";\
+          localStorage.pwsi__zh = "";\
+          }\
+          var html = document.getElementsByTagName("html");\
+          html.onclick = removeSiData();\
+          removeSiData();';
 }
 
 if (code !== null) {
