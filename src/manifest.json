@@ -58,7 +58,9 @@
     "*://*.washingtonpost.com/*",
     "*://*.exame.abril.com.br/*",
     "*://super.abril.com.br/*",
-    "*://veja.abril.com.br/*"
+    "*://veja.abril.com.br/*",
+    "*://*.uol.com.br/*",
+    "*://*.uol/*"
   ],
 
   "applications": {
