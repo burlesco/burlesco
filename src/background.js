@@ -40,7 +40,10 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
       
       // O Globo, Exame, Super Interessante e Veja
-      "*://cdn.tinypass.com/api/tinypass.min.js"
+      "*://cdn.tinypass.com/api/tinypass.min.js",
+
+      // UOL
+      "*://tm.jsuol.com.br/modules/content-gate.js"
     ],
     types: ["script"]
   },
