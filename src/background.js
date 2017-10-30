@@ -38,7 +38,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       // Washington Post
       "*://*.washingtonpost.com/*pwapi/*.js*",
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
-      
+
       // O Globo, Exame, Super Interessante e Veja
       "*://cdn.tinypass.com/api/tinypass.min.js",
 
@@ -160,10 +160,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   {
     urls: [
       // Jornal Nexo
-      '*://api.nexojornal.com.br/*',
-
-      // Zero Hora
-      "*://api.clicrbs.com.br/*"
+      '*://api.nexojornal.com.br/*'
     ],
     types: ['xmlhttprequest']
   },
