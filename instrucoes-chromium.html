@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Instruções para o Chromium | Burlesco - Leia notícias sem ser assinante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+  <link rel="stylesheet" href="node_modules/octicons/build/octicons.css">
+  <style>
+  #paywall td:nth-child(1) {
+    white-space: nowrap;
+  }
+  #home-link:link    { color: white; }
+  #home-link:hover    { text-decoration: none; }
+  #home-link:visited { color: white; }
+  </style>
+  <script>
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-40344048-6', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+
+<body>
+  <section class="page-header">
+    <h1 class="project-name"><a href="/" id="home-link">Burlesco</a></h1>
+    <h2 class="project-tagline">Leia notícias sem ser assinante, burle o paywall</h2>
+  </section>
+
+  <article class="main-content">
+
+    <h1>Instruções para usar o Burlesco no Chromium</h1>
+
+    <p>Para instalar o Burlesco em navegadores baseados no Chromium é simples:</p>
+
+    <ol>
+      <li><a href="https://github.com/Burlesco/chromium/releases" target="_blank">Baixe o arquivo <code>burlesco-chromium.crx</code></a></li>
+      <li>Digite <code>chrome://extensions/</code> na barra de endereços do Chrome</li>
+      <li>Arraste o arquivo que acabou de baixar dentro da página.</li>
+      <li>Clique em "Adicionar extensão" e pronto!</li>
+      
+    </ol>
+
+    <br>
+    <p><a href="/">Voltar para página inicial</a></p>
+
+
+
+    <br>
+    <a href="#comentarios"></a>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    var disqus_config = function () {
+    this.page.url = 'http://burles.co/instrucoes-chrome.html';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'ca781hd0a_instrucoes-chrome.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'http://burlesco.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    <footer class="site-footer">
+      <span class="site-footer-owner">Feito com ♥ por <a href="https://github.com/rodorgas">rodorgas</a>.</span>
+
+      <br>
+      <div id="share">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="small">Tweet</a>
+
+        <a href="https://github.com/Burlesco/chromium"><img src="https://img.shields.io/github/stars/burlesco/chromium.svg?style=social&label=Star&maxAge=2592000"></a>
+      </div>
+      <br>
+
+      <span class="site-footer-credits">Essa página foi gerada pelo <a href="https://pages.github.com">GitHub Pages</a> usando o <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> do <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+    </footer>
+
+  </article>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script>
+    ! function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+        p = /^http:/.test(d.location) ? 'http' : 'https';
+      if (!d.getElementById(id)) {
+        js = d.createElement(s);
+        js.id = id;
+        js.src = p + '://platform.twitter.com/widgets.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }
+    }(document, 'script', 'twitter-wjs');
+  </script>
+</body>
+
+</html>
