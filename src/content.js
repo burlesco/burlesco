@@ -31,12 +31,6 @@ else if (/ft.com/.test(document.location.host)) {
           indexedDB.deleteDatabase("next:ads");';
 }
 
-else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
-  code = 'document.cookie = "";\
-          localStorage.clear();\
-          sessionStorage.clear();';
-}
-
 if (code !== null) {
   var script = document.createElement('script');
   script.textContent = code;
