@@ -43,7 +43,6 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://cdn.tinypass.com/api/tinypass.min.js",
       
       // GauchaZH
-      "*://api.clicrbs.com.br/paywall-api/count/site/*",
       "*://*.kissmetrics.com/*"
     ],
     types: ["script"]
@@ -75,11 +74,26 @@ chrome.webRequest.onBeforeRequest.addListener(
       "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*",
 
       // Tinypass (O Globo, Exame e outros)
-      "*://cdn.tinypass.com/api/tinypass.min.js"
+      "*://cdn.tinypass.com/api/tinypass.min.js",
+	  
     ],
     types: ["xmlhttprequest"]
   },
   ["blocking"]
+);
+
+// Other requests blocking
+chrome.webRequest.onBeforeRequest.addListener(
+    function() {
+        return {cancel: true};
+    },
+    {
+        urls: [
+		  // GauchaZH
+		  "*://api.clicrbs.com.br/paywall-api/count/site/2*"
+		]
+    },
+    ["blocking"]
 );
 
 // Cookie blocking
