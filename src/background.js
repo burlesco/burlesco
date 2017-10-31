@@ -74,7 +74,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*",
 
       // Tinypass (O Globo, Exame e outros)
-      "*://cdn.tinypass.com/api/tinypass.min.js",
+      "*://cdn.tinypass.com/api/tinypass.min.js"
 	  
     ],
     types: ["xmlhttprequest"]
