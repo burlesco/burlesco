@@ -41,9 +41,12 @@ chrome.webRequest.onBeforeRequest.addListener(
 
       // O Globo, Exame, Super Interessante e Veja
       "*://cdn.tinypass.com/api/tinypass.min.js",
-      
+
       // GauchaZH
-      "*://*.kissmetrics.com/*"
+      "*://*.kissmetrics.com/*",
+
+      // UOL
+      "*://tm.jsuol.com.br/modules/content-gate.js"
     ],
     types: ["script"]
   },
