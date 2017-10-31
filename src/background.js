@@ -84,16 +84,16 @@ chrome.webRequest.onBeforeRequest.addListener(
 
 // Other requests blocking
 chrome.webRequest.onBeforeRequest.addListener(
-    function() {
-        return {cancel: true};
-    },
-    {
-        urls: [
-		  // GauchaZH
-		  "*://api.clicrbs.com.br/paywall-api/count/site/2*"
-		]
-    },
-    ["blocking"]
+  function() {
+      return {cancel: true};
+  },
+  {
+      urls: [
+      // GauchaZH
+      "*://api.clicrbs.com.br/paywall-api/count/site/2*"
+      ]
+  },
+  ["blocking"]
 );
 
 // Cookie blocking
@@ -116,16 +116,12 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     console.log(details);
-    removeCookies('https://gauchazh.clicrbs.com.br');
     removeCookies('https://www.ft.com');
   },
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*",
-
-      // Zero Hora
-      "*://gauchazh.clicrbs.com.br/*"
+      "*://*.ft.com/*"
     ],
     types: ["main_frame"]
   }
@@ -157,10 +153,7 @@ chrome.webRequest.onHeadersReceived.addListener(
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*",
-
-      // Zero Hora
-      "*://*.clicrbs.com.br/*"
+      "*://*.ft.com/*"
     ],
     types: ['xmlhttprequest']
   },
