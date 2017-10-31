@@ -40,7 +40,13 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
 
       // O Globo, Exame, Super Interessante e Veja
-      "*://cdn.tinypass.com/api/tinypass.min.js"
+      "*://cdn.tinypass.com/api/tinypass.min.js",
+
+      // GauchaZH
+      "*://*.kissmetrics.com/*",
+
+      // UOL
+      "*://tm.jsuol.com.br/modules/content-gate.js"
     ],
     types: ["script"]
   },
@@ -72,8 +78,23 @@ chrome.webRequest.onBeforeRequest.addListener(
 
       // Tinypass (O Globo, Exame e outros)
       "*://cdn.tinypass.com/api/tinypass.min.js"
+	  
     ],
     types: ["xmlhttprequest"]
+  },
+  ["blocking"]
+);
+
+// Other requests blocking
+chrome.webRequest.onBeforeRequest.addListener(
+  function() {
+      return {cancel: true};
+  },
+  {
+      urls: [
+      // GauchaZH
+      "*://api.clicrbs.com.br/paywall-api/count/site/2*"
+      ]
   },
   ["blocking"]
 );
@@ -98,16 +119,12 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     console.log(details);
-    removeCookies('https://gauchazh.clicrbs.com.br');
     removeCookies('https://www.ft.com');
   },
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*",
-
-      // Zero Hora
-      "*://gauchazh.clicrbs.com.br/*"
+      "*://*.ft.com/*"
     ],
     types: ["main_frame"]
   }
@@ -139,10 +156,7 @@ chrome.webRequest.onHeadersReceived.addListener(
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*",
-
-      // Zero Hora
-      "*://*.clicrbs.com.br/*"
+      "*://*.ft.com/*"
     ],
     types: ['xmlhttprequest']
   },

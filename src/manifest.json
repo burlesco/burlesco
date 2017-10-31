@@ -58,7 +58,12 @@
     "*://*.washingtonpost.com/*",
     "*://*.exame.abril.com.br/*",
     "*://super.abril.com.br/*",
-    "*://veja.abril.com.br/*"
+    "*://veja.abril.com.br/*",
+    "*://gauchazh.clicrbs.com.br/*",
+	  "*://api.clicrbs.com.br/*",
+	  "*://*.kissmetrics.com/*"
+    "*://*.uol.com.br/*",
+    "*://*.uol/*"
   ],
 
   "applications": {
