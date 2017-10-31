@@ -61,7 +61,7 @@
     "*://veja.abril.com.br/*",
     "*://gauchazh.clicrbs.com.br/*",
     "*://api.clicrbs.com.br/*",
-    "*://*.kissmetrics.com/*"
+    "*://*.kissmetrics.com/*",
     "*://*.uol.com.br/*",
     "*://*.uol/*"
   ],
