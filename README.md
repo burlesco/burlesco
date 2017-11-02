@@ -22,7 +22,7 @@ O código-fonte possui basicamente três arquivos, na pasta `src/`:
 - `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
 - `content.js`: injeta scripts para impedir a ativação do paywall.
 
-Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome, que não aceita uma chave específica usada pelo Firefox e Opera.
+Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome e Opera, que não aceitam uma chave específica usada pelo Firefox.
 
 Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/burlesco/Lobby).
 
@@ -31,18 +31,22 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 O Burlesco funciona com os seguintes sites de notícia:
 
 - Folha de S.Paulo
+- O Globo
 - O Estado de S. Paulo
-- O Globo (incluindo o acervo)
+- GauchaZH
+- Correio Popular
 - Gazeta do Povo
 - Diário Catarinense
 - Jornal de Santa Catarina
-- Correio Popular
+- Diário de Santa Maria
+- Nexo
 - JOTA
 - O Estado do Maranhão
 - Jornal NH
-- Diário de Santa Maria
-- Nexo
+- Veja
 - Exame
+- Superinteressante
+- UOL
 - The Economist
 - Foreign Policy
 - Financial Times
