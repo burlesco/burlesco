@@ -62,7 +62,7 @@
     "*://gauchazh.clicrbs.com.br/*",
     "*://api.clicrbs.com.br/*",
     "*://*.uol.com.br/*",
-    "*://*.uol/*"
+    "*://www.uol/*"
   ],
 
   "applications": {
