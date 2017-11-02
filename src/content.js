@@ -33,61 +33,37 @@ else if (/ft.com/.test(document.location.host)) {
 
 else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   code = `
-    var articleLoaded = false;
-
     function loadArticle() {
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           var parser = new DOMParser();
-          var htmlDoc = parser.parseFromString(this.responseText,"text/html");
-          var injectme = htmlDoc.getElementsByClassName("paid-content-apply")[0].innerHTML;
-          document.getElementsByClassName("paid-content-apply")[0].innerHTML = injectme;
+          var htmlDoc = parser.parseFromString(this.responseText,'text/html');
+          var injectme = htmlDoc.getElementsByClassName('paid-content-apply')[0].innerHTML;
+          document.getElementsByClassName('paid-content-apply')[0].innerHTML = injectme;
         }
       };
-      xhttp.open("GET", window.location.href, true);
+      xhttp.open('GET', window.location.href, true);
       xhttp.send();
     }
 
     function checkPaywall() {
-      var intervalID = setInterval(function() {
-        console.log('repete');
-        if (articleLoaded) {
-          articleLoaded = true;
-          clearInterval(intervalID);
+      setInterval(function() {
+        var paywall = document.getElementsByClassName('wrapper-paid-content')[0];
+        if (paywall) {
+          localStorage.clear();
+          loadArticle();
         }
-        else {
-          var paywall = document.getElementsByClassName("wrapper-paid-content");
-          if (paywall) {
-            deleteAllCookies();
-            localStorage.clear();
-            loadArticle();
-          }
-          else
-            articleLoaded = true;
-        }
-      }, 500);
+      }, 1000);
     }
 
-    function deleteAllCookies() {
-      var cookies = document.cookie.split(";");
-      for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i];
-        var eqPos = cookie.indexOf("=");
-        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      }
-    }
-
-    function removePaywall() {
-      deleteAllCookies();
+    function clearPersistentData() {
       localStorage.clear();
-      loadArticle();
-      checkPaywall();
+      sessionStorage.clear();
     }
 
-    removePaywall();
-    document.getElementsByTagName("html")[0].onclick = removePaywall();
+    checkPaywall();
+    document.getElementsByTagName('html')[0].onclick = clearPersistentData();
     `;
 }
 
