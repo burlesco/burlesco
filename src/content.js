@@ -32,32 +32,43 @@ else if (/ft.com/.test(document.location.host)) {
 }
 
 else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
-  code = 'function carreganoticia() {\
-    var xhttp = new XMLHttpRequest();\
-    xhttp.onreadystatechange = function() {\
-        if (this.readyState == 4 && this.status == 200) {\
-            var parser= new DOMParser();\
-            var htmlDoc= parser.parseFromString(this.responseText,"text/html");\
-            var injectme = htmlDoc.getElementsByClassName("paid-content-apply")[0].innerHTML;\
-            document.getElementsByClassName("paid-content-apply")[0].innerHTML = injectme;\
-        }\
-    };\
-    xhttp.open("GET", window.location.href, true);\
-    xhttp.send();\
-}\
-function clearPersistentData() {\
-        document.cookie = "pwsi__zh=;path=/;domain=clicrbs.com.br";\
-        localStorage.pwsi__zh = "";\
-}\
-var checkBloqueio = setInterval(function() {\
-    var myElem = document.getElementsByClassName("wrapper-paid-content")[0];\
-    if (myElem !== undefined) {\
-        clearPersistentData();\
-        carreganoticia();\
+  code = 'var tm = true;\
+    function carreganoticia() {\
+        var xhttp = new XMLHttpRequest();\
+        xhttp.onreadystatechange = function() {\
+            if (this.readyState == 4 && this.status == 200) {\
+                var parser= new DOMParser();\
+                var htmlDoc= parser.parseFromString(this.responseText,"text/html");\
+                var injectme = htmlDoc.getElementsByClassName("paid-content-apply")[0].innerHTML;\
+                document.getElementsByClassName("paid-content-apply")[0].innerHTML = injectme;\
+            }\
+        };\
+        xhttp.open("GET", window.location.href, true);\
+        xhttp.send();\
     }\
-}, 100);\
-var html = document.getElementsByTagName("html");\
-html.onclick = clearPersistentData();';
+    function checkBloqueio() {\
+        setInterval(function() {\
+            if (tm !== false){\
+                setTimeout(function() {clearInterval(checkBloqueio);}, 5000);\
+                tm = false;\
+            }\
+            var myElem = document.getElementsByClassName("wrapper-paid-content")[0];\
+            if (myElem !== undefined) {\
+                document.cookie = "";\
+                localStorage.clear();\
+                carreganoticia();\
+            }\
+        }, 500);\
+    }\
+    checkBloqueio();\
+    function onClick() {\
+        document.cookie = "";\
+        localStorage.clear();\
+        tm = true;\
+        checkBloqueio();\
+    }\
+    var html = document.getElementsByTagName("html");\
+    html.onclick = onClick();';
 }
 
 if (code !== null) {
