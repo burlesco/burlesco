@@ -40,10 +40,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
 
       // O Globo, Exame, Super Interessante e Veja
-      "*://cdn.tinypass.com/api/tinypass.min.js",
-
-      // UOL
-      "*://tm.jsuol.com.br/modules/content-gate.js"
+      "*://cdn.tinypass.com/api/tinypass.min.js"
     ],
     types: ["script"]
   },
@@ -75,9 +72,8 @@ chrome.webRequest.onBeforeRequest.addListener(
 
       // Tinypass (O Globo, Exame e outros)
       "*://cdn.tinypass.com/api/tinypass.min.js"
-	  
     ],
-    types: ["xmlhttprequest", "other"]
+    types: ["xmlhttprequest"]
   },
   ["blocking"]
 );
@@ -102,18 +98,17 @@ chrome.webRequest.onBeforeRequest.addListener(
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     console.log(details);
-    removeCookies('https://www.ft.com');
     removeCookies('https://gauchazh.clicrbs.com.br');
+    removeCookies('https://www.ft.com');
   },
   {
     urls: [
       // Financial Times
       "*://*.ft.com/*",
-	    
+
       // Zero Hora
-      "*://gauchazh.clicrbs.com.br/*"
-    ],
-    types: ["main_frame"]
+      "*://*.clicrbs.com.br/*"
+    ]
   }
 );
 
@@ -143,9 +138,11 @@ chrome.webRequest.onHeadersReceived.addListener(
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*"
-    ],
-    types: ['xmlhttprequest']
+      "*://*.ft.com/*",
+
+      // Zero Hora
+      "*://*.clicrbs.com.br/*"
+    ]
   },
   ['blocking', 'responseHeaders']
 );
