@@ -47,9 +47,9 @@ else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         xhttp.send();\
     }\
     function checkBloqueio() {\
-        setInterval(function() {\
+        var cli = setInterval(function() {\
             if (tm !== false){\
-                setTimeout(function() {clearInterval(checkBloqueio);}, 5000);\
+                setTimeout(function() {clearInterval(cli);}, 5000);\
                 tm = false;\
             }\
             var myElem = document.getElementsByClassName("wrapper-paid-content")[0];\
