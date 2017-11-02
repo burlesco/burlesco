@@ -103,11 +103,15 @@ chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     console.log(details);
     removeCookies('https://www.ft.com');
+    removeCookies('https://gauchazh.clicrbs.com.br');
   },
   {
     urls: [
       // Financial Times
-      "*://*.ft.com/*"
+      "*://*.ft.com/*",
+	    
+      // Zero Hora
+      "*://gauchazh.clicrbs.com.br/*"
     ],
     types: ["main_frame"]
   }
