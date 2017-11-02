@@ -32,52 +32,63 @@ else if (/ft.com/.test(document.location.host)) {
 }
 
 else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
-  code = 'var tm = true;\
-    function carreganoticia() {\
-        var xhttp = new XMLHttpRequest();\
-        xhttp.onreadystatechange = function() {\
-            if (this.readyState == 4 && this.status == 200) {\
-                var parser= new DOMParser();\
-                var htmlDoc= parser.parseFromString(this.responseText,"text/html");\
-                var injectme = htmlDoc.getElementsByClassName("paid-content-apply")[0].innerHTML;\
-                document.getElementsByClassName("paid-content-apply")[0].innerHTML = injectme;\
-            }\
-        };\
-        xhttp.open("GET", window.location.href, true);\
-        xhttp.send();\
-    }\
-    function checkBloqueio() {\
-        var cli = setInterval(function() {\
-            if (tm !== false){\
-                setTimeout(function() {clearInterval(cli);}, 5000);\
-                tm = false;\
-            }\
-            var myElem = document.getElementsByClassName("wrapper-paid-content")[0];\
-            if (myElem !== undefined) {\
-                deleteAllCookies();\
-                localStorage.clear();\
-                carreganoticia();\
-            }\
-        }, 500);\
-    }\
-    function deleteAllCookies() {\
-        var cookies = document.cookie.split(";");\
-        for (var i = 0; i < cookies.length; i++) {\
-            var cookie = cookies[i];\
-            var eqPos = cookie.indexOf("=");\
-            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;\
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";\
-        }\
-    }\
-    checkBloqueio();\
-    function onClick() {\
-        deleteAllCookies();\
-        localStorage.clear();\
-        tm = true;\
-        checkBloqueio();\
-    }\
-    var html = document.getElementsByTagName("html");\
-    html.onclick = onClick();';
+  code = `
+    var articleLoaded = false;
+
+    function loadArticle() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var parser = new DOMParser();
+          var htmlDoc = parser.parseFromString(this.responseText,"text/html");
+          var injectme = htmlDoc.getElementsByClassName("paid-content-apply")[0].innerHTML;
+          document.getElementsByClassName("paid-content-apply")[0].innerHTML = injectme;
+        }
+      };
+      xhttp.open("GET", window.location.href, true);
+      xhttp.send();
+    }
+
+    function checkPaywall() {
+      var intervalID = setInterval(function() {
+        console.log('repete');
+        if (articleLoaded) {
+          articleLoaded = true;
+          clearInterval(intervalID);
+        }
+        else {
+          var paywall = document.getElementsByClassName("wrapper-paid-content");
+          if (paywall) {
+            deleteAllCookies();
+            localStorage.clear();
+            loadArticle();
+          }
+          else
+            articleLoaded = true;
+        }
+      }, 500);
+    }
+
+    function deleteAllCookies() {
+      var cookies = document.cookie.split(";");
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        var eqPos = cookie.indexOf("=");
+        var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+      }
+    }
+
+    function removePaywall() {
+      deleteAllCookies();
+      localStorage.clear();
+      loadArticle();
+      checkPaywall();
+    }
+
+    removePaywall();
+    document.getElementsByTagName("html")[0].onclick = removePaywall();
+    `;
 }
 
 if (code !== null) {
