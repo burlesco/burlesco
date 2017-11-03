@@ -43,7 +43,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://cdn.tinypass.com/api/tinypass.min.js",
 
       // UOL
--     "*://tm.jsuol.com.br/modules/content-gate.js"
+      "*://tm.jsuol.com.br/modules/content-gate.js"
     ],
     types: ["script"]
   },
