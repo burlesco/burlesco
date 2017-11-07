@@ -4,7 +4,7 @@
   </a>
 </p>
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.com/burlesco/Lobby)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/rodorgas/burlesco)
 [![Mozilla Add-on](https://img.shields.io/amo/v/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 [![Mozilla Add-on Rating](https://img.shields.io/amo/rating/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 [![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
@@ -20,11 +20,11 @@ O código-fonte possui basicamente três arquivos, na pasta `src/`:
 
 - `manifest.json`: descreve a extensão para os navegadores e define as permissões;
 - `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
-- `content.js`: injeta scripts para impedir a ativação do paywall.
+- `content*.js`: injeta scripts para impedir a ativação do paywall.
 
 Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome e Opera, que não aceitam uma chave específica usada pelo Firefox.
 
-Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/burlesco/Lobby).
+Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/rodorgas/burlesco).
 
 # Publicações suportadas
 
@@ -33,7 +33,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Folha de S.Paulo
 - O Globo
 - O Estado de S. Paulo
-- GauchaZH
+- GaúchaZH
 - Correio Popular
 - Gazeta do Povo
 - Diário Catarinense

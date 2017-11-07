@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "5.4",
+  "version": "5.5",
   "description": "Leia notícias sem ser assinante, burle o paywall",
-  "homepage_url": "http://burles.co",
+  "homepage_url": "https://burles.co",
   "author": "rodorgas",
 
   "icons": {
@@ -14,22 +14,25 @@
     "scripts": ["background.js"]
   },
 
-  "content_scripts": [{
-    "js": ["content.js"],
-    "run_at": "document_idle",
-    "matches": [
-      "*://*.oglobo.globo.com/*",
-      "*://www.economist.com/*",
-      "*://foreignpolicy.com/*",
-      "*://*.folha.uol.com.br/*",
-      "*://*.folha.com.br/*",
-      "*://*.ft.com/*"
-    ]
-  },{
-    "js": ["content-start.js"],
-    "run_at": "document_start",
-    "matches": ["*://gauchazh.clicrbs.com.br/*"]
-  }],
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "matches": [
+        "*://*.oglobo.globo.com/*",
+        "*://www.economist.com/*",
+        "*://foreignpolicy.com/*",
+        "*://*.folha.uol.com.br/*",
+        "*://*.folha.com.br/*",
+        "*://*.ft.com/*"
+      ]
+    },
+    {
+      "js": ["content-start.js"],
+      "run_at": "document_start",
+      "matches": ["*://gauchazh.clicrbs.com.br/*"]
+    }
+  ],
 
   "permissions": [
     "webRequest",
