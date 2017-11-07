@@ -45,8 +45,8 @@ chrome.webRequest.onBeforeRequest.addListener(
       // UOL
       "*://tm.jsuol.com.br/modules/content-gate.js",
 
-	  // GauchaZH
-	  "*://gauchazh.clicrbs.com.br/static/main*"
+	    // GauchaZH
+	    "*://gauchazh.clicrbs.com.br/static/main*"
     ],
     types: ["script"]
   },
