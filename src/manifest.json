@@ -23,9 +23,12 @@
       "*://foreignpolicy.com/*",
       "*://*.folha.uol.com.br/*",
       "*://*.folha.com.br/*",
-      "*://*.ft.com/*",
-      "*://gauchazh.clicrbs.com.br/*"
+      "*://*.ft.com/*"
     ]
+  },{
+    "js": ["content-start.js"],
+	"run_at": "document_start",
+    "matches": ["*://gauchazh.clicrbs.com.br/*"]
   }],
 
   "permissions": [
