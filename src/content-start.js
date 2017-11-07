@@ -8,9 +8,9 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var injectme = this.responseText;
-                injectme = injectme.replace('showSignwall:e.showLoginPaywall','showSignwall:false');
-                injectme = injectme.replace('showPaywall:e.showPaywall','showPaywall:false');
-                injectme = injectme.replace('requestCPF:e.requestCPF || !1','requestCPF:false');
+                injectme = injectme.replace('e.showLoginPaywall,','false,');
+                injectme = injectme.replace('e.showPaywall,','false,');
+                injectme = injectme.replace('e.requestCPF||!1,','false,');
                 injectme = injectme.replace('!e.showLoginPaywall&&!e.showPaywall||!1','true');
                 var script = document.createElement("script");
                 script.type = "text/javascript";
