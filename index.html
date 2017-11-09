@@ -91,14 +91,15 @@
 
     <section class="section narrow content">
       <div>
-        <h3 class="title is-2 has-text-centered" id="instalacao">
+        <h2 class="title is-2 has-text-centered" id="instalacao">
           Instalação
           <a class="bd-anchor-link" href="#instalacao">#</a>
-        </h3>
+        </h2>
 
+        <h2 class="has-text-centered" style="text-decoration: underline">Desktop</h2>
         <div class="columns">
           <div class="column has-text-centered">
-            <h4>Desktop</h4>
+            <h3>Extensão</h3>
             <p>Adicione a extensão ao seu navegador:</p>
             <a class="button is-large" href="https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/">
               <span class="icon">
@@ -113,19 +114,32 @@
               </span>
               <span>Opera</span>
             </a>
-
-            <br><br>
-            Ou <a href="instrucoes-userscript.html">adicione o userscript</a> nos outros navegadores
           </div>
+          <div class="column has-text-centered">
+            <h3>Userscript*</h3>
+            <p>Adicione ao <a href="instrucoes-userscript.html">Tampermonkey</a>:</p>
+            <a class="button is-large" href="/userscript/burlesco.user.js">
+              <span class="icon">
+                <img width="24" src="tampermonkey.png"></img>
+              </span>
+              <span>Adicionar</span>
+            </a><br>
+            <span class="sub">*Compatível com Chrome, Edge, Opera e Firefox</span>
+          </div>
+        </div>
+
+        <h2 class="has-text-centered" style="text-decoration: underline">Celular e Tablet</h2>
+        <div class="columns">
           <div class="column content">
-            <h4 class="has-text-centered">Android</h4>
-            <ol>
-              <li>Instale o <a href="https://getfirefox.com">Firefox</a></li>
+            <h3 class="has-text-centered">Android</h3>
+            <ol class="has-text-centered">
+              <li>Instale o <a href="https://getfirefox.com">Mozilla Firefox</a></li>
               <li>Adicione a <a href="https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/">extensão Burlesco</a></li>
             </ol>
-
-            <h4 class="has-text-centered">iOS</h4>
-            <p>Para burlar alguns paywalls no iOS, <a href="ios.html">siga estas instruções</a></p>
+          </div>
+          <div>
+            <h3 class="has-text-centered">iOS</h3>
+            <p class="has-text-centered">Para burlar alguns paywalls no iOS, <a href="ios.html">siga estas instruções</a></p>
           </div>
 
         </div>
@@ -135,10 +149,10 @@
     <hr class="is-marginless">
 
     <section class="section narrow content">
-      <h3 class="title is-2" id="publicacoes">
+      <h2 class="title is-2" id="publicacoes">
         Publicações suportadas
         <a class="bd-anchor-link" href="#publicacoes">#</a>
-      </h3>
+      </h2>
       <p>O Burlesco funciona com os seguintes sites de notícia:</p>
 
       <ul class="horizontal">
@@ -172,10 +186,10 @@
     <hr class="is-marginless">
 
     <section class="section narrow content">
-      <h3 class="title is-2" id="faq">
+      <h2 class="title is-2" id="faq">
         Perguntas Frequentes
         <a class="bd-anchor-link" href="#faq">#</a>
-      </h3>
+      </h2>
 
       <div class="content narrow">
         <ul>
@@ -219,36 +233,37 @@
 
     <section class="section narrow content">
       <div class="columns">
-        <div class="column">
-          <h3 class="title is-2">
+        <div class="column is-two-thirds">
+          <h2 class="title is-2">
             Código-fonte
             <a class="bd-anchor-link" href="#atualizacoes">#</a>
-          </h3>
-          <p>O código-fonte pode ser usado para inspecionar a extensão e para fazer a instalação manual no Chrome e em outros navegadores.</p>
+          </h2>
+          <p>O código-fonte pode ser usado para inspecionar o Burlesco e para fazer a instalação manual.</p>
+          <p>Veja as <a href="instrucoes-chrome.html">instruções para instalar manualmente no Chrome</a>.</p>
           <div class="center" style="flex-direction: column">
             <p>
-              <a class="button is-medium" href="https://github.com/rodorgas/burlesco/releases">
+              <a class="button is-large" href="https://github.com/rodorgas/burlesco/releases">
                 <span class="icon">
-                  <i class="fa fa-download"></i>
+                  <i class="fa fa-file-archive-o"></i>
                 </span>
-                <span>WebExtension</span>
+                <span>Extensão</span>
               </a>
             </p>
             <p>
-              <a class="button is-medium" href="https://github.com/rodorgas/burlesco/blob/master/userscript/burlesco.user.js">
+              <a class="button is-large" href="https://github.com/rodorgas/burlesco/blob/master/userscript/burlesco.user.js">
                 <span class="icon">
-                  <i class="fa fa-download"></i>
+                  <i class="fa fa-file-code-o"></i>
                 </span>
-                <span>UserScript</span>
+                <span>Userscript</span>
               </a>
             </p>
           </div>
         </div>
         <div class="column">
-          <h3 class="title is-2">
+          <h2 class="title is-2">
             Atualizações
             <a class="bd-anchor-link" href="#atualizacoes">#</a>
-          </h3>
+          </h2>
           <a class="twitter-timeline" data-lang="pt" data-height="350" data-dnt="true" href="https://twitter.com/BurlescoExt?ref_src=twsrc%5Etfw">Tweets by BurlescoExt</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
     </section>

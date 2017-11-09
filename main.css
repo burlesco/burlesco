@@ -50,7 +50,14 @@ body {
     right: calc(100% + 1rem);
 }
 
+.sub {
+    font-size: 0.8rem;
+}
+
 @media (max-width: 768px) {
+    .main .logo {
+        margin-right: 0;
+    }
     .intro .main {
         flex-direction: column;
         text-align: center;
