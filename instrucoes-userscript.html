@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 
@@ -46,31 +47,22 @@
 
   <article class="main-content">
 
-    <h1>Instruções para usar o Burlesco no Chrome</h1>
+    <h1>Instruções para adicionar o userscript</h1>
 
-    <p>O Google <a href="https://twitter.com/rodorgas1/status/857598625806942208">removeu o Burlesco da Chrome Web Store</a> por considerá-lo uma violação das suas diretrizes. Há duas formas de contornar esse problema.</p>
+    <p>A vantagem do userscript é ser universal: funciona no Chrome, Microsoft Edge, Opera Next, e Firefox.</p>
 
-    <p>A principal é a <a href="instrucoes-userscript.html">instalação do userscript</a> para TamperMonkey.</p>
+    <p>No momento a experiência do usuário ainda é um pouco inferior à extensão nativa, mas todos os sites suportados pela extensão também funcionam com o userscript.</p>
 
-    <p>A segunda forma é a instalação manual da extensão. O problema é que você reberá avisos pedindo para desativar o <em>Modo do desenvolvedor</em> sempre que iniciar o navegador. Além disso você não receberá atualizações automáticas.</p>
-
-    <p>Seguem as instruções para a instalação manual:</p>
+    <p>Seguem as instruções:</p>
 
     <ol>
-      <li><a href="https://github.com/rodorgas/burlesco/releases" target="_blank">Baixe o arquivo <code>burlesco-chrome.zip</code></a></li>
-      <li>Descompacte</li>
-      <li>Digite <code>chrome://extensions/</code> na barra de endereços do Chrome</li>
-      <li>Ative o <strong>Modo do desenvolvedor</strong> no canto superior direito</li>
-      <li>Clique em <strong>Carregar extensão expandida...</strong></li>
-      <li>Selecione a pasta onde o <code>burlesco-chrome</code> foi descompactado</li>
+      <li>Instale a extensão <a href="https://tampermonkey.net/" target="_blank">Tampermonkey</a></li>
+      <li>Adicione o <a href="https://burles.co/userscript/burlesco.user.js" target="_blank">burlesco.user.js</a></li>
+      <li>Limpe o cache do seu navegador (<a href="https://support.google.com/accounts/answer/32050?co=GENIE.Platform%3DDesktop">instruções</a>)</li>
+      <li>Pronto! Agora é só aproveitar o Burlesco!</li>
     </ol>
 
-    <p>Se você usa navegadores baseados no Chromium, também pode instalar a extensão ao ir em <code>chrome://extensions</code> e arrastar o <a href="https://github.com/rodorgas/burlesco/releases">burlesco-chromium.crx</a> para dentro da página.</p>
-
-    <h2>Não tem como remover o aviso?</h2>
-    <p>O Google quer ter controle sobre o <strong>seu</strong> navegador e decidir por <strong>você</strong> o que deve ou não ser instalado nele. A melhor maneira de resolver esse problema é mudar para um <a href="https://getfirefox.com">navegador que respeita sua liberdade</a>.</p>
-    <p>Outra opção é instalar o <a href="https://www.google.com.br/chrome/browser/canary.html">Chrome Canary</a> (versão experimental). Se preferir usar a versão estável, é possível remover o aviso <a href="https://stackoverflow.com/questions/23055651/disable-developer-mode-extensions-pop-up-in-chrome">editando o Group Policy do Windows</a>.</p> 
-
+    <p>Alternativamente, é possível <a href="instrucoes-chrome.html">instalar a extensão manualmente no Chrome</a>.</p>
     <br>
     <p><a href="/">Voltar para página inicial</a></p>
 
@@ -85,8 +77,8 @@
     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
     var disqus_config = function () {
-    this.page.url = 'https://burles.co/instrucoes-chrome.html';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'ca781hd0a_instrucoes-chrome.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    this.page.url = 'https://burles.co/instrucoes-userscript.html';  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = 'l8c2n0amw_instrucoes-userscript.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -102,9 +94,8 @@
 
       <br>
       <div id="share">
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="small">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="https://burles.co" data-text="Leia notícias sem ser assinante, burle o paywall" data-via="rodorgas1" data-size="small">Tweet</a>
 
-        <a href="https://github.com/Burlesco/chromium"><img src="https://img.shields.io/github/stars/burlesco/chromium.svg?style=social&label=Star&maxAge=2592000"></a>
       </div>
       <br>
 
