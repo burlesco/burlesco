@@ -10,12 +10,12 @@ do
 
   rm -rf "$DIR/*"
 
-  echo $DIR/src
-  cp -r src/* $DIR/src
+  echo $DIR/webext
+  cp -r webext/* $DIR/src
 
-  file="extension.zip"
+  file="burlesco-$i.zip"
   if [ $i == "firefox" ]; then
-    file="extension.xpi"
+    file="burlesco-$i.xpi"
   else
     perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s'\
       $DIR/src/manifest.json > $DIR/src/_manifest.json

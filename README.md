@@ -10,19 +10,21 @@
 [![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 
 
-Extensão para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
+Extensão e userscript para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
 
 Para instalar no seu navegador e para mais informações sobre o projeto, visite https://burles.co
 
 # Desenvolvimento
 
-O código-fonte possui basicamente três arquivos, na pasta `src/`:
+O código-fonte da extensão possui basicamente três arquivos, na pasta `webext/`:
 
 - `manifest.json`: descreve a extensão para os navegadores e define as permissões;
 - `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
 - `content*.js`: injeta scripts para impedir a ativação do paywall.
 
 Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome e Opera, que não aceitam uma chave específica usada pelo Firefox.
+
+O código-fonte do userscript possui um único arquivo em `/userscript/script.js` que bloqueia pedidos responsáveis pelo paywall e injeta scripts para impedir ativação do paywall.
 
 Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/rodorgas/burlesco).
 
