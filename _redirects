@@ -1,0 +1,3 @@
+http://burles.co/* https://burles.co/:splat 301!
+
+https://burles.co/userscript/* https://raw.githubusercontent.com/rogorgas/burlesco/master/userscript/:splat 200!
