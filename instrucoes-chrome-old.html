@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Instruções para o Chrome | Burlesco - Leia notícias sem ser assinante</title>
+  <title>Instruções para o instalar a extensão no Chrome | Burlesco - Leia notícias sem ser assinante</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -46,53 +46,30 @@
 
   <article class="main-content">
 
-    <h1>Instruções para usar o Burlesco no Chrome</h1>
-
-    <p>O Google <a href="https://twitter.com/rodorgas1/status/857598625806942208">removeu o Burlesco da Chrome Web Store</a> por considerá-lo uma violação das suas diretrizes.</p>
-
-    <p>Felizmente agora você pode instalar o nosso userscript! A experiência do usuário ainda é um pouco inferior a extensão nativa, mas todos os sites suportados pela extensão também funcionam com o userscript.</p>
+    <h1>Usar a extensão do Burlesco no Chrome</h1>
+	
+    <p>Você pode usar a extensão no Chrome instalando manualmente. O problema é que você reberá avisos pedindo para desativar o <em>Modo do desenvolvedor</em> sempre que iniciar o navegador. Além disso você não receberá atualizações automáticas.</p>
 
     <p>Seguem as instruções:</p>
 
     <ol>
-      <li>Instale a extensão <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo" target="_blank">Tampermonkey</a></li>
-      <li>Depois de instalar o Tampermonkey, instale o <a href="https://burles.co/userscript/burlesco.user.js">userscript</a></li>
-      <li>Aperte Ctrl-Shift-Del e limpe o cache do navegador</li>
-	  <li>Pronto! Agora é só aproveitar o Burlesco!</li>
+      <li><a href="https://github.com/Burlesco/chromium/releases" target="_blank">Baixe o arquivo <code>burlesco-chrome.zip</code></a></li>
+      <li>Descompacte</li>
+      <li>Digite <code>chrome://extensions/</code> na barra de endereços do Chrome</li>
+      <li>Ative o <strong>Modo do desenvolvedor</strong> no canto superior direito</li>
+      <li>Clique em <strong>Carregar extensão expandida...</strong></li>
+      <li>Selecione a pasta onde o <code>burlesco-chrome</code> foi descompactado</li>
     </ol>
 
-    <p>Se você usa navegadores baseados no Chromium, você pode usar esse método ou instalar a extensão ao ir em <code>chrome://extensions</code> e arrastar o <a href="https://github.com/rodorgas/burlesco/releases">burlesco-chromium.crx</a> para dentro da página.</p>
-
-    <h2>E se eu quiser usar a extensão?</h2>
+    <h2>Não tem como remover o aviso?</h2>
     <p>O Google quer ter controle sobre o <strong>seu</strong> navegador e decidir por <strong>você</strong> o que deve ou não ser instalado nele. A melhor maneira de resolver esse problema é mudar para um <a href="https://getfirefox.com">navegador que respeita sua liberdade</a>.</p>
-    <p>Outra opção é instalar a extensão <a href="./instrucoes-chrome-old.html">de forma manual</a>.</p>
+    <p>Outra opção é instalar o <a href="https://www.google.com.br/chrome/browser/canary.html">Chrome Canary</a> (versão experimental). Se preferir usar a versão estável, é possível remover o aviso <a href="https://stackoverflow.com/questions/23055651/disable-developer-mode-extensions-pop-up-in-chrome">editando o Group Policy do Windows</a>.</p> 
+
+    <p><a href="./instrucoes-chrome.html">Voltar para página anterior</a></p>
+
+
 
     <br>
-    <p><a href="./">Voltar para página inicial</a></p>
-
-
-
-    <br>
-    <a href="#comentarios"></a>
-    <div id="disqus_thread"></div>
-    <script>
-
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-    var disqus_config = function () {
-    this.page.url = 'https://burles.co/instrucoes-chrome.html';  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = 'ca781hd0a_instrucoes-chrome.html'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://burlesco.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
     <footer class="site-footer">
       <span class="site-footer-owner">Feito com ♥ por <a href="https://github.com/rodorgas">rodorgas</a>.</span>
 
