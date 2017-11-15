@@ -39,7 +39,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "*://*.washingtonpost.com/*pwapi/*.js*",
       "*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*",
 
-      // O Globo, Exame, Super Interessante e Veja
+      // O Globo, Exame, Super Interessante, Veja, The Economist
       "*://cdn.tinypass.com/api/tinypass.min.js",
 
       // UOL
@@ -74,10 +74,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       "http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*",
 
       // Jornal de Santa Catarina
-      "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*",
-
-      // Tinypass (O Globo, Exame e outros)
-      "*://cdn.tinypass.com/api/tinypass.min.js"
+      "http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*"
     ],
     types: ["xmlhttprequest"]
   },
