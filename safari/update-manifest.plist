@@ -1,0 +1,39 @@
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>Extension Updates</key>
+   <array>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>com.rodrigoorem.safari.Burlesco</string>
+       <key>Developer Identifier</key>
+       <string>3X8NXNWJ5X</string>
+       <key>CFBundleVersion</key>
+       <string>2.4</string>
+       <key>CFBundleShortVersionString</key>
+       <string>2.4</string>
+       <key>URL</key>
+       <string><!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+   <key>Extension Updates</key>
+   <array>
+     <dict>
+       <key>CFBundleIdentifier</key>
+       <string>com.rodrigoorem.safari.Burlesco</string>
+       <key>Developer Identifier</key>
+       <string>3X8NXNWJ5X</string>
+       <key>CFBundleVersion</key>
+       <string>2.4</string>
+       <key>CFBundleShortVersionString</key>
+       <string>2.4</string>
+       <key>URL</key>
+       <string>https://raw.githubusercontent.com/burlesco/safari/master/Burlesco.safariextz</string>
+     </dict>
+   </array>
+</dict>
+</plist></string>
+     </dict>
+   </array>
+</dict>
+</plist>

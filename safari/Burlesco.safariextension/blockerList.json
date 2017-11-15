@@ -1,0 +1,249 @@
+[
+  {
+    "trigger": {
+      "url-filter": "paywall/",
+      "if-domain": ["*estadao.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "paywall\\.folha\\.uol\\.com\\.br",
+      "if-domain": ["*folha.uol.com.br"],
+      "resource-type": ["raw", "script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "static\\.folha\\.uol\\.com\\.br/paywall",
+      "if-domain": ["*folha.uol.com.br"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "paywall\\.folha\\.uol\\.com\\.br/status\\.php",
+      "if-domain": ["*folha.uol.com.br"],
+      "resource-type": ["raw"]
+    },
+    "action": {
+      "type": "ignore-previous-rules"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "ogjs\\.infoglobo\\.com\\.br/.*/js/controla-acesso-aux\\.js",
+      "if-domain": ["*globo.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "cdn\\.tinypass\\.com/api/tinypass\\.min\\.js",
+      "if-domain": ["*globo.com", "exame.abril.com.br", "super.abril.com.br",
+        "veja.abril.com.br", "www.economist.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "correio\\.rac\\.com\\.br/includes/js/novo_cp/fivewall\\.js",
+      "if-domain": ["correio.rac.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "loader/v1/logan_full_toolbar\\.js",
+      "if-domain": ["*gazetadopovo.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "jornal-2015/jsp/paywall\\.jspx",
+      "if-domain": ["dc.clicrbs.com.br"],
+      "resource-type": ["raw"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "jornal/jsp/paywall",
+      "if-domain": ["jornaldesantacatarina.clicrbs.com.br"],
+      "resource-type": ["raw"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "www\\.rbsonline\\.com\\.br/cdn/scripts/SLoader\\.js",
+      "if-domain": ["diariodesantamaria.clicrbs.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "api\\.nexojornal\\.com\\.br",
+      "if-domain": ["*nexojornal.com.br"],
+      "resource-type": ["raw", "script"]
+    },
+    "action": {
+      "type": "block-cookies"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain": ["jota.info"],
+      "resource-type": ["document"]
+    },
+    "action": {
+      "type": "block-cookies"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "dashboard\\.tinypass\\.com/xbuilder/experience/load",
+      "if-domain": ["imirante.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "assets\\.imirante\\.com/2\\.0/oestadoma/js/jquery\\.login\\.min\\.js",
+      "if-domain": ["imirante.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "jornalnh\\.com\\.br/includes/js/paywall\\.js",
+      "if-domain": ["jornalnh.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "blockv2\\.fivewall\\.com\\.br",
+      "if-domain": ["jornalnh.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "tm\\.jsuol\\.com\\.br/modules/content-gate\\.js",
+      "if-domain": ["*uol.com.br", "www.uol"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "gauchazh.clicrbs.com.br/static/main",
+      "if-domain": ["gauchazh.clicrbs.com.br"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain": ["*economist.com"]
+    },
+    "action": {
+      "type": "block-cookies"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "paywall",
+      "if-domain": ["*economist.com"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": ".*",
+      "if-domain": ["www.ft.com"]
+    },
+    "action": {
+      "type": "block-cookies"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "nyt\\.com/js/mtr\\.js",
+      "if-domain": ["nyt.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "washingtonpost\\.com/.*pwapi/.*\\.js",
+      "if-domain": ["www.washingtonpost.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  },
+  {
+    "trigger": {
+      "url-filter": "drawbridge/drawbridge.js",
+      "if-domain": ["www.washingtonpost.com"],
+      "resource-type": ["script"]
+    },
+    "action": {
+      "type": "block"
+    }
+  }
+]
