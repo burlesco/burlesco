@@ -54,3 +54,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Financial Times
 - The New York Times
 - Washington Post
+
+----
+
+Esse software contém trabalho derivado da biblioteca [fetch](https://github.com/github/fetch), Copyright (c) GitHub, Inc. licenciado sob a licença MIT, que pode ser encontrada no arquivo NOTICE.txt.

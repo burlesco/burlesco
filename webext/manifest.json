@@ -28,11 +28,13 @@
       ]
     },
     {
-      "js": ["content-start.js"],
+      "js": ["content-gauchazh.js"],
       "run_at": "document_start",
       "matches": ["*://gauchazh.clicrbs.com.br/*"]
     }
   ],
+
+  "web_accessible_resources": ["fetch.burlesco.js"],
 
   "permissions": [
     "webRequest",
