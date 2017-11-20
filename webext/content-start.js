@@ -24,7 +24,7 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
     }
 
     document.addEventListener("DOMContentLoaded", function(event) {
-      patchJs(document.getElementsByTagName('script')[1].src);
+      patchJs(document.getElementsByTagName('script')[2].src);
     });
   `;
 }
