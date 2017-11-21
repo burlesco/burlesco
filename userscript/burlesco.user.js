@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Burlesco
 // @namespace    https://burles.co/
-// @version      5.5
+// @version      5.6
 // @description  Leia notícias sem ser assinante, burle o paywall
 // @author       rodorgas & AugustoResende
 // @icon64       https://burles.co/userscript/icon.png
@@ -65,7 +65,10 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         }
       });
     }
-    patchJs(document.getElementsByTagName('script')[1].src);
+    var scripts = Array.from(document.getElementsByTagName('script'));
+    var script = scripts.find((el) => { return el.src.includes('static/main') });
+    if (script)
+      patchJs(script.src);
   });
   window.onload = function(event) {
     function check(){
