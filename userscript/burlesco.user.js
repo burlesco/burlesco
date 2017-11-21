@@ -65,7 +65,10 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         }
       });
     }
-    patchJs(document.getElementsByTagName('script')[2].src);
+    var scripts = Array.from(document.getElementsByTagName('script'));
+    var script = scripts.find((el) => { return el.src.includes('static/main') });
+    if (script)
+      patchJs(script.src);
   });
   window.onload = function(event) {
     function check(){
