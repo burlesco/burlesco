@@ -1,3 +1,4 @@
 dist/
-
+target/
+burlesco-rsa-key.pem
 .DS_Store
