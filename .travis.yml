@@ -1,0 +1,22 @@
+language: bash
+install: true
+before_install:
+  - {{A CONFIGURAR}}
+script:
+  - make lint
+  - make pre-build
+  - make build
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: {{A CONFIGURAR}}
+  file:
+    - target/burlesco-chrome.zip
+    - target/burlesco-chromium.crx
+    - target/burlesco-firefox.xpi
+    - target/burlesco-opera.zip
+    - userscript/burlesco.user.js
+  on:
+    branch: master
+    tags: true
