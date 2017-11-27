@@ -1,13 +1,14 @@
 SHELL:=/bin/bash
 BROWSERS=firefox opera chrome chromium
 DIST_DIR=dist
-TARGET_DIR=target
 RSA_KEY=burlesco-rsa-key.pem
-.PHONY: clean lint pre-build build
+.PHONY: all clean lint pre-build build
+all: clean lint pre-build build
 clean:
-	rm -rf "$(DIST_DIR)" "$(TARGET_DIR)"
+	rm -rf "$(DIST_DIR)"
 lint:
 	find . -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \;
+	eslint webext userscript
 pre-build:
 	set -e ; \
 	for i in $(BROWSERS) ; do \
@@ -16,20 +17,21 @@ pre-build:
 		cp -r webext/* "$$SRC_DIR" ; \
 		if [ $$i != "firefox" ]; then \
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
-      		webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
+		webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
 build:
 	set -e ; \
-	mkdir -p "$(TARGET_DIR)" ; \
+	mkdir -p "$(DIST_DIR)" ; \
 	for i in $(BROWSERS) ; do \
+		echo $$i; \
 		DIR="$(DIST_DIR)/$$i" ; \
 		FILE=burlesco-$$i.zip ; \
 		if  [ $$i = "chromium" ]; then \
 			if [ ! -f "$(RSA_KEY)" ]; then \
 				openssl genrsa -out "$(RSA_KEY)" 2048 2>/dev/null ;\
 			fi ; \
-			zip -jqr9X "$$DIR/burlesco-chromium.zip" $$DIR/src/* ; \
+			zip -jr9X "$$DIR/burlesco-chromium.zip" $$DIR/src/* ; \
 			openssl sha1 -sha1 -binary -sign "$(RSA_KEY)" < "$$DIR/burlesco-chromium.zip" > "$$DIR/burlesco-chromium.sig" ; \
 			openssl rsa -pubout -outform DER < "$(RSA_KEY)" > "$$DIR/burlesco-chromium.pub" 2>/dev/null ; \
 			byte_swap () { \
@@ -42,12 +44,12 @@ build:
 			( \
 			echo "$$crmagic_hex $$version_hex $$pub_len_hex $$sig_len_hex" | xxd -r -p ; \
 			cat "$$DIR/burlesco-chromium.pub" "$$DIR/burlesco-chromium.sig" "$$DIR/burlesco-chromium.zip" ; \
-			) > "$(TARGET_DIR)/burlesco-chromium.crx" ; \
+			) > "$$DIR/burlesco-chromium.crx" ; \
 		fi ; \
 		if [ $$i = "firefox" ]; then \
 			FILE="burlesco-$$i.xpi" ; \
 		fi ; \
 		if [ $$i != "chromium" ]; then \
-			zip -jq "$(TARGET_DIR)/$$FILE" $$DIR/src/* ; \
+			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
 		fi ; \
 	done
