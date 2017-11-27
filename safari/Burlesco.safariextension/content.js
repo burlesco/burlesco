@@ -70,7 +70,10 @@ else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
       xhttp.send();
     }
     document.addEventListener("DOMContentLoaded", function(event) {
-      patchJs(document.getElementsByTagName('script')[1].src);
+      var scripts = Array.from(document.getElementsByTagName('script'));
+      var script = scripts.find((el) => { return el.src.includes('static/main') });
+      if (script)
+        patchJs(script.src);
     });
   `;
 }
