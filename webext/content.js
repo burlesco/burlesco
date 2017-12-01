@@ -1,6 +1,6 @@
 // run_at: document_idle
 var code = null;
-if (/([^\/].)?oglobo\.globo\.com/.test(document.location.host))
+if (/oglobo\.globo\.com/.test(document.location.host))
   code = 'paywallAtivo = false;';
 
 else if (/www\.economist\.com/.test(document.location.host))
