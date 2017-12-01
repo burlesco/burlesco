@@ -53,9 +53,9 @@ chrome.webRequest.onBeforeRequest.addListener(
   ['blocking']
 );
 
-// XHR blocking
 var WHITELIST = [
-  'http://paywall.folha.uol.com.br/status.php'
+  'http://paywall.folha.uol.com.br/status.php',
+  'https://paywall.folha.uol.com.br/status.php'
 ];
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
