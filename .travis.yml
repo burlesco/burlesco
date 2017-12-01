@@ -4,10 +4,10 @@ install:
 script:
   - make lint
 before_deploy:
-  - make pre-build
-  - make build
   - openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv
     -in burlesco-rsa-key.pem.enc -out burlesco-rsa-key.pem -d
+  - make pre-build
+  - make build
 deploy:
   - provider: releases
     skip_cleanup: true
