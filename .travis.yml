@@ -1,13 +1,13 @@
 language: bash
-before_install:
-  - openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv
-    -in burlesco-rsa-key.pem.enc -out burlesco-rsa-key.pem -d
 install:
   - npm install -g eslint
 script:
   - make lint
   - make pre-build
   - make build
+before_deploy:
+  - openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv
+    -in burlesco-rsa-key.pem.enc -out burlesco-rsa-key.pem -d
 deploy:
   - provider: releases
     skip_cleanup: true
