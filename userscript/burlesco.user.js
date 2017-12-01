@@ -45,19 +45,19 @@
 
 // GauchaZH
 if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
-  document.addEventListener("DOMContentLoaded", function(event) {
+  document.addEventListener('DOMContentLoaded', function() {
     function patchJs(jsurl) {
       GM_xmlhttpRequest({
-        method: "GET",
+        method: 'GET',
         url: jsurl,
         onload: function(response) {
-          var injectme = this.responseText;
+          var injectme = response.responseText;
           injectme = injectme.replace('e.showLoginPaywall,','false,');
           injectme = injectme.replace('e.showPaywall,','false,');
           injectme = injectme.replace('e.requestCPF||!1,','false,');
           injectme = injectme.replace('!e.showLoginPaywall&&!e.showPaywall||!1','true');
-          var script = document.createElement("script");
-          script.type = "text/javascript";
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
           var textNode = document.createTextNode(injectme);
           script.appendChild(textNode);
           document.head.appendChild(script);
@@ -66,11 +66,11 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
       });
     }
     var scripts = Array.from(document.getElementsByTagName('script'));
-    var script = scripts.find((el) => { return el.src.includes('static/main') });
+    var script = scripts.find((el) => { return el.src.includes('static/main'); });
     if (script)
       patchJs(script.src);
   });
-  window.onload = function(event) {
+  window.onload = function() {
     function check(){
       if(document.getElementsByClassName('wrapper-paid-content')[0]){
         document.getElementsByClassName('wrapper-paid-content')[0].innerHTML = '<p>Por favor aperte Ctrl-F5 para carregar o restante da notícia!</p>';
@@ -83,13 +83,13 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
 
 // JOTA
 else if (/jota.info/.test(document.location.host)) {
-  document.cookie = "articles=null;path=/";
+  document.cookie = 'articles=null;path=/';
 }
 
 // run_at: document_idle
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener('DOMContentLoaded', function() {
   var codeld = null;
-  if (/([^\/].)?oglobo\.globo\.com/.test(document.location.host))
+  if (/oglobo\.globo\.com/.test(document.location.host))
     codeld = 'paywallAtivo = false;';
 
   else if (/www\.economist\.com/.test(document.location.host))
@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       anonymous: true,
       onload: function(response) {
         var parser = new DOMParser();
-        var htmlDoc = parser.parseFromString(this.responseText,'text/html');
+        var htmlDoc = parser.parseFromString(response.responseText,'text/html');
         var injectme = htmlDoc.getElementsByTagName('html')[0].innerHTML;
         if (document.getElementsByClassName('trial-subs__heading-pretext')[0]) {
           document.write(injectme);
