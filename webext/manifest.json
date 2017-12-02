@@ -67,6 +67,7 @@
     "*://super.abril.com.br/*",
     "*://veja.abril.com.br/*",
     "*://*.uol.com.br/*",
+    "*://*.blogosfera.uol.com.br/*",
     "*://www.uol/*"
   ],
 
