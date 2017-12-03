@@ -24,7 +24,8 @@
         "*://foreignpolicy.com/*",
         "*://*.folha.uol.com.br/*",
         "*://*.folha.com.br/*",
-        "*://*.ft.com/*"
+        "*://*.ft.com/*",
+        "*://*.veja.abril.com.br/*"
       ]
     },
     {
