@@ -1,7 +1,7 @@
-// run_at: document_start
+// start script
 var code = null;
 
-if (/([^\/].)?oglobo\.globo\.com/.test(document.location.host))
+if (/oglobo\.globo\.com/.test(document.location.host))
   code = 'paywallAtivo = false;';
 
 else if (/www\.economist\.com/.test(document.location.host))
@@ -38,16 +38,6 @@ else if (/folha.uol.com.br/.test(document.location.host)) {
   `;
 }
 
-else if (/ft.com/.test(document.location.host)) {
-  code = `
-    document.cookie = "";
-    localStorage.clear();
-    sessionStorage.clear();
-    indexedDB.deleteDatabase("next-flags");
-    indexedDB.deleteDatabase("next:ads");
-  `;
-}
-
 else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   code = `
     function patchJs(jsurl) {
@@ -76,6 +66,28 @@ else if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         patchJs(script.src);
     });
   `;
+}
+
+else if (/ft.com/.test(document.location.host)) {
+  localStorage.clear();
+  sessionStorage.clear();
+  indexedDB.deleteDatabase("next-flags");
+  indexedDB.deleteDatabase("next:ads");
+
+  var newElement = document.createElement("a");
+  newElement.textContent = "Clique para burlar essa notícia";
+  newElement.style.float = "right";
+  newElement.onclick = function() {
+    document.location.href =
+      'https://www.google.com.br/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&url=' +
+      encodeURIComponent(document.location.href);
+  };
+  document.body.insertBefore(newElement, document.body.firstChild);
+}
+
+else if (/veja.abril.com.br/.test(document.location.host)) {
+  document.querySelector('.content-blocked').classList.remove('content-blocked');
+  document.querySelector('.callpaywall').remove();
 }
 
 if (code !== null) {

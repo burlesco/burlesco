@@ -13,16 +13,16 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.6</string>
+	<string>5.7</string>
 	<key>CFBundleVersion</key>
-	<string>5.6</string>
+	<string>5.7</string>
 	<key>Content</key>
 	<dict>
 		<key>Content Blocker</key>
 		<string>blockerList.json</string>
 		<key>Scripts</key>
 		<dict>
-			<key>Start</key>
+			<key>End</key>
 			<array>
 				<string>content.js</string>
 			</array>
@@ -56,11 +56,13 @@
 				<string>imirante.com</string>
 				<string>jornalnh.com.br</string>
 				<string>uol.com.br</string>
+				<string>tm.jsuol.com.br</string>
 				<string>www.uol</string>
 				<string>economist.com</string>
 				<string>foreignpolicy.com</string>
 				<string>nyt.com</string>
 				<string>washingtonpost.com</string>
+				<string>www.ft.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
