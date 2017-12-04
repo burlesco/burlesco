@@ -31,6 +31,12 @@ else if (/ft.com/.test(document.location.host)) {
           indexedDB.deleteDatabase("next:ads");';
 }
 
+else if (/veja.abril.com.br/.test(document.location.host))
+  code = `
+    document.querySelector('.content-blocked').classList.remove('content-blocked');
+    document.querySelector('.callpaywall').remove();
+  `;
+
 if (code !== null) {
   var script = document.createElement('script');
   script.textContent = code;

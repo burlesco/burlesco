@@ -151,6 +151,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  else if (/veja.abril.com.br/.test(document.location.host))
+    codeld = `
+      document.querySelector('.content-blocked').classList.remove('content-blocked');
+      document.querySelector('.callpaywall').remove();
+    `;
+
   if (codeld !== null) {
     var script = document.createElement('script');
     script.textContent = codeld;
