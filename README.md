@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://burles.co">
-    <img width="533" height="152" src="cover.png">
+    <img width="533" src="cover.png">
   </a>
 </p>
 
@@ -16,15 +16,24 @@ Para instalar no seu navegador e para mais informações sobre o projeto, visite
 
 # Desenvolvimento
 
+## Extensão
+
 O código-fonte da extensão possui basicamente três arquivos, na pasta `webext/`:
 
 - `manifest.json`: descreve a extensão para os navegadores e define as permissões;
 - `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
-- `content*.js`: injeta scripts para impedir a ativação do paywall.
+- `content*.js`: injeta scripts para impedir a ativação do paywall ou revertê-lo.
 
-Há um `build.sh` na raiz que empacota o fonte para os diferentes navegadores. Ele principalmente gera um `manifest.json` especial para o Chrome e Opera, que não aceitam uma chave específica usada pelo Firefox.
+Há um Makefile para auxiliar no desenvolvimento:
 
-O código-fonte do userscript possui um único arquivo em `/userscript/script.js` que bloqueia pedidos responsáveis pelo paywall e injeta scripts para impedir ativação do paywall.
+- `make lint`: verifica erros de sintaxe ou de estilo no código. Requer o [`es-lint`](https://github.com/eslint/eslint) que pode instalado com `npm install -g es-lint`;
+- `make`: executa todas as etapas incluindo o lint e gera extensões empacotadas para cada navegador.
+
+## Userscript
+
+O código-fonte do userscript está em `userscript/burlesco.user.js`. Ele funciona bloqueando pedidos responsáveis pelo paywall e injetando scripts para impedir sua ativação.
+
+----
 
 Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue ou nos [encontre no Gitter](https://gitter.im/rodorgas/burlesco).
 
