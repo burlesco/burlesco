@@ -5,6 +5,7 @@
 // @description  Leia notícias sem ser assinante, burle o paywall
 // @author       rodorgas & AugustoResende
 // @icon64       https://burles.co/userscript/icon.png
+// @noframes
 // Atenção:      Caso algum site não funcione logo após a instalação, limpe o cache do navegador.
 // @include      *://correio.rac.com.br/*
 // @include      *://dc.clicrbs.com.br/*
@@ -43,7 +44,6 @@
 // @run-at       document-start
 // ==/UserScript==
 
-// GauchaZH
 if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   document.addEventListener('DOMContentLoaded', function() {
     function patchJs(jsurl) {
@@ -61,15 +61,16 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
           var textNode = document.createTextNode(injectme);
           script.appendChild(textNode);
           document.head.appendChild(script);
-
         }
       });
     }
+
     var scripts = Array.from(document.getElementsByTagName('script'));
     var script = scripts.find((el) => { return el.src.includes('static/main'); });
     if (script)
       patchJs(script.src);
   });
+
   window.onload = function() {
     function check(){
       if(document.getElementsByClassName('wrapper-paid-content')[0]){
@@ -81,22 +82,55 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   };
 }
 
-// JOTA
+else if (/ft.com/.test(document.location.host)
+    && document.querySelector('.barrier')) {
+
+  var cookieList  = document.cookie.split (/;\s*/);
+  for (var J = cookieList.length - 1;   J >= 0;  --J) {
+    var cookieName = cookieList[J].replace (/\s*(\w+)=.+$/, '$1');
+    eraseCookie (cookieName);
+  }
+
+  document.cookie = '';
+  localStorage.clear();
+  sessionStorage.clear();
+  indexedDB.deleteDatabase('next-flags');
+  indexedDB.deleteDatabase('next:ads');
+
+  GM_xmlhttpRequest({
+    method: 'GET',
+    url: window.location.href,
+    headers: {
+      'Referer': 'https://www.google.com.br/'
+    },
+    anonymous: true,
+    onload: function(response) {
+      var parser = new DOMParser();
+      var newDocument = parser.parseFromString(response.responseText,'text/html');
+      if (newDocument.getElementsByClassName('article__content')[0]) {
+        document.open();
+        document.write(newDocument.getElementsByTagName('html')[0].innerHTML);
+        document.close();
+      }
+    }
+  });
+}
+
 else if (/jota.info/.test(document.location.host)) {
   document.cookie = 'articles=null;path=/';
 }
 
 // run_at: document_idle
 document.addEventListener('DOMContentLoaded', function() {
-  var codeld = null;
+  var code = null;
   if (/oglobo\.globo\.com/.test(document.location.host))
-    codeld = 'paywallAtivo = false;';
+    code = 'paywallAtivo = false;';
 
   else if (/www\.economist\.com/.test(document.location.host))
-    codeld = 'document.cookie = "ec_limit=allow";';
+    code = 'document.cookie = "ec_limit=allow";';
 
   else if (/foreignpolicy\.com/.test(document.location.host)) {
-    codeld = `
+    code = `
       document.getElementById("paywall_bg").remove();
       document.body.classList.remove("overlay-no-scroll");
       document.body.style.overflow = "visible";
@@ -105,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   else if (/folha.uol.com.br/.test(document.location.host)) {
-    codeld = `
+    code = `
       omtrClickUOL = function(){};function showText() {
          $("#bt-read-more-content").next().show();
          $("#bt-read-more-content").next().show().prev().remove();
@@ -115,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   else if (/nexojornal.com.br/.test(document.location.host)) {
-    codeld = `
+    code = `
       paywallContainer = document.getElementsByClassName('new-paywall-container')[0];
       paywallContent = paywallContainer.getAttribute('data-paywall-content');
       nexoApiURL = paywallContainer.getAttribute('data-paywall-check');
@@ -132,35 +166,56 @@ document.addEventListener('DOMContentLoaded', function() {
       xmlhttp.open('GET', nexoApiURL, true);
       xmlhttp.send();`;
   }
-  else if (/ft.com/.test(document.location.host)) {
-    GM_xmlhttpRequest({
-      method: 'GET',
-      url: window.location.href,
-      headers: {
-        'Referer': 'https://www.google.com.br/'
-      },
-      anonymous: true,
-      onload: function(response) {
-        var parser = new DOMParser();
-        var htmlDoc = parser.parseFromString(response.responseText,'text/html');
-        var injectme = htmlDoc.getElementsByTagName('html')[0].innerHTML;
-        if (document.getElementsByClassName('trial-subs__heading-pretext')[0]) {
-          document.write(injectme);
-        }
-      }
-    });
-  }
 
   else if (/veja.abril.com.br/.test(document.location.host))
-    codeld = `
+    code = `
       document.querySelector('.content-blocked').classList.remove('content-blocked');
       document.querySelector('.callpaywall').remove();
     `;
 
-  if (codeld !== null) {
+  if (code !== null) {
     var script = document.createElement('script');
-    script.textContent = codeld;
+    script.textContent = code;
     (document.head||document.documentElement).appendChild(script);
     script.parentNode.removeChild(script);
   }
 });
+
+
+function eraseCookie (cookieName) {
+  // https://stackoverflow.com/a/28081337/1840019
+  //--- ONE-TIME INITS:
+  //--- Set possible domains. Omits some rare edge cases.?.
+  var domain      = document.domain;
+  var domain2     = document.domain.replace (/^www\./, '');
+  var domain3     = document.domain.replace (/^(\w+\.)+?(\w+\.\w+)$/, '$2');
+
+  //--- Get possible paths for the current page:
+  var pathNodes   = location.pathname.split ('/').map ( function (pathWord) {
+    return '/' + pathWord;
+  } );
+  var cookPaths   = [''].concat (pathNodes.map ( function (pathNode) {
+    if (this.pathStr) {
+      this.pathStr += pathNode;
+    }
+    else {
+      this.pathStr = '; path=';
+      return (this.pathStr + pathNode);
+    }
+    return (this.pathStr);
+  } ) );
+
+  // eslint-disable-next-line no-func-assign
+  ( eraseCookie = function (cookieName) {
+    //--- For each path, attempt to delete the cookie.
+    cookPaths.forEach ( function (pathStr) {
+      //--- To delete a cookie, set its expiration date to a past value.
+      var diagStr     = cookieName + '=' + pathStr + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+      document.cookie = diagStr;
+
+      document.cookie = cookieName + '=' + pathStr + '; domain=' + domain  + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+      document.cookie = cookieName + '=' + pathStr + '; domain=' + domain2 + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+      document.cookie = cookieName + '=' + pathStr + '; domain=' + domain3 + '; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+    } );
+  } ) (cookieName);
+}
