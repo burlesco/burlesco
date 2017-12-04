@@ -44,6 +44,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
+// run_at: document_start
 if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   document.addEventListener('DOMContentLoaded', function() {
     function patchJs(jsurl) {
@@ -82,40 +83,6 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   };
 }
 
-else if (/ft.com/.test(document.location.host)
-    && document.querySelector('.barrier')) {
-
-  var cookieList  = document.cookie.split (/;\s*/);
-  for (var J = cookieList.length - 1;   J >= 0;  --J) {
-    var cookieName = cookieList[J].replace (/\s*(\w+)=.+$/, '$1');
-    eraseCookie (cookieName);
-  }
-
-  document.cookie = '';
-  localStorage.clear();
-  sessionStorage.clear();
-  indexedDB.deleteDatabase('next-flags');
-  indexedDB.deleteDatabase('next:ads');
-
-  GM_xmlhttpRequest({
-    method: 'GET',
-    url: window.location.href,
-    headers: {
-      'Referer': 'https://www.google.com.br/'
-    },
-    anonymous: true,
-    onload: function(response) {
-      var parser = new DOMParser();
-      var newDocument = parser.parseFromString(response.responseText,'text/html');
-      if (newDocument.getElementsByClassName('article__content')[0]) {
-        document.open();
-        document.write(newDocument.getElementsByTagName('html')[0].innerHTML);
-        document.close();
-      }
-    }
-  });
-}
-
 else if (/jota.info/.test(document.location.host)) {
   document.cookie = 'articles=null;path=/';
 }
@@ -128,6 +95,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
   else if (/www\.economist\.com/.test(document.location.host))
     code = 'document.cookie = "ec_limit=allow";';
+
+  else if (/ft.com/.test(document.location.host)
+      && document.querySelector('.barrier')) {
+
+    var cookieList  = document.cookie.split (/;\s*/);
+    for (var J = cookieList.length - 1;   J >= 0;  --J) {
+      var cookieName = cookieList[J].replace (/\s*(\w+)=.+$/, '$1');
+      eraseCookie (cookieName);
+    }
+
+    document.cookie = '';
+    localStorage.clear();
+    sessionStorage.clear();
+    indexedDB.deleteDatabase('next-flags');
+    indexedDB.deleteDatabase('next:ads');
+
+    GM_xmlhttpRequest({
+      method: 'GET',
+      url: window.location.href,
+      headers: {
+        'Referer': 'https://www.google.com.br/'
+      },
+      anonymous: true,
+      onload: function(response) {
+        var parser = new DOMParser();
+        var newDocument = parser.parseFromString(response.responseText,'text/html');
+        if (newDocument.getElementsByClassName('article__content')[0]) {
+          document.open();
+          document.write(newDocument.getElementsByTagName('html')[0].innerHTML);
+          document.close();
+        }
+      }
+    });
+  }
+
 
   else if (/foreignpolicy\.com/.test(document.location.host)) {
     code = `
