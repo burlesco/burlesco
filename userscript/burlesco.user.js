@@ -4,44 +4,44 @@
 // @version      5.7
 // @description  Leia notícias sem ser assinante, burle o paywall
 // @author       rodorgas & AugustoResende
-// @icon64       https://burles.co/userscript/icon.png
-// @noframes
-// Atenção:      Caso algum site não funcione logo após a instalação, limpe o cache do navegador.
-// @include      *://correio.rac.com.br/*
-// @include      *://dc.clicrbs.com.br/*
-// @include      *://www.economist.com/*
-// @include      *://*.estadao.com.br/*
-// @include      *://foreignpolicy.com/*
-// @include      *://blockv2.fivewall.com.br/*
-// @include      *://*.folha.uol.com.br/*
-// @include      *://*.folha.com.br/*
-// @include      *://gauchazh.clicrbs.com.br/*
-// @connect      gauchazh.clicrbs.com.br
-// @include      *://api.clicrbs.com.br/*
-// @include      *://*.gazetadopovo.com.br/*
-// @include      *://assets.imirante.com/*
-// @include      *://ogjs.infoglobo.com.br/*
-// @include      *://jota.info/*
-// @include      *://jornaldesantacatarina.clicrbs.com.br/*
-// @include      *://www.jornalnh.com.br/*
-// @include      *://*.nexojornal.com.br/*
-// @include      *://*.nyt.com/*
-// @include      *://*.oglobo.globo.com/*
-// @include      *://www.rbsonline.com.br/*
-// @include      *://cdn.tinypass.com/*
-// @include      *://dashboard.tinypass.com/*
-// @include      *://*.washingtonpost.com/*
-// @include      *://*.exame.abril.com.br/*
-// @include      *://super.abril.com.br/*
-// @include      *://veja.abril.com.br/*
-// @include      *://*.uol.com.br/*
-// @include      *://www.uol/*
-// @include      *://*.ft.com/*
 // @supportURL   https://burles.co
+// @icon64       https://burles.co/userscript/icon.png
+// Atenção:      Caso algum site não funcione logo após a instalação, limpe o cache do navegador.
 // @grant        GM_webRequest
 // @grant        GM_xmlhttpRequest
+// @connect      gauchazh.clicrbs.com.br
+// @match        *://correio.rac.com.br/*
+// @match        *://dc.clicrbs.com.br/*
+// @match        *://www.economist.com/*
+// @match        *://*.estadao.com.br/*
+// @match        *://foreignpolicy.com/*
+// @match        *://blockv2.fivewall.com.br/*
+// @match        *://*.folha.uol.com.br/*
+// @match        *://*.folha.com.br/*
+// @match        *://gauchazh.clicrbs.com.br/*
+// @match        *://api.clicrbs.com.br/*
+// @match        *://*.gazetadopovo.com.br/*
+// @match        *://assets.imirante.com/*
+// @match        *://ogjs.infoglobo.com.br/*
+// @match        *://jota.info/*
+// @match        *://jornaldesantacatarina.clicrbs.com.br/*
+// @match        *://www.jornalnh.com.br/*
+// @match        *://*.nexojornal.com.br/*
+// @match        *://*.nyt.com/*
+// @match        *://*.oglobo.globo.com/*
+// @match        *://www.rbsonline.com.br/*
+// @match        *://cdn.tinypass.com/*
+// @match        *://dashboard.tinypass.com/*
+// @match        *://*.washingtonpost.com/*
+// @match        *://*.exame.abril.com.br/*
+// @match        *://super.abril.com.br/*
+// @match        *://veja.abril.com.br/*
+// @match        *://*.uol.com.br/*
+// @match        *://www.uol/*
+// @match        *://*.ft.com/*
 // @webRequest   [{"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"http://paywall.folha.uol.com.br/status.php"},"action":"cancel"},{"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"},{"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"},{"selector":"*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*","action":"cancel"},{"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"},{"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"},{"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"},{"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"},{"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"},{"selector":"*://*.nyt.com/js/mtr.js","action":"cancel"},{"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"},{"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"},{"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"},{"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"},{"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"},{"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"},{"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}]
 // @run-at       document-start
+// @noframes
 // ==/UserScript==
 
 // run_at: document_start
