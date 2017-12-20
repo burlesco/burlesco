@@ -19,6 +19,7 @@
 // @match        *://*.folha.uol.com.br/*
 // @match        *://*.folha.com.br/*
 // @match        *://gauchazh.clicrbs.com.br/*
+// @match        *://*.zh.clicrbs.com.br/*
 // @match        *://api.clicrbs.com.br/*
 // @match        *://*.gazetadopovo.com.br/*
 // @match        *://assets.imirante.com/*
