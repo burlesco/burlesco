@@ -46,7 +46,8 @@ chrome.webRequest.onBeforeRequest.addListener(
       '*://tm.jsuol.com.br/modules/content-gate.js',
 
       // GauchaZH
-      '*://gauchazh.clicrbs.com.br/static/main*'
+      '*://gauchazh.clicrbs.com.br/static/main*',
+      '*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*'
     ],
     types: ['script']
   },
