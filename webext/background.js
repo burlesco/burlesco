@@ -45,9 +45,10 @@ chrome.webRequest.onBeforeRequest.addListener(
       // UOL
       '*://tm.jsuol.com.br/modules/content-gate.js',
 
-      // GauchaZH
+      // GaúchaZH
       '*://gauchazh.clicrbs.com.br/static/main*',
-      '*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*'
+      '*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*',
+      '*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*'
     ],
     types: ['script']
   },
