@@ -39,7 +39,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       '*://*.washingtonpost.com/*pwapi/*.js*',
       '*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*',
 
-      // O Globo, Exame, Super Interessante, Veja, The Economist
+      // O Globo, Exame, Super Interessante, Veja, The Economist, Quatro Rodas
       '*://cdn.tinypass.com/api/tinypass.min.js',
 
       // UOL

@@ -57,10 +57,11 @@ O Burlesco funciona com os seguintes sites de notícia:
 - JOTA
 - O Estado do Maranhão
 - Jornal NH
+- UOL
 - Veja
 - Exame
 - Superinteressante
-- UOL
+- Quatro Rodas
 - The Economist
 - Foreign Policy
 - Financial Times
