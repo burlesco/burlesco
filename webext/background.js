@@ -113,6 +113,18 @@ chrome.webRequest.onBeforeRequest.addListener(
   }
 );
 
+chrome.webRequest.onBeforeRequest.addListener(
+  function() {
+    removeCookies('https://www.wsj.com');
+  },
+  {
+    urls: [
+      // The Wall Street Journal
+      '*://*.wsj.com/*'
+    ]
+  }
+);
+
 function removeCookies(url) {
   chrome.cookies.getAll({}, function(cookies) {
     cookies.forEach(function(cookie) {
@@ -139,7 +151,10 @@ chrome.webRequest.onHeadersReceived.addListener(
   {
     urls: [
       // Financial Times
-      '*://*.ft.com/*'
+      '*://*.ft.com/*',
+
+      // The Wall Street Journal
+      '*://*.wsj.com/'
     ]
   },
   ['blocking', 'responseHeaders']
@@ -175,6 +190,26 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
     urls: [
       // Financial Times
       '*://www.ft.com/*'
+    ],
+    types: ['xmlhttprequest', 'main_frame']
+  },
+  ['blocking', 'requestHeaders']
+);
+
+chrome.webRequest.onBeforeSendHeaders.addListener(
+  function(details) {
+    injectHeader(
+      'Referer',
+      'https://www.facebook.com/',
+      details.requestHeaders
+    );
+
+    return {requestHeaders: details.requestHeaders};
+  },
+  {
+    urls: [
+      // The Wall Street Journal
+      '*://www.wsj.com/*'
     ],
     types: ['xmlhttprequest', 'main_frame']
   },

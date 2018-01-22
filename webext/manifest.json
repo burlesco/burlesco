@@ -25,7 +25,8 @@
         "*://*.folha.uol.com.br/*",
         "*://*.folha.com.br/*",
         "*://*.ft.com/*",
-        "*://*.veja.abril.com.br/*"
+        "*://*.veja.abril.com.br/*",
+        "*://*.wsj.com/*"
       ]
     },
     {
@@ -66,6 +67,7 @@
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
     "*://*.washingtonpost.com/*",
+    "*://*.wsj.com/*",
     "*://*.exame.abril.com.br/*",
     "*://super.abril.com.br/*",
     "*://veja.abril.com.br/*",

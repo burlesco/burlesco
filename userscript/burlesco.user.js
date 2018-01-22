@@ -41,6 +41,7 @@
 // @match        *://quatrorodas.abril.com.br/*
 // @match        *://*.uol.com.br/*
 // @match        *://www.uol/*
+// @match        *://*.wsj.com/*
 // @match        *://*.ft.com/*
 
 // @webRequest   [{"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"http://paywall.folha.uol.com.br/status.php"},"action":"cancel"},{"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"},{"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"},{"selector":"*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*","action":"cancel"},{"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"},{"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"},{"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"},{"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"},{"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"},{"selector":"*://*.nytimes.com/js/mtr.js","action":"cancel"},{"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"},{"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"},{"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"},{"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"},{"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"},{"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"},{"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"},{"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}]
@@ -90,6 +91,7 @@ if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
 else if (/jota\.info/.test(document.location.host)) {
   document.cookie = 'articles=null;path=/';
 }
+
 
 // run_at: document_idle
 document.addEventListener('DOMContentLoaded', function() {
@@ -176,6 +178,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
   else if (/nytimes\.com/.test(document.location.host))
     eraseAllCookies();
+
+  else if (/wsj\.com/.test(document.location.host)
+      && document.querySelector('.wsj-snippet-login')) {
+
+    eraseAllCookies();
+
+    document.cookie = '';
+    localStorage.clear();
+    sessionStorage.clear();
+
+    GM_xmlhttpRequest({
+      method: 'GET',
+      url: window.location.href,
+      headers: {
+        'Referer': 'https://www.facebook.com/'
+      },
+      anonymous: true,
+      onload: function(response) {
+        var parser = new DOMParser();
+        var newDocument = parser.parseFromString(response.responseText,'text/html');
+        if (newDocument.querySelector('article')) {
+          document.body = newDocument.body;
+        }
+      }
+    });
+  }
 
 
   if (code !== null) {
