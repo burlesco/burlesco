@@ -28,6 +28,7 @@
 // @match        *://jornaldesantacatarina.clicrbs.com.br/*
 // @match        *://www.jornalnh.com.br/*
 // @match        *://*.nexojornal.com.br/*
+// @match        *://*.nytimes.com/*
 // @match        *://*.nyt.com/*
 // @match        *://*.oglobo.globo.com/*
 // @match        *://www.rbsonline.com.br/*
@@ -42,13 +43,13 @@
 // @match        *://www.uol/*
 // @match        *://*.ft.com/*
 
-// @webRequest   [{"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"http://paywall.folha.uol.com.br/status.php"},"action":"cancel"},{"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"},{"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"},{"selector":"*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*","action":"cancel"},{"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"},{"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"},{"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"},{"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"},{"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"},{"selector":"*://*.nyt.com/js/mtr.js","action":"cancel"},{"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"},{"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"},{"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"},{"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"},{"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"},{"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"},{"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"},{"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}]
+// @webRequest   [{"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"http://paywall.folha.uol.com.br/status.php"},"action":"cancel"},{"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"},{"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"},{"selector":"*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*","action":"cancel"},{"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"},{"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"},{"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"},{"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"},{"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"},{"selector":"*://*.nytimes.com/js/mtr.js","action":"cancel"},{"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"},{"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"},{"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"},{"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"},{"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"},{"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"},{"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"},{"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}]
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
 
 // run_at: document_start
-if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
+if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
   document.addEventListener('DOMContentLoaded', function() {
     function patchJs(jsurl) {
       GM_xmlhttpRequest({
@@ -86,7 +87,7 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
   };
 }
 
-else if (/jota.info/.test(document.location.host)) {
+else if (/jota\.info/.test(document.location.host)) {
   document.cookie = 'articles=null;path=/';
 }
 
@@ -99,14 +100,10 @@ document.addEventListener('DOMContentLoaded', function() {
   else if (/www\.economist\.com/.test(document.location.host))
     code = 'document.cookie = "ec_limit=allow";';
 
-  else if (/ft.com/.test(document.location.host)
+  else if (/ft\.com/.test(document.location.host)
       && document.querySelector('.barrier')) {
 
-    var cookieList  = document.cookie.split (/;\s*/);
-    for (var J = cookieList.length - 1;   J >= 0;  --J) {
-      var cookieName = cookieList[J].replace (/\s*(\w+)=.+$/, '$1');
-      eraseCookie (cookieName);
-    }
+    eraseAllCookies();
 
     document.cookie = '';
     localStorage.clear();
@@ -133,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-
   else if (/foreignpolicy\.com/.test(document.location.host)) {
     code = `
       document.getElementById("paywall_bg").remove();
@@ -143,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
   }
 
-  else if (/folha.uol.com.br/.test(document.location.host)) {
+  else if (/folha\.uol\.com\.br/.test(document.location.host)) {
     code = `
       omtrClickUOL = function(){};function showText() {
          $("#bt-read-more-content").next().show();
@@ -153,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
   }
 
-  else if (/nexojornal.com.br/.test(document.location.host)) {
+  else if (/nexojornal\.com\.br/.test(document.location.host)) {
     code = `
       paywallContainer = document.getElementsByClassName('new-paywall-container')[0];
       paywallContent = paywallContainer.getAttribute('data-paywall-content');
@@ -172,11 +168,15 @@ document.addEventListener('DOMContentLoaded', function() {
       xmlhttp.send();`;
   }
 
-  else if (/veja.abril.com.br/.test(document.location.host))
+  else if (/veja\.abril\.com\.br/.test(document.location.host))
     code = `
       document.querySelector('.content-blocked').classList.remove('content-blocked');
       document.querySelector('.callpaywall').remove();
     `;
+
+  else if (/nytimes\.com/.test(document.location.host))
+    eraseAllCookies();
+
 
   if (code !== null) {
     var script = document.createElement('script');
@@ -186,6 +186,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
+function eraseAllCookies() {
+  var cookieList  = document.cookie.split (/;\s*/);
+  for (var J = cookieList.length - 1;   J >= 0;  --J) {
+    var cookieName = cookieList[J].replace (/\s*(\w+)=.+$/, '$1');
+    eraseCookie (cookieName);
+  }
+}
 
 function eraseCookie (cookieName) {
   // https://stackoverflow.com/a/28081337/1840019
