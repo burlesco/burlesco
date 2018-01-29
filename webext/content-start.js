@@ -1,7 +1,7 @@
 // run_at: document_start
 var code = null;
 
-if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
+if (/gauchazh.clicrbs.com.br/.test(document.location.host))
   code = `
     function patchJs(jsurl) {
       var xhttp = new XMLHttpRequest();
@@ -30,7 +30,6 @@ if (/gauchazh.clicrbs.com.br/.test(document.location.host)) {
         patchJs(script.src);
     });
   `;
-}
 
 if (code !== null) {
   var script = document.createElement('script');

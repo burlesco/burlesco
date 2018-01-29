@@ -16,7 +16,7 @@ chrome.webRequest.onBeforeRequest.addListener(
       '*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js',
 
       // Gazeta do Povo
-      '*://*.gazetadopovo.com.br/loader/v1/logan_full_toolbar.js*',
+      '*://www.netdeal.com.br/*',
 
       // Correio Popular
       '*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*',
