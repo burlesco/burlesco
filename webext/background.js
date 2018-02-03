@@ -209,7 +209,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
   {
     urls: [
       // The Wall Street Journal
-      '*://www.wsj.com/*'
+      '*://*.wsj.com/*'
     ],
     types: ['xmlhttprequest', 'main_frame']
   },
