@@ -66,4 +66,5 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Foreign Policy
 - Financial Times
 - The New York Times
-- Washington Post
+- The Wall Street Journal
+- The Washington Post
