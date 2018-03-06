@@ -65,6 +65,7 @@
     "*://*.nytimes.com/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
+    "*://api.tinypass.com/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
     "*://*.washingtonpost.com/*",
@@ -75,7 +76,8 @@
     "*://quatrorodas.abril.com.br/*",
     "*://*.uol.com.br/*",
     "*://tm.jsuol.com.br/*",
-    "*://www.uol/*"
+    "*://www.uol/*",
+    "*://*.gramophone.co.uk/*"
   ],
 
   "applications": {
