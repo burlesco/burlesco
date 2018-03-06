@@ -77,7 +77,8 @@
     "*://*.uol.com.br/*",
     "*://tm.jsuol.com.br/*",
     "*://www.uol/*",
-    "*://*.gramophone.co.uk/*"
+    "*://*.gramophone.co.uk/*",
+    "*://www.folhadelondrina.com.br/*/fivewall.js*"
   ],
 
   "applications": {
