@@ -52,7 +52,10 @@ chrome.webRequest.onBeforeRequest.addListener(
       '*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*',
 
       // Gramophone
-      '*://api.tinypass.com/tpl/*'
+      '*://api.tinypass.com/tpl/*',
+
+      // Folha de Londrina
+      '*://www.folhadelondrina.com.br/*/fivewall.js*'
     ],
     types: ['script']
   },
