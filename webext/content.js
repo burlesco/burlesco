@@ -1,4 +1,10 @@
 // run_at: document_idle
+
+chrome.storage.local.get('sites', function(result) {
+  for (let site in result.sites)
+    setCurrentSite(site, result.sites[site]);
+});
+
 var code = null;
 if (/oglobo\.globo\.com/.test(document.location.host))
   code = 'paywallAtivo = false;';

@@ -40,6 +40,7 @@
     "webRequest",
     "webRequestBlocking",
     "cookies",
+    "storage",
 
     "*://correio.rac.com.br/*",
     "*://dc.clicrbs.com.br/*",
@@ -85,5 +86,9 @@
     "gecko": {
       "id": "burlesco@burlesco.com"
     }
+  },
+
+  "options_ui": {
+    "page": "options.html"
   }
 }
