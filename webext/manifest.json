@@ -82,6 +82,12 @@
     "*://www.folhadelondrina.com.br/*/fivewall.js*"
   ],
 
+  "applications": {
+    "gecko": {
+      "id": "burlesco@burlesco.com"
+    }
+  },
+
   "options_ui": {
     "page": "options.html"
   }
