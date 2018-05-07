@@ -27,22 +27,26 @@ const SITES = [
 ];
 
 function saveOptions(e) {
+  function showUpdateSucess() {
+    document.querySelector('#save-success').style.display = 'inline-block';
+    setTimeout(function() {
+      document.querySelector('#save-success').style.display = 'none';
+    }, 3000);
+  }
+
   e.preventDefault();
 
   let siteStatus = {};
-  for (let site of SITES) {
+  for (let site of SITES)
     siteStatus[site] = document.querySelector('#' + site).checked;
-  }
-  chrome.storage.local.set({sites: siteStatus});
 
-  document.querySelector('#save-success').style.display = 'inline-block';
-  setTimeout(function() {
-    document.querySelector('#save-success').style.display = 'none';
-  }, 3000);
+  chrome.storage.local.set({sites: siteStatus});
+  chrome.runtime.sendMessage('update');
+
+  showUpdateSucess();
 }
 
 function restoreOptions() {
-
   function setCurrentSite(site, status) {
     document.querySelector('#' + site).checked = status;
   }

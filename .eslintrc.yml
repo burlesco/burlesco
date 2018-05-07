@@ -17,3 +17,6 @@ rules:
   semi:
     - error
     - always
+  max-len:
+    - 2
+    - code: 80

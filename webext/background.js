@@ -1,10 +1,5 @@
-chrome.storage.local.get('sites', function(result) { {
-}
-  let enabledSites = result.sites;
-});
-
 const WHITELIST = {
-  folha: {
+  folhadespaulo: {
     xhrBlocking: [
       'http://paywall.folha.uol.com.br/status.php',
       'https://paywall.folha.uol.com.br/status.php'
@@ -46,8 +41,12 @@ const BLOCKLIST = {
   financialtimes: {
     cookieBlocking: {
       urlFilter: '*://*.ft.com/*',
-      cookie: 'https://www.ft.com',
-      blockAll: true;
+      blockAll: true
+    },
+    headerInjection: {
+      name: 'Referer',
+      value: 'https://www.google.com.br/',
+      urlFilter: '*://www.ft.com/*'
     }
   },
   gazetadopovo: {
@@ -82,16 +81,17 @@ const BLOCKLIST = {
     cookieBlocking: {
       urlFilter: 'http://jota.info/*',
       cookie: {
-        'url': 'http://jota.info/*',
-        'name': 'articles'
+        url: 'http://jota.info/*',
+        name: 'articles'
       }
     }
   },
   nexo: {
     cookieBlocking: {
-      urlFilter: '*://api.nexojornal.com.br/*'
+      urlFilter: '*://api.nexojornal.com.br/*',
+      blockAll: true
     }
-  }
+  },
   oestadodespaulo: {
     xhrBlocking: [
       '*://*.estadao.com.br/paywall/*',
@@ -138,8 +138,12 @@ const BLOCKLIST = {
   thewallstreetjournal: {
     cookieBlocking: {
       urlFilter: '*://*.wsj.com/*',
-      cookie: 'https://www.wsj.com',
-      blockAll: true;
+      blockAll: true
+    },
+    headerInjection: {
+      name: 'Referer',
+      value: 'https://www.facebook.com/',
+      filterUrl: '*://*.wsj.com/*'
     }
   },
   uol: {
@@ -154,182 +158,175 @@ const BLOCKLIST = {
   }
 };
 
+function onBeforeRequestScript() {
+  return {cancel: true};
+}
+
 function setScriptBlocking(enabledSites) {
   let filterUrls = [];
 
-  for (item of blocklist) {
-    let cookie = blocklist[item].scriptBlocking;
-    if (item.scriptBlocking == undefined)
-      continue
-    if (enabledSites[item] == false)
+  for (let item in BLOCKLIST) {
+    let script = BLOCKLIST[item].scriptBlocking;
+    if (enabledSites && enabledSites[item] == false)
       continue;
-
-    filterUrls = filterUrls.concat(item.scriptBlocking);
+    if (script == undefined)
+      continue;
+    filterUrls = filterUrls.concat(script);
   }
 
+  console.log('script blocking');
+  console.log(filterUrls);
   chrome.webRequest.onBeforeRequest.addListener(
-    function() {
-      return {cancel: true};
-    },
+    onBeforeRequestScript,
     {
-      urls: [
-        filterUrls
-      ],
+      urls: filterUrls,
       types: ['script']
     },
     ['blocking']
   );
 }
 
+let whitelist = [];
+function onBeforeRequestXml(details) {
+  if (whitelist.indexOf(details.url) !== -1)
+    return {cancel: false};
+  else
+    return {cancel: true};
+}
 function setXhrBlocking(enabledSites) {
-  let blocklist=[], whitelist=[];
+  let blocklist = [];
 
-  for (let item of BLOCKLIST) {
-    let script = blocklist[item].scriptBlocking;
-    if (script == undefined)
+  for (let item in BLOCKLIST) {
+    let xhr = BLOCKLIST[item].xhrBlocking;
+    if (xhr == undefined)
       continue;
-    if (enabledSites[item] == false)
+    if (enabledSites && enabledSites[item] == false)
       continue;
-
-    blocklist = blocklist.concat(script);
+    blocklist = blocklist.concat(xhr);
   }
-  for (let item of WHITELIST) {
-    let script = blocklist[item].scriptBlocking;
-    if (item.scriptBlocking == undefined)
-      continue;
-    if (enabledSites[item] == false)
-      continue;
 
-    whitelist = whitelist.concat(script);
+  for (let item in WHITELIST) {
+    if (enabledSites && enabledSites[item] == false)
+      continue;
+    let xhr = BLOCKLIST[item].xhrBlocking;
+    if (xhr == undefined)
+      continue;
+    whitelist = whitelist.concat(xhr);
+
   }
 
   chrome.webRequest.onBeforeRequest.addListener(
-    function(details) {
-      if (whitelist.indexOf(details.url) !== -1)
-        return {cancel: false};
-      else
-        return {cancel: true};
-    },
+    onBeforeRequestXml,
     {
       urls: blocklist,
-      types: ['xhr']
+      types: ['xmlhttprequest']
     },
     ['blocking']
   );
 }
 
-function setCookieBlocking() {
-  for (let item in blocklist) {
-    let cookie = blocklist[item].cookieBlocking;
-
-    if (cookie.cookieBlocking == undefined)
-      continue;
-    if (enabledSites[item] == false)
-      continue;
-
-    if (typeof cookie.cookie == String) {
-      chrome.webRequest.onBeforeRequest.addListener(
-        function() {
-          removeAllCookies(cookie.cookie);
-        },
-        {
-          urls: [cookie.urlFilter]
-        }
-      );
+function onHeadersReceivedCookie(details) {
+  details.responseHeaders.forEach(function(responseHeader) {
+    if (responseHeader.name.toLowerCase() == 'set-cookie') {
+      responseHeader.value = '';
     }
-    else {
-      chrome.webRequest.onBeforeRequest.addListener(
-        function() {
-          chrome.cookies.remove(cookie.cookie);
-        },
-        {
-          urls: [item.urlFilter],
-          types: ['main_frame']
-        }
-      );
-    }
+  });
+  return {
+    responseHeaders: details.responseHeaders
+  };
+}
+function onBeforeSendHeadersCookie(details) {
+  injectHeader('Cookie', '', details.requestHeaders);
+  return {requestHeaders: details.requestHeaders};
+}
+
+function makeCookieRemove(cookie) {
+  return function() {
+    chrome.cookies.remove(cookie);
+  };
+}
+let callbacksOnBeforeRequestCookie = [];
+
+
+function setCookieBlocking(enabledSites) {
+  let filterUrls = [];
+
+  for (let item in BLOCKLIST) {
+    let cookie = BLOCKLIST[item].cookieBlocking;
+    if (cookie == undefined)
+      continue;
+    if (enabledSites && enabledSites[item] == false)
+      continue;
 
     if (cookie.blockAll) {
-      chrome.webRequest.onHeadersReceived.addListener(
-        function (details) {
-          details.responseHeaders.forEach(function(responseHeader) {
-            if (responseHeader.name.toLowerCase() == 'set-cookie') {
-              responseHeader.value = '';
-            }
-          });
-          return {
-            responseHeaders: details.responseHeaders
-          };
-        },
+      filterUrls.push(cookie.urlFilter);
+    }
+    else {
+      let callback = makeCookieRemove(cookie.cookie);
+      callbacksOnBeforeRequestCookie.push(callback);
+      chrome.webRequest.onBeforeRequest.addListener(
+        callback,
         {
-          urls: [
-            cookie.urlFilter
-          ]
-        },
-        ['blocking', 'responseHeaders']
-      );
-
-      chrome.webRequest.onBeforeSendHeaders.addListener(
-        function(details) {
-          injectHeader('Cookie', '', details.requestHeaders);
-          return {requestHeaders: details.requestHeaders};
-        },
-        {
-          urls: [
-            // Jornal Nexo
-            '*://api.nexojornal.com.br/*'
-          ],
-          types: ['xmlhttprequest']
-        },
-        ['blocking', 'requestHeaders']
+          urls: [cookie.urlFilter],
+          types: ['xmlhttprequest', 'script', 'main_frame']
+        }
       );
     }
   }
+
+
+  chrome.webRequest.onHeadersReceived.addListener(
+    onHeadersReceivedCookie,
+    {
+      urls: filterUrls,
+      types: ['xmlhttprequest', 'script', 'main_frame']
+    },
+    ['blocking', 'responseHeaders']
+  );
+
+  chrome.webRequest.onBeforeSendHeaders.addListener(
+    onBeforeSendHeadersCookie,
+    {
+      urls: filterUrls,
+      types: ['xmlhttprequest', 'script', 'main_frame']
+    },
+    ['blocking', 'requestHeaders']
+  );
 }
-
-
-
-// Referer injection
-chrome.webRequest.onBeforeSendHeaders.addListener(
-  function(details) {
+function makeInjectHeader(name, value) {
+  return function(details) {
     injectHeader(
-      'Referer',
-      'https://www.google.com.br/',
+      name,
+      value,
       details.requestHeaders
     );
-
     return {requestHeaders: details.requestHeaders};
-  },
-  {
-    urls: [
-      // Financial Times
-      '*://www.ft.com/*'
-    ],
-    types: ['xmlhttprequest', 'main_frame']
-  },
-  ['blocking', 'requestHeaders']
-);
+  };
+}
+let callbacksOnBeforeSendHeadersInjection = [];
 
+function setHeaderInjection(enabledSites) {
+  for (let item in BLOCKLIST) {
+    let header = BLOCKLIST[item].headerInjection;
+    if (header == undefined)
+      return;
+    if (enabledSites && enabledSites[item] == false)
+      return;
 
-chrome.webRequest.onBeforeSendHeaders.addListener(
-  function(details) {
-    injectHeader(
-      'Referer',
-      'https://www.facebook.com/',
-      details.requestHeaders
+    let callback = makeInjectHeader(header.name, header.value);
+    callbacksOnBeforeSendHeadersInjection.push(callback);
+    chrome.webRequest.onBeforeSendHeaders.addListener(
+      callback,
+      {
+        urls: [
+          header.urlFilter
+        ],
+        types: ['xmlhttprequest', 'main_frame']
+      },
+      ['blocking', 'requestHeaders']
     );
-
-    return {requestHeaders: details.requestHeaders};
-  },
-  {
-    urls: [
-      // The Wall Street Journal
-      '*://*.wsj.com/*'
-    ],
-    types: ['xmlhttprequest', 'main_frame']
-  },
-  ['blocking', 'requestHeaders']
-);
+  }
+}
 
 function injectHeader(name, value, requestHeaders) {
   /**
@@ -350,14 +347,34 @@ function injectHeader(name, value, requestHeaders) {
     requestHeaders[headerIndex] = newHeader;
 }
 
-function removeAllCookies(url) {
-  chrome.cookies.getAll({}, function(cookies) {
-    cookies.forEach(function(cookie) {
-      chrome.cookies.remove({
-        'url': url,
-        'name': cookie.name
-      });
-    });
+function apply() {
+  console.log('apply');
+  chrome.storage.local.get('sites', function(result) {
+    let enabledSites = result.sites;
+
+    setScriptBlocking(enabledSites);
+    setXhrBlocking(enabledSites);
+    setCookieBlocking(enabledSites);
+    setHeaderInjection(enabledSites);
   });
 }
 
+function removeListeners() {
+  chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestScript);
+  chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestXml);
+  chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
+  chrome.webRequest.onBeforeSendHeaders.removeListener(
+    onBeforeSendHeadersCookie);
+  for (let item of callbacksOnBeforeRequestCookie)
+    chrome.webRequest.onBeforeRequest.removeListener(item);
+  for (let item of callbacksOnBeforeSendHeadersInjection)
+    chrome.webRequest.onBeforeSendHeaders.removeListener(item);
+}
+
+apply();
+chrome.runtime.onMessage.addListener(function(message) {
+  if (message == 'update') {
+    removeListeners();
+    apply();
+  }
+});

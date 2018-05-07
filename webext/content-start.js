@@ -1,39 +1,55 @@
 // run_at: document_start
-var code = null;
+chrome.storage.local.get('sites', function(result) {
+  for (let site in result.sites) {
+    let enabledSites = result.sites;
+    if (enabledSites[site] == false)
+      continue;
+    if (INJECTION[site] == undefined)
+      continue;
 
-if (/gauchazh.clicrbs.com.br/.test(document.location.host))
-  code = `
-    function patchJs(jsurl) {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var injectme = this.responseText;
-          injectme = injectme.replace('e.showLoginPaywall,','false,');
-          injectme = injectme.replace('e.showPaywall,','false,');
-          injectme = injectme.replace('e.requestCPF||!1,','false,');
-          injectme = injectme.replace('!e.showLoginPaywall&&!e.showPaywall||!1','true');
-          var script = document.createElement("script");
-          script.type = "text/javascript";
-          var textNode = document.createTextNode(injectme);
-          script.appendChild(textNode);
-          document.head.appendChild(script);
-        }
-      };
-      xhttp.open("GET", jsurl, true);
-      xhttp.send();
+    if (INJECTION[site].url.test(document.location.host)) {
+      var script = document.createElement('script');
+      script.textContent = INJECTION[site].code;
+      (document.head||document.documentElement).appendChild(script);
+      script.parentNode.removeChild(script);
+      break;
     }
+  }
+});
 
-    document.addEventListener("DOMContentLoaded", function(event) {
-      var scripts = Array.from(document.getElementsByTagName('script'));
-      var script = scripts.find((el) => { return el.src.includes('static/main') });
-      if (script)
-        patchJs(script.src);
-    });
-  `;
+const INJECTION = {
+  gauchazh: {
+    url : /gauchazh.clicrbs.com.br/,
+    code: `
+      function patchJs(jsurl) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var injectme = this.responseText;
+            injectme = injectme.replace('e.showLoginPaywall,','false,');
+            injectme = injectme.replace('e.showPaywall,','false,');
+            injectme = injectme.replace('e.requestCPF||!1,','false,');
+            injectme = injectme.replace(
+              '!e.showLoginPaywall&&!e.showPaywall||!1','true');
+              var script = document.createElement("script");
+              script.type = "text/javascript";
+              var textNode = document.createTextNode(injectme);
+              script.appendChild(textNode);
+              document.head.appendChild(script);
+          }
+        };
+        xhttp.open("GET", jsurl, true);
+        xhttp.send();
+      }
 
-if (code !== null) {
-  var script = document.createElement('script');
-  script.textContent = code;
-  (document.head||document.documentElement).appendChild(script);
-  script.parentNode.removeChild(script);
-}
+      document.addEventListener("DOMContentLoaded", function(event) {
+        var scripts = Array.from(document.getElementsByTagName('script'));
+        var script = scripts.find((el) => {
+          return el.src.includes('static/main')
+        });
+        if (script)
+          patchJs(script.src);
+      });
+    `
+  }
+};
