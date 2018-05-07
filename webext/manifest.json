@@ -25,6 +25,7 @@
         "*://*.folha.uol.com.br/*",
         "*://*.folha.com.br/*",
         "*://*.ft.com/*",
+        "*://super.abril.com.br/*",
         "*://*.veja.abril.com.br/*",
         "*://*.wsj.com/*"
       ]

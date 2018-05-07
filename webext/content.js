@@ -37,6 +37,14 @@ const INJECTION = {
       indexedDB.deleteDatabase("next:ads");'
     `
   },
+  superinteressante: {
+    url: /super.abril.com.br/,
+    code: `
+      document.querySelector('.callpaywall').remove();
+      document.querySelector('.content-blocked').classList
+        .remove('content-blocked');
+    `
+  },
   veja: {
     url: /veja.abril.com.br/,
     code: `
