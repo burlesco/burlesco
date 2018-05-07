@@ -174,8 +174,6 @@ function setScriptBlocking(enabledSites) {
     filterUrls = filterUrls.concat(script);
   }
 
-  console.log('script blocking');
-  console.log(filterUrls);
   chrome.webRequest.onBeforeRequest.addListener(
     onBeforeRequestScript,
     {
@@ -348,7 +346,6 @@ function injectHeader(name, value, requestHeaders) {
 }
 
 function apply() {
-  console.log('apply');
   chrome.storage.local.get('sites', function(result) {
     let enabledSites = result.sites;
 

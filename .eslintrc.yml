@@ -18,5 +18,5 @@ rules:
     - error
     - always
   max-len:
-    - 2
+    - 1
     - code: 80
