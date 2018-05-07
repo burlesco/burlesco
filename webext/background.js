@@ -143,7 +143,7 @@ const BLOCKLIST = {
     headerInjection: {
       name: 'Referer',
       value: 'https://www.facebook.com/',
-      filterUrl: '*://*.wsj.com/*'
+      urlFilter: '*://*.wsj.com/*'
     }
   },
   uol: {
@@ -163,7 +163,7 @@ function onBeforeRequestScript() {
 }
 
 function setScriptBlocking(enabledSites) {
-  let filterUrls = [];
+  let urlFilters = [];
 
   for (let item in BLOCKLIST) {
     let script = BLOCKLIST[item].scriptBlocking;
@@ -171,13 +171,13 @@ function setScriptBlocking(enabledSites) {
       continue;
     if (script == undefined)
       continue;
-    filterUrls = filterUrls.concat(script);
+    urlFilters = urlFilters.concat(script);
   }
 
   chrome.webRequest.onBeforeRequest.addListener(
     onBeforeRequestScript,
     {
-      urls: filterUrls,
+      urls: urlFilters,
       types: ['script']
     },
     ['blocking']
@@ -247,7 +247,7 @@ let callbacksOnBeforeRequestCookie = [];
 
 
 function setCookieBlocking(enabledSites) {
-  let filterUrls = [];
+  let urlFilters = [];
 
   for (let item in BLOCKLIST) {
     let cookie = BLOCKLIST[item].cookieBlocking;
@@ -257,7 +257,7 @@ function setCookieBlocking(enabledSites) {
       continue;
 
     if (cookie.blockAll) {
-      filterUrls.push(cookie.urlFilter);
+      urlFilters.push(cookie.urlFilter);
     }
     else {
       let callback = makeCookieRemove(cookie.cookie);
@@ -276,7 +276,7 @@ function setCookieBlocking(enabledSites) {
   chrome.webRequest.onHeadersReceived.addListener(
     onHeadersReceivedCookie,
     {
-      urls: filterUrls,
+      urls: urlFilters,
       types: ['xmlhttprequest', 'script', 'main_frame']
     },
     ['blocking', 'responseHeaders']
@@ -285,7 +285,7 @@ function setCookieBlocking(enabledSites) {
   chrome.webRequest.onBeforeSendHeaders.addListener(
     onBeforeSendHeadersCookie,
     {
-      urls: filterUrls,
+      urls: urlFilters,
       types: ['xmlhttprequest', 'script', 'main_frame']
     },
     ['blocking', 'requestHeaders']
@@ -307,9 +307,9 @@ function setHeaderInjection(enabledSites) {
   for (let item in BLOCKLIST) {
     let header = BLOCKLIST[item].headerInjection;
     if (header == undefined)
-      return;
+      continue;
     if (enabledSites && enabledSites[item] == false)
-      return;
+      continue;
 
     let callback = makeInjectHeader(header.name, header.value);
     callbacksOnBeforeSendHeadersInjection.push(callback);
