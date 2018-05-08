@@ -79,7 +79,8 @@
     "*://tm.jsuol.com.br/*",
     "*://www.uol/*",
     "*://*.gramophone.co.uk/*",
-    "*://www.folhadelondrina.com.br/*/fivewall.js*"
+    "*://www.folhadelondrina.com.br/*/fivewall.js*",
+    "*://pioneiro.clicrbs.com.br/*"
   ],
 
   "applications": {
