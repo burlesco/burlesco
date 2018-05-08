@@ -44,27 +44,29 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 
 O Burlesco funciona com os seguintes sites de notícia:
 
-- Folha de S.Paulo
-- O Globo
-- O Estado de S. Paulo
-- GaúchaZH
 - Correio Popular
-- Gazeta do Povo
 - Diário Catarinense
-- Jornal de Santa Catarina
 - Diário de Santa Maria
-- Nexo
-- JOTA
-- O Estado do Maranhão
-- Jornal NH
-- UOL
-- Veja
 - Exame
-- Superinteressante
-- Quatro Rodas
-- The Economist
-- Foreign Policy
 - Financial Times
+- Folha de Londrina
+- Folha de S.Paulo
+- Foreign Policy
+- Gazeta do Povo
+- GaúchaZH
+- Gramophone
+- JOTA
+- Jornal NH
+- Jornal de Santa Catarina
+- Nexo
+- O Estado de S. Paulo
+- O Estado do Maranhão
+- O Globo
+- Quatro Rodas
+- Superinteressante
+- The Economist
 - The New York Times
 - The Wall Street Journal
 - The Washington Post
+- UOL
+- Veja

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Burlesco - Opções</title>
+        <meta charset="UTF-8" />
+        <style>
+            .submit {
+                margin-top: 10px;
+            }
+            input[type=checkbox] + span{
+                text-decoration: line-through;
+            }
+            input[type=checkbox]:checked + span{
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Ativar o Burlesco nos sites:</h3>
+        <form>
+            <div>
+                <label>
+                    <input type="checkbox" id="correiopopular" checked>
+                    <span>Correio Popular</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="diariocatarinense" checked>
+                    <span>Diário Catarinense</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="diariodesantamaria" checked>
+                    <span>Diário de Santa Maria</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="exame" checked>
+                    <span>Exame</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="financialtimes" checked>
+                    <span>Financial Times</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="folhadelondrina" checked>
+                    <span>Folha de Londrina</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="folhadespaulo" checked>
+                    <span>Folha de S.Paulo</span>
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="checkbox" id="foreignpolicy" checked>
+                    <span>Foreign Policy</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="gazetadopovo" checked>
+                    <span>Gazeta do Povo</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="gauchazh" checked>
+                    <span>GaúchaZH</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="gramophone" checked>
+                    <span>Gramophone</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="jornaldesantacatarina" checked>
+                    <span>Jornal de Santa Catarina</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="jornalnh" checked>
+                    <span>Jornal NH</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="jota" checked>
+                    <span>JOTA</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="nexo" checked>
+                    <span>Nexo</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="oestadodespaulo" checked>
+                    <span>O Estado de S. Paulo</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="oestadodomaranhao" checked>
+                    <span>O Estado do Maranhão</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="oglobo" checked>
+                    <span>O Globo</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="quatrorodas" checked>
+                    <span>Quatro Rodas</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="superinteressante" checked>
+                    <span>Superinteressante</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="theeconomist" checked>
+                    <span>The Economist</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="thenewyorktimes" checked>
+                    <span>The New York Times</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="thewallstreetjournal" checked>
+                    <span>The Wall Street Journal</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="thewashingtonpost" checked>
+                    <span>The Washington Post</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="uol" checked>
+                    <span>UOL</span>
+                </label>
+            </div>
+            <div>
+                <label>
+                    <input type="checkbox" id="veja" checked>
+                    <span>Veja</span>
+                </label>
+            </div>
+
+
+            <div>
+                <button type="button" id="all">Marcar todos</button>
+                <button type="button" id="none">Desmarcar todos</button>
+            </div>
+            <div class="submit">
+                <button type="submit">Salvar</button>
+                <span style="color: #108c39; display: none" id="save-success">Salvo com sucesso!</span>
+            </div>
+        </form>
+        <script src="options.js"></script>
+    </body>
+</html>
