@@ -16,6 +16,7 @@ const SITES = [
   'oestadodespaulo',
   'oestadodomaranhao',
   'oglobo',
+  'pioneiro',
   'quatrorodas',
   'superinteressante',
   'theeconomist',
