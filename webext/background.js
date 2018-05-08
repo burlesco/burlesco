@@ -108,6 +108,11 @@ const BLOCKLIST = {
       '*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js',
     ]
   },
+  pioneiro: {
+    scriptBlocking: [
+      '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
+    ]
+  },
   quatrorodas: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
@@ -154,11 +159,6 @@ const BLOCKLIST = {
   veja: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
-    ]
-  },
-  pioneiro: {
-    scriptBlocking: [
-      '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
     ]
   }
 };
