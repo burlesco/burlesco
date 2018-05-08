@@ -174,6 +174,14 @@ document.addEventListener('DOMContentLoaded', function() {
       xmlhttp.send();`;
   }
 
+  else if (/super\.abril\.com\.br/.test(document.location.host)) {
+    code = `
+      document.querySelector('.callpaywall').remove();
+      document.querySelector('.content-blocked').classList
+        .remove('content-blocked');
+    `;
+  }
+
   else if (/veja\.abril\.com\.br/.test(document.location.host))
     code = `
       document.querySelector('.content-blocked').classList.remove('content-blocked');
