@@ -155,6 +155,11 @@ const BLOCKLIST = {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ]
+  },
+  pioneiro: {
+    scriptBlocking: [
+      '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
+    ]
   }
 };
 
