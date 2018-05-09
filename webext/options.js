@@ -7,6 +7,7 @@ const SITES = [
   'folhadespaulo',
   'foreignpolicy',
   'gazetadopovo',
+  'gazetaonline',
   'gauchazh',
   'gramophone',
   'jornaldesantacatarina',

@@ -81,7 +81,8 @@
     "*://www.uol/*",
     "*://*.gramophone.co.uk/*",
     "*://www.folhadelondrina.com.br/*/fivewall.js*",
-    "*://pioneiro.clicrbs.com.br/*"
+    "*://pioneiro.clicrbs.com.br/*",
+    "*://www.gazetaonline.com.br/*"
   ],
 
   "applications": {
