@@ -4,6 +4,11 @@ const WHITELIST = {
       'http://paywall.folha.uol.com.br/status.php',
       'https://paywall.folha.uol.com.br/status.php'
     ]
+  },
+  oglobo: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/register-piano/v1/scripts/nova-tela-register.js',
+    ]
   }
 };
 
@@ -86,6 +91,12 @@ const BLOCKLIST = {
       }
     }
   },
+  medium: {
+    cookieBlocking: {
+      urlFilter: 'https://medium.com/*',
+      blockAll: true
+    }
+  },
   nexo: {
     cookieBlocking: {
       urlFilter: '*://api.nexojornal.com.br/*',
@@ -101,11 +112,6 @@ const BLOCKLIST = {
     xhrBlocking: [
       '*://dashboard.tinypass.com/xbuilder/experience/load*',
       'http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js',
-    ]
-  },
-  oglobo: {
-    scriptBlocking: [
-      '*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js',
     ]
   },
   pioneiro: {

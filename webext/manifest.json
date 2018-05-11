@@ -27,7 +27,8 @@
         "*://*.ft.com/*",
         "*://super.abril.com.br/*",
         "*://*.veja.abril.com.br/*",
-        "*://*.wsj.com/*"
+        "*://*.wsj.com/*",
+        "*://*.medium.com/*"
       ]
     },
     {
@@ -57,7 +58,7 @@
     "*://api.clicrbs.com.br/*",
     "*://*.gazetadopovo.com.br/*",
     "*://assets.imirante.com/*",
-    "*://ogjs.infoglobo.com.br/*",
+    "*://*.infoglobo.com.br/*",
     "*://jota.info/*",
     "*://jornaldesantacatarina.clicrbs.com.br/*",
     "*://www.jornalnh.com.br/*",
@@ -81,14 +82,9 @@
     "*://www.uol/*",
     "*://*.gramophone.co.uk/*",
     "*://www.folhadelondrina.com.br/*/fivewall.js*",
-    "*://pioneiro.clicrbs.com.br/*"
+    "*://pioneiro.clicrbs.com.br/*",
+    "*://*.medium.com/*"
   ],
-
-  "applications": {
-    "gecko": {
-      "id": "burlesco@burlesco.com"
-    }
-  },
 
   "options_ui": {
     "page": "options.html"

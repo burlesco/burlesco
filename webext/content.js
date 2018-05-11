@@ -52,6 +52,15 @@ const INJECTION = {
         .remove('content-blocked');
       document.querySelector('.callpaywall').remove();
     `
+  },
+  medium: {
+    url: /medium.com/,
+    code: `
+      console.log('teste');
+      document.cookie = "";
+      localStorage.clear();
+      sessionStorage.clear();
+    `
   }
 };
 
