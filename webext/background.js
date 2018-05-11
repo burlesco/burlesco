@@ -59,6 +59,12 @@ const BLOCKLIST = {
       '*://www.netdeal.com.br/*',
     ]
   },
+  gazetaonline: {
+    cookieBlocking: {
+      urlFilter: '*://www.gazetaonline.com.br/*',
+      blockAll: true
+    }
+  },
   gauchazh: {
     scriptBlocking: [
       '*://gauchazh.clicrbs.com.br/static/main*',
