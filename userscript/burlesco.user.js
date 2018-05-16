@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Burlesco
+// @name         Burlesco (beta)
 // @namespace    https://burles.co/
-// @version      6.1
+// @version      7.0.1
 // @description  Leia notícias sem ser assinante, burle o paywall
 // @author       rodorgas & AugustoResende
 // @supportURL   https://burles.co
