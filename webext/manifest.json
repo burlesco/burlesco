@@ -87,6 +87,12 @@
     "*://*.medium.com/*"
   ],
 
+  "applications": {
+    "gecko": {
+      "id": "burlesco@burlesco.com"
+    }
+  },
+
   "options_ui": {
     "page": "options.html"
   }
