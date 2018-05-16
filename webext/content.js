@@ -40,9 +40,10 @@ const INJECTION = {
   superinteressante: {
     url: /super.abril.com.br/,
     code: `
-      document.querySelector('.callpaywall').remove();
-      document.querySelector('.content-blocked').classList
-        .remove('content-blocked');
+      document.querySelectorAll('.callpaywall')
+        .forEach(x => x.remove());
+      document.querySelectorAll('.content-blocked')
+        .forEach(x => x.classList.remove('content-blocked'))
     `
   },
   veja: {

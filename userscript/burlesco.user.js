@@ -176,9 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   else if (/super\.abril\.com\.br/.test(document.location.host)) {
     code = `
-      document.querySelector('.callpaywall').remove();
-      document.querySelector('.content-blocked').classList
-        .remove('content-blocked');
+      document.querySelectorAll('.callpaywall')
+        .forEach(x => x.remove());
+      document.querySelectorAll('.content-blocked')
+        .forEach(x => x.classList.remove('content-blocked'));
     `;
   }
 
