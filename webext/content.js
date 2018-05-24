@@ -1,5 +1,16 @@
 // run_at: document_idle
+const ABRIL_CODE = `
+  document.querySelectorAll('.callpaywall')
+    .forEach(x => x.remove());
+  document.querySelectorAll('.content-blocked')
+    .forEach(x => x.classList.remove('content-blocked'))
+`;
+
 const INJECTION = {
+  exame: {
+    url: /exame\.abril\.com\.br/,
+    code: ABRIL_CODE
+  },
   oglobo: {
     url: /oglobo\.globo\.com/,
     code: 'paywallAtivo = false;'
@@ -39,20 +50,11 @@ const INJECTION = {
   },
   superinteressante: {
     url: /super.abril.com.br/,
-    code: `
-      document.querySelectorAll('.callpaywall')
-        .forEach(x => x.remove());
-      document.querySelectorAll('.content-blocked')
-        .forEach(x => x.classList.remove('content-blocked'))
-    `
+    code: ABRIL_CODE
   },
   veja: {
     url: /veja.abril.com.br/,
-    code: `
-      document.querySelector('.content-blocked').classList
-        .remove('content-blocked');
-      document.querySelector('.callpaywall').remove();
-    `
+    code: ABRIL_CODE
   },
   medium: {
     url: /medium.com/,
