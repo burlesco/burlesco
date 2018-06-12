@@ -54,7 +54,6 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Foreign Policy
 - Gazeta Online
 - Gazeta do Povo
-- Gramophone
 - GaúchaZH
 - Gramophone
 - JOTA
