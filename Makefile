@@ -20,6 +20,7 @@ pre-build:
 		webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
+	python3 userscript/build.py userscript/burlesco.user.js > "$(DIST_DIR)/burlesco.user.js"
 build:
 	set -e ; \
 	mkdir -p "$(DIST_DIR)" ; \

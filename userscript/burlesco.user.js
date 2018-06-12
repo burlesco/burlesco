@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Burlesco (beta)
+// @name         Burlesco
 // @namespace    https://burles.co/
-// @version      7.0.1
+// @version      7.1
 // @description  Leia notícias sem ser assinante, burle o paywall
 // @author       rodorgas & AugustoResende
 // @supportURL   https://burles.co
@@ -47,8 +47,28 @@
 // @match        *://*.ft.com/*
 // @match        *://*.gramophone.co.uk/*
 // @match        *://*.folhadelondrina.com.br/*
-
-// @webRequest   [{"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"},"action":"cancel"},{"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"},{"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"},{"selector":"*://www.netdeal.com.br/*","action":"cancel"},{"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"},{"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"},{"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"},{"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"},{"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"},{"selector":"*://*.nytimes.com/js/mtr.js","action":"cancel"},{"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"},{"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"},{"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"},{"selector":"*://api.tinypass.com/tpl/*","action":"cancel"},{"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"},{"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"},{"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"},{"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"},{"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"},{"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"},{"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}]
+// @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
+// @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
+// @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
+// @webRequestItem {"selector":"*://www.netdeal.com.br/*","action":"cancel"}
+// @webRequestItem {"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"}
+// @webRequestItem {"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"}
+// @webRequestItem {"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"}
+// @webRequestItem {"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"}
+// @webRequestItem {"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"}
+// @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"}
+// @webRequestItem {"selector":"*://*.nytimes.com/js/mtr.js","action":"cancel"}
+// @webRequestItem {"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"}
+// @webRequestItem {"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"}
+// @webRequestItem {"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"}
+// @webRequestItem {"selector":"*://api.tinypass.com/tpl/*","action":"cancel"}
+// @webRequestItem {"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"}
+// @webRequestItem {"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"}
+// @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"}
+// @webRequestItem {"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"}
+// @webRequestItem {"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}
+// @webRequestItem {"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}
+// @webRequestItem {"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
@@ -174,19 +194,12 @@ document.addEventListener('DOMContentLoaded', function() {
       xmlhttp.send();`;
   }
 
-  else if (/super\.abril\.com\.br/.test(document.location.host)) {
+  else if (/abril\.com\.br/.test(document.location.host))
     code = `
-      document.querySelectorAll('.callpaywall')
-        .forEach(x => x.remove());
-      document.querySelectorAll('.content-blocked')
-        .forEach(x => x.classList.remove('content-blocked'));
-    `;
-  }
-
-  else if (/veja\.abril\.com\.br/.test(document.location.host))
-    code = `
-      document.querySelector('.content-blocked').classList.remove('content-blocked');
-      document.querySelector('.callpaywall').remove();
+      document.queryselectorall('.callpaywall')
+        .foreach(x => x.remove());
+      document.queryselectorall('.content-blocked')
+        .foreach(x => x.classlist.remove('content-blocked'))
     `;
 
   else if (/nytimes\.com/.test(document.location.host))

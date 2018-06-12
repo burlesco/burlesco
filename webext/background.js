@@ -223,11 +223,10 @@ function setXhrBlocking(enabledSites) {
   for (let item in WHITELIST) {
     if (enabledSites && enabledSites[item] == false)
       continue;
-    let xhr = BLOCKLIST[item].xhrBlocking;
+    let xhr = WHITELIST[item].xhrBlocking;
     if (xhr == undefined)
       continue;
     whitelist = whitelist.concat(xhr);
-
   }
 
   chrome.webRequest.onBeforeRequest.addListener(

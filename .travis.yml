@@ -18,7 +18,7 @@ deploy:
       - dist/chromium/burlesco-chromium.crx
       - dist/firefox/burlesco-firefox.xpi
       - dist/opera/burlesco-opera.zip
-      - userscript/burlesco.user.js
+      - dist/burlesco.user.js
     on:
       branch: master
       tags: true
