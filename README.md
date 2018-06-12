@@ -52,13 +52,17 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Folha de Londrina
 - Folha de S.Paulo
 - Foreign Policy
+- Gazeta Online
 - Gazeta do Povo
+- Gramophone
 - GaúchaZH
 - Gramophone
 - JOTA
-- Jornal NH
 - Jornal de Santa Catarina
+- Jornal NH
+- Jornal Pioneiro
 - Nexo
+- Medium
 - O Estado de S. Paulo
 - O Estado do Maranhão
 - O Globo
