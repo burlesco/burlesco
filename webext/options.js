@@ -4,6 +4,7 @@ const SITES = [
   'diariodesantamaria',
   'exame',
   'financialtimes',
+  'folhadelondrina',
   'folhadespaulo',
   'foreignpolicy',
   'gazetadopovo',
