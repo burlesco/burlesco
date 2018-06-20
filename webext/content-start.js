@@ -8,16 +8,16 @@ const INJECTION = {
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             var injectme = this.responseText;
-            injectme = injectme.replace('e.showLoginPaywall,','false,');
-            injectme = injectme.replace('e.showPaywall,','false,');
-            injectme = injectme.replace('e.requestCPF||!1,','false,');
+            injectme = injectme.replace('e.showLoginPaywall,', 'false,');
+            injectme = injectme.replace('e.showPaywall,', 'false,');
+            injectme = injectme.replace('e.requestCPF||!1,', 'false,');
             injectme = injectme.replace(
-              '!e.showLoginPaywall&&!e.showPaywall||!1','true');
-              var script = document.createElement("script");
-              script.type = "text/javascript";
-              var textNode = document.createTextNode(injectme);
-              script.appendChild(textNode);
-              document.head.appendChild(script);
+              '!e.showLoginPaywall&&!e.showPaywall||!1', 'true');
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            var textNode = document.createTextNode(injectme);
+            script.appendChild(textNode);
+            document.head.appendChild(script);
           }
         };
         xhttp.open("GET", jsurl, true);
