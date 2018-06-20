@@ -121,8 +121,9 @@ else if (/jota\.info/.test(document.location.host)) {
 document.addEventListener('DOMContentLoaded', function() {
   var code = null;
   if (/oglobo\.globo\.com/.test(document.location.host))
-    code = `document.getElementById('barreiraRegisterExclusiva').remove();
-            document.body.style.overflow = 'scroll';
+    code = `
+      document.getElementById('barreiraRegisterExclusiva').remove();
+      document.body.style.overflow = 'scroll';
     `;
 
   else if (/www\.economist\.com/.test(document.location.host))
