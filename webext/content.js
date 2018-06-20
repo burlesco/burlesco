@@ -13,7 +13,10 @@ const INJECTION = {
   },
   oglobo: {
     url: /oglobo\.globo\.com/,
-    code: 'paywallAtivo = false;'
+    code: `
+      document.getElementById('barreiraRegisterExclusiva').remove();
+      document.body.style.overflow = 'scroll';
+    `
   },
   theeconomist: {
     url : /www\.economist\.com/,
