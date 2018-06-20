@@ -1,22 +1,4 @@
 // run_at: document_start
-chrome.storage.local.get('sites', function(result) {
-  for (let site in result.sites) {
-    let enabledSites = result.sites;
-    if (enabledSites[site] == false)
-      continue;
-    if (INJECTION[site] == undefined)
-      continue;
-
-    if (INJECTION[site].url.test(document.location.host)) {
-      var script = document.createElement('script');
-      script.textContent = INJECTION[site].code;
-      (document.head||document.documentElement).appendChild(script);
-      script.parentNode.removeChild(script);
-      break;
-    }
-  }
-});
-
 const INJECTION = {
   gauchazh: {
     url : /gauchazh.clicrbs.com.br/,
@@ -53,3 +35,21 @@ const INJECTION = {
     `
   }
 };
+
+chrome.storage.local.get('sites', function(result) {
+  for (let site in INJECTION) {
+    let enabledSites = result.sites;
+    if (enabledSites && enabledSites[site] == false)
+      continue;
+    if (INJECTION[site] == undefined)
+      continue;
+
+    if (INJECTION[site].url.test(document.location.host)) {
+      var script = document.createElement('script');
+      script.textContent = INJECTION[site].code;
+      (document.head||document.documentElement).appendChild(script);
+      script.parentNode.removeChild(script);
+      break;
+    }
+  }
+});
