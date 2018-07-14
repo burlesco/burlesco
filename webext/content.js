@@ -10,7 +10,7 @@ const INJECTION = {
   exame: {
     url: /exame\.abril\.com\.br/,
     code: ABRIL_CODE
-  },
+  },  
   oglobo: {
     url: /oglobo\.globo\.com/,
     code: `
@@ -66,6 +66,12 @@ const INJECTION = {
       document.cookie = "";
       localStorage.clear();
       sessionStorage.clear();
+    `
+  },
+  gazetadopovo: {
+    url: /gazetadopovo\.com\.br/,
+    code: `
+      GazetaDoPovo.Util.isPrivateBrowsing = function() {};
     `
   }
 };
