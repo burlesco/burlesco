@@ -4,11 +4,6 @@ const WHITELIST = {
       'http://paywall.folha.uol.com.br/status.php',
       'https://paywall.folha.uol.com.br/status.php'
     ]
-  },
-  oglobo: {
-    scriptBlocking: [
-      '*://static.infoglobo.com.br/paywall/register-piano/v1/scripts/nova-tela-register.js',
-    ]
   }
 };
 
@@ -120,6 +115,17 @@ const BLOCKLIST = {
       'http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js',
     ]
   },
+  oglobo: {
+    urls: [
+      /oglobo.globo.com/,
+    ],
+    allowScript: [
+      '*://cdn.tinypass.com/api/tinypass.min.js',
+    ],
+    xhrBlocking:  [
+      '*://static.infoglobo.com.br/paywall/register-piano/v2/scripts/nova-tela-register.js',
+    ],
+  },
   pioneiro: {
     scriptBlocking: [
       '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
@@ -175,7 +181,22 @@ const BLOCKLIST = {
   }
 };
 
-function onBeforeRequestScript() {
+function onBeforeRequestScript(details) {
+  for (let item in BLOCKLIST) {
+    let urls = BLOCKLIST[item].urls;
+    let scripts = BLOCKLIST[item].allowScript;
+    if (urls != undefined) {
+      for (let item in urls) {
+        if (urls[item].test(details.initiator) ||
+            urls[item].test(details.originUrl)) {
+          for (let item in scripts) {
+            if (details.url.match(matchPatternToRegExp(scripts[item])))
+              return {cancel: false};
+          }
+        }
+      }
+    }
+  }
   return {cancel: true};
 }
 
@@ -391,3 +412,68 @@ chrome.runtime.onMessage.addListener(function(message) {
     apply();
   }
 });
+
+
+function matchPatternToRegExp(pattern) {
+  /**
+  * Transforms a valid match pattern into a regular expression
+  * which matches all URLs included by that pattern.
+  *
+  * @param  {string}  pattern  The pattern to transform.
+  * @return {RegExp}           The pattern's equivalent as a RegExp.
+  * @throws {TypeError}        If the pattern is not a valid MatchPattern
+  */
+  if (pattern === '') {
+    return (/^(?:http|https|file|ftp|app):\/\//);
+  }
+
+  const schemeSegment = '(\\*|http|https|ws|wss|file|ftp)';
+  const hostSegment = '(\\*|(?:\\*\\.)?(?:[^/*]+))?';
+  const pathSegment = '(.*)';
+  const matchPatternRegExp = new RegExp(
+    `^${schemeSegment}://${hostSegment}/${pathSegment}$`
+  );
+
+  let match = matchPatternRegExp.exec(pattern);
+  if (!match) {
+    throw new TypeError(`"${pattern}" is not a valid MatchPattern`);
+  }
+
+  let [, scheme, host, path] = match;
+  if (!host) {
+    throw new TypeError(`"${pattern}" does not have a valid host`);
+  }
+
+  let regex = '^';
+
+  if (scheme === '*') {
+    regex += '(http|https)';
+  } else {
+    regex += scheme;
+  }
+
+  regex += '://';
+
+  if (host && host === '*') {
+    regex += '[^/]+?';
+  } else if (host) {
+    if (host.match(/^\*\./)) {
+      regex += '[^/]*?';
+      host = host.substring(2);
+    }
+    regex += host.replace(/\./g, '\\.');
+  }
+
+  if (path) {
+    if (path === '*') {
+      regex += '(/.*)?';
+    } else if (path.charAt(0) !== '/') {
+      regex += '/';
+      regex += path.replace(/\./g, '\\.').replace(/\*/g, '.*?');
+      regex += '/?';
+    }
+  }
+
+  regex += '$';
+  return new RegExp(regex);
+}
