@@ -149,7 +149,8 @@ const BLOCKLIST = {
   },
   thewashingtonpost: {
     scriptBlocking: [
-      '*://*.washingtonpost.com/wp-stat/pwapi/*',
+      '*://*.washingtonpost.com/*pwapi/*.js*',
+      '*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*',
     ]
   },
   thewallstreetjournal: {
