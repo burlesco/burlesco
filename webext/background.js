@@ -123,7 +123,7 @@ const BLOCKLIST = {
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ],
     xhrBlocking:  [
-      '*://static.infoglobo.com.br/paywall/register-piano/v2/scripts/nova-tela-register.js',
+      '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
     ],
   },
   pioneiro: {
