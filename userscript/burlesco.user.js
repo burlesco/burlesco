@@ -58,8 +58,7 @@
 // @webRequestItem {"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"}
 // @webRequestItem {"selector":"*://*.nytimes.com/js/mtr.js","action":"cancel"}
-// @webRequestItem {"selector":"*://*.washingtonpost.com/*pwapi/*.js*","action":"cancel"}
-// @webRequestItem {"selector":"*://*.washingtonpost.com/*drawbridge/drawbridge.js?_*","action":"cancel"}
+// @webRequestItem {"selector":"*://*.washingtonpost.com/wp-stat/pwapi/*","action":"cancel"}
 // @webRequestItem {"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"}
 // @webRequestItem {"selector":"*://api.tinypass.com/tpl/*","action":"cancel"}
 // @webRequestItem {"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"}
