@@ -18,11 +18,6 @@ const BLOCKLIST = {
       'http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*',
     ]
   },
-  diariodesantamaria: {
-    scriptBlocking: [
-      '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
-    ]
-  },
   exame: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
