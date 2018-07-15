@@ -1,4 +1,5 @@
 dist/
+safari/bin/
 burlesco-rsa-key.pem
 .DS_Store
 node_modules/

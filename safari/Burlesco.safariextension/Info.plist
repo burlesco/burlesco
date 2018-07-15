@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>rodorgas</string>
+	<key>Builder Version</key>
+	<string>12604.3.5.1.1</string>
+	<key>CFBundleDisplayName</key>
+	<string>Burlesco</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.rodorgas.burlesco</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>5.7</string>
+	<key>CFBundleVersion</key>
+	<string>5.7</string>
+	<key>Content</key>
+	<dict>
+		<key>Content Blocker</key>
+		<string>blockerList.json</string>
+		<key>Scripts</key>
+		<dict>
+			<key>End</key>
+			<array>
+				<string>content.js</string>
+			</array>
+		</dict>
+	</dict>
+	<key>Description</key>
+	<string>Leia notícias sem ser assinante, burle o paywall</string>
+	<key>DeveloperIdentifier</key>
+	<string>0000000000</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Allowed Domains</key>
+			<array>
+				<string>estadao.com.br</string>
+				<string>folha.uol.com.br</string>
+				<string>globo.com</string>
+				<string>exame.abril.com.br</string>
+				<string>super.abril.com.br</string>
+				<string>veja.abril.com.br</string>
+				<string>gauchazh.clicrbs.com.br</string>
+				<string>correio.rac.com.br</string>
+				<string>gazetadopovo.com.br</string>
+				<string>jornaldesantacatarina.clicrbs.com.br</string>
+				<string>diariodesantamaria.clicrbs.com.br</string>
+				<string>nexojornal.com.br</string>
+				<string>jota.info</string>
+				<string>imirante.com</string>
+				<string>jornalnh.com.br</string>
+				<string>uol.com.br</string>
+				<string>tm.jsuol.com.br</string>
+				<string>www.uol</string>
+				<string>economist.com</string>
+				<string>foreignpolicy.com</string>
+				<string>nyt.com</string>
+				<string>washingtonpost.com</string>
+				<string>www.ft.com</string>
+			</array>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>Some</string>
+		</dict>
+	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.githubusercontent.com/rodorgas/burlesco/master/safari/update-manifest.plist</string>
+	<key>Website</key>
+	<string>https://burles.co</string>
+</dict>
+</plist>
