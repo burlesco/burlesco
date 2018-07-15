@@ -29,7 +29,8 @@
         "*://super.abril.com.br/*",
         "*://*.veja.abril.com.br/*",
         "*://*.wsj.com/*",
-        "*://*.medium.com/*"
+        "*://*.medium.com/*",
+        "*://*.jota.info/*"
       ]
     },
     {
@@ -60,7 +61,7 @@
     "*://*.gazetadopovo.com.br/*",
     "*://assets.imirante.com/*",
     "*://*.infoglobo.com.br/*",
-    "*://jota.info/*",
+    "*://*.jota.info/*",
     "*://jornaldesantacatarina.clicrbs.com.br/*",
     "*://www.jornalnh.com.br/*",
     "*://*.nexojornal.com.br/*",
