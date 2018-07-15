@@ -67,6 +67,12 @@ const INJECTION = {
       localStorage.clear();
       sessionStorage.clear();
     `
+  },
+  jota: {
+    url: /jota.info/,
+    code: `
+      document.getElementsByClassName('jota-paywall')[0].remove();
+    `
   }
 };
 

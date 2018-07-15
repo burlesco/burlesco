@@ -79,13 +79,9 @@ const BLOCKLIST = {
     ]
   },
   jota: {
-    cookieBlocking: {
-      urlFilter: 'http://jota.info/*',
-      cookie: {
-        url: 'http://jota.info/*',
-        name: 'articles'
-      }
-    }
+    scriptBlocking: [
+      '*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*'
+    ]
   },
   medium: {
     cookieBlocking: {

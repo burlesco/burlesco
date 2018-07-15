@@ -24,7 +24,7 @@
 // @match        *://*.gazetadopovo.com.br/*
 // @match        *://assets.imirante.com/*
 // @match        *://ogjs.infoglobo.com.br/*
-// @match        *://jota.info/*
+// @match        *://*.jota.info/*
 // @match        *://jornaldesantacatarina.clicrbs.com.br/*
 // @match        *://www.jornalnh.com.br/*
 // @match        *://*.nexojornal.com.br/*
@@ -68,6 +68,7 @@
 // @webRequestItem {"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}
 // @webRequestItem {"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}
+// @webRequestItem {"selector":"*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
@@ -112,7 +113,7 @@ if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
 }
 
 else if (/jota\.info/.test(document.location.host)) {
-  document.cookie = 'articles=null;path=/';
+  document.getElementsByClassName('jota-paywall')[0].remove();
 }
 
 
