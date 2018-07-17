@@ -7,6 +7,13 @@ const ABRIL_CODE = `
 `;
 
 const INJECTION = {
+  bloomberg: {
+    url: /bloomberg\.com/,
+    code: `
+      localStorage.clear();
+      sessionStorage.clear();
+    `
+  },
   exame: {
     url: /exame\.abril\.com\.br/,
     code: ABRIL_CODE

@@ -44,6 +44,7 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 
 O Burlesco funciona com os seguintes sites de notícia:
 
+- Bloomberg
 - Correio Popular
 - Diário Catarinense
 - Exame
