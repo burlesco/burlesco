@@ -10,6 +10,7 @@
 // @grant        GM_webRequest
 // @grant        GM_xmlhttpRequest
 // @connect      gauchazh.clicrbs.com.br
+// @match        *://www.bloomberg.com/*
 // @match        *://correio.rac.com.br/*
 // @match        *://dc.clicrbs.com.br/*
 // @match        *://www.economist.com/*
@@ -232,6 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
+  }
+
+  else if (/bloomberg\.com/.test(document.location.host)) {
+    localStorage.clear();
+    sessionStorage.clear();
   }
 
 

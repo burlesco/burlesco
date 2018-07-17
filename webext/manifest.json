@@ -19,6 +19,7 @@
       "js": ["content.js"],
       "run_at": "document_idle",
       "matches": [
+        "*://www.bloomberg.com/*",
         "*://*.oglobo.globo.com/*",
         "*://www.economist.com/*",
         "*://*.exame.abril.com.br/*",
@@ -46,6 +47,7 @@
     "cookies",
     "storage",
 
+    "*://www.bloomberg.com/*",
     "*://correio.rac.com.br/*",
     "*://dc.clicrbs.com.br/*",
     "*://www.economist.com/*",

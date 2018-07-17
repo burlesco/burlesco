@@ -1,4 +1,5 @@
 const SITES = [
+  'bloomberg',
   'correiopopular',
   'diariocatarinense',
   'exame',
