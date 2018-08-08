@@ -13,6 +13,12 @@ const BLOCKLIST = {
       '*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*',
     ]
   },
+  diariopopular: {
+    cookieBlocking: {
+      urlFilter: '*://www.diariopopular.com.br/*',
+      blockAll: true
+    }
+  },
   diariocatarinense: {
     xhrBlocking: [
       'http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*',

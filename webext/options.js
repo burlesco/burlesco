@@ -2,6 +2,7 @@ const SITES = [
   'bloomberg',
   'correiopopular',
   'diariocatarinense',
+  'diariopopular',
   'exame',
   'financialtimes',
   'folhadelondrina',
