@@ -240,6 +240,10 @@ document.addEventListener('DOMContentLoaded', function() {
     sessionStorage.clear();
   }
 
+  else if (/diariopopular\.com/.test(document.location.host)) {
+    eraseAllCookies();
+  }
+
 
   if (code !== null) {
     var script = document.createElement('script');
