@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var code = null;
   if (/oglobo\.globo\.com/.test(document.location.host))
     code = `
+      document.body.setAttribute('style', 'overflow: scroll !important');
       document.getElementById('barreiraRegisterExclusiva').remove();
-      document.body.style.overflow = 'scroll';
     `;
 
   else if (/www\.economist\.com/.test(document.location.host))
