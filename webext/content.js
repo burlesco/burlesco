@@ -21,8 +21,8 @@ const INJECTION = {
   oglobo: {
     url: /oglobo\.globo\.com/,
     code: `
+      document.body.setAttribute('style', 'overflow: scroll !important');
       document.getElementById('barreiraRegisterExclusiva').remove();
-      document.body.style.overflow = 'scroll';
     `
   },
   theeconomist: {
