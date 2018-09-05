@@ -17,7 +17,6 @@ const SITES = [
   'jota',
   'nexo',
   'oestadodespaulo',
-  'oestadodomaranhao',
   'oglobo',
   'medium',
   'pioneiro',
