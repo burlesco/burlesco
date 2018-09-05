@@ -31,7 +31,8 @@
         "*://*.veja.abril.com.br/*",
         "*://*.wsj.com/*",
         "*://*.medium.com/*",
-        "*://*.jota.info/*"
+        "*://*.jota.info/*",
+        "*://*.wired.com/*"
       ]
     },
     {
@@ -89,7 +90,8 @@
     "*://www.folhadelondrina.com.br/*/fivewall.js*",
     "*://pioneiro.clicrbs.com.br/*",
     "*://www.gazetaonline.com.br/*",
-    "*://*.medium.com/*"
+    "*://*.medium.com/*",
+    "*://*.wired.com/*"
   ],
 
   "applications": {
