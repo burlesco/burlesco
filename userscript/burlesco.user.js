@@ -48,6 +48,7 @@
 // @match        *://*.ft.com/*
 // @match        *://*.gramophone.co.uk/*
 // @match        *://*.folhadelondrina.com.br/*
+// @match        *://*.wired.com/*
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
@@ -241,6 +242,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   else if (/diariopopular\.com/.test(document.location.host)) {
+    eraseAllCookies();
+  }
+
+  else if (/wired\.com/.test(document.location.host)) {
+    code = `
+      window.onload = function() {
+        style = document.createElement('style');
+        style.type = 'text/css';
+        css='.paywall-container-component {display: none !important}';
+        style.appendChild(document.createTextNode(css));
+        document.head.appendChild(style);
+      }
+      document.cookie = "";
+      localStorage.clear();
+      sessionStorage.clear();
+    `;
     eraseAllCookies();
   }
 
