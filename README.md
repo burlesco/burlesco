@@ -72,3 +72,4 @@ O Burlesco funciona com os seguintes sites de notícia:
 - The Washington Post
 - UOL
 - Veja
+- Wired
