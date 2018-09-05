@@ -26,7 +26,8 @@ const SITES = [
   'thewallstreetjournal',
   'thewashingtonpost',
   'uol',
-  'veja'
+  'veja',
+  'wired'
 ];
 
 function saveOptions(e) {

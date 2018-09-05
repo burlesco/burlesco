@@ -168,7 +168,13 @@ const BLOCKLIST = {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ]
-  }
+  },
+  wired: {
+    cookieBlocking: {
+      urlFilter: '*://*.wired.com/*',
+      blockAll: true
+    }
+  },
 };
 
 function onBeforeRequestScript(details) {
