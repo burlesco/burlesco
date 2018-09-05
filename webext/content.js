@@ -80,6 +80,21 @@ const INJECTION = {
     code: `
       document.getElementsByClassName('jota-paywall')[0].remove();
     `
+  },
+  wired: {
+    url: /wired.com/,
+    code: `
+    window.onload = function() {
+      style = document.createElement('style');
+      style.type = 'text/css';
+      css='.paywall-container-component {display: none !important}';
+      style.appendChild(document.createTextNode(css));
+      document.head.appendChild(style);
+    }
+    document.cookie = "";
+    localStorage.clear();
+    sessionStorage.clear();
+    `
   }
 };
 
