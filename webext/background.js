@@ -106,12 +106,6 @@ const BLOCKLIST = {
       '*://*.estadao.com.br/paywall/*',
     ]
   },
-  oestadodomaranhao: {
-    xhrBlocking: [
-      '*://dashboard.tinypass.com/xbuilder/experience/load*',
-      'http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js',
-    ]
-  },
   oglobo: {
     urls: [
       /oglobo.globo.com/,

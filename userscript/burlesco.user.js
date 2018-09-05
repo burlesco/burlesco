@@ -23,7 +23,6 @@
 // @match        *://*.zh.clicrbs.com.br/*
 // @match        *://api.clicrbs.com.br/*
 // @match        *://*.gazetadopovo.com.br/*
-// @match        *://assets.imirante.com/*
 // @match        *://ogjs.infoglobo.com.br/*
 // @match        *://*.jota.info/*
 // @match        *://jornaldesantacatarina.clicrbs.com.br/*
@@ -55,7 +54,6 @@
 // @webRequestItem {"selector":"*://www.netdeal.com.br/*","action":"cancel"}
 // @webRequestItem {"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"}
-// @webRequestItem {"selector":"http://assets.imirante.com/2.0/oestadoma/js/jquery.login.min.js","action":"cancel"}
 // @webRequestItem {"selector":"*://*.jornalnh.com.br/includes/js/paywall.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://blockv2.fivewall.com.br/*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/SLoader.js","action":"cancel"}
