@@ -177,6 +177,7 @@ const BLOCKLIST = {
   vs: {
     scriptBlocking: [
       '*://www.jornalvs.com.br/includes/js/paywall.js*',
+      '*://blockv2.fivewall.com.br/*',
     ]
   },
   wired: {
