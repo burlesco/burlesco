@@ -14,6 +14,7 @@ const SITES = [
   'gramophone',
   'jornaldesantacatarina',
   'jornalnh',
+  'jornalvs',
   'jota',
   'nexo',
   'oestadodespaulo',

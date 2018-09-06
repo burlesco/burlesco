@@ -174,6 +174,11 @@ const BLOCKLIST = {
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ]
   },
+  vs: {
+    scriptBlocking: [
+      '*://www.jornalvs.com.br/includes/js/paywall.js*',
+    ]
+  },
   wired: {
     cookieBlocking: {
       urlFilter: '*://*.wired.com/*',
