@@ -84,6 +84,12 @@ const BLOCKLIST = {
       '*://blockv2.fivewall.com.br/*',
     ]
   },
+  jornalvs: {
+    scriptBlocking: [
+      '*://www.jornalvs.com.br/includes/js/paywall.js*',
+      '*://blockv2.fivewall.com.br/*',
+    ]
+  },
   jota: {
     scriptBlocking: [
       '*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*'
@@ -172,12 +178,6 @@ const BLOCKLIST = {
   veja: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
-    ]
-  },
-  vs: {
-    scriptBlocking: [
-      '*://www.jornalvs.com.br/includes/js/paywall.js*',
-      '*://blockv2.fivewall.com.br/*',
     ]
   },
   wired: {
