@@ -90,7 +90,8 @@
     "*://pioneiro.clicrbs.com.br/*",
     "*://www.gazetaonline.com.br/*",
     "*://*.medium.com/*",
-    "*://*.wired.com/*"
+    "*://*.wired.com/*",
+    "*://www.jornalvs.com.br/*"
   ],
 
   "applications": {
