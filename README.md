@@ -47,19 +47,21 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Bloomberg
 - Correio Popular
 - Diário Catarinense
+- Diário Popular
 - Exame
 - Financial Times
 - Folha de Londrina
 - Folha de S.Paulo
 - Foreign Policy
-- Gazeta Online
 - Gazeta do Povo
+- Gazeta Online
 - GaúchaZH
 - Gramophone
 - JOTA
 - Jornal de Santa Catarina
 - Jornal NH
 - Jornal Pioneiro
+- Jornal VS
 - Nexo
 - Medium
 - O Estado de S. Paulo
