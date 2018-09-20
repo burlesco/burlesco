@@ -8,6 +8,11 @@ const WHITELIST = {
 };
 
 const BLOCKLIST = {
+  br18: {
+    xhrBlocking: [
+      '*://*.estadao.com.br/paywall/*',
+    ]
+  },
   correiopopular: {
     scriptBlocking: [
       '*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*',
