@@ -38,6 +38,7 @@
 // @match        *://dashboard.tinypass.com/*
 // @match        *://*.washingtonpost.com/*
 // @match        *://*.exame.abril.com.br/*
+// @match        *://www.eltiempo.com/*
 // @match        *://super.abril.com.br/*
 // @match        *://veja.abril.com.br/*
 // @match        *://quatrorodas.abril.com.br/*
@@ -71,6 +72,7 @@
 // @webRequestItem {"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.jornalvs.com.br/includes/js/paywall.js*","action":"cancel"}
+// @webRequestItem {"selector":"https://www.eltiempo.com/js/desktopArticle.js*","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==

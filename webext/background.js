@@ -24,6 +24,11 @@ const BLOCKLIST = {
       'http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*',
     ]
   },
+  eltiempo: {
+    scriptBlocking: [
+      'https://www.eltiempo.com/js/desktopArticle.js*',
+    ]
+  },
   exame: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',

@@ -91,7 +91,8 @@
     "*://www.gazetaonline.com.br/*",
     "*://*.medium.com/*",
     "*://*.wired.com/*",
-    "*://www.jornalvs.com.br/*"
+    "*://www.jornalvs.com.br/*",
+    "*://www.eltiempo.com/*"
   ],
 
   "applications": {
