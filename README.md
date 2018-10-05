@@ -49,6 +49,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Diário Catarinense
 - Diário Popular
 - Exame
+- El Tiempo
 - Financial Times
 - Folha de Londrina
 - Folha de S.Paulo

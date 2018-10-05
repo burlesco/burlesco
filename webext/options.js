@@ -5,6 +5,7 @@ const SITES = [
   'diariocatarinense',
   'diariopopular',
   'exame',
+  'eltiempo',
   'financialtimes',
   'folhadelondrina',
   'folhadespaulo',
