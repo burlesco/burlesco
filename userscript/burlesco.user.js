@@ -51,6 +51,7 @@
 // @match        *://*.wired.com/*
 // @match        *://www.jornalvs.com.br/*
 // @match        *://*.br18.com.br/*
+// @match        *://*.diariopopular.com.br/*
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
@@ -244,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
     sessionStorage.clear();
   }
 
-  else if (/diariopopular\.com/.test(document.location.host)) {
+  else if (/diariopopular\.com\.br/.test(document.location.host)) {
     eraseAllCookies();
   }
 
