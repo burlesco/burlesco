@@ -1,8 +1,7 @@
-language: bash
+language: node_js
 node_js:
-  - stable
+  - "10"
 install:
-  - sudo apt-get install npm
   - npm install -g eslint
 script:
   - make lint
