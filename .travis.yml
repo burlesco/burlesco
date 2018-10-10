@@ -1,4 +1,6 @@
 language: bash
+node_js:
+  - stable
 install:
   - npm install -g eslint
 script:

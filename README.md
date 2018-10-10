@@ -8,7 +8,7 @@
 [![Mozilla Add-on](https://img.shields.io/amo/v/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 [![Mozilla Add-on Rating](https://img.shields.io/amo/rating/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
 [![Mozilla Add-on](https://img.shields.io/amo/d/burlesco.svg)](https://addons.mozilla.org/pt-BR/firefox/addon/burlesco/)
-[![Build Status](https://travis-ci.org/rodorgas/burlesco.svg?branch=master)](https://travis-ci.org/rodorgas/burlesco)
+[![Build Status](https://travis-ci.org/burlesco/burlesco.svg?branch=master)](https://travis-ci.org/burlesco/burlesco)
 
 
 Extensão e userscript para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
