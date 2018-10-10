@@ -2,6 +2,7 @@ language: bash
 node_js:
   - stable
 install:
+  - apt install npm
   - npm install -g eslint
 script:
   - make lint
