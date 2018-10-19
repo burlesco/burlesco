@@ -41,6 +41,7 @@
 // @match        *://www.eltiempo.com/*
 // @match        *://super.abril.com.br/*
 // @match        *://veja.abril.com.br/*
+// @match        *://mdemulher.abril.com.br/*
 // @match        *://quatrorodas.abril.com.br/*
 // @match        *://*.uol.com.br/*
 // @match        *://www.uol/*
