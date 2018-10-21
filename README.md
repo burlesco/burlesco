@@ -27,7 +27,7 @@ O código-fonte da extensão possui basicamente três arquivos, na pasta `webext
 
 Há um Makefile para auxiliar no desenvolvimento:
 
-- `make lint`: verifica erros de sintaxe ou de estilo no código. Requer o [`es-lint`](https://github.com/eslint/eslint) que pode instalado com `npm install -g es-lint`;
+- `make lint`: verifica erros de sintaxe ou de estilo no código. Requer o [`es-lint`](https://github.com/eslint/eslint) que pode instalado com `npm install -g eslint`;
 - `make`: executa todas as etapas incluindo o lint e gera extensões empacotadas para cada navegador.
 
 ## Userscript
