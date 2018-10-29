@@ -133,6 +133,13 @@ const BLOCKLIST = {
       '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
     ],
   },
+  haaretz: {
+    headerInjection: {
+      name: 'User-Agent',
+      value: 'Googlebot/2.1 (+http://www.googlebot.com/bot.html)',
+      urlFilter: '*://*.haaretz.com/*'
+    }
+  },
   pioneiro: {
     scriptBlocking: [
       '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
