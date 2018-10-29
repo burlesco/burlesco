@@ -52,6 +52,7 @@
 // @match        *://www.jornalvs.com.br/*
 // @match        *://*.br18.com.br/*
 // @match        *://*.diariopopular.com.br/*
+// @match        *://*.haaretz.com/*
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
@@ -265,6 +266,26 @@ document.addEventListener('DOMContentLoaded', function() {
     eraseAllCookies();
   }
 
+  else if (/haaretz\.com/.test(document.location.host)) {
+
+    GM_xmlhttpRequest({
+      method: 'GET',
+      url: window.location.href,
+      headers: {
+        'User-Agent': 'Googlebot/2.1 (+http://www.googlebot.com/bot.html)'
+      },
+      anonymous: true,
+      onload: function(response) {
+        var parser = new DOMParser();
+        var newDocument = parser.parseFromString(response.responseText,'text/html');
+        if (newDocument) {
+          document.open();
+          document.write(newDocument.getElementsByTagName('html')[0].innerHTML);
+          document.close();
+        }
+      }
+    });
+  }
 
   if (code !== null) {
     var script = document.createElement('script');

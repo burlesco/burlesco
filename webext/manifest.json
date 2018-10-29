@@ -93,7 +93,8 @@
     "*://*.wired.com/*",
     "*://www.jornalvs.com.br/*",
     "*://*.br18.com.br/*",
-    "*://www.eltiempo.com/*"
+    "*://www.eltiempo.com/*",
+    "*://*.haaretz.com/*"
   ],
 
   "applications": {
