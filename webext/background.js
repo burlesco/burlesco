@@ -140,6 +140,17 @@ const BLOCKLIST = {
       urlFilter: '*://*.haaretz.com/*'
     }
   },
+  haaretz_il: {
+    headerInjection: {
+      name: 'User-Agent',
+      value: 'Googlebot/2.1 (+http://www.googlebot.com/bot.html)',
+      urlFilter: '*://*.haaretz.co.il/*'
+    },
+    scriptBlocking: [
+      '*://*.haaretz.co.il/*/inter.js',
+      '*://*.themarker.com/*/inter.js'
+    ]
+  },
   pioneiro: {
     scriptBlocking: [
       '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
