@@ -15,6 +15,7 @@ const SITES = [
   'gauchazh',
   'gramophone',
   'haaretz',
+  'haaretz_il',
   'jornaldesantacatarina',
   'jornalnh',
   'jornalvs',
