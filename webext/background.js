@@ -18,6 +18,11 @@ const BLOCKLIST = {
       '*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*',
     ]
   },
+  diarinho: {
+    xhrBlocking: [
+      '*://*.diarinho.com.br/wp-admin/admin-ajax.php',
+    ]
+  },
   diariopopular: {
     cookieBlocking: {
       urlFilter: '*://www.diariopopular.com.br/*',

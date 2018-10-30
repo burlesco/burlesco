@@ -94,7 +94,8 @@
     "*://www.jornalvs.com.br/*",
     "*://*.br18.com.br/*",
     "*://www.eltiempo.com/*",
-    "*://*.haaretz.com/*"
+    "*://*.haaretz.com/*",
+    "*://*.diarinho.com.br/*"
   ],
 
   "applications": {

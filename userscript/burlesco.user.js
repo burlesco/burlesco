@@ -53,6 +53,7 @@
 // @match        *://*.br18.com.br/*
 // @match        *://*.diariopopular.com.br/*
 // @match        *://*.haaretz.com/*
+// @match        *://*.diarinho.com.br/*
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
@@ -76,6 +77,7 @@
 // @webRequestItem {"selector":"*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.jornalvs.com.br/includes/js/paywall.js*","action":"cancel"}
 // @webRequestItem {"selector":"https://www.eltiempo.com/js/desktopArticle.js*","action":"cancel"}
+// @webRequestItem {"selector":"*://*.diarinho.com.br/wp-admin/admin-ajax.php","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
