@@ -95,7 +95,8 @@
     "*://*.br18.com.br/*",
     "*://www.eltiempo.com/*",
     "*://*.haaretz.com/*",
-    "*://*.haaretz.co.il/*"
+    "*://*.haaretz.co.il/*",
+    "*://*.diarinho.com.br/*"
   ],
 
   "applications": {
