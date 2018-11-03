@@ -81,6 +81,7 @@
 // @webRequestItem {"selector":"*://*.haaretz.co.il/*/inter.js","action":"cancel"}
 // @webRequestItem {"selector":"*://*.themarker.com/*/inter.js","action":"cancel"}
 // @webRequestItem {"selector":"*://*.diarinho.com.br/wp-admin/admin-ajax.php","action":"cancel"}
+// @webRequestItem {"selector":"*://diarinho.com.br/wp-admin/admin-ajax.php","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
