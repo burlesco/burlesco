@@ -77,7 +77,7 @@
 // @webRequestItem {"selector":"*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.jornalvs.com.br/includes/js/paywall.js*","action":"cancel"}
 // @webRequestItem {"selector":"https://www.eltiempo.com/js/desktopArticle.js*","action":"cancel"}
-// @webRequestItem {"selector":"*://*.diarinho.com.br/wp-admin/admin-ajax.php","action":"cancel"}
+// @webRequestItem {"selector":"*://diarinho.com.br/wp-admin/admin-ajax.php","action":"cancel"}
 // @run-at       document-start
 // @noframes
 // ==/UserScript==
