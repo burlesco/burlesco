@@ -49,6 +49,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Correio Popular
 - Diário Catarinense
 - Diário Popular
+- Diarinho
 - Exame
 - El Tiempo
 - Financial Times
@@ -59,6 +60,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Gazeta Online
 - GaúchaZH
 - Gramophone
+- Haaretz
 - JOTA
 - Jornal de Santa Catarina
 - Jornal NH
