@@ -134,8 +134,8 @@ const BLOCKLIST = {
     allowScript: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ],
-    xhrBlocking:  [
-      '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
+    scriptBlocking: [
+      'https://static.infoglobo.com.br/paywall/js/tiny.js'
     ],
   },
   haaretz: {

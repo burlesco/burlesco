@@ -20,7 +20,6 @@
       "run_at": "document_idle",
       "matches": [
         "*://www.bloomberg.com/*",
-        "*://*.oglobo.globo.com/*",
         "*://www.economist.com/*",
         "*://*.exame.abril.com.br/*",
         "*://foreignpolicy.com/*",
@@ -38,7 +37,10 @@
     {
       "js": ["content-start.js"],
       "run_at": "document_start",
-      "matches": ["*://gauchazh.clicrbs.com.br/*"]
+      "matches": [
+        "*://gauchazh.clicrbs.com.br/*",
+        "*://*.oglobo.globo.com/*"
+      ]
     }
   ],
 
