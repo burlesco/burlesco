@@ -10,6 +10,8 @@
 // @grant        GM_webRequest
 // @grant        GM_xmlhttpRequest
 // @connect      gauchazh.clicrbs.com.br
+// @connect      static.infoglobo.com.br
+// @connect      cdn.tinypass.com
 // @match        *://www.bloomberg.com/*
 // @match        *://correio.rac.com.br/*
 // @match        *://dc.clicrbs.com.br/*
@@ -58,6 +60,7 @@
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
+// @webRequestItem {"selector":"*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js","action":"cancel"}
 // @webRequestItem {"selector":"*://www.netdeal.com.br/*","action":"cancel"}
 // @webRequestItem {"selector":"*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://dashboard.tinypass.com/xbuilder/experience/load*","action":"cancel"}
@@ -125,6 +128,47 @@ if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
   };
 }
 
+else if (/oglobo\.globo\.com/.test(document.location.host)) {
+
+  // Insere Tinypass, necessário para a biblioteca piano
+
+  GM_xmlhttpRequest({
+    method: 'GET',
+    url: 'https://cdn.tinypass.com/api/tinypass.min.js',
+    anonymous: true,
+    onload: function(response) {
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      var textNode = document.createTextNode(response.responseText);
+      script.appendChild(textNode);
+      document.head.appendChild(script);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    function patchJs(jsurl) {
+      GM_xmlhttpRequest({
+        method: 'GET',
+        url: jsurl,
+        onload: function(response) {
+          var injectme = response.responseText;
+          injectme = injectme.replace('window.conteudoExclusivo?!0:!1', 'false');
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          var textNode = document.createTextNode(injectme);
+          script.appendChild(textNode);
+          document.head.appendChild(script);
+        }
+      });
+    }
+
+    var scripts = Array.from(document.getElementsByTagName('script'));
+    var script = scripts.find((el) => { return el.src.includes('js/tiny.js'); });
+    if (script)
+      patchJs(script.src);
+  });
+}
+
 else if (/jota\.info/.test(document.location.host)) {
   document.getElementsByClassName('jota-paywall')[0].remove();
 }
@@ -133,13 +177,8 @@ else if (/jota\.info/.test(document.location.host)) {
 // run_at: document_idle
 document.addEventListener('DOMContentLoaded', function() {
   var code = null;
-  if (/oglobo\.globo\.com/.test(document.location.host))
-    code = `
-      document.body.setAttribute('style', 'overflow: scroll !important');
-      document.getElementById('barreiraRegisterExclusiva').remove();
-    `;
 
-  else if (/www\.economist\.com/.test(document.location.host))
+  if (/www\.economist\.com/.test(document.location.host))
     code = 'document.cookie = "ec_limit=allow";';
 
   else if (/ft\.com/.test(document.location.host)
