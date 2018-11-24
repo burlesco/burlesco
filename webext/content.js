@@ -18,13 +18,6 @@ const INJECTION = {
     url: /exame\.abril\.com\.br/,
     code: ABRIL_CODE
   },
-  oglobo: {
-    url: /oglobo\.globo\.com/,
-    code: `
-      document.body.setAttribute('style', 'overflow: scroll !important');
-      document.getElementById('barreiraRegisterExclusiva').remove();
-    `
-  },
   theeconomist: {
     url : /www\.economist\.com/,
     code: 'document.cookie = "ec_limit=allow";'
