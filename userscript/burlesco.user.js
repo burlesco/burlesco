@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   else if (/diariodaregiao\.com\.br/.test(document.location.host)) 
   {
-      document.getElementsByClassName('noticia-texto')[0].style.display = 'block';
+    document.getElementsByClassName('noticia-texto')[0].style.display = 'block';
   }  
 
   else if (/diariopopular\.com\.br/.test(document.location.host)) {
