@@ -4,6 +4,7 @@ const SITES = [
   'correiopopular',
   'diarinho',
   'diariocatarinense',
+  'diariodaregiao',
   'diariopopular',
   'exame',
   'eltiempo',

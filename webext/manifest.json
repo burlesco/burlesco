@@ -31,7 +31,8 @@
         "*://*.wsj.com/*",
         "*://*.medium.com/*",
         "*://*.jota.info/*",
-        "*://*.wired.com/*"
+        "*://*.wired.com/*",
+        "*://*.diariodaregiao.com.br/*"
       ]
     },
     {
@@ -98,7 +99,8 @@
     "*://www.eltiempo.com/*",
     "*://*.haaretz.com/*",
     "*://*.haaretz.co.il/*",
-    "*://*.diarinho.com.br/*"
+    "*://*.diarinho.com.br/*",
+    "*://*.diariodaregiao.com.br/*"
   ],
 
   "applications": {
