@@ -14,6 +14,13 @@ const INJECTION = {
       sessionStorage.clear();
     `
   },
+  diariodaregiao: {
+    url: /diariodaregiao\.com\.br/,
+    code: `
+      document.getElementsByClassName('noticia-texto')[0].style.display = 'block';
+      document.querySelector('.conteudo > .row').style.display = 'none';
+    `
+  },
   exame: {
     url: /exame\.abril\.com\.br/,
     code: ABRIL_CODE
