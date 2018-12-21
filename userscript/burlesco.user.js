@@ -57,6 +57,7 @@
 // @match        *://*.haaretz.com/*
 // @match        *://*.haaretz.co.il/*
 // @match        *://*.diarinho.com.br/*
+// @match        *://*.diariodaregiao.com.br/*
 // @webRequestItem {"selector":{"include":"*://paywall.folha.uol.com.br/*","exclude":"*://paywall.folha.uol.com.br/status.php"} ,"action":"cancel"}
 // @webRequestItem {"selector":"*://static.folha.uol.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://ogjs.infoglobo.com.br/*/js/controla-acesso-aux.js","action":"cancel"}
@@ -290,6 +291,11 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.clear();
     sessionStorage.clear();
   }
+
+  else if (/diariodaregiao\.com\.br/.test(document.location.host)) 
+  {
+      document.getElementsByClassName('noticia-texto')[0].style.display = 'block';
+  }  
 
   else if (/diariopopular\.com\.br/.test(document.location.host)) {
     eraseAllCookies();
