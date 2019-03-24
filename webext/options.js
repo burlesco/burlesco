@@ -1,5 +1,4 @@
 const SITES = [
-  'bloomberg',
   'br18',
   'correiopopular',
   'diarinho',
@@ -7,17 +6,11 @@ const SITES = [
   'diariodaregiao',
   'diariopopular',
   'exame',
-  'eltiempo',
-  'financialtimes',
   'folhadelondrina',
   'folhadespaulo',
-  'foreignpolicy',
   'gazetadopovo',
   'gazetaonline',
   'gauchazh',
-  'gramophone',
-  'haaretz',
-  'haaretz_il',
   'jornaldesantacatarina',
   'jornalnh',
   'jornalvs',
@@ -25,17 +18,11 @@ const SITES = [
   'nexo',
   'oestadodespaulo',
   'oglobo',
-  'medium',
   'pioneiro',
   'quatrorodas',
   'superinteressante',
-  'theeconomist',
-  'thenewyorktimes',
-  'thewallstreetjournal',
-  'thewashingtonpost',
   'uol',
   'veja',
-  'wired'
 ];
 
 function saveOptions(e) {

@@ -44,7 +44,6 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 
 O Burlesco funciona com os seguintes sites de notícia:
 
-- Bloomberg
 - BR18
 - Correio Popular
 - Diário Catarinense
@@ -52,31 +51,20 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Diário Popular
 - Diarinho
 - Exame
-- El Tiempo
-- Financial Times
 - Folha de Londrina
 - Folha de S.Paulo
-- Foreign Policy
 - Gazeta do Povo
 - Gazeta Online
 - GaúchaZH
-- Gramophone
-- Haaretz
 - JOTA
 - Jornal de Santa Catarina
 - Jornal NH
 - Jornal Pioneiro
 - Jornal VS
 - Nexo
-- Medium
 - O Estado de S. Paulo
 - O Globo
 - Quatro Rodas
 - Superinteressante
-- The Economist
-- The New York Times
-- The Wall Street Journal
-- The Washington Post
 - UOL
 - Veja
-- Wired
