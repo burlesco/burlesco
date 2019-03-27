@@ -29,16 +29,25 @@ build: pre-build
 		DIR="$(DIST_DIR)/$$i" ; \
 		FILE=burlesco-$$i.zip ; \
 		if  [ $$i = "chromium" ]; then \
+			if [ ! -f "$(CRX2_KEY)" ]; then \
+				openssl genrsa -out "$(CRX2_KEY)" 2048 2>/dev/null ; \
+			fi ; \
+			if [ ! -f "$(CRX3_KEY)" ]; then \
+				openssl genpkey -out "$(CRX3_KEY)" -algorithm RSA -pkeyopt rsa_keygen_bits:2048 2>/dev/null ; \
+			fi ; \
 			zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
 			cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" \
-				--keyPath="$(CRX3_KEY)" >/dev/null 2>&1 ; \
+				--keyPath="$(CRX3_KEY)" ; \
+			crx pack "$$DIR/src/" \
+				--output="$$DIR/burlesco-chromium-deprecated.crx" \
+				--private-key="$(CRX2_KEY)" ; \
 		fi ; \
 		if [ $$i = "firefox" ]; then \
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
-			web-ext sign --source-dir="dist/firefox/src" \
-				--artifacts-dir="dist/firefox" \
+			web-ext sign --source-dir="$$DIR/src/" \
+				--artifacts-dir="$$DIR/" \
 				--api-key="{{api_key}}" \
-				--api-secret="{{api_secret}}" >/dev/null 2>&1 ; \
+				--api-secret="{{api_secret}}" ; \
 			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
