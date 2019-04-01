@@ -31,8 +31,7 @@ build: pre-build
 		if  [ $$i = "chromium" ]; then \
 			if [ ! -f "$(CRX2_KEY)" ]; then \
 				openssl genrsa -out "$(CRX2_KEY)" 2048 2>/dev/null ; \
-			fi ; \
-			if [ ! -f "$(CRX3_KEY)" ]; then \
+			else \
 				openssl genpkey -out "$(CRX3_KEY)" -algorithm RSA -pkeyopt rsa_keygen_bits:2048 2>/dev/null ; \
 			fi ; \
 			zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
@@ -41,8 +40,7 @@ build: pre-build
 			crx pack "$$DIR/src/" \
 				--output="$$DIR/burlesco-chromium-deprecated.crx" \
 				--private-key="$(CRX2_KEY)" ; \
-		fi ; \
-		if [ $$i = "firefox" ]; then \
+		else \
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
 			web-ext sign --source-dir="$$DIR/src/" \
 				--artifacts-dir="$$DIR/" \
