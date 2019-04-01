@@ -18,9 +18,8 @@ pre-build:
 		if [ $$i != "firefox" ]; then \
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
 				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
-		fi ; \
-		if [ $$i = "firefox" ]; then \
-			perl -0pe 's/,\s+"update_url": \"https:\/\/burles.co\/updates\/chromium.xml"//s' \
+		else \
+			perl -0pe 's/,\s+"update_url": "https:\/\/burles.co\/updates\/chromium.xml"//s' \
 				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
