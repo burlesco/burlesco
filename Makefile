@@ -4,7 +4,7 @@ DIST_DIR=dist
 CRX2_KEY=burlesco-rsa-key.pem
 CRX3_KEY=burlesco-pkcs8-key.pem
 .PHONY: all clean lint pre-build build
-all: clean lint pre-build build
+all: clean lint pre-build
 clean:
 	rm -rf "$(DIST_DIR)"
 lint:
