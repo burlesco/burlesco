@@ -6,7 +6,8 @@
   "dependencies": {
     "crx": "^4.0.1",
     "crx3": "^1.0.1",
-    "crypto": "^1.0.1"
+    "crypto": "^1.0.1",
+    "eslint": "^5.16.0"
   },
   "devDependencies": {},
   "scripts": {
