@@ -85,9 +85,11 @@ const BLOCKLIST = {
     ]
   },
   jota: {
-    scriptBlocking: [
-      '*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*'
-    ]
+    headerInjection: {
+      name: 'User-Agent',
+      value: 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+      urlFilter: '*://www.jota.info/*'
+    }
   },
   nexo: {
     cookieBlocking: {
