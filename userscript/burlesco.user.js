@@ -73,7 +73,6 @@
 // @webRequestItem {"selector":"*://cdn.tinypass.com/api/tinypass.min.js","action":"cancel"}
 // @webRequestItem {"selector":"*://api.tinypass.com/tpl/*","action":"cancel"}
 // @webRequestItem {"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"}
-// @webRequestItem {"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"}
 // @webRequestItem {"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"}
 // @webRequestItem {"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}
@@ -91,42 +90,46 @@
 // ==/UserScript==
 
 // run_at: document_start
+let isLoading = false;
+
 if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
-  document.addEventListener('DOMContentLoaded', function() {
-    function patchJs(jsurl) {
+  document.addEventListener('load', function() {
+    if (document.querySelectorAll('.wrapper-paid-content').length == 0)
+      return;
+
+    let articleEls = document.querySelectorAll('.article-content');
+    if (articleEls.length == 0 || articleEls[0].dataset['loaded'] == 'true')
+      return;
+
+    let urlPart = document.location.href.substring(document.location.href.lastIndexOf('/') + 1);
+    let url = 'https://gauchazh.clicrbs.com.br/amp/' + urlPart;
+
+    if (!isLoading) {
+      isLoading = true;
       GM_xmlhttpRequest({
         method: 'GET',
-        url: jsurl,
-        onload: function(response) {
-          var injectme = response.responseText;
-          injectme = injectme.replace('t.showLoginPaywall,','false,');
-          injectme = injectme.replace('t.showPaywall,','false,');
-          injectme = injectme.replace('t.requestCPF||!1,','false,');
-          injectme = injectme.replace('!t.showLoginPaywall&&!t.showPaywall||!1','true');
-          var script = document.createElement('script');
-          script.type = 'text/javascript';
-          var textNode = document.createTextNode(injectme);
-          script.appendChild(textNode);
-          document.head.appendChild(script);
+        url: url,
+        onload: function(data) {
+          let parser = new DOMParser();
+
+          let articleEl = parser.parseFromString(data.responseText, 'text/html').documentElement
+            .querySelector('.article-content');
+          articleEl.dataset['loaded'] = 'true';
+
+          let articleHTML = articleEl.outerHTML
+            .replace(/<amp-img/g, '<img')
+            .replace(/<\/amp-img/g, '</img')
+            .replace(/Sem conexão/g,'')
+            .replace(/<amp-iframe/g, '<iframe')
+            .replace(/<\/amp-iframe/g, '</iframe');
+
+          document.querySelector('.article-content').outerHTML = articleHTML;
+
+          isLoading = false;
         }
       });
     }
-
-    var scripts = Array.from(document.getElementsByTagName('script'));
-    var script = scripts.find((el) => { return el.src.includes('static/main'); });
-    if (script)
-      patchJs(script.src);
-  });
-
-  window.onload = function() {
-    function check(){
-      if(document.getElementsByClassName('wrapper-paid-content')[0]){
-        document.getElementsByClassName('wrapper-paid-content')[0].innerHTML = '<p>Por favor aperte Ctrl-F5 para carregar o restante da notícia!</p>';
-      }
-      setTimeout(function(){ check(); }, 1000);
-    }
-    check();
-  };
+  }, true);
 }
 
 else if (/oglobo\.globo\.com/.test(document.location.host)) {
@@ -292,11 +295,11 @@ document.addEventListener('DOMContentLoaded', function() {
     sessionStorage.clear();
   }
 
-  else if (/diariodaregiao\.com\.br/.test(document.location.host)) 
+  else if (/diariodaregiao\.com\.br/.test(document.location.host))
   {
     document.getElementsByClassName('noticia-texto')[0].style.display = 'block';
     document.querySelector('.conteudo > .row').style.display = 'none';
-  }  
+  }
 
   else if (/diariopopular\.com\.br/.test(document.location.host)) {
     eraseAllCookies();
