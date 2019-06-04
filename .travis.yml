@@ -1,8 +1,11 @@
 language: node_js
 node_js:
-  - '10'
+  - "11"
 install:
   - npm install -g eslint
+  - npm install -g crx
+  - npm install -g crx3
+  - npm install -g web-ext
 script:
   - make lint
 before_deploy:
@@ -18,11 +21,11 @@ deploy:
     api_key:
       secure: KI+ygLjvGfAJaZsPw20gB35iDH+q1AAIK5OJ1khIc52GSW6P+d6ORU/nTRdysFjmaB4cfDpkjO1rCdwa6Ge4eOCXMY9E3/mS7ZxRY94PT9hELVoNnqiEK/Z4UnrNdrJgBTt7By7R3o5O4hrihGHSbfAqHmbKSg53Xs5BaEW+fOVr36vQYsx3WhK1RhfCh369WWnR0cHqGsaYSfwwkeSLBU6nzmuzivsUwOjxVoX21f8U25c2/rDJzcQ7yjc5STBjYwrnm4Kj/vJyleMP8J78k0Bt3k05O4NOBHwuGSSyC7iSX4SAisjO+dA8a6LfOgKFZXPfjfqI+xOKMdY96Ytlj3hPNe/y1vgWR+FDSV59sdV5XNzlm9MnXKlcTZGzs1bPl1l0oLil6B5cxGnnG3IxsAlEW2QPL8BXzkc+BGqWkoUa1DpPpA0i6H++bHSvFzHtwyS5JzxME8kOI/Go6Ly9ODA9+7F4tgfOQuhtsYbxZG/B6rIhAfiAcqU3MmwaRYcvX64+BosJ0e/gwDF6H5cd6LtTKz+BA3E/9vrtRyBqaxNVJJOpOBMy+GqpORO6i3wO3h1KDvpqqBo8BrXnbotJA6n9DEzKp7GXSzik5lKDLn1iK5sAHzgK2BZf23vsS/0odHboAHvMsV64jLxmQZvMtDgKqe0dzkbrIKdWROIpo6c=
     file:
-      - dist/chrome/burlesco-chrome.zip
       - dist/chromium/burlesco-chromium.crx
+      - dist/chromium/burlesco-chromium.zip
+      - dist/chromium/burlesco-chromium-deprecated.crx
       - dist/firefox/burlesco-firefox.xpi
-      - dist/opera/burlesco-opera.zip
-      - dist/burlesco.user.js
+      - dist/firefox/burlesco-firefox.zip
     on:
       branch: master
       tags: true
