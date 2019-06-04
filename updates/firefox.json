@@ -1,11 +1,11 @@
 {
   "addons": {
-    "{abcd1234-1abc-1234-12ab-abcdef123456}": {
+    "{{firefox_appid}}": {
       "updates": [
-        { "version": "10.0",
-          "update_link": "https://burles.co/chromium/burlesco.crx",
-          "applications": {
-            "gecko": { "strict_min_version": "44" } } }
+        {
+          "version": "10.0",
+          "update_link": "https://github.com/burlesco/burlesco/releases/download/v10.0/burlesco-firefox.xpi"
+        }
       ]
     }
   }
