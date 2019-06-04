@@ -18,7 +18,10 @@ pre-build: clean
 		cp -r webext/* "$$SRC_DIR" ; \
 		if [ $$i != "firefox" ]; then \
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
-		webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
+				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
+		else \
+			perl -0pe 's/,\s+"update_url": "https:\/\/raw.githubusercontent.com\/burlesco\/burlesco\/master\/updates\/chromium.xml"//s' \
+				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
 	python3 userscript/build.py userscript/burlesco.user.js > "$(DIST_DIR)/burlesco.user.js"

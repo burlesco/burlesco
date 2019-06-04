@@ -1,0 +1,12 @@
+{
+  "addons": {
+    "{{firefox_appid}}": {
+      "updates": [
+        {
+          "version": "10.0",
+          "update_link": "https://github.com/burlesco/burlesco/releases/download/v10.0/burlesco-firefox.xpi"
+        }
+      ]
+    }
+  }
+}

@@ -84,9 +84,12 @@
 
   "applications": {
     "gecko": {
-      "id": "burlesco@burlesco.com"
+      "id": "burlesco@burlesco.com",
+      "update_url": "https://raw.githubusercontent.com/burlesco/burlesco/master/updates/firefox.json"
     }
   },
+
+  "update_url": "https://raw.githubusercontent.com/burlesco/burlesco/master/updates/chromium.xml",
 
   "options_ui": {
     "page": "options.html"
