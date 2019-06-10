@@ -9,7 +9,7 @@ clean:
 	rm -rf "$(DIST_DIR)"
 lint:
 	find . -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \;
-	eslint webext userscript
+	npx eslint webext userscript
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
@@ -47,8 +47,8 @@ build: pre-build
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
 			web-ext sign --source-dir="$$DIR/src/" \
 				--artifacts-dir="$$DIR/" \
-				--api-key="{{api_key}}" \
-				--api-secret="{{api_secret}}" ; \
+				--api-key="$$(mozilla_api_key)" \
+				--api-secret="$$(mozilla_api_secret)" ; \
 			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
