@@ -1,6 +1,6 @@
 {
   "addons": {
-    "{{firefox_appid}}": {
+    "burlesco@burles.co": {
       "updates": [
         {
           "version": "10.0",
