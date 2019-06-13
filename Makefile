@@ -41,8 +41,8 @@ build: pre-build
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
 			web-ext sign --source-dir="$$DIR/src/" \
 				--artifacts-dir="$$DIR/" \
-				--api-key="$$(mozilla_api_key)" \
-				--api-secret="$$(mozilla_api_secret)" ; \
+				--api-key="$$mozilla_api_key" \
+				--api-secret="$$mozilla_api_secret" ; \
 			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
