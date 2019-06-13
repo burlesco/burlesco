@@ -8,10 +8,12 @@ install:
 script:
   - make lint
 before_deploy:
-  - openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv
-    -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d
-  - make pre-build
-  - make build
+  - >
+    if ! [ "$BEFORE_DEPLOY_RUN" ]; then
+      export BEFORE_DEPLOY_RUN=1;
+      openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d;
+      make build;
+    fi
 deploy:
   - provider: releases
     skip_cleanup: true
