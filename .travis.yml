@@ -13,6 +13,7 @@ before_deploy:
       export BEFORE_DEPLOY_RUN=1;
       openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d;
       make build;
+      scripts/gen-gh-pages.sh;
     fi
 deploy:
   - provider: releases
@@ -30,7 +31,16 @@ deploy:
       tags: true
   - provider: script
     skip_cleanup: true
-    script: build/deploy.sh
+    script: scripts/deploy.sh
+    on:
+      branch: master
+      tags: true
+  - provider: pages
+    skip_cleanup: true
+    keep_history: true
+    github_token: $burlesco-gh-pages-token
+    repo: burlesco/burlesco-update
+    local_dir: gh-pages
     on:
       branch: master
       tags: true
