@@ -40,6 +40,7 @@ deploy:
     keep_history: true
     github_token: $GITHUB_TOKEN
     repo: burlesco/burlesco-update
+    target_branch: master
     local_dir: gh-pages
     on:
       branch: master
