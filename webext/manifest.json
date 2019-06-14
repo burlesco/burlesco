@@ -85,11 +85,11 @@
   "applications": {
     "gecko": {
       "id": "burlesco@burles.co",
-      "update_url": "https://raw.githubusercontent.com/burlesco/burlesco/master/updates/firefox.json"
+      "update_url": "https://burlesco.github.io/burlesco-update/firefox.json"
     }
   },
 
-  "update_url": "https://raw.githubusercontent.com/burlesco/burlesco/master/updates/chromium.xml",
+  "update_url": "https://burlesco.github.io/burlesco-update/chromium.xml",
 
   "options_ui": {
     "page": "options.html"

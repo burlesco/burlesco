@@ -19,7 +19,7 @@ pre-build: clean
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
 				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		else \
-			perl -0pe 's/,\s+"update_url": "https:\/\/raw.githubusercontent.com\/burlesco\/burlesco\/master\/updates\/chromium.xml"//s' \
+			perl -0pe 's/,\s+"update_url": "https:\/\/burlesco.github.io\/burlesco-update\/chromium.xml"//s' \
 				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
