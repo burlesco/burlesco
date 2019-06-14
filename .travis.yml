@@ -38,7 +38,7 @@ deploy:
   - provider: pages
     skip_cleanup: true
     keep_history: true
-    github_token: $burlesco-gh-pages-token
+    github_token: $GITHUB_TOKEN
     repo: burlesco/burlesco-update
     local_dir: gh-pages
     on:
