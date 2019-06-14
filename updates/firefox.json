@@ -3,8 +3,12 @@
     "burlesco@burles.co": {
       "updates": [
         {
-          "version": "10.0",
-          "update_link": "https://github.com/burlesco/burlesco/releases/download/v10.0/burlesco-firefox.xpi"
+          "version": "11.6",
+          "update_link": "https://github.com/burlesco/burlesco/releases/download/v11.6/burlesco-firefox.xpi"
+        },
+        {
+          "version": "11.7",
+          "update_link": "https://github.com/burlesco/burlesco/releases/download/v11.7/burlesco-firefox.xpi"
         }
       ]
     }
