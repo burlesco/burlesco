@@ -103,7 +103,7 @@ if (/gauchazh\.clicrbs\.com\.br/.test(document.location.host)) {
           injectme = injectme.replace(/[a-z].showPaywall,/g, 'false,');
           injectme = injectme.replace(/[a-z].requestCPF\|\|!1,/g, 'false,');
           injectme = injectme.replace(
-              /![a-z].showLoginPaywall&&![a-z].showPaywall\|\|!1/g, 'true');
+            /![a-z].showLoginPaywall&&![a-z].showPaywall\|\|!1/g, 'true');
           var script = document.createElement('script');
           script.type = 'text/javascript';
           var textNode = document.createTextNode(injectme);
