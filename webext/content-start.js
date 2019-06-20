@@ -8,11 +8,11 @@ const INJECTION = {
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             var injectme = this.responseText;
-            injectme = injectme.replace('t.showLoginPaywall,', 'false,');
-            injectme = injectme.replace('t.showPaywall,', 'false,');
-            injectme = injectme.replace('t.requestCPF||!1,', 'false,');
+            injectme = injectme.replace(/[a-z].showLoginPaywall,/g, 'false,');
+            injectme = injectme.replace(/[a-z].showPaywall,/g, 'false,');
+            injectme = injectme.replace(/[a-z].requestCPF\\|\\|!1,/g, 'false,');
             injectme = injectme.replace(
-              '!t.showLoginPaywall&&!t.showPaywall||!1', 'true');
+              /![a-z].showLoginPaywall&&![a-z].showPaywall\\|\\|!1/g, 'true');
             var script = document.createElement("script");
             script.type = "text/javascript";
             var textNode = document.createTextNode(injectme);
