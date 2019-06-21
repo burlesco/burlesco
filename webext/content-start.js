@@ -42,7 +42,9 @@ const INJECTION = {
         xhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
             var injectme = this.responseText;
+            injectme = injectme.replace('window.hasPaywall||!1;window.dataLayer=window.dataLayer||[]', 'false');
             injectme = injectme.replace('window.conteudoExclusivo?!0:!1', 'false');
+            injectme = injectme.replace('Piano.activePaywall=!0', 'false');
             var script = document.createElement("script");
             script.type = "text/javascript";
             var textNode = document.createTextNode(injectme);
