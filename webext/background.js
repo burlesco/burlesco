@@ -31,7 +31,7 @@ const BLOCKLIST = {
   },
   diariocatarinense: {
     xhrBlocking: [
-      'http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*',
+      'https://paywall.nsctotal.com.br/behaviors',
     ]
   },
   exame: {

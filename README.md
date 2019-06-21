@@ -44,7 +44,6 @@ O Burlesco funciona com os seguintes sites de notícia:
 
 - BR18
 - Correio Popular
-- Diário Catarinense
 - Diário da Região
 - Diário Popular
 - Diarinho
@@ -60,6 +59,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Jornal Pioneiro
 - Jornal VS
 - Nexo
+- NSC Total
 - O Estado de S. Paulo
 - O Globo
 - Quatro Rodas

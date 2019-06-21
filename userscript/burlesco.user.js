@@ -14,7 +14,7 @@
 // @connect      cdn.tinypass.com
 // @match        *://www.bloomberg.com/*
 // @match        *://correio.rac.com.br/*
-// @match        *://dc.clicrbs.com.br/*
+// @match        *://*.nsctotal.com.br/*
 // @match        *://www.economist.com/*
 // @match        *://*.estadao.com.br/*
 // @match        *://foreignpolicy.com/*
@@ -75,7 +75,7 @@
 // @webRequestItem {"selector":"*://tm.jsuol.com.br/modules/content-gate.js","action":"cancel"}
 // @webRequestItem {"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"}
-// @webRequestItem {"selector":"http://dc.clicrbs.com.br/jornal-2015/jsp/paywall.jspx*","action":"cancel"}
+// @webRequestItem {"selector":"https://paywall.nsctotal.com.br/behaviors","action":"cancel"}
 // @webRequestItem {"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}
 // @webRequestItem {"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}
