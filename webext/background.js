@@ -29,11 +29,6 @@ const BLOCKLIST = {
       blockAll: true
     }
   },
-  diariocatarinense: {
-    xhrBlocking: [
-      'https://paywall.nsctotal.com.br/behaviors',
-    ]
-  },
   exame: {
     scriptBlocking: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
@@ -67,11 +62,6 @@ const BLOCKLIST = {
       '*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*',
     ]
   },
-  jornaldesantacatarina: {
-    scriptBlocking: [
-      'http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*'
-    ]
-  },
   jornalnh: {
     scriptBlocking: [
       '*://*.jornalnh.com.br/includes/js/paywall.js*',
@@ -96,6 +86,11 @@ const BLOCKLIST = {
       urlFilter: '*://api.nexojornal.com.br/*',
       blockAll: true
     }
+  },
+  nsctotal: {
+    xhrBlocking: [
+      'https://paywall.nsctotal.com.br/behaviors',
+    ]
   },
   oestadodespaulo: {
     xhrBlocking: [

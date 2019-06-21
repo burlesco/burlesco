@@ -27,7 +27,6 @@
 // @match        *://*.gazetadopovo.com.br/*
 // @match        *://ogjs.infoglobo.com.br/*
 // @match        *://*.jota.info/*
-// @match        *://jornaldesantacatarina.clicrbs.com.br/*
 // @match        *://www.jornalnh.com.br/*
 // @match        *://*.nexojornal.com.br/*
 // @match        *://www.netdeal.com.br/*
@@ -76,7 +75,6 @@
 // @webRequestItem {"selector":"*://gauchazh.clicrbs.com.br/static/main*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*","action":"cancel"}
 // @webRequestItem {"selector":"https://paywall.nsctotal.com.br/behaviors","action":"cancel"}
-// @webRequestItem {"selector":"http://jornaldesantacatarina.clicrbs.com.br/jornal/jsp/paywall*","action":"cancel"}
 // @webRequestItem {"selector":"*://*.estadao.com.br/paywall/*","action":"cancel"}
 // @webRequestItem {"selector":"*://www.folhadelondrina.com.br/*/fivewall.js*","action":"cancel"}
 // @webRequestItem {"selector":"*://*.jota.info/wp-content/themes/JOTA/assets/js/posts.js*","action":"cancel"}
