@@ -234,6 +234,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   else if (/nexojornal\.com\.br/.test(document.location.host)) {
     code = `
+      style = document.createElement('style');
+      style.type = 'text/css';
+      css='#aviso-metered-access {display: none !important}';
+      style.appendChild(document.createTextNode(css));
+      document.head.appendChild(style);
       paywallContainer = document.getElementsByClassName('new-paywall-container')[0];
       paywallContent = paywallContainer.getAttribute('data-paywall-content');
       nexoApiURL = paywallContainer.getAttribute('data-paywall-check');
