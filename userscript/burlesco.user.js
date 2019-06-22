@@ -154,7 +154,8 @@ else if (/oglobo\.globo\.com/.test(document.location.host)) {
           var injectme = response.responseText;
           injectme = injectme.replace('window.hasPaywall||!1;window.dataLayer=window.dataLayer||[]', 'false');
           injectme = injectme.replace('window.conteudoExclusivo?!0:!1', 'false');
-          injectme = injectme.replace('Piano.activePaywall=!0', 'false');
+          injectme = injectme.replace('Piano.activePaywall=!0', 'Piano.activePaywall=false');
+          injectme = injectme.replace('Piano.checkPaywall()', '');
           var script = document.createElement('script');
           script.type = 'text/javascript';
           var textNode = document.createTextNode(injectme);
