@@ -8,7 +8,7 @@ clean:
 	rm -rf "$(DIST_DIR)"
 lint:
 	find . -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \;
-	npx eslint webext userscript
+	npx eslint webext
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
@@ -23,7 +23,6 @@ pre-build: clean
 				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
-	python3 userscript/build.py userscript/burlesco.user.js > "$(DIST_DIR)/burlesco.user.js"
 build: pre-build
 	set -e ; \
 	for i in $(BROWSERS) ; do \

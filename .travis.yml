@@ -26,13 +26,6 @@ deploy:
       - dist/chromium/burlesco-chromium.zip
       - dist/firefox/burlesco-firefox.xpi
       - dist/firefox/burlesco-firefox.zip
-      - dist/burlesco.user.js
-    on:
-      branch: master
-      tags: true
-  - provider: script
-    skip_cleanup: true
-    script: scripts/deploy.sh
     on:
       branch: master
       tags: true
