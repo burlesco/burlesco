@@ -8,19 +8,19 @@ clean:
 	rm -rf "$(DIST_DIR)"
 lint:
 	find . -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \;
-	npx eslint webext
+	npx eslint src
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
 		SRC_DIR="$(DIST_DIR)/$$i/src" ; \
 		mkdir -p "$$SRC_DIR" ; \
-		cp -r webext/* "$$SRC_DIR" ; \
+		cp -r src/* "$$SRC_DIR" ; \
 		if [ $$i != "firefox" ]; then \
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
-				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
+				src/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		else \
 			perl -0pe 's/,\s+"update_url": "https:\/\/burlesco.github.io\/burlesco-update\/chromium.xml"//s' \
-				webext/manifest.json > "$$SRC_DIR/manifest.json" ; \
+				src/manifest.json > "$$SRC_DIR/manifest.json" ; \
 		fi ; \
 	done
 build: pre-build
