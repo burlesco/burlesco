@@ -25,7 +25,8 @@
         "*://super.abril.com.br/*",
         "*://*.veja.abril.com.br/*",
         "*://*.jota.info/*",
-        "*://*.diariodaregiao.com.br/*"
+        "*://*.diariodaregiao.com.br/*",
+        "*://*.correio24horas.com.br/*"
       ]
     },
     {
@@ -78,7 +79,8 @@
     "*://www.jornalvs.com.br/*",
     "*://*.br18.com.br/*",
     "*://*.diarinho.com.br/*",
-    "*://*.diariodaregiao.com.br/*"
+    "*://*.diariodaregiao.com.br/*",
+    "*://correio-static.cworks.cloud/*"
   ],
 
   "applications": {
