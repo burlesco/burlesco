@@ -80,7 +80,7 @@
     "*://*.br18.com.br/*",
     "*://*.diarinho.com.br/*",
     "*://*.diariodaregiao.com.br/*",
-    "*://correio-static.cworks.cloud/*"
+    "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*"
   ],
 
   "applications": {
