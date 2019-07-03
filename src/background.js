@@ -13,6 +13,11 @@ const BLOCKLIST = {
       '*://*.estadao.com.br/paywall/*',
     ]
   },
+  correio24horas: {
+    scriptBlocking: [
+      '*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*',
+    ]
+  },
   correiopopular: {
     scriptBlocking: [
       '*://correio.rac.com.br/includes/js/novo_cp/fivewall.js*',

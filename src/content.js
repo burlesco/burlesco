@@ -7,6 +7,16 @@ const ABRIL_CODE = `
 `;
 
 const INJECTION = {
+  correio24horas: {
+    url: /correio24horas\.com\.br/,
+    code: `
+      jQuery('[class^=paywall]').remove();
+      jQuery('[class$=blocked]').removeClass();
+      jQuery('[id^=paywall]').removeClass('hide').removeClass('is-active');
+      jQuery('.noticias-single__content__text').attr('style', 'height:auto;');
+      jQuery('[id^=paywall]').remove();
+    `
+  },
   diariodaregiao: {
     url: /diariodaregiao\.com\.br/,
     code: `

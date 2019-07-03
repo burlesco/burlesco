@@ -1,5 +1,6 @@
 const SITES = [
   'br18',
+  'correio24horas',
   'correiopopular',
   'diarinho',
   'diariodaregiao',
