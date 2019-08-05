@@ -104,7 +104,7 @@ const BLOCKLIST = {
   },
   oglobo: {
     urls: [
-      /oglobo.globo.com/,
+      /globo.com/,
     ],
     allowScript: [
       '*://cdn.tinypass.com/api/tinypass.min.js',
