@@ -1,5 +1,18 @@
 // run_at: document_start
 const INJECTION = {
+  diariograndeabc: {
+    url : /dgabc.com.br/,
+    code: `
+      var email = "colaborador@dgabc.com.br";
+      var senha = "";
+      localStorage.emailNoticiaExclusiva = email;
+      $('.NoticiaExclusivaNaoLogado').hide();
+      $('.NoticiaExclusivaLogadoSemPermissao').hide();
+      $('.linhaSuperBanner').show();
+      $(".footer").show();
+      $('.NoticiaExclusivaLogado').show();
+    `
+  },
   gauchazh: {
     url : /gauchazh.clicrbs.com.br/,
     code: `

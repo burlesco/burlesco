@@ -34,7 +34,8 @@
       "run_at": "document_start",
       "matches": [
         "*://gauchazh.clicrbs.com.br/*",
-        "*://*.oglobo.globo.com/*"
+        "*://*.oglobo.globo.com/*",
+        "*://*.dgabc.com.br/*"
       ]
     }
   ],
