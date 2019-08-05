@@ -48,7 +48,7 @@ const INJECTION = {
     `
   },
   oglobo: {
-    url: /oglobo\.globo\.com/,
+    url: /globo\.com/,
     code: `
       function patchJs(jsurl) {
         var xhttp = new XMLHttpRequest();
