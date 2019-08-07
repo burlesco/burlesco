@@ -86,12 +86,6 @@ const BLOCKLIST = {
       urlFilter: '*://www.jota.info/*'
     }
   },
-  nexo: {
-    cookieBlocking: {
-      urlFilter: '*://api.nexojornal.com.br/*',
-      blockAll: true
-    }
-  },
   nsctotal: {
     xhrBlocking: [
       'https://paywall.nsctotal.com.br/behaviors',
