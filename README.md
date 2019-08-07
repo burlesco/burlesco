@@ -43,10 +43,13 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 O Burlesco funciona com os seguintes sites de notícia:
 
 - BR18
+- Correio 24 Horas
 - Correio Popular
+- Diário do Grande ABC
 - Diário da Região
 - Diário Popular
 - Diarinho
+- Época
 - Exame
 - Folha de Londrina
 - Folha de S.Paulo
