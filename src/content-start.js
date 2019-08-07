@@ -80,6 +80,30 @@ const INJECTION = {
       });
     `
   },
+  nexo: {
+    url: /nexojornal\.com\.br/,
+    code: `
+      (function () {
+        let oldXHROpen = window.XMLHttpRequest.prototype.open;
+        window.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
+        if (url.includes('/paywall/access/')) {
+          Object.defineProperty(this, 'status', { writable: true });
+          Object.defineProperty(this, 'statusText', { writable: true });
+          this.status = 200;
+          this.statusText = 'OK';
+        }
+        return oldXHROpen.apply(this, arguments);
+        }
+      })();
+      (function () {
+        style = document.createElement('style');
+        style.type = 'text/css';
+        css='#aviso-metered-access {display: none !important}';
+        style.appendChild(document.createTextNode(css));
+        document.head.appendChild(style);
+      })();
+    `
+  },
 };
 
 chrome.storage.local.get('sites', function(result) {

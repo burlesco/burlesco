@@ -36,7 +36,8 @@
         "*://gauchazh.clicrbs.com.br/*",
         "*://*.oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
-        "*://*.epoca.globo.com/*"
+        "*://*.epoca.globo.com/*",
+        "*://*.nexojornal.com.br/*"
       ]
     }
   ],
