@@ -45,6 +45,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - BR18
 - Correio 24 Horas
 - Correio Popular
+- Crusoé
 - Diário do Grande ABC
 - Diário da Região
 - Diário Popular

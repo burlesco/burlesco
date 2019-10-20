@@ -1,5 +1,11 @@
 // run_at: document_start
 const INJECTION = {
+  crusoe: {
+    url : /crusoe.com.br/,
+    code: `
+      document.cookie = 'crs_subscriber=1';
+    `
+  },
   diariograndeabc: {
     url : /dgabc.com.br/,
     code: `
