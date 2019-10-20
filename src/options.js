@@ -7,6 +7,7 @@ const SITES = [
   'diarinho',
   'diariodaregiao',
   'diariopopular',
+  'em',
   'exame',
   'folhadelondrina',
   'folhadespaulo',

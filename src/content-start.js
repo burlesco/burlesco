@@ -19,6 +19,23 @@ const INJECTION = {
       $('.NoticiaExclusivaLogado').show();
     `
   },
+  em: {
+    url: /em\.com\.br/,
+    code: `
+      style = document.createElement('style');
+      style.type = 'text/css';
+      css=\`
+        .news-blocked {display: none !important}
+        .news-blocked-no-scroll {
+          overflow: auto !important;
+          width: auto !important;
+          position: unset !important;
+        }
+      \`;
+      style.appendChild(document.createTextNode(css));
+      document.head.appendChild(style);
+    `
+  },
   gauchazh: {
     url : /gauchazh.clicrbs.com.br/,
     code: `
