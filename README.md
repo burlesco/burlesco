@@ -49,6 +49,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Diário da Região
 - Diário Popular
 - Diarinho
+- Estado de Minas
 - Época
 - Exame
 - Folha de Londrina
