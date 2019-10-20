@@ -37,7 +37,8 @@
         "*://*.oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
-        "*://*.nexojornal.com.br/*"
+        "*://*.nexojornal.com.br/*",
+        "*://crusoe.com.br/*"
       ]
     }
   ],
