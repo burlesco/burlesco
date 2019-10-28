@@ -74,8 +74,7 @@ const BLOCKLIST = {
   },
   jornalvs: {
     scriptBlocking: [
-      '*://www.jornalvs.com.br/includes/js/paywall.js*',
-      '*://blockv2.fivewall.com.br/*',
+      '*://*.fivewall.com.br/*',
     ]
   },
   jota: {
