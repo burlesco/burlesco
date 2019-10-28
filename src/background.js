@@ -70,9 +70,6 @@ const BLOCKLIST = {
   jornalnh: {
     scriptBlocking: [
       '*://*.fivewall.com.br/*',
-    ],
-    xhrBlocking: [
-      '*://*.fivewall.com.br/*',
     ]
   },
   jornalvs: {
