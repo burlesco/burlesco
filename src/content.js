@@ -5,6 +5,12 @@ const ABRIL_CODE = `
   document.querySelectorAll('.content-blocked')
     .forEach(x => x.classList.remove('content-blocked'))
 `;
+const RASPL_CODE = `
+  let contentPremium = document.querySelector(".contentPremium");
+  if (contentPremium) {
+      contentPremium.classList.remove("contentPremium");
+  }
+`;
 
 const INJECTION = {
   correio24horas: {
@@ -52,6 +58,14 @@ const INJECTION = {
       document.getElementsByClassName('jota-paywall')[0].remove();
     `
   },
+  newsweekpl: {
+    url: /newsweek\.pl/,
+    code: RASPL_CODE
+  },
+  forbespl: {
+    url: /forbes\.pl/,
+    code: RASPL_CODE
+  }
 };
 
 chrome.storage.local.get('sites', function(result) {

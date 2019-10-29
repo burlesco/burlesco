@@ -55,6 +55,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Exame
 - Folha de Londrina
 - Folha de S.Paulo
+- Forbes.pl
 - Gazeta do Povo
 - Gazeta Online
 - GaúchaZH
@@ -63,6 +64,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Jornal Pioneiro
 - Jornal VS
 - Nexo
+- Newsweek.pl
 - NSC Total
 - O Estado de S. Paulo
 - O Globo
