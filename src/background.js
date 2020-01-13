@@ -103,6 +103,7 @@ const BLOCKLIST = {
     ],
     xhrBlocking: [
       '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
+      'https://static.infoglobo.com.br/paywall/js/tiny.js'
     ],
     scriptBlocking: [
       'https://static.infoglobo.com.br/paywall/js/tiny.js'
