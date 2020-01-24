@@ -37,7 +37,6 @@
         "*://*.oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
-        "*://*.nexojornal.com.br/*",
         "*://crusoe.com.br/*",
         "*://*.em.com.br/*"
       ]
@@ -64,7 +63,6 @@
     "*://*.infoglobo.com.br/*",
     "*://*.jota.info/*",
     "*://www.jornalnh.com.br/*",
-    "*://*.nexojornal.com.br/*",
     "*://www.netdeal.com.br/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
