@@ -47,7 +47,15 @@ const BLOCKLIST = {
     xhrBlocking: [
       '*://paywall.folha.uol.com.br/*',
       '*://static.folha.uol.com.br/paywall/*',
-    ]
+    ],
+  },
+  folhadelondrina: {
+    scriptBlocking: [
+      '*://www.folhadelondrina.com.br/login.php*',
+    ],
+    xhrBlocking: [
+      '*://www.folhadelondrina.com.br/login.php*',
+    ],
   },
   gazetadopovo: {
     scriptBlocking: [
