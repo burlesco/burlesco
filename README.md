@@ -62,7 +62,6 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Jornal NH
 - Jornal Pioneiro
 - Jornal VS
-- Nexo
 - NSC Total
 - O Estado de S. Paulo
 - O Globo

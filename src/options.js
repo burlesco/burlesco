@@ -17,7 +17,6 @@ const SITES = [
   'jornalnh',
   'jornalvs',
   'jota',
-  'nexo',
   'nsctotal',
   'oestadodespaulo',
   'oglobo',
