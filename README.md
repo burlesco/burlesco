@@ -30,7 +30,7 @@ Há um Makefile para auxiliar no desenvolvimento:
 
 ## Userscript
 
-O código-fonte do userscript está em `userscript/burlesco.user.js`. Ele funciona bloqueando pedidos responsáveis pelo paywall e injetando scripts para impedir sua ativação.
+O código-fonte do userscript está em um repositório próprio [aqui](https://github.com/burlesco/userscript). Ele funciona bloqueando pedidos responsáveis pelo paywall e injetando scripts para impedir sua ativação.
 
 Esse userscript funciona apenas com o Tampermonkey, porque é o único com suporte a API @webRequest.
 
