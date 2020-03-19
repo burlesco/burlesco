@@ -42,7 +42,7 @@ Se você tiver alguma dúvida ou ideia para burlar um site novo, abra uma issue 
 
 O Burlesco funciona com os seguintes sites de notícia:
 
-- BR18
+- BRPOLÍTICO
 - Correio 24 Horas
 - Correio Popular
 - Crusoé
