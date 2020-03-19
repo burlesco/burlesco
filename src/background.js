@@ -8,7 +8,7 @@ const WHITELIST = {
 };
 
 const BLOCKLIST = {
-  br18: {
+  brpolitico: {
     xhrBlocking: [
       '*://*.estadao.com.br/paywall/*',
     ]
