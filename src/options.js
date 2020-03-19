@@ -1,5 +1,5 @@
 const SITES = [
-  'br18',
+  'brpolitico',
   'correio24horas',
   'correiopopular',
   'crusoe',
