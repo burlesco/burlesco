@@ -366,8 +366,7 @@ function injectHeader(name, value, requestHeaders) {
    * @param {string} requestHeaders[].name
    * @param {string} requestHeaders[].value
    */
-  var headerIndex = requestHeaders.findIndex(
-    x => x.name.toLowerCase() == name.toLowerCase());
+  var headerIndex = requestHeaders.findIndex(x => x.name.toLowerCase() == name.toLowerCase());
   var newHeader = {
     name: name,
     value: value,
@@ -395,10 +394,14 @@ function removeListeners() {
   chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
   chrome.webRequest.onBeforeSendHeaders.removeListener(onBeforeSendHeadersCookie);
   for (let item of callbacksOnBeforeRequestCookie) {
-    chrome.webRequest.onBeforeRequest.removeListener(item);
+    if (callbacksOnBeforeRequestCookie.hasOwnProperty(item)) {
+      chrome.webRequest.onBeforeRequest.removeListener(item);
+    }
   }
   for (let item of callbacksOnBeforeSendHeadersInjection) {
-    chrome.webRequest.onBeforeSendHeaders.removeListener(item);
+    if (callbacksOnBeforeSendHeadersInjection.hasOwnProperty(item)) {
+      chrome.webRequest.onBeforeSendHeaders.removeListener(item);
+    }
   }
 }
 apply();
