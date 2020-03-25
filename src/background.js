@@ -367,14 +367,6 @@ function removeListeners() {
   chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestScript);
   chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestXml);
   chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
-<<<<<<< HEAD
-  chrome.webRequest.onBeforeSendHeaders.removeListener(
-    onBeforeSendHeadersCookie);
-  for (let item of callbacksOnBeforeRequestCookie)
-    chrome.webRequest.onBeforeRequest.removeListener(item);
-  for (let item of callbacksOnBeforeSendHeadersInjection)
-    chrome.webRequest.onBeforeSendHeaders.removeListener(item);
-=======
   chrome.webRequest.onBeforeSendHeaders.removeListener(onBeforeSendHeadersCookie);
   for (let item of callbacksOnBeforeRequestCookie) {
     if (callbacksOnBeforeRequestCookie.hasOwnProperty(item)) {
@@ -386,7 +378,6 @@ function removeListeners() {
       chrome.webRequest.onBeforeSendHeaders.removeListener(item);
     }
   }
->>>>>>> 965187b... Update background.js
 }
 
 apply();
