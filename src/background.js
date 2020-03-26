@@ -13,7 +13,7 @@ const BLOCKLIST = {
       '*://*.estadao.com.br/paywall/*',
     ],
     scriptBlocking: [
-      '*://*.estadao.com.br/paywall/v2/js/pw.js',
+      '*://*.estadao.com.br/paywall/*',
     ],
   },
   correio24horas: {
