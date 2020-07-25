@@ -84,34 +84,7 @@ const INJECTION = {
   oglobo: {
     url: /globo\.com/,
     code: `
-      function patchJs(jsurl) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            var injectme = this.responseText;
-            injectme = injectme.replace('window.hasPaywall||!1;window.dataLayer=window.dataLayer||[]', 'false');
-            injectme = injectme.replace('window.conteudoExclusivo?!0:!1', 'false');
-            injectme = injectme.replace('Piano.activePaywall=!0', 'Piano.activePaywall=false');
-            injectme = injectme.replace('Piano.checkPaywall()', '');
-            var script = document.createElement("script");
-            script.type = "text/javascript";
-            var textNode = document.createTextNode(injectme);
-            script.appendChild(textNode);
-            document.head.appendChild(script);
-          }
-        };
-        xhttp.open("GET", jsurl, true);
-        xhttp.send();
-      }
-
-      document.addEventListener("DOMContentLoaded", function(event) {
-        var scripts = Array.from(document.getElementsByTagName('script'));
-        var script = scripts.find((el) => {
-          return el.src.includes('js/tiny.js')
-        });
-        if (script)
-          patchJs(script.src);
-      });
+      window.hasPaywall = false
     `
   },
   nexo: {
