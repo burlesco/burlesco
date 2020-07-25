@@ -114,6 +114,15 @@ const INJECTION = {
       });
     `
   },
+  nexo: {
+    url: /nexojornal\.com\.br/,
+    code: `
+      var body = document.querySelector("body");
+      var paywall_box = document.getElementsByClassName("PaywallBumper__wrap-container___3_kL1");
+      paywall_box[0].remove();
+      body.style.overflow = "auto"
+    `
+  },
 };
 
 chrome.storage.local.get('sites', function(result) {
