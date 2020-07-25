@@ -26,7 +26,8 @@
         "*://*.veja.abril.com.br/*",
         "*://*.jota.info/*",
         "*://*.diariodaregiao.com.br/*",
-        "*://*.correio24horas.com.br/*"
+        "*://*.correio24horas.com.br/*",
+        "*://*.nexojornal.com.br/*"
       ]
     },
     {
@@ -37,6 +38,7 @@
         "*://*.oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
+        "*://*.nexojornal.com.br/*",
         "*://crusoe.com.br/*",
         "*://*.em.com.br/*"
       ]
@@ -63,6 +65,7 @@
     "*://*.infoglobo.com.br/*",
     "*://*.jota.info/*",
     "*://www.jornalnh.com.br/*",
+    "*://*.nexojornal.com.br/*",
     "*://www.netdeal.com.br/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
@@ -85,7 +88,8 @@
     "*://*.diariodaregiao.com.br/*",
     "*://*.correio24horas.com.br/*",
     "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*",
-    "*://*.epoca.globo.com/*"
+    "*://*.epoca.globo.com/*",
+    "*://*.nexojornal.com.br/*"
   ],
 
   "applications": {

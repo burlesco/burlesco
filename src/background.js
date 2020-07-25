@@ -92,6 +92,11 @@ const BLOCKLIST = {
       urlFilter: '*://www.jota.info/*'
     }
   },
+  nexo: {
+    xhrBlocking: [
+      'https://acesso.nexojornal.com.br/paywall/*'
+    ]
+  },
   nsctotal: {
     xhrBlocking: [
       'https://paywall.nsctotal.com.br/behaviors',
@@ -369,12 +374,12 @@ function removeListeners() {
   chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
   chrome.webRequest.onBeforeSendHeaders.removeListener(onBeforeSendHeadersCookie);
   for (let item of callbacksOnBeforeRequestCookie) {
-    if (callbacksOnBeforeRequestCookie.hasOwnProperty(item)) {
+    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeRequestCookie, item)) {
       chrome.webRequest.onBeforeRequest.removeListener(item);
     }
   }
   for (let item of callbacksOnBeforeSendHeadersInjection) {
-    if (callbacksOnBeforeSendHeadersInjection.hasOwnProperty(item)) {
+    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeSendHeadersInjection, item)) {
       chrome.webRequest.onBeforeSendHeaders.removeListener(item);
     }
   }
