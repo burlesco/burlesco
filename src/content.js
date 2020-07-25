@@ -38,6 +38,20 @@ const INJECTION = {
       setTimeout(showText, 100);
     `
   },
+  nexo: {
+    url: /nexojornal\.com\.br/,
+    code: `
+      const selectors = [
+        "div[class*='PaywallBumper__wrap-container'",
+        "div[class*='Datawall__wrap-container'"
+      ]
+
+      selectors.forEach(selector => {
+        const element = document.querySelector(selector)
+        if (element) element.remove()
+      })
+    `
+  },
   superinteressante: {
     url: /super.abril.com.br/,
     code: ABRIL_CODE

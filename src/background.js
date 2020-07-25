@@ -92,6 +92,11 @@ const BLOCKLIST = {
       urlFilter: '*://www.jota.info/*'
     }
   },
+  nexo: {
+    xhrBlocking: [
+      'https://acesso.nexojornal.com.br/paywall/*'
+    ]
+  },
   nsctotal: {
     xhrBlocking: [
       'https://paywall.nsctotal.com.br/behaviors',
