@@ -102,21 +102,6 @@ const BLOCKLIST = {
       '*://*.estadao.com.br/paywall/*',
     ]
   },
-  oglobo: {
-    urls: [
-      /globo.com/,
-    ],
-    allowScript: [
-      '*://cdn.tinypass.com/api/tinypass.min.js',
-    ],
-    xhrBlocking: [
-      '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
-      'https://static.infoglobo.com.br/paywall/js/tiny.js'
-    ],
-    scriptBlocking: [
-      'https://static.infoglobo.com.br/paywall/js/tiny.js'
-    ],
-  },
   pioneiro: {
     scriptBlocking: [
       '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
