@@ -88,8 +88,7 @@
     "*://*.diariodaregiao.com.br/*",
     "*://*.correio24horas.com.br/*",
     "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*",
-    "*://*.epoca.globo.com/*",
-    "*://*.nexojornal.com.br/*"
+    "*://*.epoca.globo.com/*"
   ],
 
   "applications": {
