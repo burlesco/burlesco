@@ -137,6 +137,11 @@ const BLOCKLIST = {
       '*://cdn.tinypass.com/api/tinypass.min.js',
     ]
   },
+  globo: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/*',
+    ]
+  },
 };
 
 function onBeforeRequestScript(details) {
