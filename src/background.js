@@ -92,6 +92,11 @@ const BLOCKLIST = {
       urlFilter: '*://www.jota.info/*'
     }
   },
+  nexo: {
+    xhrBlocking: [
+      'https://acesso.nexojornal.com.br/paywall/*'
+    ]
+  },
   nsctotal: {
     xhrBlocking: [
       'https://paywall.nsctotal.com.br/behaviors',
@@ -101,21 +106,6 @@ const BLOCKLIST = {
     xhrBlocking: [
       '*://*.estadao.com.br/paywall/*',
     ]
-  },
-  oglobo: {
-    urls: [
-      /globo.com/,
-    ],
-    allowScript: [
-      '*://cdn.tinypass.com/api/tinypass.min.js',
-    ],
-    xhrBlocking: [
-      '*://static.infoglobo.com.br/paywall/register-piano/*/scripts/nova-tela-register.js',
-      'https://static.infoglobo.com.br/paywall/js/tiny.js'
-    ],
-    scriptBlocking: [
-      'https://static.infoglobo.com.br/paywall/js/tiny.js'
-    ],
   },
   pioneiro: {
     scriptBlocking: [
@@ -369,12 +359,12 @@ function removeListeners() {
   chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
   chrome.webRequest.onBeforeSendHeaders.removeListener(onBeforeSendHeadersCookie);
   for (let item of callbacksOnBeforeRequestCookie) {
-    if (callbacksOnBeforeRequestCookie.hasOwnProperty(item)) {
+    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeRequestCookie, item)) {
       chrome.webRequest.onBeforeRequest.removeListener(item);
     }
   }
   for (let item of callbacksOnBeforeSendHeadersInjection) {
-    if (callbacksOnBeforeSendHeadersInjection.hasOwnProperty(item)) {
+    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeSendHeadersInjection, item)) {
       chrome.webRequest.onBeforeSendHeaders.removeListener(item);
     }
   }

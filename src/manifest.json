@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "11.18",
+  "version": "11.19",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "https://burles.co",
   "author": "rodorgas",
@@ -26,7 +26,8 @@
         "*://*.veja.abril.com.br/*",
         "*://*.jota.info/*",
         "*://*.diariodaregiao.com.br/*",
-        "*://*.correio24horas.com.br/*"
+        "*://*.correio24horas.com.br/*",
+        "*://*.nexojornal.com.br/*"
       ]
     },
     {
@@ -37,6 +38,7 @@
         "*://*.oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
+        "*://*.nexojornal.com.br/*",
         "*://crusoe.com.br/*",
         "*://*.em.com.br/*"
       ]
@@ -63,6 +65,7 @@
     "*://*.infoglobo.com.br/*",
     "*://*.jota.info/*",
     "*://www.jornalnh.com.br/*",
+    "*://*.nexojornal.com.br/*",
     "*://www.netdeal.com.br/*",
     "*://*.oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
