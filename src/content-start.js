@@ -60,6 +60,7 @@ const INJECTION = {
             injectme = injectme.replace(/[a-z].requestCPF\\|\\|!1,/g, 'false,');
             injectme = injectme.replace(
               /![a-z].showLoginPaywall&&![a-z].showPaywall\\|\\|!1/g, 'true');
+            injectme = injectme.replace('throw new Error("only one instance of babel-polyfill is allowed");', '');
             var script = document.createElement("script");
             script.type = "text/javascript";
             var textNode = document.createTextNode(injectme);
