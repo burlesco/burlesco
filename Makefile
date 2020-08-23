@@ -15,6 +15,9 @@ pre-build: clean
 		SRC_DIR="$(DIST_DIR)/$$i/src" ; \
 		mkdir -p "$$SRC_DIR" ; \
 		cp -r src/* "$$SRC_DIR" ; \
+		if [ $$i = "chromium" ]; then \
+			openssl genpkey -out "$(CRX3_KEY)" -algorithm RSA -pkeyopt rsa_keygen_bits:2048 2>/dev/null ; \
+		fi; \
 		if [ $$i != "firefox" ]; then \
 			perl -0pe 's/,\s+"applications": \{(.*?\}){2}//s' \
 				src/manifest.json > "$$SRC_DIR/manifest.json" ; \
