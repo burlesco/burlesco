@@ -7,6 +7,7 @@ install:
   - npm install -g crx3
   - npm install -g web-ext
 script:
+  - openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d
   - make lint
 before_deploy:
   - >

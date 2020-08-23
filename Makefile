@@ -10,12 +10,10 @@ lint: pre-build
 	set -e ; \
 	find . -path ./node_modules -prune -false -o -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \; ;\
 	npx eslint src; \
-	openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d; \
 	FILE=burlesco-chromium.zip ; \
 	DIR=dist/chromium ; \
 	zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
-	cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" \
-		--keyPath="$(CRX3_KEY)" ;
+	cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" --keyPath="$(CRX3_KEY)" ;
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
