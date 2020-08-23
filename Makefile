@@ -7,8 +7,9 @@ all: clean lint pre-build
 clean:
 	rm -rf "$(DIST_DIR)"
 lint:
-	find . -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \;
-	npx eslint src
+	set -e ; \
+	find . -path ./node_modules -prune -false -o -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \; ;\
+	npx eslint src;
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
@@ -30,9 +31,6 @@ build: pre-build
 		DIR="$(DIST_DIR)/$$i" ; \
 		FILE=burlesco-$$i.zip ; \
 		if  [ $$i = "chromium" ]; then \
-			if [ ! -f "$(CRX3_KEY)" ]; then \
-				openssl genpkey -out "$(CRX3_KEY)" -algorithm RSA -pkeyopt rsa_keygen_bits:2048 2>/dev/null ; \
-			fi ; \
 			zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
 			cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" \
 				--keyPath="$(CRX3_KEY)" ; \
