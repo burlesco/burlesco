@@ -7,16 +7,13 @@ install:
   - npm install -g crx3
   - npm install -g web-ext
 script:
-  - openssl aes-256-cbc -K $encrypted_094982294358_key -iv $encrypted_094982294358_iv
-    -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d
   - make lint
 before_deploy:
   - >
-    if ! [ "$BEFORE_DEPLOY_RUN" ]; then
-      export BEFORE_DEPLOY_RUN=1;
-      openssl aes-256-cbc -K $encrypted_351cc0f0ed5f_key -iv $encrypted_351cc0f0ed5f_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d;
-      make build;
-    fi
+    export BEFORE_DEPLOY_RUN=1;
+    openssl aes-256-cbc -K $encrypted_094982294358_key -iv $encrypted_094982294358_iv
+      -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d
+    make build;
 deploy:
   - provider: releases
     skip_cleanup: true
