@@ -27,7 +27,7 @@ deploy:
       - dist/firefox/burlesco-firefox.xpi
       - dist/firefox/burlesco-firefox.zip
     on:
-      branch: master
+      branch: change/ci
       tags: true
   - provider: pages
     skip_cleanup: true
