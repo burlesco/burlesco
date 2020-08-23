@@ -6,14 +6,10 @@ CRX3_KEY=burlesco-pkcs8-key.pem
 all: clean lint pre-build
 clean:
 	rm -rf "$(DIST_DIR)"
-lint: pre-build
+lint:
 	set -e ; \
 	find . -path ./node_modules -prune -false -o -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \; ;\
-	npx eslint src; \
-	FILE=burlesco-chromium.zip ; \
-	DIR=dist/chromium ; \
-	zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
-	cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" --keyPath="$(CRX3_KEY)" ;
+	npx eslint src;
 pre-build: clean
 	set -e ; \
 	for i in $(BROWSERS) ; do \
