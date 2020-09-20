@@ -1,9 +1,8 @@
 // run_at: document_idle
 const ABRIL_CODE = `
-  document.querySelectorAll('.callpaywall')
-    .forEach(x => x.remove());
-  document.querySelectorAll('.content-blocked')
-    .forEach(x => x.classList.remove('content-blocked'))
+  document.querySelector('body').classList.remove('disabledByPaywall')
+  document.querySelector('.piano-offer-overlay').remove()
+  document.querySelector('#piano_offer').remove()
 `;
 
 const INJECTION = {
