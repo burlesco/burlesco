@@ -19,7 +19,7 @@
       "js": ["content.js"],
       "run_at": "document_idle",
       "matches": [
-        "*://*.exame.abril.com.br/*",
+        "*://*.exame.com/*",
         "*://*.folha.uol.com.br/*",
         "*://*.folha.com.br/*",
         "*://super.abril.com.br/*",
@@ -72,7 +72,7 @@
     "*://api.tinypass.com/*",
     "*://cdn.tinypass.com/*",
     "*://dashboard.tinypass.com/*",
-    "*://*.exame.abril.com.br/*",
+    "*://exame.com/*",
     "*://super.abril.com.br/*",
     "*://veja.abril.com.br/*",
     "*://quatrorodas.abril.com.br/*",
