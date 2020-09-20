@@ -1,8 +1,10 @@
 // run_at: document_idle
 const ABRIL_CODE = `
-  document.querySelector('body').classList.remove('disabledByPaywall')
-  document.querySelector('.piano-offer-overlay').remove()
-  document.querySelector('#piano_offer').remove()
+  window.setTimeout(function() {
+    document.querySelector('body').classList.remove('disabledByPaywall')
+    document.querySelector('.piano-offer-overlay').remove()
+    document.querySelector('#piano_offer').remove()
+  }, 10000)
 `;
 
 const INJECTION = {
