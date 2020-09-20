@@ -24,7 +24,7 @@ const INJECTION = {
     `
   },
   exame: {
-    url: /exame\.abril\.com\.br/,
+    url: /exame\.com\.br/,
     code: ABRIL_CODE
   },
   folhadespaulo: {
