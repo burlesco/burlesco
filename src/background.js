@@ -134,7 +134,7 @@ const BLOCKLIST = {
   },
   veja: {
     scriptBlocking: [
-      '*://cdn.tinypass.com/api/tinypass.min.js',
+      'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
     ]
   },
 };
