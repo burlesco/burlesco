@@ -36,7 +36,7 @@ const BLOCKLIST = {
   },
   exame: {
     scriptBlocking: [
-      '*://cdn.tinypass.com/api/tinypass.min.js',
+      '*://exame.com/wp-content/themes/exame-new/js/pywll.js',
     ]
   },
   folhadespaulo: {
