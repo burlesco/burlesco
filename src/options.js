@@ -27,6 +27,7 @@ const SITES = [
   'superinteressante',
   'uol',
   'veja',
+  'globo',
 ];
 
 function saveOptions(e) {
