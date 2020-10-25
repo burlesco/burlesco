@@ -53,6 +53,13 @@ const INJECTION = {
       })
     `
   },
+  seudinheiro: {
+    url: /seudinheiro.com/,
+    code: `
+      document.querySelector('#premium-paywall').remove()
+      document.body.style.overflow = ''
+    `
+  },
   superinteressante: {
     url: /super.abril.com.br/,
     code: ABRIL_CODE

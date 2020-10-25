@@ -117,6 +117,12 @@ const BLOCKLIST = {
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
     ]
   },
+  seudinheiro: {
+    scriptBlocking: [
+      'https://*.seudinheiro.com/app/themes/seudinheiro/src/js/lib/premium-home.js*',
+      'https://*.seudinheiro.com/app/themes/seudinheiro/js/premium-production.js*',
+    ]
+  },
   superinteressante: {
     scriptBlocking: [
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
