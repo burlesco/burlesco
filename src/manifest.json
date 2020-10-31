@@ -91,7 +91,6 @@
     "*://*.correio24horas.com.br/*",
     "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*",
     "*://*.epoca.globo.com/*",
-    "*://blockv4.fivewall.com.br/paywall.js*",
     "*://*.diariodecanoas.com.br/*"
   ],
 
