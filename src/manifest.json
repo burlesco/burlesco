@@ -90,7 +90,8 @@
     "*://*.diariodaregiao.com.br/*",
     "*://*.correio24horas.com.br/*",
     "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*",
-    "*://*.epoca.globo.com/*"
+    "*://*.epoca.globo.com/*",
+    "*://*.diariodecanoas.com.br/*"
   ],
 
   "applications": {

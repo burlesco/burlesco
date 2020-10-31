@@ -5,6 +5,7 @@ const SITES = [
   'crusoe',
   'diarioabcpaulista',
   'diarinho',
+  'diariodecanoas',
   'diariodaregiao',
   'diariopopular',
   'em',

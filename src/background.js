@@ -28,6 +28,11 @@ const BLOCKLIST = {
       '*://*.diarinho.com.br/wp-admin/admin-ajax.php',
     ]
   },
+  diariodecanoas: {
+    xhrBlocking: [
+      '*://*.fivewall.com.br/*',
+    ]
+  },
   diariopopular: {
     cookieBlocking: {
       urlFilter: '*://www.diariopopular.com.br/*',
