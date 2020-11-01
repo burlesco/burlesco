@@ -50,6 +50,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Diário da Região
 - Diário Popular
 - Diarinho
+- Diário de Canoas
 - Estado de Minas
 - Época
 - Exame
@@ -69,3 +70,4 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Superinteressante
 - UOL
 - Veja
+- Seu Dinheiro
