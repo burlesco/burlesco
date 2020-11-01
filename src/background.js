@@ -122,6 +122,11 @@ const BLOCKLIST = {
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
     ]
   },
+  revistaoeste: {
+    scriptBlocking: [
+      '*://revistaoeste.com/wp-content/uploads/custom-css-js/248859.js?v=*'
+    ]
+  },
   seudinheiro: {
     scriptBlocking: [
       'https://*.seudinheiro.com/app/themes/seudinheiro/src/js/lib/premium-home.js*',

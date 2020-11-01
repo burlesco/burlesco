@@ -24,6 +24,7 @@ const SITES = [
   'oglobo',
   'pioneiro',
   'quatrorodas',
+  'revistaoeste',
   'seudinheiro',
   'superinteressante',
   'uol',
