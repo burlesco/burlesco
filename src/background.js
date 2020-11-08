@@ -39,6 +39,12 @@ const BLOCKLIST = {
       blockAll: true
     }
   },
+  elpais: {
+    scriptBlocking: [
+      '*://prisa-el-pais-brasil-prod.cdn.arcpublishing.com/arc/subs/p.js',
+      '*://prisa-el-pais-prod.cdn.arcpublishing.com/arc/subs/p.js',
+    ]
+  },
   exame: {
     scriptBlocking: [
       '*://exame.com/wp-content/themes/exame-new/js/pywll.js',
