@@ -112,6 +112,11 @@ const BLOCKLIST = {
       '*://*.estadao.com.br/paywall/*',
     ]
   },
+  oglobo: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/js/tiny.js',
+    ]
+  },
   pioneiro: {
     scriptBlocking: [
       '*://www.rbsonline.com.br/cdn/scripts/SLoader.js',
