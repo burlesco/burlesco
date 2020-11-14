@@ -153,6 +153,11 @@ const BLOCKLIST = {
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
     ]
   },
+  valoreconomico: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/js/tiny.js*',
+    ]
+  },
 };
 
 function onBeforeRequestScript(details) {
