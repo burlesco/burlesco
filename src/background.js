@@ -127,6 +127,11 @@ const BLOCKLIST = {
       '*://revistaoeste.com/wp-content/uploads/custom-css-js/248859.js?v=*'
     ]
   },
+  revistagalileu: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/js/tiny.js*'
+    ]
+  },
   seudinheiro: {
     scriptBlocking: [
       'https://*.seudinheiro.com/app/themes/seudinheiro/src/js/lib/premium-home.js*',
