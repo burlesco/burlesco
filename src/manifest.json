@@ -36,7 +36,7 @@
       "run_at": "document_start",
       "matches": [
         "*://gauchazh.clicrbs.com.br/*",
-        "*://*.oglobo.globo.com/*",
+        "*://oglobo.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
         "*://*.nexojornal.com.br/*",
@@ -68,7 +68,7 @@
     "*://www.jornalnh.com.br/*",
     "*://*.nexojornal.com.br/*",
     "*://www.netdeal.com.br/*",
-    "*://*.oglobo.globo.com/*",
+    "*://oglobo.globo.com/*",
     "*://www.rbsonline.com.br/*",
     "*://api.tinypass.com/*",
     "*://cdn.tinypass.com/*",
