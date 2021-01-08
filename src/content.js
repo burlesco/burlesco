@@ -74,6 +74,17 @@ const INJECTION = {
       document.getElementsByClassName('jota-paywall')[0].remove();
     `
   },
+  observador: {
+    url: /observador.pt/,
+    code: `
+      if (!document.body.classList.has(`premium-article`)
+        return;
+      document.body.classList.remove(`premium-article`);
+      const paywall = document.querySelector(`.premium-paywall`);
+      paywall.parent.removeChild(paywall);
+      document.querySelector(`.article-body-wrapper`).style.maxHeight = `inherit`
+    `
+  }
 };
 
 chrome.storage.local.get('sites', function(result) {
