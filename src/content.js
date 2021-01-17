@@ -77,12 +77,12 @@ const INJECTION = {
   observador: {
     url: /observador.pt/,
     code: `
-      if (!document.body.classList.contains(`premium-article`))
+      if (!document.body.classList.contains('premium-article'))
         return;
-      document.body.classList.remove(`premium-article`);
-      const paywall = document.querySelector(`.premium-paywall`);
+      document.body.classList.remove('premium-article');
+      const paywall = document.querySelector('.premium-paywall');
       paywall.parentElement.removeChild(paywall);
-      document.querySelector(`.article-body-wrapper`).style.maxHeight = `inherit`
+      document.querySelector('.article-body-wrapper').style.maxHeight = 'inherit';
     `
   }
 };
