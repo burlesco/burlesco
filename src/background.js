@@ -105,6 +105,9 @@ const BLOCKLIST = {
   nsctotal: {
     xhrBlocking: [
       'https://paywall.nsctotal.com.br/behaviors',
+    ],
+    scriptBlocking: [
+      '*://*.tinypass.com/*'
     ]
   },
   oestadodespaulo: {
