@@ -66,6 +66,7 @@ O Burlesco funciona com os seguintes sites de notícia:
 - NSC Total
 - O Estado de S. Paulo
 - O Globo
+- Observador
 - Quatro Rodas
 - Revista Oeste
 - Seu Dinheiro
