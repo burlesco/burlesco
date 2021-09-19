@@ -46,18 +46,18 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Correio 24 Horas
 - Correio Popular
 - Crusoé
-- Diário do Grande ABC
-- Diário da Região
-- Diário Popular
 - Diarinho
+- Diário Popular
+- Diário da Região
 - Diário de Canoas
+- Diário do Grande ABC
+- EL PAÍS Brasil
 - Estado de Minas
-- Época
 - Exame
 - Folha de Londrina
 - Folha de S.Paulo
-- Gazeta do Povo
 - Gazeta Online
+- Gazeta do Povo
 - GaúchaZH
 - JOTA
 - Jornal NH
@@ -68,7 +68,8 @@ O Burlesco funciona com os seguintes sites de notícia:
 - O Globo
 - Quatro Rodas
 - Revista Oeste
+- Seu Dinheiro
 - Superinteressante
 - UOL
 - Veja
-- Seu Dinheiro
+- Época
