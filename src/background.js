@@ -43,6 +43,7 @@ const BLOCKLIST = {
     scriptBlocking: [
       '*://prisa-el-pais-brasil-prod.cdn.arcpublishing.com/arc/subs/p.js',
       '*://prisa-el-pais-prod.cdn.arcpublishing.com/arc/subs/p.js',
+      '*://brasil.elpais.com/pf/resources/dist/js/article.js*'
     ]
   },
   exame: {
