@@ -8,6 +8,7 @@ const SITES = [
   'diariodecanoas',
   'diariodaregiao',
   'diariopopular',
+  'elpais',
   'em',
   'exame',
   'folhadelondrina',
