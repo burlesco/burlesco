@@ -75,10 +75,11 @@ const INJECTION = {
     `
   },
   observador: {
-    url: /observador.pt/,
+    url: /observador\.pt/,
     code: `
       document.querySelector('.piano-article-blocker').remove();
       document.querySelector('.article-body-wrapper').style.maxHeight = 'inherit';
+      document.querySelector('.premium-article').classList.add('article-shown');
     `
   }
 };

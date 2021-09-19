@@ -163,6 +163,11 @@ const BLOCKLIST = {
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
     ]
   },
+  observador: {
+    scriptBlocking: [
+      '*://*.tinypass.com/*',
+    ]
+  }
 };
 
 function onBeforeRequestScript(details) {

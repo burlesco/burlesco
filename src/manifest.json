@@ -28,7 +28,8 @@
         "*://*.jota.info/*",
         "*://*.diariodaregiao.com.br/*",
         "*://*.correio24horas.com.br/*",
-        "*://*.nexojornal.com.br/*"
+        "*://*.nexojornal.com.br/*",
+        "*://*.observador.pt/*"
       ]
     },
     {
@@ -95,7 +96,8 @@
     "*://correio-static.cworks.cloud/vendor/bower_components/paywall.js/paywall.js*",
     "*://*.epoca.globo.com/*",
     "*://*.diariodecanoas.com.br/*",
-    "*://revistaoeste.com/*"
+    "*://revistaoeste.com/*",
+    "*://observador.pt/*"
   ],
 
   "applications": {
