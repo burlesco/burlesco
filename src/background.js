@@ -49,7 +49,7 @@ const BLOCKLIST = {
   exame: {
     scriptBlocking: [
       '*://exame.com/wp-content/themes/exame-new/js/pywll.js',
-      "*://exame.com/wp-content/themes/exame-new/js/extd-acc.js?v=*"
+      '*://exame.com/wp-content/themes/exame-new/js/extd-acc.js?v=*'
     ]
   },
   folhadespaulo: {
