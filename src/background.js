@@ -120,6 +120,9 @@ const BLOCKLIST = {
   oestadodespaulo: {
     xhrBlocking: [
       '*://*.estadao.com.br/paywall/*',
+    ],
+    scriptBlocking: [
+      '*://*.estadao.com.br/paywall/*',
     ]
   },
   pioneiro: {
