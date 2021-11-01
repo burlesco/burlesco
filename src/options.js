@@ -30,7 +30,8 @@ const SITES = [
   'superinteressante',
   'uol',
   'veja',
-  'observador'
+  'observador',
+  'valoreconomico'
 ];
 
 function saveOptions(e) {

@@ -158,6 +158,11 @@ const BLOCKLIST = {
       urlFilter: '*://noticias.uol.com.br/midiaglobal/nytimes/*'
     }
   },
+  valoreconomico: {
+    scriptBlocking: [
+      '*://static.infoglobo.com.br/paywall/js/*',
+    ]
+  },
   veja: {
     scriptBlocking: [
       'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/paywall.js*',
