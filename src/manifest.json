@@ -97,7 +97,8 @@
     "*://*.epoca.globo.com/*",
     "*://*.diariodecanoas.com.br/*",
     "*://revistaoeste.com/*",
-    "*://observador.pt/*"
+    "*://observador.pt/*",
+    "*://valor.globo.com/"
   ],
 
   "applications": {

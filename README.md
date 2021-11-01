@@ -72,5 +72,6 @@ O Burlesco funciona com os seguintes sites de notícia:
 - Seu Dinheiro
 - Superinteressante
 - UOL
+- Valor Econômico
 - Veja
 - Época
