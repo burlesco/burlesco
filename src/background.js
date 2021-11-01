@@ -134,7 +134,8 @@ const BLOCKLIST = {
   },
   revistaoeste: {
     scriptBlocking: [
-      '*://revistaoeste.com/wp-content/uploads/custom-css-js/248859.js?v=*'
+      '*://revistaoeste.com/wp-content/uploads/custom-css-js/248859.js?v=*',
+      '*://revistaoeste.com/wp-content/themes/revistaoeste/assets/js/main.js?ver=*'
     ]
   },
   seudinheiro: {
