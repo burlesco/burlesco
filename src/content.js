@@ -64,6 +64,14 @@ const INJECTION = {
     url: /super.abril.com.br/,
     code: ABRIL_CODE
   },
+  valoreconomico: {
+    url: /valor.globo.com/,
+    code: `
+      const element = document.querySelector('[class*="paywall"]');
+      if (element)
+        element.remove(); 
+    `
+  },
   veja: {
     url: /veja.abril.com.br/,
     code: ABRIL_CODE
