@@ -29,7 +29,8 @@
         "*://*.diariodaregiao.com.br/*",
         "*://*.correio24horas.com.br/*",
         "*://*.nexojornal.com.br/*",
-        "*://*.observador.pt/*"
+        "*://*.observador.pt/*",
+        "*://*.valor.globo.com/*"
       ]
     },
     {
