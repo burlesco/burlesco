@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "12.0",
+  "version": "12.1",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "https://burles.co",
   "author": "rodorgas",
@@ -39,6 +39,7 @@
       "matches": [
         "*://gauchazh.clicrbs.com.br/*",
         "*://*.oglobo.globo.com/*",
+        "*://*.revistacasaejardim.globo.com/*",
         "*://*.dgabc.com.br/*",
         "*://*.epoca.globo.com/*",
         "*://*.nexojornal.com.br/*",
@@ -74,6 +75,7 @@
     "*://prisa-el-pais-prod.cdn.arcpublishing.com/arc/subs/p.js",
     "*://www.netdeal.com.br/*",
     "*://*.oglobo.globo.com/*",
+    "*://*.revistacasaejardim.globo.com/*",
     "*://www.rbsonline.com.br/*",
     "*://api.tinypass.com/*",
     "*://cdn.tinypass.com/*",
