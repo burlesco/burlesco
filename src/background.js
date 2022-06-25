@@ -83,8 +83,7 @@ const BLOCKLIST = {
   gauchazh: {
     scriptBlocking: [
       '*://gauchazh.clicrbs.com.br/static/main*',
-      '*://www.rbsonline.com.br/cdn/scripts/special-paywall.min.js*',
-      '*://www.rbsonline.com.br/cdn/scripts/paywall.min.js*',
+      '*://gauchazh.clicrbs.com.br/static/signwall.*.min.js'
     ]
   },
   jornalnh: {

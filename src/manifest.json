@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "burlesco",
-  "version": "12.0",
+  "version": "12.1",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "https://burles.co",
   "author": "rodorgas",
@@ -61,6 +61,7 @@
     "*://*.folha.uol.com.br/*",
     "*://*.folha.com.br/*",
     "*://gauchazh.clicrbs.com.br/*",
+    "*://gauchazh.clicrbs.com.br./*",
     "*://*.zh.clicrbs.com.br/*",
     "*://api.clicrbs.com.br/*",
     "*://*.gazetadopovo.com.br/*",
