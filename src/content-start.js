@@ -1,5 +1,5 @@
 // run_at: document_start
-const INJECTION = {
+const INJECTION_START = {
   crusoe: {
     url : /crusoe.uol.com.br/,
     code: `
@@ -127,16 +127,16 @@ const INJECTION = {
 };
 
 chrome.storage.local.get('sites', function(result) {
-  for (let site in INJECTION) {
+  for (let site in INJECTION_START) {
     let enabledSites = result.sites;
     if (enabledSites && enabledSites[site] == false)
       continue;
-    if (INJECTION[site] == undefined)
+    if (INJECTION_START[site] == undefined)
       continue;
 
-    if (INJECTION[site].url.test(document.location.host)) {
+    if (INJECTION_START[site].url.test(document.location.host)) {
       var script = document.createElement('script');
-      script.textContent = INJECTION[site].code;
+      script.textContent = INJECTION_START[site].code;
       (document.head||document.documentElement).appendChild(script);
       script.parentNode.removeChild(script);
       break;
