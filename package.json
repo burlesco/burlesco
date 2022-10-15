@@ -4,11 +4,11 @@
   "description": "",
   "main": "",
   "dependencies": {
-    "crx": "^4.0.1",
-    "crx3": "^1.1.2",
+    "crx": "^5.0.1",
+    "crx3": "^1.1.3",
     "crypto": "^1.0.1",
-    "eslint": "^5.16.0",
-    "web-ext": "^4.3.0"
+    "eslint": "^8.25.0",
+    "web-ext": "^7.3.0"
   },
   "devDependencies": {},
   "scripts": {

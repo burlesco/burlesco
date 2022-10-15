@@ -8,7 +8,7 @@ clean:
 	rm -rf "$(DIST_DIR)"
 lint:
 	set -e ; \
-	find . -path ./node_modules -prune -false -o -name '*.json' -exec python -c 'import json; json.load(open("{}"))' \; ;\
+	find . -path ./node_modules -prune -false -o -name '*.json' -exec python3 -c 'import json; json.load(open("{}"))' \; ;\
 	npx eslint src;
 pre-build: clean
 	set -e ; \
