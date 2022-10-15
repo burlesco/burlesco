@@ -32,11 +32,11 @@ build: pre-build
 		FILE=burlesco-$$i.zip ; \
 		if  [ $$i = "chromium" ]; then \
 			zip -jr9X "$$DIR/$$FILE" $$DIR/src/* ; \
-			cat "$$DIR/$$FILE" | crx3 --crxPath="$$DIR/burlesco-chromium.crx" \
+			cat "$$DIR/$$FILE" | npx crx3 --crxPath="$$DIR/burlesco-chromium.crx" \
 				--keyPath="$(CRX3_KEY)" ; \
 		else \
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
-			web-ext sign --source-dir="$$DIR/src/" \
+			npx web-ext sign --source-dir="$$DIR/src/" \
 				--artifacts-dir="$$DIR/" \
 				--api-key="$$mozilla_api_key" \
 				--api-secret="$$mozilla_api_secret" ; \

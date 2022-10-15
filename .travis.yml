@@ -1,11 +1,7 @@
 language: node_js
 dist: trusty
 node_js:
-  - "12"
-install:
-  - npm install -g eslint
-  - npm install -g crx3
-  - npm install -g web-ext
+  - "14"
 script:
   - make lint
 before_deploy:
