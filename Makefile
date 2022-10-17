@@ -39,8 +39,7 @@ build: pre-build
 			npx web-ext sign --source-dir="$$DIR/src/" \
 				--artifacts-dir="$$DIR/" \
 				--api-key="$$mozilla_api_key" \
-				--api-secret="$$mozilla_api_secret" \
-				-v ; \
+				--api-secret="$$mozilla_api_secret" ; \
 			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
