@@ -13,7 +13,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14.x'
-      - run: |
+      - name: Get extension signing key
+        env:
+          PKCS8_KEY: ${{ secrets.PKCS8_KEY }}
+        run: |
           echo $PKCS8_KEY > burlesco-pkcs8-key.pem
       - name: Lint
         run: |
