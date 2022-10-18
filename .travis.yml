@@ -27,6 +27,7 @@ deploy:
     skip_cleanup: true
     keep_history: true
     github_token: $GITHUB_TOKEN
+    api_key: 'OAUTH TOKEN AQUI'
     repo: burlesco/burlesco-update
     target_branch: master
     local_dir: gh-pages
