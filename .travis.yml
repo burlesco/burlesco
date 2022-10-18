@@ -8,7 +8,7 @@ before_deploy:
   - >
     if ! [ "$BEFORE_DEPLOY_RUN" ]; then
       export BEFORE_DEPLOY_RUN=1;
-      openssl aes-256-cbc -K $encrypted_a0cef55ae934_key -iv $encrypted_a0cef55ae934_iv -in burlesco-rsa-key.pem.enc -out burlesco-rsa-key.pem -d
+      openssl aes-256-cbc -K $encrypted_094982294358_key -iv $encrypted_094982294358_iv -in burlesco-pkcs8-key.pem.enc -out burlesco-pkcs8-key.pem -d
       make build || travis_terminate 1;
       bash scripts/gen-gh-pages.sh || travis_terminate 1;
     fi
