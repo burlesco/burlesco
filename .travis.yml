@@ -15,6 +15,8 @@ before_deploy:
 deploy:
   - provider: releases
     skip_cleanup: true
+    api_key:
+      secure: F5aLGAj83dF1QUymlB1impCTXMbMiUR/WsVXPgtdGomCCMyVD/4byHHxnH3PWKhH3Yk3EwPmaW1F/gkcBv0LlnR5v2pf1U74WW/zZy78ld8zI7OrlFFVvdijpe0ES3920BSc3mi8YcXdzG4JmTRynoJcVbD+VZy53wYF/vldjU9d4iBgE+y3hSRAQ+oZrh+wVVLrix6INtoMZZe6E+A83z6lJvVSivVuNDFngbTOQs/BB5w8a1LJmxETNlmTjWXrXsTluaAgPE//aQQJuKF2+VEIdaebS+gkk5PzrQe2hPn2plndabh5WTv5+p57QXvSgxap8J58d8l3xYLJHCO2KROJwPwKJyJ50INfqk3oOw1o4o2S7mUFnGdNjk4MUjFHphEk/J3K2RevfPOtZZw3rRsuA2wAUxWDkPVtFFueJnvwcdud81X3U+AFmZLv8bQL0YzEuYXVcYq0+2ngHPchC2B0H2L7gOmIw83bvUEAgERg1EmE/f09sno7svoJxQmoi108xbnpIOzIbww0NjHJZVzCQj+wFO8xDwEoWPQJa+c1l/VA3Tsncfmhs8An5SlLB6ow9jukW0z6H5TYg2BXgtQn1Pd68aFtsk4AQOFZUUVoSYP9ZjBFzx8ges6GUucs1BqZhQESp/Wnwnhx+HYBvRO/6VggBssexPk7EaboU1Q=
     file:
       - dist/chromium/burlesco-chromium.crx
       - dist/chromium/burlesco-chromium.zip
@@ -23,6 +25,7 @@ deploy:
     on:
       branch: master
       tags: true
+      repo: burlesco/burlesco
   - provider: pages
     skip_cleanup: true
     keep_history: true
