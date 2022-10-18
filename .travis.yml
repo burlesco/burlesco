@@ -29,10 +29,11 @@ deploy:
   - provider: pages
     skip_cleanup: true
     keep_history: true
-    github_token: $GITHUB_TOKEN
+    api_key:
+      secure: Rq+BWhZ+nw37DSZsgpNGG0S5ZcP2B75Y6DHWmfXinp6Bj1akW55+inHtfYhHZ2yMznxJuJ3nYv3CLDe3QDzqqVguelbQouC/M2583ykbMYxkTt2pIo7AxbU0DL9z8Fp8u/56/a4/7xEWr0/w/RrPnr5b+ppaPQs0s71+fld19nSLgiR2Hl1ANGwINSmr757bjsXyy5ApYtJbb1ZiWQslUKha1Tlro3eW9Fs4L0mukGRg9oh++Fij763qouynjvuf5qRuuR8fcxn8xNLwoe2CNQcsI+k3WAJikLIfAS5n6B2+frpLBxhfIKn47++1TuPHRsVnxReYRzAPJk/GYlSe6pQAcoLF3Gz0aHqA+sB2AldZOdk4yq3UCfU5Z3sMycJK3DYii+mPY//pej1FHqqL119PE+znBL5n2K42fX0KbXKSnNXa2RDVfksOwLX72iQwKRLfVCN3knIp1JNGtPPcMQgNcMGrA8VLOm/ykS0yu3QgI6iukb+uKK0DALCtYkRNs00rt1OAHKxZlqelLbuHn1vMwOT7WKmYxjPKYojtsibtnN5uINeH58NorWR2s5wUUA3K1R3vO212Gs3xDrQz0p+Q/fBmvoZ3Uo/BREoX8m9mz4CveT2Uq3N+ThRcFaZ7axaWw9Qz1rWauf3KYjYoAYLZvTxciDCwUF5V6X/8Su0=
     repo: burlesco/burlesco-update
-    target_branch: master
+    target_branch: test
     local_dir: gh-pages
     on:
-      branch: master
+      branch: test
       tags: true
