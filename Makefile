@@ -1,7 +1,7 @@
 SHELL:=/bin/bash
 BROWSERS=chromium firefox
 DIST_DIR=dist
-CRX3_KEY=burlesco-rsa-key.pem
+CRX3_KEY=burlesco-pkcs8-key.pem
 .PHONY: all clean lint pre-build build
 all: clean lint pre-build
 clean:
