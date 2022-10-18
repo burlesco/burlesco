@@ -36,11 +36,6 @@ build: pre-build
 				--keyPath="$(CRX3_KEY)" ; \
 		else \
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
-			npx web-ext sign --source-dir="$$DIR/src/" \
-				--artifacts-dir="$$DIR/" \
-				--api-key="$$mozilla_api_key" \
-				--api-secret="$$mozilla_api_secret" \
-				-v ; \
 			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
