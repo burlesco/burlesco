@@ -25,5 +25,7 @@ jobs:
         run: |
           make build
       - name: Update manifest for extensions
+        env:
+          TAG: ${{ github.ref }}
         run: |
           bash scripts/gen-gh-pages.sh
