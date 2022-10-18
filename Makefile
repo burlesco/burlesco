@@ -36,6 +36,6 @@ build: pre-build
 				--keyPath="$(CRX3_KEY)" ; \
 		else \
 			zip -j "$$DIR/$$FILE" $$DIR/src/* ; \
-			mv "$$(ls $$DIR/burlesco*.xpi)" "$$DIR/burlesco-$$i.xpi" ; \
+			mv "$$(ls $$DIR/burlesco*.zip)" "$$DIR/burlesco-$$i.xpi" ; \
 		fi ; \
 	done
