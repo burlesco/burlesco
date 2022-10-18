@@ -17,7 +17,7 @@ jobs:
         env:
           PKCS8_KEY: ${{ secrets.PKCS8_KEY }}
         run: |
-          echo $PKCS8_KEY > burlesco-pkcs8-key.pem
+          echo "$PKCS8_KEY" > burlesco-pkcs8-key.pem
       - name: Lint
         run: |
           make lint
