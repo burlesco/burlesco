@@ -169,7 +169,7 @@ const BLOCKLIST = {
   },
   veja: {
     scriptBlocking: [
-      'https://veja.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/abril-firebase-auth/abril-paywall.js*',
+      'https://*.abril.com.br/wp-content/plugins/abril-plugins/abril-paywall/js/abril-firebase-auth/abril-paywall.js*',
     ]
   },
   observador: {
