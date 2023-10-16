@@ -122,6 +122,7 @@ const BLOCKLIST = {
     ],
     scriptBlocking: [
       '*://*.estadao.com.br/paywall/*',
+      '*://*.zephr.com/zephr-browser/*/zephr-browser.umd.js',
     ]
   },
   pioneiro: {

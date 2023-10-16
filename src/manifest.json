@@ -102,7 +102,8 @@
     "*://*.diariodecanoas.com.br/*",
     "*://revistaoeste.com/*",
     "*://observador.pt/*",
-    "*://valor.globo.com/"
+    "*://valor.globo.com/",
+    "*://*.zephr.com/*"
   ],
 
   "applications": {
