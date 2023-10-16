@@ -83,7 +83,6 @@ const BLOCKLIST = {
   },
   gauchazh: {
     scriptBlocking: [
-      '*://gauchazh.clicrbs.com.br/static/main*',
       '*://gauchazh.clicrbs.com.br/static/signwall.*.min.js'
     ]
   },
