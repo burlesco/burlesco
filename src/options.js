@@ -13,6 +13,7 @@ const SITES = [
   'exame',
   'folhadelondrina',
   'folhadespaulo',
+  'galileu',
   'gazetadopovo',
   'gazetaonline',
   'gauchazh',

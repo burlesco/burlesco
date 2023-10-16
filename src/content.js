@@ -39,6 +39,18 @@ const INJECTION = {
       setTimeout(showText, 100);
     `
   },
+  galileu: {
+    url: /revistagalileu\.globo\.com/,
+    code: `
+      const cleanGalileu = () => {
+        const div = document.querySelector('#detecta-adblock');
+        document.querySelector('body').style.overflow = 'initial';
+        div?.parentNode.removeChild(div);
+      };
+      cleanGalileu();
+      setTimeout(cleanGalileu, 4000);
+    `
+  },
   gauchazh: {
     url : /gauchazh.clicrbs.com.br/,
     code: `
