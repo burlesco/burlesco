@@ -19,6 +19,7 @@
       "js": ["content.js"],
       "run_at": "document_idle",
       "matches": [
+        "*://gauchazh.clicrbs.com.br/*",
         "*://*.exame.com/*",
         "*://*.folha.uol.com.br/*",
         "*://*.folha.com.br/*",
@@ -37,7 +38,6 @@
       "js": ["content-start.js"],
       "run_at": "document_start",
       "matches": [
-        "*://gauchazh.clicrbs.com.br/*",
         "*://*.oglobo.globo.com/*",
         "*://*.revistacasaejardim.globo.com/*",
         "*://*.dgabc.com.br/*",
