@@ -1,7 +1,7 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "burlesco",
-  "version": "14.0",
+  "version": "15.0",
   "description": "Leia notícias sem ser assinante, burle o paywall",
   "homepage_url": "https://burles.co",
   "author": "rodorgas",
@@ -11,7 +11,7 @@
   },
 
   "background": {
-    "scripts": ["background.js"]
+    "service_worker": "background.js"
   },
 
   "content_scripts": [
@@ -50,11 +50,13 @@
   ],
 
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
+    "declarativeNetRequest",
+    "scripting",
     "cookies",
-    "storage",
+    "storage"
+  ],
 
+  "host_permissions": [
     "*://correio.rac.com.br/*",
     "*://*.nsctotal.com.br/*",
     "*://www.diariopopular.com.br/*",
@@ -107,7 +109,7 @@
     "*://*.zephr.com/*"
   ],
 
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "burlesco@burles.co",
       "update_url": "https://burlesco.github.io/burlesco-update/firefox.json"

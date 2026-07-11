@@ -179,306 +179,293 @@ const BLOCKLIST = {
   }
 };
 
-function onBeforeRequestScript(details) {
+function generateRules(enabledSites) {
+  let rules = [];
+  let nextRuleId = 1;
+
   for (let item in BLOCKLIST) {
-    let urls = BLOCKLIST[item].urls;
-    let scripts = BLOCKLIST[item].allowScript;
-    if (scripts == undefined)
-      continue;
-    if (urls != undefined) {
-      for (let item in urls) {
-        if (urls[item].test(details.initiator) ||
-            urls[item].test(details.originUrl)) {
-          for (let item in scripts) {
-            if (details.url.match(matchPatternToRegExp(scripts[item])))
-              return {cancel: false};
+    if (enabledSites && enabledSites[item] === false) continue;
+
+    let siteConfig = BLOCKLIST[item];
+
+    if (siteConfig.scriptBlocking) {
+      for (let url of siteConfig.scriptBlocking) {
+        rules.push({
+          id: nextRuleId++,
+          priority: 1,
+          action: { type: 'block' },
+          condition: {
+            urlFilter: url,
+            resourceTypes: ['script']
           }
-        }
+        });
       }
     }
-  }
-  return {cancel: true};
-}
 
-function setScriptBlocking(enabledSites) {
-  let urlFilters = [];
+    if (siteConfig.xhrBlocking) {
+      for (let url of siteConfig.xhrBlocking) {
+        rules.push({
+          id: nextRuleId++,
+          priority: 1,
+          action: { type: 'block' },
+          condition: {
+            urlFilter: url,
+            resourceTypes: ['xmlhttprequest']
+          }
+        });
+      }
+    }
 
-  for (let item in BLOCKLIST) {
-    let script = BLOCKLIST[item].scriptBlocking;
-    if (enabledSites && enabledSites[item] == false)
-      continue;
-    if (script == undefined)
-      continue;
-    urlFilters = urlFilters.concat(script);
-  }
+    if (siteConfig.cookieBlocking) {
+      let cookie = siteConfig.cookieBlocking;
+      rules.push({
+        id: nextRuleId++,
+        priority: 1,
+        action: {
+          type: 'modifyHeaders',
+          requestHeaders: [
+            { header: 'Cookie', operation: 'remove' }
+          ],
+          responseHeaders: [
+            { header: 'Set-Cookie', operation: 'remove' }
+          ]
+        },
+        condition: {
+          urlFilter: cookie.urlFilter,
+          resourceTypes: ['xmlhttprequest', 'script', 'main_frame']
+        }
+      });
+    }
 
-  chrome.webRequest.onBeforeRequest.addListener(
-    onBeforeRequestScript,
-    {
-      urls: urlFilters,
-      types: ['script']
-    },
-    ['blocking']
-  );
-}
-
-let whitelist = [];
-function onBeforeRequestXml(details) {
-  if (whitelist.indexOf(details.url) !== -1)
-    return {cancel: false};
-  else
-    return {cancel: true};
-}
-function setXhrBlocking(enabledSites) {
-  let blocklist = [];
-
-  for (let item in BLOCKLIST) {
-    let xhr = BLOCKLIST[item].xhrBlocking;
-    if (xhr == undefined)
-      continue;
-    if (enabledSites && enabledSites[item] == false)
-      continue;
-    blocklist = blocklist.concat(xhr);
+    if (siteConfig.headerInjection) {
+      let header = siteConfig.headerInjection;
+      rules.push({
+        id: nextRuleId++,
+        priority: 1,
+        action: {
+          type: 'modifyHeaders',
+          requestHeaders: [
+            { header: header.name, operation: 'set', value: header.value }
+          ]
+        },
+        condition: {
+          urlFilter: header.urlFilter,
+          resourceTypes: ['xmlhttprequest', 'main_frame']
+        }
+      });
+    }
   }
 
   for (let item in WHITELIST) {
-    if (enabledSites && enabledSites[item] == false)
-      continue;
-    let xhr = WHITELIST[item].xhrBlocking;
-    if (xhr == undefined)
-      continue;
-    whitelist = whitelist.concat(xhr);
-  }
-
-  chrome.webRequest.onBeforeRequest.addListener(
-    onBeforeRequestXml,
-    {
-      urls: blocklist,
-      types: ['xmlhttprequest']
-    },
-    ['blocking']
-  );
-}
-
-function onHeadersReceivedCookie(details) {
-  details.responseHeaders.forEach(function(responseHeader) {
-    if (responseHeader.name.toLowerCase() == 'set-cookie') {
-      responseHeader.value = '';
-    }
-  });
-  return {
-    responseHeaders: details.responseHeaders
-  };
-}
-function onBeforeSendHeadersCookie(details) {
-  injectHeader('Cookie', '', details.requestHeaders);
-  return {requestHeaders: details.requestHeaders};
-}
-
-function makeCookieRemove(cookie) {
-  return function() {
-    chrome.cookies.remove(cookie);
-  };
-}
-let callbacksOnBeforeRequestCookie = [];
-
-
-function setCookieBlocking(enabledSites) {
-  let urlFilters = [];
-
-  for (let item in BLOCKLIST) {
-    let cookie = BLOCKLIST[item].cookieBlocking;
-    if (cookie == undefined)
-      continue;
-    if (enabledSites && enabledSites[item] == false)
-      continue;
-
-    if (cookie.blockAll) {
-      urlFilters.push(cookie.urlFilter);
-    }
-    else {
-      let callback = makeCookieRemove(cookie.cookie);
-      callbacksOnBeforeRequestCookie.push(callback);
-      chrome.webRequest.onBeforeRequest.addListener(
-        callback,
-        {
-          urls: [cookie.urlFilter],
-          types: ['xmlhttprequest', 'script', 'main_frame']
-        }
-      );
+    if (enabledSites && enabledSites[item] === false) continue;
+    
+    let siteConfig = WHITELIST[item];
+    if (siteConfig.xhrBlocking) {
+      for (let url of siteConfig.xhrBlocking) {
+        rules.push({
+          id: nextRuleId++,
+          priority: 2, 
+          action: { type: 'allow' },
+          condition: {
+            urlFilter: url,
+            resourceTypes: ['xmlhttprequest']
+          }
+        });
+      }
     }
   }
 
-
-  chrome.webRequest.onHeadersReceived.addListener(
-    onHeadersReceivedCookie,
-    {
-      urls: urlFilters,
-      types: ['xmlhttprequest', 'script', 'main_frame']
-    },
-    ['blocking', 'responseHeaders']
-  );
-
-  chrome.webRequest.onBeforeSendHeaders.addListener(
-    onBeforeSendHeadersCookie,
-    {
-      urls: urlFilters,
-      types: ['xmlhttprequest', 'script', 'main_frame']
-    },
-    ['blocking', 'requestHeaders']
-  );
-}
-function makeInjectHeader(name, value) {
-  return function(details) {
-    injectHeader(
-      name,
-      value,
-      details.requestHeaders
-    );
-    return {requestHeaders: details.requestHeaders};
-  };
-}
-let callbacksOnBeforeSendHeadersInjection = [];
-
-function setHeaderInjection(enabledSites) {
-  for (let item in BLOCKLIST) {
-    let header = BLOCKLIST[item].headerInjection;
-    if (header == undefined)
-      continue;
-    if (enabledSites && enabledSites[item] == false)
-      continue;
-
-    let callback = makeInjectHeader(header.name, header.value);
-    callbacksOnBeforeSendHeadersInjection.push(callback);
-    chrome.webRequest.onBeforeSendHeaders.addListener(
-      callback,
-      {
-        urls: [
-          header.urlFilter
-        ],
-        types: ['xmlhttprequest', 'main_frame']
-      },
-      ['blocking', 'requestHeaders']
-    );
-  }
+  return rules;
 }
 
-function injectHeader(name, value, requestHeaders) {
-  /**
-   * @param {string} name - Name of the header to be inserted
-   * @param {string} value - Value of the header to be inserted
-   * @param {Object[]} requestHeaders - Provided by webRequest
-   *   listeners in callback arg `details.requestHeader`
-   * @param {string} requestHeaders[].name
-   * @param {string} requestHeaders[].value
-   */
-  var headerIndex = requestHeaders.findIndex(
-    x => x.name.toLowerCase() == name.toLowerCase());
-
-  var newHeader = {name: name, value: value};
-  if (headerIndex == -1)
-    requestHeaders.push(newHeader);
-  else
-    requestHeaders[headerIndex] = newHeader;
-}
-
-function apply() {
-  chrome.storage.local.get('sites', function(result) {
+async function apply() {
+  chrome.storage.local.get('sites', async function(result) {
     let enabledSites = result.sites;
-
-    setScriptBlocking(enabledSites);
-    setXhrBlocking(enabledSites);
-    setCookieBlocking(enabledSites);
-    setHeaderInjection(enabledSites);
+    let newRules = generateRules(enabledSites);
+    
+    let oldRules = await chrome.declarativeNetRequest.getDynamicRules();
+    let oldRuleIds = oldRules.map(r => r.id);
+    
+    await chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: oldRuleIds,
+      addRules: newRules
+    });
   });
 }
 
-function removeListeners() {
-  chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestScript);
-  chrome.webRequest.onBeforeRequest.removeListener(onBeforeRequestXml);
-  chrome.webRequest.onHeadersReceived.removeListener(onHeadersReceivedCookie);
-  chrome.webRequest.onBeforeSendHeaders.removeListener(onBeforeSendHeadersCookie);
-  for (let item of callbacksOnBeforeRequestCookie) {
-    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeRequestCookie, item)) {
-      chrome.webRequest.onBeforeRequest.removeListener(item);
+const INJECTION_START = {
+  crusoe: function() { document.cookie = 'crs_subscriber=1'; },
+  diariograndeabc: function() {
+    var email = "colaborador@dgabc.com.br";
+    localStorage.emailNoticiaExclusiva = email;
+    if (window.jQuery) {
+      window.jQuery('.NoticiaExclusivaNaoLogado, .NoticiaExclusivaLogadoSemPermissao').hide();
+      window.jQuery('.linhaSuperBanner, .footer, .NoticiaExclusivaLogado').show();
+    } else {
+      document.querySelectorAll('.NoticiaExclusivaNaoLogado, .NoticiaExclusivaLogadoSemPermissao').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.linhaSuperBanner, .footer, .NoticiaExclusivaLogado').forEach(el => el.style.display = 'block');
     }
+  },
+  em: function() {
+    window.id_acesso_noticia=0;
+    let style = document.createElement('style');
+    style.type = 'text/css';
+    style.appendChild(document.createTextNode('.news-blocked { display: none !important } .news-blocked-no-scroll { overflow: auto !important; width: auto !important; position: unset !important; } div[itemprop="articleBody"] { height: auto !important; }'));
+    document.head.appendChild(style);
+  },
+  oglobo: function() { window.hasPaywall = false; },
+  nexo: function() {
+    let style = document.createElement('style');
+    style.type = 'text/css';
+    style.appendChild(document.createTextNode('body { overflow: auto !important; } div[class*="PaywallBumper__wrap-container"], div[class*="Datawall__wrap-container"] { display: none !important; }'));
+    document.head.appendChild(style);
   }
-  for (let item of callbacksOnBeforeSendHeadersInjection) {
-    if (Object.prototype.hasOwnProperty.call(callbacksOnBeforeSendHeadersInjection, item)) {
-      chrome.webRequest.onBeforeSendHeaders.removeListener(item);
-    }
-  }
-}
+};
 
-apply();
-chrome.runtime.onMessage.addListener(function(message) {
-  if (message == 'update') {
-    removeListeners();
+const ABRIL_CODE = function() {
+  window.setTimeout(function() {
+    let b = document.querySelector('body');
+    if(b) b.classList.remove('disabledByPaywall');
+    let o = document.querySelector('.piano-offer-overlay');
+    if(o) o.remove();
+    let p = document.querySelector('#piano_offer');
+    if(p) p.remove();
+  }, 10000);
+};
+
+const INJECTION = {
+  correio24horas: function() {
+    if (window.jQuery) {
+      window.jQuery('[class^=paywall]').remove();
+      window.jQuery('[class$=blocked]').removeClass();
+      window.jQuery('[id^=paywall]').removeClass('hide is-active').remove();
+      window.jQuery('.noticias-single__content__text').attr('style', 'height:auto;');
+    } else {
+      document.querySelectorAll('[class^="paywall"]').forEach(el => el.remove());
+      document.querySelectorAll('[class$="blocked"]').forEach(el => el.className = '');
+      document.querySelectorAll('[id^="paywall"]').forEach(el => { el.classList.remove('hide', 'is-active'); el.remove(); });
+      document.querySelectorAll('.noticias-single__content__text').forEach(el => el.style.height = 'auto');
+    }
+  },
+  diariodaregiao: function() {
+    let el = document.getElementsByClassName('noticia-texto')[0];
+    if (el) el.style.display = 'block';
+    let row = document.querySelector('.conteudo > .row');
+    if (row) row.style.display = 'none';
+  },
+  exame: ABRIL_CODE,
+  folhadespaulo: function() {
+    window.omtrClickUOL = function(){};
+    function showText() {
+      let btn = document.querySelector("#bt-read-more-content");
+      if (btn) {
+         let next = btn.nextElementSibling;
+         if (next) {
+            next.style.display = 'block';
+            let prev = next.previousElementSibling;
+            if (prev) prev.remove();
+         }
+      }
+    }
+    setTimeout(showText, 100);
+  },
+  galileu: function() {
+    const cleanGalileu = () => {
+      const div = document.querySelector('#detecta-adblock');
+      if (div) div.remove();
+      document.body.style.overflow = 'initial';
+    };
+    cleanGalileu();
+    setTimeout(cleanGalileu, 4000);
+  },
+  gauchazh: function() {
+    (async () => {
+      if (!window.__ISOMORPHIC_DATA__) return;
+      const data = JSON.parse(decodeURI(window.__ISOMORPHIC_DATA__)).state.apollo.ROOT_QUERY;
+      const key = Object.keys(data).filter(key => key.includes('article'))[0];
+      if(!key || !data[key].article_body_components) return;
+      
+      const parts = data[key].article_body_components
+        .map(item => `<div class="article-paragraph">${item.html || item.data.embed}</div>`);
+      const content = parts.reduce((acc, curr) => acc + curr, '');
+      
+      while (true) {
+        const article = document.querySelector('.article-paragraph');
+        if (article === null) {
+           await new Promise(r => setTimeout(r, 1000));
+           continue;
+        }
+        article.insertAdjacentHTML('afterend', content);
+        document.querySelectorAll('.article-paragraph').forEach(item => {
+          item.style.opacity = '1';
+        });
+        document.querySelectorAll('a').forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.stopImmediatePropagation();
+            return false;
+          });
+        });
+        let style = document.createElement('style');
+        style.textContent = '.paid-content-template::before { display: none; }';
+        document.head.appendChild(style);
+        break;
+      }
+    })();
+  },
+  nexo: function() {
+    const selectors = [
+      "div[class*='PaywallBumper__wrap-container']",
+      "div[class*='Datawall__wrap-container']"
+    ];
+    selectors.forEach(selector => {
+      const element = document.querySelector(selector);
+      if (element) element.remove();
+    });
+  },
+  seudinheiro: function() {
+    let p = document.querySelector('#premium-paywall');
+    if (p) p.remove();
+    document.body.style.overflow = '';
+  },
+  superinteressante: ABRIL_CODE,
+  valoreconomico: function() {
+    const element = document.querySelector('[class*="paywall"]');
+    if (element) element.remove();
+  },
+  veja: ABRIL_CODE,
+  jota: function() {
+    let p = document.getElementsByClassName('jota-paywall')[0];
+    if (p) p.remove();
+  },
+  observador: function() {
+    let p = document.querySelector('.piano-article-blocker');
+    if (p) p.remove();
+    let a = document.querySelector('.article-body-wrapper');
+    if (a) a.style.maxHeight = 'inherit';
+    let p2 = document.querySelector('.premium-article');
+    if (p2) p2.classList.add('article-shown');
+  }
+};
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'executeScript' && sender.tab) {
+    let func = null;
+    if (message.type === 'start') {
+      func = INJECTION_START[message.site];
+    } else {
+      func = INJECTION[message.site];
+    }
+    if (func) {
+      chrome.scripting.executeScript({
+        target: { tabId: sender.tab.id },
+        world: 'MAIN',
+        func: func
+      }).catch(e => console.error(e));
+    }
+  } else if (message === 'update') {
     apply();
   }
 });
 
-
-function matchPatternToRegExp(pattern) {
-  /**
-  * Transforms a valid match pattern into a regular expression
-  * which matches all URLs included by that pattern.
-  *
-  * @param  {string}  pattern  The pattern to transform.
-  * @return {RegExp}           The pattern's equivalent as a RegExp.
-  * @throws {TypeError}        If the pattern is not a valid MatchPattern
-  */
-  if (pattern === '') {
-    return (/^(?:http|https|file|ftp|app):\/\//);
-  }
-
-  const schemeSegment = '(\\*|http|https|ws|wss|file|ftp)';
-  const hostSegment = '(\\*|(?:\\*\\.)?(?:[^/*]+))?';
-  const pathSegment = '(.*)';
-  const matchPatternRegExp = new RegExp(
-    `^${schemeSegment}://${hostSegment}/${pathSegment}$`
-  );
-
-  let match = matchPatternRegExp.exec(pattern);
-  if (!match) {
-    throw new TypeError(`"${pattern}" is not a valid MatchPattern`);
-  }
-
-  let [, scheme, host, path] = match;
-  if (!host) {
-    throw new TypeError(`"${pattern}" does not have a valid host`);
-  }
-
-  let regex = '^';
-
-  if (scheme === '*') {
-    regex += '(http|https)';
-  } else {
-    regex += scheme;
-  }
-
-  regex += '://';
-
-  if (host && host === '*') {
-    regex += '[^/]+?';
-  } else if (host) {
-    if (host.match(/^\*\./)) {
-      regex += '[^/]*?';
-      host = host.substring(2);
-    }
-    regex += host.replace(/\./g, '\\.');
-  }
-
-  if (path) {
-    if (path === '*') {
-      regex += '(/.*)?';
-    } else if (path.charAt(0) !== '/') {
-      regex += '/';
-      regex += path.replace(/\./g, '\\.').replace(/\*/g, '.*?');
-      regex += '/?';
-    }
-  }
-
-  regex += '$';
-  return new RegExp(regex);
-}
+chrome.runtime.onInstalled.addListener(apply);
+chrome.runtime.onStartup.addListener(apply);
