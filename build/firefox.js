@@ -83,7 +83,7 @@ function background(sites) {
     `const NETWORK = ${JSON.stringify(network, null, 2)};`,
     'const LISTENERS = [];',
     ...[...Object.values(engine), matchPatternToRegExp].map(fn => fn.toString()),
-    'applyNetwork();',
+    'startNetwork();',
   ].join('\n\n') + '\n';
 }
 
