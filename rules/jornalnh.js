@@ -1,10 +1,10 @@
 // Jornal NH (fivewall).
-import { FIVEWALL, FIVEWALL_MATCHES } from './shared/fivewall.js';
+import { FIVEWALL } from './shared/fivewall.js';
 
 export default {
   id: 'jornalnh',
   name: 'Jornal NH',
-  matches: ['*://www.jornalnh.com.br/*', ...FIVEWALL_MATCHES],
+  matches: ['*://www.jornalnh.com.br/*', FIVEWALL],
 
   blockRequests: [{ urls: [FIVEWALL], types: ['script'] }],
 };

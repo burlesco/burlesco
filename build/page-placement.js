@@ -10,16 +10,16 @@ const RUN = {
   privileged: fn => `(${serializeFunction(fn)})();`,
 };
 
-// t: the Site's Techniques for one Target; moment: 'start' or 'idle'.
-export function statementsAt(t, moment) {
+// techniques: the Site's Techniques for one Target; moment: 'start' or 'idle'.
+export function statementsAt(techniques, moment) {
   const statements = Object.entries(PAGE_CODE)
     .filter(([, place]) => place.moment === moment)
-    .flatMap(([key, place]) => t[key].map(RUN[place.environment]));
+    .flatMap(([key, place]) => techniques[key].map(RUN[place.environment]));
   if (moment === 'idle') {
-    if (t.removeElements.length) {
-      statements.push(`removeElements(${JSON.stringify(t.removeElements.join(', '))});`);
+    if (techniques.removeElements.length) {
+      statements.push(`removeElements(${JSON.stringify(techniques.removeElements.join(', '))});`);
     }
-    if (t.clearCookies) statements.push('eraseAllCookies();');
+    if (techniques.clearCookies) statements.push('eraseAllCookies();');
   }
   return statements;
 }

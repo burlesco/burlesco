@@ -4,7 +4,7 @@
 import { REQUEST_TYPES } from './request-types.js';
 import { matchPatternToRegExp } from './match-pattern.js';
 import { serializeFunction } from './page-code.js';
-import * as runtime from './runtime.js';
+import * as pageHelpers from './runtime.js';
 
 export function blockRequests(value, here, report) {
   if (!Array.isArray(value)) {
@@ -59,7 +59,7 @@ export function connect(value, here, report) {
 
 // The helpers the generated scripts carry. They live in the privileged
 // environment, so code injected into the page can't call them.
-const HELPERS = Object.keys(runtime);
+const HELPERS = Object.keys(pageHelpers);
 const helperCalls = src => HELPERS.filter(name =>
   new RegExp(`(?<![\\w$.])${name}(?![\\w$])`).test(src));
 

@@ -14,15 +14,15 @@ export function applyNetwork(sites = {}) {
   const web = browser.webRequest;
   const without = (headers, name) =>
     headers.filter(h => h.name.toLowerCase() !== name);
-  for (const [id, t] of Object.entries(NETWORK)) {
+  for (const [id, techniques] of Object.entries(NETWORK)) {
     if (sites[id] === false) continue;
-    for (const { urls, except, types } of t.blockRequests) {
+    for (const { urls, except, types } of techniques.blockRequests) {
       const allowed = except.map(matchPatternToRegExp);
       listen(web.onBeforeRequest,
         details => ({ cancel: !allowed.some(re => re.test(details.url)) }),
         { urls, types }, ['blocking']);
     }
-    for (const { urls } of t.blockCookies) {
+    for (const { urls } of techniques.blockCookies) {
       const types = REQUEST_TYPES.blockCookies;
       listen(web.onBeforeSendHeaders,
         details => ({ requestHeaders: without(details.requestHeaders, 'cookie') }),
@@ -31,7 +31,7 @@ export function applyNetwork(sites = {}) {
         details => ({ responseHeaders: without(details.responseHeaders, 'set-cookie') }),
         { urls, types }, ['blocking', 'responseHeaders']);
     }
-    for (const { urls, name, value } of t.setRequestHeader) {
+    for (const { urls, name, value } of techniques.setRequestHeader) {
       listen(web.onBeforeSendHeaders,
         details => ({
           requestHeaders: [
