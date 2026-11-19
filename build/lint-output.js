@@ -31,6 +31,8 @@ export async function lintOutput(scripts) {
           globals: GLOBALS[target],
         },
         rules: { 'no-undef': 'error' },
+        // Copied code keeps its own directives for the repo lint's rules.
+        linterOptions: { reportUnusedDisableDirectives: 'off' },
       },
     });
     const [result] = await eslint.lintText(text, { filePath: path });
