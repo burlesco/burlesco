@@ -6,18 +6,23 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| BRPOLÍTICO | none | `blockRequests` |
 | Casa e Jardim | none | `siteStart` |
 | Diário de Canoas | `blockRequests`[^chrome] | `blockRequests` |
 | Época | none | `siteStart` |
 | Exame | `blockRequests`[^chrome] | `blockRequests`, `siteIdle` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| Gazeta Online | none | `blockCookies` |
 | Jornal NH | `blockRequests`[^chrome] | `blockRequests` |
 | Jornal VS | `blockRequests`[^chrome] | `blockRequests` |
+| Nexo | none | `blockRequests`, `siteStart`, `siteIdle` |
 | NSC Total | `blockRequests`[^chrome] | `blockRequests` |
 | O Globo | `blockRequests`[^chrome], `connect` | `siteStart` |
 | Observador | `blockRequests`[^chrome], `connect`, `privilegedIdle` | `blockRequests`, `siteIdle` |
+| Pioneiro | none | `blockRequests` |
 | Quatro Rodas | `blockRequests`[^chrome], `siteIdle` | `blockRequests` |
 | Revista Galileu | `privilegedIdle` | `siteIdle` |
+| Revista Oeste | none | `blockRequests` |
 | Superinteressante | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
 | Valor Econômico | none | `blockRequests`, `siteIdle` |
 | Veja | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |

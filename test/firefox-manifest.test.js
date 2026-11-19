@@ -68,3 +68,10 @@ test('a Rule with no network Techniques asks for no host permissions', async () 
   const m = await manifest([{ id: 'gamma', name: 'Gamma', matches: ['*://gamma.org/*'] }]);
   assert.deepEqual(m.permissions.filter(p => p.includes('://')), []);
 });
+
+test('the manifest opens the generated options page and may use storage', async () => {
+  const files = await build([alpha]);
+  const m = JSON.parse(files['dist/firefox/manifest.json']);
+  assert.ok(files[`dist/firefox/${m.options_ui.page}`]);
+  assert.ok(m.permissions.includes('storage'));
+});
