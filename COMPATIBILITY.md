@@ -6,8 +6,12 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| Correio24Horas | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
+| Diário ABC Paulista | `siteIdle` | `siteStart` |
 | Diário Popular | `clearCookies` | `blockCookies` |
 | EL PAÍS | `blockRequests`[^chrome], `connect` | `blockRequests` |
+| Estado de Minas | `privilegedIdle` | `siteStart` |
+| Folha de Londrina | `blockRequests`[^chrome] | `blockRequests` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
 | GaúchaZH | `blockRequests`[^chrome], `connect`, `siteIdle` | `blockRequests`, `siteIdle` |
 | JOTA | `privilegedStart` | `setRequestHeader`, `siteIdle` |
