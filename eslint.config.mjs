@@ -43,7 +43,7 @@ export default [
   // function using a module variable here; the build's output lint does.
   // Tests hold sample Rules, so they see the same globals.
   {
-    files: ['rules/**/*.js', 'test/**/*.js'],
+    files: ['rules/**/*.js', 'test/**/*.js', 'build/runtime.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',

@@ -1,6 +1,10 @@
 // The userscript generator: one self-contained burlesco.user.js for
 // Tampermonkey.
 import { techniquesFor, hasTechniques } from './techniques.js';
+import { PAGE_CODE } from './targets.js';
+import { serializeFunction, indent } from './page-code.js';
+import { matchPatternToRegExp } from './match-pattern.js';
+import * as runtime from './runtime.js';
 
 const LATEST =
   'https://github.com/burlesco/burlesco/releases/latest/download/burlesco.user.js';
@@ -9,7 +13,39 @@ export function userscript(rules, { version }) {
   const sites = rules
     .filter(rule => hasTechniques(rule, 'userscript'))
     .map(rule => ({ rule, techniques: techniquesFor(rule, 'userscript') }));
-  return `${header(sites, version)}\n`;
+  const blocks = sites.map(siteBlock).filter(Boolean);
+  const helpers = Object.values(runtime).map(fn => fn.toString());
+  return [header(sites, version), ...blocks, ...helpers].join('\n\n') + '\n';
+}
+
+// One Site's page code, behind a host check generated from its matches.
+// Start code runs as soon as the script does, which is before the Site's
+// own scripts (@run-at document-start); idle code waits for the page.
+function siteBlock({ rule, techniques: t }) {
+  const run = {
+    site: fn => `runInSite(${serializeFunction(fn)});`,
+    privileged: fn => `(${serializeFunction(fn)})();`,
+  };
+  const at = moment => Object.entries(PAGE_CODE)
+    .filter(([, place]) => place.moment === moment)
+    .flatMap(([key, place]) => t[key].map(run[place.environment]));
+
+  const start = at('start');
+  const idle = at('idle');
+  if (t.removeElements.length) {
+    idle.push(`removeElements(${JSON.stringify(t.removeElements.join(', '))});`);
+  }
+  if (t.clearCookies) idle.push('eraseAllCookies();');
+
+  const body = [...start];
+  if (idle.length) body.push(`onIdle(() => {\n${indent(idle.join('\n'), 2)}\n});`);
+  if (!body.length) return null;
+  return `// ${rule.name}\nif (${hostCheck(rule)}) {\n${indent(body.join('\n'), 2)}\n}`;
+}
+
+function hostCheck(rule) {
+  const res = rule.matches.map(m => matchPatternToRegExp(m).toString());
+  return `[${res.join(', ')}].some(re => re.test(location.href))`;
 }
 
 function header(sites, version) {
