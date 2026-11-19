@@ -6,6 +6,13 @@ import {
 import { techniquesFor, isEmpty } from './techniques.js';
 import { matchPatternToRegExp } from './match-pattern.js';
 import { serializeFunction } from './page-code.js';
+import * as runtime from './runtime.js';
+
+// The helpers the generated scripts carry. They live in the privileged
+// environment, so code injected into the page can't call them.
+const HELPERS = Object.keys(runtime);
+const helperCalls = src => HELPERS.filter(name =>
+  new RegExp(`(?<![\\w$.])${name}(?![\\w$])`).test(src));
 
 const RULE_KEYS = new Set(['id', 'name', 'matches', ...TECHNIQUES, ...TARGETS]);
 
@@ -137,10 +144,17 @@ function checkTechniques(where, prefix, report) {
 
   for (const key of Object.keys(PAGE_CODE)) {
     if (v[key] === undefined) continue;
+    let src;
     try {
-      serializeFunction(v[key]);
+      src = serializeFunction(v[key]);
     } catch (err) {
       report(`${at(key)}: ${err.message}`);
+      continue;
+    }
+    if (PAGE_CODE[key].environment !== 'site') continue;
+    for (const name of helperCalls(src)) {
+      report(`${at(key)} uses ${name}, a helper only privileged code can see; ` +
+        `move the code to ${key.replace('site', 'privileged')}`);
     }
   }
 }
