@@ -1,0 +1,14 @@
+{
+  "name": "prototype-rule-format",
+  "private": true,
+  "type": "module",
+  "description": "PROTOTYPE, throwaway: compares rule-file formats for issue #372",
+  "scripts": {
+    "proto": "node build.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.4.0",
+    "eslint": "^9.4.0",
+    "globals": "^15.0.0"
+  }
+}

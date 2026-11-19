@@ -1,0 +1,442 @@
+<title>Burlesco Rule Format</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column, a full-width comparison matrix, code excerpts in a 2x2 grid that stacks on phones. */
+:root {
+  --bg: #f6f8f8;
+  --surface: #ffffff;
+  --fg: #172326;
+  --muted: #56676b;
+  --line: #d9e2e3;
+  --accent: #0f6c74;
+  --accent-soft: #e1f0f1;
+  --code-bg: #eef3f3;
+  --good: #1f7a4a;   --good-bg: #e3f3ea;
+  --ok: #8a6400;     --ok-bg: #fbf1d6;
+  --bad: #a8322d;    --bad-bg: #f9e3e1;
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1719; --surface: #152022; --fg: #e3ecec; --muted: #93a5a8; --line: #26363a;
+    --accent: #5fc2c9; --accent-soft: #173538; --code-bg: #111c1e;
+    --good: #6fd39c; --good-bg: #16301f; --ok: #e6c160; --ok-bg: #33290f; --bad: #f08a83; --bad-bg: #3a1c1a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1719; --surface: #152022; --fg: #e3ecec; --muted: #93a5a8; --line: #26363a;
+  --accent: #5fc2c9; --accent-soft: #173538; --code-bg: #111c1e;
+  --good: #6fd39c; --good-bg: #16301f; --ok: #e6c160; --ok-bg: #33290f; --bad: #f08a83; --bad-bg: #3a1c1a;
+  color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-block: 48px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 56px;
+}
+.prose { max-width: 68ch; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.55rem; font-weight: 600; margin-bottom: 16px; }
+h3 { font-size: 1.1rem; font-weight: 600; }
+p { margin: 0 0 12px; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 12px;
+}
+.lede { font-size: 1.15rem; color: var(--muted); margin-top: 16px; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+a { color: var(--accent); }
+
+.verdict {
+  background: var(--accent-soft); border: 1px solid var(--accent);
+  border-radius: 10px; padding: 24px; display: grid; gap: 12px;
+}
+.verdict h2 { margin: 0; }
+.verdict ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+
+.variants { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.variant { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 16px; display: grid; gap: 6px; align-content: start; }
+.variant .id { font-family: var(--font-mono); font-size: 0.85rem; color: var(--muted); }
+.variant.pick { border-color: var(--accent); }
+.tag { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.tag.rec { background: var(--accent); color: var(--bg); }
+.tag.second { background: var(--accent-soft); color: var(--accent); }
+.tag.out { background: var(--code-bg); color: var(--muted); }
+
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 920px; font-size: 0.9rem; }
+th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--line); }
+tr:last-child td { border-bottom: 0; }
+thead th { font-family: var(--font-display); font-weight: 600; background: var(--code-bg); }
+thead th.pick { color: var(--accent); }
+td.crit { font-weight: 600; width: 22%; }
+.num { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+.r { display: inline-block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; padding: 1px 7px; border-radius: 4px; margin-bottom: 4px; }
+.r.g { color: var(--good); background: var(--good-bg); }
+.r.o { color: var(--ok); background: var(--ok-bg); }
+.r.b { color: var(--bad); background: var(--bad-bg); }
+td small { display: block; color: var(--muted); font-size: 0.84rem; line-height: 1.45; }
+
+.code-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: 16px; }
+figure { margin: 0; min-width: 0; display: grid; gap: 8px; }
+figcaption { font-size: 0.9rem; color: var(--muted); }
+figcaption b { color: var(--fg); font-family: var(--font-mono); font-weight: 500; }
+pre {
+  margin: 0; overflow-x: auto; background: var(--code-bg); border: 1px solid var(--line); border-radius: 8px;
+  padding: 14px 16px; font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.55;
+}
+pre .c { color: var(--muted); }
+pre .warn { color: var(--bad); }
+
+.findings { display: grid; gap: 20px; }
+.finding { display: grid; grid-template-columns: 4px 1fr; gap: 16px; }
+.finding::before { content: ""; border-radius: 2px; background: var(--line); }
+.finding.hi::before { background: var(--bad); }
+.finding.mid::before { background: var(--ok); }
+.finding.info::before { background: var(--accent); }
+.finding > div { min-width: 0; max-width: 72ch; }
+.finding h3 { margin-bottom: 6px; }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 24px; }
+.two ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.box { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 20px; min-width: 0; }
+.box h3 { margin-bottom: 10px; }
+.foot { color: var(--muted); font-size: 0.9rem; border-top: 1px solid var(--line); padding-top: 20px; }
+</style>
+
+<div class="wrap">
+
+<header class="prose">
+  <div class="eyebrow">Issue #372 · prototype/rule-format</div>
+  <h1>Burlesco Rule Format</h1>
+  <p class="lede">We need one source for every site rule that builds both the userscript and the Firefox extension, with room for Chromium MV3 and uBlock Origin later. Five ways to write that rule file, compared on the same six real sites.</p>
+</header>
+
+<section class="verdict">
+  <h2>Recommendation: variant E, plain data grouped by target</h2>
+  <p>Each site is a plain object. Anything that applies to every target sits at the top level, and anything specific to one target goes in a <code>userscript: {…}</code> or <code>firefox: {…}</code> section. Page code is written as a real function. On all six sites, E produces exactly the same techniques as D, with the same lint results. It needs no helper API, and it stays close to the shape the issue proposed.</p>
+  <p><b>Conditions:</b></p>
+  <ol>
+    <li>The build lints its own output with <code>no-undef</code>. That step catches the one real hazard of the function format: page code that refers to a variable from its module.</li>
+    <li>The build rejects keys it doesn't know. A typo like <code>pageIdel</code> must fail the build, not be ignored silently. Unlike D, plain data has no function call to fail at. The prototype doesn't do this check yet.</li>
+    <li>Target sections only <em>add</em> to the top level, never replace it. If both define <code>pageIdle</code>, both run, the top-level one first.</li>
+    <li>When Chromium becomes a target, add a group section (<code>extension: {…}</code> covering Firefox and Chromium) so shared extension rules aren't copied twice.</li>
+    <li>The build rejects functions it can't serialize, such as method shorthand, with a clear error. The prototype already does this.</li>
+  </ol>
+  <p><b>Runner-up:</b> variant D. It holds the same information as E, and a check on the six sites confirmed the two are identical, so converting one to the other later is mechanical. D is better only if rules start needing an explicit order for several code blocks at the same moment, or reusable bundles of techniques.</p>
+</section>
+
+<section>
+  <h2>The four candidates</h2>
+  <div class="variants">
+    <div class="variant">
+      <span class="id">a-strings</span>
+      <h3>Slots, code as strings</h3>
+      <p>An object with fixed slots (<code>blockRequests</code>, <code>pageStart</code>, <code>pageIdle</code>…), with page code in template strings. This is how both repos work today.</p>
+      <span><span class="tag out">Rejected</span></span>
+    </div>
+    <div class="variant">
+      <span class="id">b-functions</span>
+      <h3>Slots, code as functions</h3>
+      <p>The same object, but page code is a real function that the build serializes with <code>toString()</code>. It's the YAML shape from the issue, written in JS.</p>
+      <span><span class="tag out">Replaced by E</span></span>
+    </div>
+    <div class="variant">
+      <span class="id">c-folders</span>
+      <h3>Folder per site</h3>
+      <p><code>site.js</code> holds the data, and the code lives in plain script files named <code>&lt;slot&gt;[.&lt;target&gt;].js</code>. Shared code comes in through <code>use: ['abril']</code>.</p>
+      <span><span class="tag out">Rejected</span></span>
+    </div>
+    <div class="variant">
+      <span class="id">d-techniques</span>
+      <h3>List of techniques</h3>
+      <p>An ordered list built from helpers. Code is one kind of technique next to declarative ones like <code>removeElements</code>. Targets are chosen with <code>only()</code>.</p>
+      <span><span class="tag second">Runner-up</span></span>
+    </div>
+    <div class="variant pick">
+      <span class="id">e-by-target</span>
+      <h3>Slots grouped by target</h3>
+      <p>B turned inside out: slots shared by every target at the top level, plus <code>userscript: {…}</code> and <code>firefox: {…}</code> sections that add to them. Plain data, with no helpers. (This shape was your suggestion.)</p>
+      <span><span class="tag rec">Recommended</span></span>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>How it was tested</h2>
+  <p>I wrote the same six sites in all four formats. Each one is there for a reason: <b>Folha</b> uses a different technique on each target, <b>Veja</b> and <b>Exame</b> share Abril's code, <b>JOTA</b> injects a header in the extension and refetches the page in the userscript, <b>Diário Popular</b> handles cookies, and <b>GaúchaZH</b> is a 40-line block of code.</p>
+  <p>To compare the formats fairly, the prototype converts every variant into one common shape (an intermediate representation, or IR). That way the same emitters turn each variant into the userscript, the Firefox MV2 extension, a uBlock Origin filter list and a compatibility table. ESLint, with identical settings for all four, then runs on both the source and the generated output. Every generated file passes <code>node --check</code>. <b>Nothing has been run in a browser.</b> This compares how the formats are written and built, not whether the techniques still work.</p>
+  <p>The IR is scaffolding for this comparison only. With D, a rule file already evaluates to plain data that the emitters read, so the real build doesn't need a separate layer.</p>
+</section>
+
+<section>
+  <h2>Comparison</h2>
+  <div class="scroll">
+  <table>
+    <thead>
+      <tr><th>Criterion</th><th>A · strings</th><th>B · functions</th><th>C · folders</th><th>D · techniques</th><th class="pick">E · by target</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="crit">Lint and highlighting of page code</td>
+        <td><span class="r b">weak</span><small>Code is opaque text. It missed a real bug in GaúchaZH (0 findings).</small></td>
+        <td><span class="r g">strong</span><small>Real JS. Caught the GaúchaZH bug.</small></td>
+        <td><span class="r g">strong</span><small>Real script files. Caught it.</small></td>
+        <td><span class="r g">strong</span><small>Real JS. Caught it.</small></td>
+        <td><span class="r g">strong</span><small>Real JS. Caught it.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Serialization safety</td>
+        <td><span class="r o">ok</span><small>Can interpolate constants, but backticks and <code>${</code> must be escaped by hand.</small></td>
+        <td><span class="r o">ok</span><small>Closure trap: a module variable passes source lint and breaks in the page. Output lint catches it.</small></td>
+        <td><span class="r g">strong</span><small>Files are whole scripts, so nothing to serialize.</small></td>
+        <td><span class="r o">ok</span><small>Same trap as B, with the same fix.</small></td>
+        <td><span class="r o">ok</span><small>Same trap as B, with the same fix.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Per-target divergence</td>
+        <td><span class="r o">ok</span><small><code>pageIdle: { firefox: … }</code>, one slot at a time.</small></td>
+        <td><span class="r o">ok</span><small>Same as A. Network and page parts of one target's technique end up apart.</small></td>
+        <td><span class="r b">weak</span><small>The target is hidden in the filename (<code>page-idle.firefox.js</code>).</small></td>
+        <td><span class="r g">strong</span><small><code>only('firefox', header, removeElements)</code> keeps the whole technique together.</small></td>
+        <td><span class="r g">strong</span><small><code>firefox: { setRequestHeader, removeElements }</code>: everything one target does, in one place.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Shared code (Abril, tinypass)</td>
+        <td><span class="r o">ok</span><small>A string constant.</small></td>
+        <td><span class="r g">strong</span><small>Import a function.</small></td>
+        <td><span class="r b">weak</span><small>A folder mixin is all or nothing. Exame inherited Abril's script block without asking for it.</small></td>
+        <td><span class="r g">strong</span><small>Import a technique and use only the pieces you need.</small></td>
+        <td><span class="r g">strong</span><small>Import a function or a URL.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Declarative techniques (uBO cosmetic filters)</td>
+        <td colspan="3"><small>These depend on having a <code>removeElements</code> slot, which the prototype only added to D and E. Any slot-based format can have one, so this row does not tell the formats apart.</small></td>
+        <td><span class="r g">yes</span><small><code>jota.info##.jota-paywall</code>. 8 uBO lines.</small></td>
+        <td><span class="r g">yes</span><small>Same 8 lines as D.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Readability of the generated userscript</td>
+        <td><span class="r b">weak</span><small><code>injectPageCode("const x…\n…")</code>, JSON-escaped.</small></td>
+        <td><span class="r g">strong</span><small><code>injectFn(() =&gt; { … })</code> stays real JS.</small></td>
+        <td><span class="r b">weak</span><small>File contents are injected as escaped strings.</small></td>
+        <td><span class="r g">strong</span><small>Same as B.</small></td>
+        <td><span class="r g">strong</span><small>Same as B.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Contributor familiarity</td>
+        <td><span class="r g">strong</span><small>What contributors already write today.</small></td>
+        <td><span class="r g">strong</span><small>Reads like a config file.</small></td>
+        <td><span class="r o">ok</span><small>Naming rules you have to learn. 13 files for 6 sites.</small></td>
+        <td><span class="r o">ok</span><small>Nine small helpers to learn.</small></td>
+        <td><span class="r g">strong</span><small>Plain data, nothing to import. Key typos need a build-time check.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Room to grow</td>
+        <td colspan="2"><small>One slot per kind of technique, so each new kind needs a new key.</small></td>
+        <td><small>A new file-name convention for each new kind.</small></td>
+        <td><span class="r g">strong</span><small>Ordered lists, target groups and bundles of techniques with no new syntax.</small></td>
+        <td><span class="r o">ok</span><small>Needs an <code>extension</code> group section once Chromium exists, and arrays where one slot holds several code blocks.</small></td>
+      </tr>
+      <tr>
+        <td class="crit">Size (6 sites)</td>
+        <td class="num">7 files · 155 lines</td>
+        <td class="num">7 files · 155 lines</td>
+        <td class="num">13 files · 123 lines</td>
+        <td class="num">7 files · 142 lines</td>
+        <td class="num">7 files · 155 lines</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>The same site in each format</h2>
+  <p class="prose">Folha is the hardest case. Network blocking is the same everywhere, the userscript fakes <code>wall.json</code> early, and the extension reveals the text once the page has loaded. Page code is trimmed.</p>
+  <div class="code-grid">
+    <figure>
+      <figcaption><b>A · strings</b>. The code is a string: no lint, no highlighting.</figcaption>
+<pre>export default {
+  id: 'folha',
+  matches: ['*://*.folha.uol.com.br/*', …],
+  blockRequests: [{ urls: [...], except: [...] }],
+  pageStart: {
+    userscript: `
+      const originalFetch = window.fetch;
+      window.fetch = function(resource, init) { … };
+    `,
+  },
+  pageIdle: {
+    firefox: `
+      omtrClickUOL = function(){};
+      setTimeout(function() { $("#bt-read-more…") … }, 100);
+    `,
+  },
+};</pre>
+    </figure>
+    <figure>
+      <figcaption><b>B · functions</b>. Same slots, real code.</figcaption>
+<pre>export default {
+  id: 'folha',
+  matches: ['*://*.folha.uol.com.br/*', …],
+  blockRequests: [{ urls: [...], except: [...] }],
+  pageStart: {
+    userscript: () =&gt; {
+      const originalFetch = window.fetch;
+      window.fetch = function (resource) { … };
+    },
+  },
+  pageIdle: {
+    firefox: () =&gt; {
+      window.omtrClickUOL = function () {};
+      setTimeout(() =&gt; { $('#bt-read-more…') … }, 100);
+    },
+  },
+};</pre>
+    </figure>
+    <figure>
+      <figcaption><b>C · folders</b>. Three files, with the target in the filename.</figcaption>
+<pre><span class="c">// sites/folha/site.js</span>
+export default {
+  name: 'Folha de S.Paulo',
+  matches: ['*://*.folha.uol.com.br/*', …],
+  blockRequests: [{ urls: [...], except: [...] }],
+};
+
+<span class="c">// sites/folha/page-start.userscript.js</span>
+const originalFetch = window.fetch;
+window.fetch = function (resource) { … };
+
+<span class="c">// sites/folha/page-idle.firefox.js</span>
+window.omtrClickUOL = function () {};
+setTimeout(() =&gt; { $('#bt-read-more…') … }, 100);</pre>
+    </figure>
+    <figure>
+      <figcaption><b>D · techniques</b>. One list, with targets stated inline.</figcaption>
+<pre>export default site(
+  { id: 'folha', matches: ['*://*.folha.uol.com.br/*', …] },
+
+  blockRequests([...], { except: [...] }),
+
+  only('userscript', inPage('start', () =&gt; {
+    const originalFetch = window.fetch;
+    window.fetch = function (resource) { … };
+  })),
+
+  only('firefox', inPage('idle', () =&gt; {
+    window.omtrClickUOL = function () {};
+    setTimeout(() =&gt; { $('#bt-read-more…') … }, 100);
+  })),
+);</pre>
+    </figure>
+    <figure>
+      <figcaption><b>E · by target</b>. Plain data: shared rules at the top, one section per target.</figcaption>
+<pre>export default {
+  id: 'folha',
+  matches: ['*://*.folha.uol.com.br/*', …],
+  blockRequests: [{ urls: [...], except: [...] }],
+
+  userscript: {
+    pageStart: () =&gt; {
+      const originalFetch = window.fetch;
+      window.fetch = function (resource) { … };
+    },
+  },
+
+  firefox: {
+    pageIdle: () =&gt; {
+      window.omtrClickUOL = function () {};
+      setTimeout(() =&gt; { $('#bt-read-more…') … }, 100);
+    },
+  },
+};</pre>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <h2>What the prototype found</h2>
+  <div class="findings">
+    <div class="finding hi"><div>
+      <h3>A bug ships today in both repos, and string code hides it</h3>
+      <p>GaúchaZH's code builds a <code>style</code> element, then calls <code>appendChild(script)</code>. <code>script</code> doesn't exist, so the call throws and the CSS that hides the overlay is never applied. Both <code>content.js</code> and <code>burlesco.user.js</code> have this. Lint flags it as soon as the code is a function or a file (B, C, D: <code>'script' is not defined</code>). In A it went unnoticed, the same way it has in production.</p>
+    </div></div>
+    <div class="finding mid"><div>
+      <h3>The closure trap in B and D is real, and output lint catches it</h3>
+      <p>I made JOTA's userscript code refer to the module constant <code>GOOGLEBOT</code> instead of repeating the string. Source lint passed, because the variable exists in the module. The page never sees it, though, and linting the generated userscript reported it straight away:</p>
+<pre>output  dist/b-functions/userscript/burlesco.user.js:67  no-undef  <span class="warn">'GOOGLEBOT' is not defined.</span></pre>
+      <p>So the build has to lint what it emits, not just what people write. It's one ESLint call, and the prototype already makes it.</p>
+    </div></div>
+    <div class="finding mid"><div>
+      <h3>Sharing by folder pulls in too much</h3>
+      <p>In C, Exame declared <code>use: ['abril']</code> to get the unlock code and also got Abril's paywall-script block. Exame left Abril and has its own scripts. The check that compares each variant's IR caught this, since only C differed. Imports in B and D let a site take one piece without the rest.</p>
+    </div></div>
+    <div class="finding info"><div>
+      <h3>Only declarative techniques reach uBlock Origin</h3>
+      <p>Every variant turns <code>blockRequests</code> into uBO network filters. D and E also produced a cosmetic filter, because JOTA's "remove the banner" is written as data (<code>removeElements: ['.jota-paywall']</code>) instead of code. That comes from having the slot, not from the format: the first version of this report credited it to D alone, which was wrong. Arbitrary code can never become a filter. Every simple hide or remove technique written as data makes another future target cheap to add.</p>
+    </div></div>
+    <div class="finding info"><div>
+      <h3>E and D hold the same information</h3>
+      <p>For all six sites, E's rules produce exactly the same set of techniques as D's: the same kinds, run times, worlds and targets. The difference between them is purely how you write it: helper calls and <code>only()</code> in D, plain keys and target sections in E.</p>
+    </div></div>
+    <div class="finding info"><div>
+      <h3>Generating the host check from <code>matches</code> removes a kind of bug</h3>
+      <p>Today each site has two host lists: the manifest's <code>matches</code> and a separate regex in the content script. They have drifted apart. Exame's script is registered on <code>*.exame.com</code>, but its regex is <code>/exame\.com\.br/</code>, so the injection never runs. The build generates the host check from each site's <code>matches</code>, so there's only one list. This holds whichever format you pick.</p>
+    </div></div>
+    <div class="finding info"><div>
+      <h3>The compatibility table comes free</h3>
+      <p>Issue question 1 asks for an automatic list of which sites work on which platform. Each rule already says which technique runs on which target, so the build generates the table: <code>dist/&lt;variant&gt;/COMPATIBILITY.md</code>. It also marks request blocking in the userscript as ignored by Tampermonkey 5.2+ on Chrome (MV3). That doesn't depend on the format either.</p>
+    </div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Why not the others</h2>
+  <div class="two">
+    <div class="box">
+      <h3>D · techniques</h3>
+      <p>The runner-up. It has the same information, lint and output as E, and it's the most flexible: ordered lists, groups of targets and bundles of techniques need no new syntax. The price is a helper API that every contributor has to learn, and rule files that read like code instead of data. Switch to D only if E's fixed slots start to feel limiting. Converting one to the other is mechanical.</p>
+    </div>
+    <div class="box">
+      <h3>B · functions</h3>
+      <p>E is B reorganized by target. Keying each slot by target (<code>pageIdle: { firefox }</code>) scatters one target's work across the file. Grouping by target first (<code>firefox: { pageIdle }</code>) fixes that and costs nothing.</p>
+    </div>
+    <div class="box">
+      <h3>C · folders</h3>
+      <p>C is the only format with nothing to serialize, and its files map directly onto MV3's <code>files: […]</code>. That advantage is small, though: the build can write files from B or D just as easily. The costs are bigger: twice as many files, targets hidden in filenames, all-or-nothing sharing, and an unreadable generated userscript.</p>
+    </div>
+    <div class="box">
+      <h3>A · strings</h3>
+      <p>Familiar, but it keeps the problem the issue set out to fix: code that no tool can check. This prototype found a bug in production that A had been hiding.</p>
+    </div>
+    <div class="box">
+      <h3>Risks of choosing E</h3>
+      <ul>
+        <li>Typos in keys are silently ignored unless the build checks every key against a known list. That check is required.</li>
+        <li>The closure trap. Lint on the output is required, not optional.</li>
+        <li>How top-level slots and target sections combine has to be written down: sections add, they never replace.</li>
+        <li>Chromium will need an <code>extension</code> group, or shared extension rules get copied for each browser.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="foot prose">
+  <p>Source: <code>burlesco/prototype-rule-format/</code> on the <code>prototype/rule-format</code> branch. Run it with <code>npm install &amp;&amp; npm run proto</code>. All of this code is a throwaway prototype: the decision gets folded into the real build, and the branch stays as the primary source.</p>
+</footer>
+
+</div>
