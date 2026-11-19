@@ -6,15 +6,26 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| Bloomberg | `privilegedIdle` | none |
+| BR18 | none | none |
 | BRPOLÍTICO | none | `blockRequests` |
 | Casa e Jardim | none | `siteStart` |
+| Correio do Povo | `privilegedStart` | none |
 | Diário de Canoas | `blockRequests`[^chrome] | `blockRequests` |
+| El Tiempo | `blockRequests`[^chrome] | none |
 | Época | none | `siteStart` |
 | Exame | `blockRequests`[^chrome] | `blockRequests`, `siteIdle` |
+| Financial Times | `privilegedIdle` | none |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| Forbes | `privilegedIdle` | none |
+| Forbes.pl / Newsweek.pl | `privilegedIdle` | none |
+| Foreign Policy | `siteIdle` | none |
 | Gazeta Online | none | `blockCookies` |
+| Gramophone | none | none |
+| Haaretz | `blockRequests`[^chrome], `privilegedIdle` | none |
 | Jornal NH | `blockRequests`[^chrome] | `blockRequests` |
 | Jornal VS | `blockRequests`[^chrome] | `blockRequests` |
+| MIT Technology Review | `privilegedIdle` | none |
 | Nexo | none | `blockRequests`, `siteStart`, `siteIdle` |
 | NSC Total | `blockRequests`[^chrome] | `blockRequests` |
 | O Globo | `blockRequests`[^chrome], `connect` | `siteStart` |
@@ -24,7 +35,12 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 | Revista Galileu | `privilegedIdle` | `siteIdle` |
 | Revista Oeste | none | `blockRequests` |
 | Superinteressante | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
+| The Economist | `siteIdle` | none |
+| The New York Times | `blockRequests`[^chrome], `clearCookies` | none |
+| The Wall Street Journal | `privilegedIdle` | none |
+| The Washington Post | `blockRequests`[^chrome] | none |
 | Valor Econômico | none | `blockRequests`, `siteIdle` |
 | Veja | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
+| Wired | `clearCookies`, `siteIdle` | none |
 
 [^chrome]: Tampermonkey 5.2+ on Chrome and other Chromium browsers (Manifest V3) ignores `@webRequest`, so the userscript blocks no requests there. It still does on Firefox.

@@ -8,9 +8,14 @@ import * as runtime from './runtime.js';
 const LATEST =
   'https://github.com/burlesco/burlesco/releases/latest/download/burlesco.user.js';
 
+// A Site is in the userscript when it has Techniques there, or a userscript
+// section, even an empty one: that Site only gets its @match.
+const inUserscript = rule =>
+  rule.userscript !== undefined || hasTechniques(rule, 'userscript');
+
 export function userscript(rules, { version }) {
   const sites = rules
-    .filter(rule => hasTechniques(rule, 'userscript'))
+    .filter(inUserscript)
     .map(rule => ({ rule, techniques: techniquesFor(rule, 'userscript') }));
   const blocks = sites.map(siteBlock).filter(Boolean);
   const helpers = Object.values(runtime).map(fn => fn.toString());
