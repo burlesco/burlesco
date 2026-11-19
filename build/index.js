@@ -8,6 +8,7 @@ import { validate } from './validate.js';
 import { userscript } from './userscript.js';
 import { firefox, FIREFOX_DIR } from './firefox.js';
 import { lintOutput } from './lint-output.js';
+import { compatibility } from './compatibility.js';
 
 export { RuleError } from './validate.js';
 export { OutputLintError } from './lint-output.js';
@@ -20,6 +21,7 @@ export async function build(rules, { version = '0.0.0' } = {}) {
     [USERSCRIPT]: userscript(rules, { version }),
     ...firefox(rules, { version }),
   };
+  files['COMPATIBILITY.md'] = compatibility(rules);
   await lintOutput([
     { path: USERSCRIPT, text: files[USERSCRIPT], target: 'userscript' },
     ...Object.entries(files)
