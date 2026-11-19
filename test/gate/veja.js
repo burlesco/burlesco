@@ -11,6 +11,11 @@
 //     https://*.abril.com.br/.../paywall.js* (https only, unlike the userscript)
 //   - content.js INJECTION.veja (document_idle, injected <script>, host
 //     /veja.abril.com.br/): ABRIL_CODE, the same code as the userscript
+//
+// Accepted change (#415): the Rule's matches are the userscript's @match,
+// *://veja.abril.com.br/*. The extension's content script matched
+// *://*.veja.abril.com.br/*, so in Firefox the page code no longer runs on
+// subdomains of veja.abril.com.br.
 export default {
   id: 'veja',
   userscript: {
