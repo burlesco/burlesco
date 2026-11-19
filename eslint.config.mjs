@@ -14,21 +14,6 @@ export default [
   js.configs.recommended,
   { rules: style },
 
-  // The current, hand-written extension (removed in #425).
-  {
-    files: ['src/**/*.js'],
-    languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'script',
-      globals: {
-        ...globals.browser,
-        ...globals.webextensions,
-        ...globals.greasemonkey,
-      },
-    },
-    rules: { 'max-len': ['warn', { code: 80 }] },
-  },
-
   // The build and its tests run in Node.
   {
     files: ['build/**/*.js', 'test/**/*.js', '*.mjs'],
