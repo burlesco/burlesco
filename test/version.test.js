@@ -1,22 +1,27 @@
-// `npm run build` without a release tag: both Targets carry the version the
-// repo is at (#425). Release tags still override it (see release.test.js).
+// Seam 1: the whole build, in memory. Without a release tag, both Targets
+// carry the version the repo is at (#425). Release tags still override it
+// (see release.test.js).
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { execFile } from 'node:child_process';
-import { readFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
-import { promisify } from 'node:util';
+import { readFileSync } from 'node:fs';
+import { build } from '../build/index.js';
 
-const ROOT = resolve(import.meta.dirname, '..');
+const pkg = JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
 
-test('npm run build makes both Targets version 15.0', async () => {
-  const env = { ...process.env };
-  delete env.BURLESCO_VERSION;
-  await promisify(execFile)(process.execPath, ['build/cli.js'], { cwd: ROOT, env });
+const sample = {
+  id: 'sample',
+  name: 'Sample',
+  matches: ['*://sample.org/*'],
+  removeElements: ['.wall'],
+};
 
-  const userscript = await readFile(resolve(ROOT, 'dist/burlesco.user.js'), 'utf8');
-  assert.match(userscript, /^\/\/ @version\s+15\.0$/m);
-  const manifest = JSON.parse(
-    await readFile(resolve(ROOT, 'dist/firefox/manifest.json'), 'utf8'));
-  assert.equal(manifest.version, '15.0');
+test('the repo is at version 15.0', () => {
+  assert.equal(pkg.version, '15.0');
+});
+
+test('with no version given, both Targets carry the version in package.json', async () => {
+  const files = await build([sample]);
+  const userscriptVersion = files['dist/burlesco.user.js'].match(/^\/\/ @version\s+(\S+)$/m)?.[1];
+  assert.equal(userscriptVersion, pkg.version);
+  assert.equal(JSON.parse(files['dist/firefox/manifest.json']).version, pkg.version);
 });

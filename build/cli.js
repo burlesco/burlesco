@@ -1,5 +1,5 @@
 // `npm run build`: loads the Rules, builds in memory, writes the files.
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { build } from './index.js';
 import { loadRules } from './load-rules.js';
@@ -7,9 +7,9 @@ import { loadRules } from './load-rules.js';
 const ROOT = resolve(import.meta.dirname, '..');
 
 try {
-  const pkg = JSON.parse(await readFile(resolve(ROOT, 'package.json'), 'utf8'));
-  // The release workflow sets BURLESCO_VERSION from the tag (#424).
-  const version = process.env.BURLESCO_VERSION || pkg.version;
+  // The release workflow sets BURLESCO_VERSION from the tag (#424);
+  // otherwise the build uses package.json's version.
+  const version = process.env.BURLESCO_VERSION || undefined;
   const files = await build(await loadRules(), { version });
   for (const [path, text] of Object.entries(files)) {
     const out = resolve(ROOT, path);
