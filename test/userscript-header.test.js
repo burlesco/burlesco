@@ -62,6 +62,20 @@ test('@match lists every Site the userscript has Techniques for', async () => {
     ['*://*.alpha.com/*', '*://alpha.net/*', '*://beta.org/*']);
 });
 
+// A Site the userscript only @matches: it has a userscript section but no
+// Techniques (#422).
+const delta = {
+  id: 'delta',
+  name: 'Delta',
+  matches: ['*://*.delta.co.uk/*'],
+  userscript: {},
+};
+
+test('@match lists a Site whose userscript section is empty', async () => {
+  const h = await header([beta, delta, gamma]);
+  assert.deepEqual(h.all('match'), ['*://beta.org/*', '*://*.delta.co.uk/*']);
+});
+
 test('@connect lists every host from the userscript sections', async () => {
   const h = await header([alpha, beta]);
   assert.deepEqual(h.all('connect'), ['api.alpha.com']);
