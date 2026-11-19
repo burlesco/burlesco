@@ -43,6 +43,13 @@ export function applyNetwork(sites = {}) {
   }
 }
 
+// The network Techniques this background carries, as data keyed by Site id:
+// { <Site id>: { blockRequests, blockCookies, setRequestHeader } }. Part of
+// the output's contract, for tests and for debugging from the console.
+export function networkTechniques() {
+  return NETWORK;
+}
+
 // Undoes applyNetwork, so it can run again with new choices.
 export function removeNetwork() {
   for (const [event, listener] of LISTENERS.splice(0)) {

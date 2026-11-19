@@ -62,8 +62,10 @@ export async function runBackground(script, stored = {}) {
 
   return {
     context,
-    // Data the script holds, read straight from its global scope.
-    read: name => vm.runInContext(name, context),
+    // The network Techniques the script carries, through the accessor it
+    // documents (networkTechniques() in build/firefox-runtime.js).
+    networkTechniques: () =>
+      JSON.parse(JSON.stringify(vm.runInContext('networkTechniques()', context))),
     // Would Firefox let this request go out?
     blocked: (url, type = 'script') =>
       fire('onBeforeRequest', { url, type }).cancel,
