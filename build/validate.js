@@ -77,10 +77,6 @@ function checkRule(rule, report) {
     }
     checkTechniques(section, `${target}.`, report);
   }
-
-  if (rule.connect !== undefined || rule.firefox?.connect !== undefined) {
-    report('"connect" is allowed only in the userscript section');
-  }
 }
 
 function checkTechniques(where, prefix, report) {
@@ -165,7 +161,10 @@ function checkTargets(rule, report) {
     const techniques = techniquesFor(rule, target);
     for (const [key, value] of Object.entries(techniques)) {
       if (!isEmpty(value) && !SUPPORTS[target].has(key)) {
-        report(`the ${target} can't run "${key}"; move it to a section for a Target that can`);
+        const able = TARGETS.filter(other => SUPPORTS[other].has(key));
+        const where = able.length === 1
+          ? `the ${able[0]} section` : 'a section for a Target that can';
+        report(`the ${target} can't run "${key}"; move it to ${where}`);
       }
     }
   }
