@@ -7,6 +7,7 @@
 import { validate } from './validate.js';
 import { userscript } from './userscript.js';
 import { lintOutput } from './lint-output.js';
+import { compatibility } from './compatibility.js';
 
 export { RuleError } from './validate.js';
 export { OutputLintError } from './lint-output.js';
@@ -18,6 +19,7 @@ export async function build(rules, { version = '0.0.0' } = {}) {
   const files = {
     [USERSCRIPT]: userscript(rules, { version }),
   };
+  files['COMPATIBILITY.md'] = compatibility(rules);
   await lintOutput([{ path: USERSCRIPT, text: files[USERSCRIPT], target: 'userscript' }]);
   return files;
 }

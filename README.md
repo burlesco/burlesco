@@ -13,6 +13,8 @@ Extensão e userscript para navegadores que remove o paywall poroso de diversos 
 
 Para instalar no seu navegador e para mais informações sobre o projeto, visite https://burles.co
 
+Para saber quais sites funcionam na extensão e no userscript, e de que forma, veja a [tabela de compatibilidade](COMPATIBILITY.md). Confira antes de abrir uma issue.
+
 # Desenvolvimento
 
 ## Extensão
