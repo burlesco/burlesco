@@ -6,7 +6,7 @@
 // 3. Lint the generated scripts; any finding fails the build.
 import { validate } from './validate.js';
 import { userscript } from './userscript.js';
-import { firefox } from './firefox.js';
+import { firefox, FIREFOX_DIR } from './firefox.js';
 import { lintOutput } from './lint-output.js';
 
 export { RuleError } from './validate.js';
@@ -20,6 +20,11 @@ export async function build(rules, { version = '0.0.0' } = {}) {
     [USERSCRIPT]: userscript(rules, { version }),
     ...firefox(rules, { version }),
   };
-  await lintOutput([{ path: USERSCRIPT, text: files[USERSCRIPT], target: 'userscript' }]);
+  await lintOutput([
+    { path: USERSCRIPT, text: files[USERSCRIPT], target: 'userscript' },
+    ...Object.entries(files)
+      .filter(([path]) => path.startsWith(`${FIREFOX_DIR}/`) && path.endsWith('.js'))
+      .map(([path, text]) => ({ path, text, target: 'firefox' })),
+  ]);
   return files;
 }

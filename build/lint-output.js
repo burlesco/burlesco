@@ -7,6 +7,7 @@ import globals from 'globals';
 // What each generated script can see when it runs.
 const GLOBALS = {
   userscript: { ...globals.browser, ...globals.greasemonkey, ...globals.jquery },
+  firefox: { ...globals.browser, ...globals.webextensions, ...globals.jquery },
 };
 
 export class OutputLintError extends Error {
