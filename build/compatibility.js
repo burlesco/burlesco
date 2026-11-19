@@ -2,7 +2,7 @@
 // listing the Techniques that Site uses on that Target. Read through
 // techniquesFor(), so it always matches what the generators emit.
 import { techniquesFor, isEmpty } from './techniques.js';
-import { TARGETS, TECHNIQUES } from './targets.js';
+import { TARGETS, TECHNIQUE_KEYS } from './targets.js';
 
 const TITLES = { userscript: 'Userscript', firefox: 'Firefox' };
 
@@ -22,7 +22,7 @@ export function compatibility(rules) {
   const used = new Map();
   const cell = (rule, target) => {
     const t = techniquesFor(rule, target);
-    const keys = TECHNIQUES.filter(key => !isEmpty(t[key]));
+    const keys = TECHNIQUE_KEYS.filter(key => !isEmpty(t[key]));
     if (!keys.length) return 'none';
     return keys.map(key => {
       const warning = WARNINGS[target]?.[key];

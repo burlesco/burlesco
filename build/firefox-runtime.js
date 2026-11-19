@@ -1,9 +1,11 @@
 // The Firefox background's engine. These are real functions, copied into
 // background.js with toString(), next to the generated data they read:
 //   NETWORK    { <Site id>: { blockRequests, blockCookies, setRequestHeader } }
+//   REQUEST_TYPES  { <network Technique>: [request types] }, from the
+//              Technique descriptors in targets.js
 //   LISTENERS  [] of [event, listener], so the engine can be undone
 // Each one may call only the others and matchPatternToRegExp.
-/* global NETWORK, LISTENERS */
+/* global NETWORK, REQUEST_TYPES, LISTENERS */
 import { matchPatternToRegExp } from './match-pattern.js';
 
 // Registers every Site's network Techniques. `sites` is the options page's
@@ -21,7 +23,7 @@ export function applyNetwork(sites = {}) {
         { urls, types }, ['blocking']);
     }
     for (const { urls } of t.blockCookies) {
-      const types = ['main_frame', 'script', 'xmlhttprequest'];
+      const types = REQUEST_TYPES.blockCookies;
       listen(web.onBeforeSendHeaders,
         details => ({ requestHeaders: without(details.requestHeaders, 'cookie') }),
         { urls, types }, ['blocking', 'requestHeaders']);
@@ -37,7 +39,7 @@ export function applyNetwork(sites = {}) {
             { name, value },
           ],
         }),
-        { urls, types: ['main_frame', 'xmlhttprequest'] },
+        { urls, types: REQUEST_TYPES.setRequestHeader },
         ['blocking', 'requestHeaders']);
     }
   }

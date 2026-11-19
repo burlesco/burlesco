@@ -1,6 +1,6 @@
 // The userscript generator: one self-contained burlesco.user.js for
 // Tampermonkey.
-import { techniquesFor, hasTechniques } from './techniques.js';
+import { sitesFor, hasTechniques } from './techniques.js';
 import { indent } from './page-code.js';
 import { statementsAt, guarded } from './page-placement.js';
 import * as runtime from './runtime.js';
@@ -17,9 +17,7 @@ const inUserscript = rule =>
   rule.userscript !== undefined || hasTechniques(rule, 'userscript');
 
 export function userscript(rules, { version }) {
-  const sites = rules
-    .filter(inUserscript)
-    .map(rule => ({ rule, techniques: techniquesFor(rule, 'userscript') }));
+  const sites = sitesFor(rules.filter(inUserscript), 'userscript');
   const blocks = sites.map(siteBlock).filter(Boolean);
   const helpers = Object.values(runtime).map(fn => fn.toString());
   return [header(sites, version), ...blocks, ...helpers].join('\n\n') + '\n';
