@@ -1,0 +1,114 @@
+# A `v*` tag releases both Targets (#424):
+#   1. builds the userscript and the Firefox extension with the tag's version;
+#   2. signs the extension on AMO (unlisted: it's self-hosted);
+#   3. creates the GitHub release with burlesco-firefox.xpi and
+#      burlesco.user.js;
+#   4. publishes firefox.json to burlesco/burlesco-update, so Firefox installs
+#      update. chromium.xml there is left untouched.
+#
+# Tags: v15.0 is a release. v15.0-rc1 is a GitHub pre-release of version
+# 15.0; it still signs and publishes firefox.json, so revert that afterwards.
+# AMO never signs the same version twice, so a pre-release burns its version.
+#
+# Secrets (Settings > Secrets and variables > Actions):
+#   AMO_JWT_ISSUER         AMO API key ("JWT issuer"),
+#                          https://addons.mozilla.org/developers/addon/api/key/
+#   AMO_JWT_SECRET         AMO API secret ("JWT secret"), same page.
+#   BURLESCO_UPDATE_TOKEN  token that can push to burlesco/burlesco-update,
+#                          e.g. a fine-grained PAT with Contents: read/write
+#                          on that repo only.
+# The release itself uses the built-in GITHUB_TOKEN.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+env:
+  TAG: ${{ github.ref_name }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Fails on a tag that isn't a signable version, before anything else.
+      - name: Read version from tag
+        id: tag
+        run: node build/release-cli.js "$TAG" "$RUNNER_TEMP/update" >> "$GITHUB_OUTPUT"
+
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+
+      - name: Build
+        env:
+          BURLESCO_VERSION: ${{ steps.tag.outputs.version }}
+        run: |
+          npm run build
+          built=$(node -p "require('./dist/firefox/manifest.json').version")
+          if [ "$built" != "$BURLESCO_VERSION" ]; then
+            echo "manifest version $built, tag version $BURLESCO_VERSION"
+            exit 1
+          fi
+
+      - name: Sign the Firefox extension
+        env:
+          AMO_JWT_ISSUER: ${{ secrets.AMO_JWT_ISSUER }}
+          AMO_JWT_SECRET: ${{ secrets.AMO_JWT_SECRET }}
+        run: |
+          out="$RUNNER_TEMP/signed"
+          npx web-ext sign \
+            --source-dir dist/firefox \
+            --artifacts-dir "$out" \
+            --channel unlisted \
+            --api-key "$AMO_JWT_ISSUER" \
+            --api-secret "$AMO_JWT_SECRET"
+          shopt -s nullglob
+          xpis=("$out"/*.xpi)
+          if [ "${#xpis[@]}" -ne 1 ]; then
+            echo "expected one signed .xpi, found ${#xpis[@]}"
+            exit 1
+          fi
+          mv "${xpis[0]}" dist/burlesco-firefox.xpi
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRERELEASE: ${{ steps.tag.outputs.prerelease }}
+        run: |
+          flags=()
+          if [ "$PRERELEASE" = true ]; then flags+=(--prerelease); fi
+          gh release create "$TAG" \
+            dist/burlesco-firefox.xpi dist/burlesco.user.js \
+            --verify-tag --title "$TAG" --generate-notes "${flags[@]}"
+
+      - name: Check out burlesco-update
+        uses: actions/checkout@v4
+        with:
+          repository: burlesco/burlesco-update
+          ref: master
+          token: ${{ secrets.BURLESCO_UPDATE_TOKEN }}
+          path: burlesco-update
+
+      - name: Publish firefox.json
+        working-directory: burlesco-update
+        run: |
+          cp "$RUNNER_TEMP/update/firefox.json" firefox.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add firefox.json
+          git commit -m "Firefox $TAG"
+          git push origin HEAD:master

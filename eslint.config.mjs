@@ -1,0 +1,48 @@
+// One ESLint flat config for the whole repo (#416).
+import js from '@eslint/js';
+import globals from 'globals';
+
+const style = {
+  indent: ['error', 2, { SwitchCase: 1 }],
+  'linebreak-style': ['error', 'unix'],
+  quotes: ['error', 'single', { avoidEscape: true }],
+  semi: ['error', 'always'],
+};
+
+export default [
+  { ignores: ['node_modules/**', 'dist/**', 'prototype-rule-format/**'] },
+  js.configs.recommended,
+  { rules: style },
+
+  // The build and its tests run in Node.
+  {
+    files: ['build/**/*.js', 'test/**/*.js', '*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: globals.node,
+    },
+  },
+
+  // Rules are modules whose page code runs in the browser. Lint can't see a
+  // function using a module variable here; the build's output lint does.
+  // Tests hold sample Rules, so they see the same globals.
+  {
+    files: ['rules/**/*.js', 'test/**/*.js', 'build/runtime.js'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        ...globals.browser, ...globals.greasemonkey, ...globals.jquery,
+        ...globals.webextensions,
+      },
+    },
+  },
+
+  // Code copied into the Firefox extension: the background's engine (#417)
+  // and the options page's script (#418).
+  {
+    files: ['build/firefox-runtime.js', 'build/firefox-options.js'],
+    languageOptions: { globals: { ...globals.browser, ...globals.webextensions } },
+  },
+];
