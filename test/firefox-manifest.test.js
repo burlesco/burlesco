@@ -72,9 +72,9 @@ test('host permissions cover every URL a Firefox network Technique uses, once', 
   }
 });
 
-// Requests a Site's own pages start keep the permission today's extension
-// gives them for the whole Site.
-test('host permissions also cover the pages of every Site with Firefox network Techniques', async () => {
+// Requests a Site's own pages start, including those its page code makes,
+// keep the permission today's extension gives them for the whole Site.
+test('host permissions also cover the pages of every Site with Firefox Techniques', async () => {
   const pageOnly = {
     id: 'pageonly',
     name: 'Page Only',
@@ -94,11 +94,12 @@ test('host permissions also cover the pages of every Site with Firefox network T
     '*://*.tinypass.com/*',
     '*://api.alpha.com/*',
     '*://beta.org/*',
+    '*://pageonly.org/*',
     '*://paywall.alpha.com/*',
   ]);
 });
 
-test('a Rule with no network Techniques asks for no host permissions', async () => {
+test('a Rule with no Firefox Techniques asks for no host permissions', async () => {
   const m = await manifest([{ id: 'gamma', name: 'Gamma', matches: ['*://gamma.org/*'] }]);
   assert.deepEqual(m.permissions.filter(p => p.includes('://')), []);
 });

@@ -66,13 +66,15 @@ function manifest(sites, content, version) {
   };
 }
 
-// Every URL a network Technique acts on, plus the pages of each Site that
-// has one, so requests those pages start keep the whole-Site permission
-// today's extension gives them. Exceptions sit inside those URLs.
+// Every URL a network Technique acts on, plus the pages of each Site with
+// any Firefox Technique, so requests those pages start (page code's own
+// fetches too) keep the whole-Site permission today's extension gives them.
+// Exceptions sit inside those URLs.
 function hostPermissions(sites) {
   const urls = sites.flatMap(({ rule, techniques }) => {
+    if (Object.values(techniques).every(isEmpty)) return [];
     const network = NETWORK.flatMap(key => techniques[key].flatMap(entry => entry.urls));
-    return network.length ? [...rule.matches, ...network] : [];
+    return [...rule.matches, ...network];
   });
   return unique(urls).sort();
 }
