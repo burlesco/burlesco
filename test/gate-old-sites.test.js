@@ -1,3 +1,4 @@
+// Seam 2, the migration gate, like gate.test.js: it reads the real Rules.
 // Every Site the pre-migration extension and userscript served must have a
 // Rule (#415, #425). The old sources are gone, so what they covered is kept
 // here as data.
