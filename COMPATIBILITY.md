@@ -6,8 +6,11 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| Diário de Canoas | `blockRequests`[^chrome] | `blockRequests` |
 | Exame | `blockRequests`[^chrome] | `blockRequests`, `siteIdle` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| Jornal NH | `blockRequests`[^chrome] | `blockRequests` |
+| Jornal VS | `blockRequests`[^chrome] | `blockRequests` |
 | NSC Total | `blockRequests`[^chrome] | `blockRequests` |
 | Observador | `blockRequests`[^chrome], `connect`, `privilegedIdle` | `blockRequests`, `siteIdle` |
 | Quatro Rodas | `blockRequests`[^chrome], `siteIdle` | `blockRequests` |
