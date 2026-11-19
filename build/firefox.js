@@ -1,4 +1,6 @@
-// The Firefox generator: a Manifest V2 extension in dist/firefox/.
+// The Firefox generator: a Manifest V2 extension in dist/firefox/. Every
+// file is text except icon.png, which is a Buffer.
+import { readFileSync } from 'node:fs';
 import { techniquesFor, isEmpty } from './techniques.js';
 import { matchPatternToRegExp } from './match-pattern.js';
 import { statementsAt, guarded } from './page-placement.js';
@@ -6,6 +8,8 @@ import * as engine from './firefox-runtime.js';
 import * as runtime from './runtime.js';
 
 export const FIREFOX_DIR = 'dist/firefox';
+
+const ICON = readFileSync(new URL('./assets/icon.png', import.meta.url));
 
 const NETWORK = ['blockRequests', 'blockCookies', 'setRequestHeader'];
 
@@ -23,6 +27,7 @@ export function firefox(rules, { version }) {
   const files = {
     'manifest.json': JSON.stringify(manifest(sites, content, version), null, 2) + '\n',
     'background.js': background(sites),
+    'icon.png': ICON,
   };
   for (const c of content) files[c.file] = contentScript(c.sites);
   return Object.fromEntries(
@@ -37,6 +42,7 @@ function manifest(sites, content, version) {
     description: 'Leia notícias sem ser assinante, burle o paywall',
     homepage_url: 'https://burles.co',
     author: 'rodorgas',
+    icons: { 128: 'icon.png' },
     background: { scripts: ['background.js'] },
     content_scripts: content.map(c => ({
       matches: [...new Set(c.sites.flatMap(s => s.rule.matches))],

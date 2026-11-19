@@ -42,6 +42,14 @@ test('the manifest is an MV2 extension that updates from burlesco-update', async
   assert.deepEqual(m.background.scripts, ['background.js']);
 });
 
+test('the extension ships the icon its manifest names', async () => {
+  const files = await build([alpha]);
+  const m = JSON.parse(files['dist/firefox/manifest.json']);
+  const icon = files[`dist/firefox/${m.icons['128']}`];
+  assert.ok(Buffer.isBuffer(icon));
+  assert.equal(icon.subarray(1, 4).toString(), 'PNG');
+});
+
 test('host permissions cover every URL a Firefox network Technique uses, once', async () => {
   const m = await manifest([alpha, beta]);
   const hosts = m.permissions.filter(p => p.includes('://'));
