@@ -62,6 +62,25 @@ test('blockCookies and setRequestHeader in the firefox section build', async () 
   })]);
 });
 
+test('every Technique Firefox can run builds, in the firefox section', async () => {
+  const files = await build([rule({
+    firefox: {
+      blockRequests: [{
+        urls: ['*://*.sample.com/*'], except: ['*://*.sample.com/ok'], types: ['script'],
+      }],
+      blockCookies: { urls: ['*://*.sample.com/*'] },
+      setRequestHeader: [{ urls: ['*://*.sample.com/*'], name: 'Referer', value: 'x' }],
+      removeElements: ['.wall'],
+      clearCookies: true,
+      siteStart: () => {},
+      siteIdle: () => {},
+      privilegedStart: () => {},
+      privilegedIdle: () => {},
+    },
+  })]);
+  assert.ok(files['dist/firefox/manifest.json']);
+});
+
 test('a misspelt key inside a Technique fails the build', () =>
   rejects([rule({ blockRequests: [{ urls: ['*://a.com/*'], exept: [] }] })],
     /sample/, /unknown key "blockRequests\[0\]\.exept"/));

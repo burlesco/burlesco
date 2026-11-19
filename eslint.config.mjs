@@ -47,7 +47,10 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
-      globals: { ...globals.browser, ...globals.greasemonkey, ...globals.jquery },
+      globals: {
+        ...globals.browser, ...globals.greasemonkey, ...globals.jquery,
+        ...globals.webextensions,
+      },
     },
   },
 
