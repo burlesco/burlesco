@@ -64,10 +64,14 @@ function manifest(sites, content, version) {
   };
 }
 
-// Every URL a network Technique acts on. Exceptions sit inside those URLs.
+// Every URL a network Technique acts on, plus the pages of each Site that
+// has one, so requests those pages start keep the whole-Site permission
+// today's extension gives them. Exceptions sit inside those URLs.
 function hostPermissions(sites) {
-  const urls = sites.flatMap(({ techniques: t }) =>
-    NETWORK.flatMap(key => t[key].flatMap(entry => entry.urls)));
+  const urls = sites.flatMap(({ rule, techniques: t }) => {
+    const network = NETWORK.flatMap(key => t[key].flatMap(entry => entry.urls));
+    return network.length ? [...rule.matches, ...network] : [];
+  });
   return [...new Set(urls)].sort();
 }
 

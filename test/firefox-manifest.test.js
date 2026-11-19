@@ -53,15 +53,44 @@ test('the extension ships the icon its manifest names', async () => {
 test('host permissions cover every URL a Firefox network Technique uses, once', async () => {
   const m = await manifest([alpha, beta]);
   const hosts = m.permissions.filter(p => p.includes('://'));
-  assert.deepEqual(hosts.sort(), [
+  for (const url of [
     '*://*.alpha-cdn.net/*',
     '*://*.tinypass.com/*',
     '*://api.alpha.com/*',
     '*://paywall.alpha.com/*',
-  ]);
+  ]) {
+    assert.equal(hosts.filter(h => h === url).length, 1, url);
+  }
+  assert.ok(!hosts.includes('*://userscript-only.com/*'));
   for (const p of ['webRequest', 'webRequestBlocking']) {
     assert.ok(m.permissions.includes(p), p);
   }
+});
+
+// Requests a Site's own pages start keep the permission today's extension
+// gives them for the whole Site.
+test('host permissions also cover the pages of every Site with Firefox network Techniques', async () => {
+  const pageOnly = {
+    id: 'pageonly',
+    name: 'Page Only',
+    matches: ['*://pageonly.org/*'],
+    siteIdle: () => {},
+  };
+  const userscriptNetwork = {
+    id: 'usnet',
+    name: 'Userscript Network',
+    matches: ['*://usnet.org/*'],
+    userscript: { blockRequests: [{ urls: ['*://cdn.usnet.org/*'] }] },
+  };
+  const m = await manifest([alpha, beta, pageOnly, userscriptNetwork]);
+  assert.deepEqual(m.permissions.filter(p => p.includes('://')), [
+    '*://*.alpha-cdn.net/*',
+    '*://*.alpha.com/*',
+    '*://*.tinypass.com/*',
+    '*://api.alpha.com/*',
+    '*://beta.org/*',
+    '*://paywall.alpha.com/*',
+  ]);
 });
 
 test('a Rule with no network Techniques asks for no host permissions', async () => {
