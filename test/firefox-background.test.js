@@ -5,9 +5,9 @@ import assert from 'node:assert/strict';
 import { build } from '../build/index.js';
 import { runBackground } from './support/fake-background.js';
 
-async function background(rules) {
+async function background(rules, stored) {
   const files = await build(rules);
-  return runBackground(files['dist/firefox/background.js']);
+  return runBackground(files['dist/firefox/background.js'], stored);
 }
 
 const alpha = {
@@ -97,4 +97,33 @@ test('setRequestHeader replaces or adds the header on pages and XHR', async () =
 test('a build with no network Techniques registers no listeners', async () => {
   const bg = await background([pageOnly]);
   assert.equal(bg.listenerCount(), 0);
+});
+
+const beta = {
+  id: 'beta',
+  name: 'Beta',
+  matches: ['*://beta.org/*'],
+  blockRequests: [{ urls: ['*://beta.org/wall.js'] }],
+};
+
+test('a Site switched off in the options page has no network Techniques', async () => {
+  const bg = await background([alpha, beta], { sites: { alpha: false, beta: true } });
+  assert.equal(bg.blocked('https://cdn.alpha.com/wall/w.js'), false);
+  assert.deepEqual(bg.sentHeaders('https://www.alpha.com/a', 'main_frame', { Cookie: 'n=1' }),
+    { Cookie: 'n=1' });
+  assert.equal(bg.sentHeaders('https://api.alpha.com/x', 'main_frame', {}).Referer, undefined);
+  assert.equal(bg.blocked('https://beta.org/wall.js'), true);
+});
+
+test('saved choices take effect at once, and switching back on restores the Site', async () => {
+  const bg = await background([alpha, beta]);
+  const before = bg.listenerCount();
+  await bg.saveChoices({ alpha: false, beta: true });
+  assert.equal(bg.blocked('https://cdn.alpha.com/wall/w.js'), false);
+  assert.equal(bg.blocked('https://beta.org/wall.js'), true);
+  await bg.saveChoices({ alpha: true, beta: true });
+  assert.equal(bg.blocked('https://cdn.alpha.com/wall/w.js'), true);
+  assert.equal(bg.sentHeaders('https://api.alpha.com/x', 'main_frame', {}).Referer,
+    'https://www.google.com/');
+  assert.equal(bg.listenerCount(), before);
 });

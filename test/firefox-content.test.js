@@ -6,8 +6,8 @@ import assert from 'node:assert/strict';
 import { build } from '../build/index.js';
 import { runContentScripts } from './support/fake-page.js';
 
-async function visit(rules, href) {
-  return runContentScripts(await build(rules), href);
+async function visit(rules, href, stored) {
+  return runContentScripts(await build(rules), href, stored);
 }
 
 const contentScripts = async rules =>
@@ -102,4 +102,17 @@ test('removeElements and clearCookies run after the page has loaded', async () =
   assert.deepEqual(selectors.sort(), ['#overlay', '.wall']);
   assert.ok(cookieWrites.some(w => /^a=;.*expires=Thu, 01 Jan 1970/.test(w)));
   assert.ok(cookieWrites.some(w => /^b=;.*domain=gamma\.org/.test(w)));
+});
+
+test('a Site switched off in the options page runs none of its page code', async () => {
+  const off = { sites: { alpha: false, gamma: false } };
+  assert.deepEqual((await visit([alpha, beta], 'https://www.alpha.com/', off)).log, []);
+  const g = await visit([gamma], 'https://gamma.org/a', off);
+  assert.deepEqual([g.removed, g.cookieWrites], [[], []]);
+  assert.deepEqual((await visit([alpha, beta], 'https://beta.org/', off)).log, ['beta @start']);
+});
+
+test('a Site switched back on runs its page code again', async () => {
+  const on = { sites: { alpha: true } };
+  assert.equal((await visit([alpha], 'https://www.alpha.com/', on)).log.length, 4);
 });

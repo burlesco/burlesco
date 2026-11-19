@@ -54,9 +54,10 @@ export default [
     },
   },
 
-  // The Firefox background's engine, copied into background.js (#417).
+  // Code copied into the Firefox extension: the background's engine (#417)
+  // and the options page's script (#418).
   {
-    files: ['build/firefox-runtime.js'],
+    files: ['build/firefox-runtime.js', 'build/firefox-options.js'],
     languageOptions: { globals: { ...globals.browser, ...globals.webextensions } },
   },
 ];
