@@ -6,7 +6,7 @@
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/rodorgas/burlesco)
 [![GitHub release](https://img.shields.io/github/release/burlesco/burlesco.svg)](https://github.com/burlesco/burlesco/releases/latest/)
-[![Build Status](https://travis-ci.org/burlesco/burlesco.svg?branch=master)](https://travis-ci.org/burlesco/burlesco)
+[![CI](https://github.com/burlesco/burlesco/actions/workflows/ci.yml/badge.svg)](https://github.com/burlesco/burlesco/actions/workflows/ci.yml)
 
 
 Extensão e userscript para navegadores que remove o paywall poroso de diversos sites de notícia. Funciona no Opera, Firefox e Chrome (e em qualquer navegador compatível com WebExtension).
@@ -17,24 +17,21 @@ Para saber quais sites funcionam na extensão e no userscript, e de que forma, v
 
 # Desenvolvimento
 
-## Extensão
+A extensão para Firefox e o userscript são gerados a partir das mesmas regras:
 
-O código-fonte da extensão possui basicamente três arquivos, na pasta `webext/`:
+- `rules/<id>.js`: uma regra por site, descrevendo o que fazer em cada um (bloquear pedidos, injetar código etc.);
+- `build/`: o gerador, que transforma as regras na extensão e no userscript;
+- `test/`: os testes, incluindo `test/gate/<id>.js`, o registro do que cada site fazia antes da migração.
 
-- `manifest.json`: descreve a extensão para os navegadores e define as permissões;
-- `background.js`: bloqueia/manipula pedidos responsáveis pelo paywall;
-- `content*.js`: injeta scripts para impedir a ativação do paywall ou revertê-lo.
+Comandos (requer Node 22 e `npm ci`):
 
-Há um Makefile para auxiliar no desenvolvimento:
+- `npm run build`: gera `dist/burlesco.user.js`, a extensão em `dist/firefox/` e a [tabela de compatibilidade](COMPATIBILITY.md);
+- `npm run lint`: verifica erros de sintaxe ou de estilo no código;
+- `npm test`: roda os testes.
 
-- `make lint`: verifica erros de sintaxe ou de estilo no código. Requer o [`es-lint`](https://github.com/eslint/eslint) que pode instalado com `npm install -g eslint`;
-- `make`: executa todas as etapas incluindo o lint e gera extensões empacotadas para cada navegador.
+Uma tag `v*` publica as duas versões (veja `.github/workflows/release.yml`).
 
-## Userscript
-
-O código-fonte do userscript está em um repositório próprio [aqui](https://github.com/burlesco/userscript). Ele funciona bloqueando pedidos responsáveis pelo paywall e injetando scripts para impedir sua ativação.
-
-Esse userscript funciona apenas com o Tampermonkey, porque é o único com suporte a API @webRequest.
+O userscript funciona apenas com o Tampermonkey, porque é o único com suporte a API @webRequest.
 
 ----
 
