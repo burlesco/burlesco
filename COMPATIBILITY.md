@@ -6,6 +6,10 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| Exame | `blockRequests`[^chrome] | `blockRequests`, `siteIdle` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| Quatro Rodas | `blockRequests`[^chrome], `siteIdle` | `blockRequests` |
+| Superinteressante | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
+| Veja | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
 
 [^chrome]: Tampermonkey 5.2+ on Chrome and other Chromium browsers (Manifest V3) ignores `@webRequest`, so the userscript blocks no requests there. It still does on Firefox.
