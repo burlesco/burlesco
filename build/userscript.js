@@ -8,6 +8,9 @@ import * as runtime from './runtime.js';
 const LATEST =
   'https://github.com/burlesco/burlesco/releases/latest/download/burlesco.user.js';
 
+const NOTE = '// Atenção:      Caso algum site não funcione logo após a instalação, ' +
+  'limpe o cache do navegador.';
+
 // A Site is in the userscript when it has Techniques there, or a userscript
 // section, even an empty one: that Site only gets its @match.
 const inUserscript = rule =>
@@ -57,6 +60,8 @@ function header(sites, version) {
     ['noframes', ''],
   ];
   const lines = fields.map(([k, v]) => `// @${k.padEnd(12)} ${v}`.trimEnd());
+  // Today's header carries this note, not a tag, right after @icon.
+  lines.splice(fields.findIndex(([k]) => k === 'icon') + 1, 0, NOTE);
   return ['// ==UserScript==', ...lines, '// ==/UserScript=='].join('\n');
 }
 

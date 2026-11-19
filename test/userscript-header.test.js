@@ -23,6 +23,12 @@ async function header(rules, options) {
   };
 }
 
+test('the header keeps the note asking people to clear the cache', async () => {
+  const files = await build([alpha]);
+  assert.match(files['dist/burlesco.user.js'],
+    /^\/\/ @icon .*\n\/\/ Atenção:\s+Caso algum site não funcione logo após a instalação, limpe o cache do navegador\.$/m);
+});
+
 const alpha = {
   id: 'alpha',
   name: 'Alpha',
