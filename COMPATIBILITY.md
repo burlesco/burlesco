@@ -8,6 +8,8 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 | --- | --- | --- |
 | Exame | `blockRequests`[^chrome] | `blockRequests`, `siteIdle` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| NSC Total | `blockRequests`[^chrome] | `blockRequests` |
+| Observador | `blockRequests`[^chrome], `connect`, `privilegedIdle` | `blockRequests`, `siteIdle` |
 | Quatro Rodas | `blockRequests`[^chrome], `siteIdle` | `blockRequests` |
 | Superinteressante | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
 | Veja | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
