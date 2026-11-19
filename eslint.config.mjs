@@ -50,4 +50,10 @@ export default [
       globals: { ...globals.browser, ...globals.greasemonkey, ...globals.jquery },
     },
   },
+
+  // The Firefox background's engine, copied into background.js (#417).
+  {
+    files: ['build/firefox-runtime.js'],
+    languageOptions: { globals: { ...globals.browser, ...globals.webextensions } },
+  },
 ];
