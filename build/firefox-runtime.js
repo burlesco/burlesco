@@ -50,6 +50,20 @@ export function removeNetwork() {
   }
 }
 
+// Applies the stored choices now, and again whenever the options page
+// saves new ones.
+export function startNetwork() {
+  // Undo and redo together, so saves in quick succession can't stack up.
+  const load = () => browser.storage.local.get('sites').then(({ sites }) => {
+    removeNetwork();
+    applyNetwork(sites);
+  });
+  browser.runtime.onMessage.addListener(message => {
+    if (message === 'update') load();
+  });
+  load();
+}
+
 export function listen(event, listener, filter, extra) {
   event.addListener(listener, filter, extra);
   LISTENERS.push([event, listener]);

@@ -6,6 +6,7 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| BRPOLÍTICO | none | `blockRequests` |
 | Correio Popular | `blockRequests`[^chrome] | `blockRequests` |
 | Correio24Horas | `blockRequests`[^chrome], `siteIdle` | `blockRequests`, `siteIdle` |
 | Crusoé | `privilegedStart` | `siteStart` |
@@ -19,8 +20,12 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
 | GaúchaZH | `blockRequests`[^chrome], `connect`, `siteIdle` | `blockRequests`, `siteIdle` |
 | Gazeta do Povo | `blockRequests`[^chrome] | `blockRequests` |
+| Gazeta Online | none | `blockCookies` |
 | JOTA | `privilegedStart` | `setRequestHeader`, `siteIdle` |
+| Nexo | none | `blockRequests`, `siteStart`, `siteIdle` |
 | O Estado de S. Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests` |
+| Pioneiro | none | `blockRequests` |
+| Revista Oeste | none | `blockRequests` |
 | Seu Dinheiro | `privilegedIdle` | `blockRequests`, `siteIdle` |
 | UOL | `blockRequests`[^chrome] | `blockRequests`, `setRequestHeader` |
 
