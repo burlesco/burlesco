@@ -58,7 +58,9 @@ function runPage(href, privilegedGlobals, load) {
     if (el.tagName === 'SCRIPT') vm.runInContext(el.textContent, site);
     return el;
   };
+  const url = new URL(href);
   const document = {
+    domain: url.hostname,
     readyState: 'loading',
     addEventListener: (type, fn) => {
       if (type === 'DOMContentLoaded') listeners.push(fn);
@@ -77,7 +79,6 @@ function runPage(href, privilegedGlobals, load) {
     // Page code reports what ran by writing here.
     burlesco: entry => log.push(`${entry} @${phase}`),
   };
-  const url = new URL(href);
   const location = {
     href, hostname: url.hostname, host: url.host, pathname: url.pathname,
   };

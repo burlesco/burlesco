@@ -36,7 +36,7 @@ const pageOnly = {
 
 test('network Techniques are data in the background, keyed by Site id', async () => {
   const bg = await background([alpha, pageOnly]);
-  assert.deepEqual(JSON.parse(JSON.stringify(bg.read('NETWORK'))), {
+  assert.deepEqual(bg.networkTechniques(), {
     alpha: {
       blockRequests: [
         { urls: ['*://cdn.alpha.com/wall/*'], except: [], types: ['script', 'xmlhttprequest'] },

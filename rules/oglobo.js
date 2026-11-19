@@ -6,7 +6,8 @@ export default {
   name: 'O Globo',
   matches: [
     '*://*.oglobo.globo.com/*',
-    // A script host, kept from the userscript's @match lines.
+    // A script host, not a page of the Site. Kept so the userscript's
+    // @match lines stay as they are today.
     '*://ogjs.infoglobo.com.br/*',
   ],
 

@@ -100,7 +100,7 @@ test('removeElements and clearCookies run after the page has loaded', async () =
   const { removed, cookieWrites } = await visit([gamma], 'https://gamma.org/a/b');
   const selectors = removed.flatMap(s => s.split(/\s*,\s*/));
   assert.deepEqual(selectors.sort(), ['#overlay', '.wall']);
-  assert.ok(cookieWrites.some(w => /^a=;.*expires=Thu, 01 Jan 1970/.test(w)));
+  assert.ok(cookieWrites.some(w => /^a=;.*expires=Thu, 01-Jan-1970/.test(w)));
   assert.ok(cookieWrites.some(w => /^b=;.*domain=gamma\.org/.test(w)));
 });
 

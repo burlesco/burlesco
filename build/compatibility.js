@@ -2,7 +2,8 @@
 // listing the Techniques that Site uses on that Target. Read through
 // techniquesFor(), so it always matches what the generators emit.
 import { techniquesFor, isEmpty } from './techniques.js';
-import { TARGETS, TECHNIQUES } from './targets.js';
+import { TARGETS, TECHNIQUE_KEYS } from './targets.js';
+import { byName } from './lists.js';
 
 const TITLES = { userscript: 'Userscript', firefox: 'Firefox' };
 
@@ -21,8 +22,8 @@ const WARNINGS = {
 export function compatibility(rules) {
   const used = new Map();
   const cell = (rule, target) => {
-    const t = techniquesFor(rule, target);
-    const keys = TECHNIQUES.filter(key => !isEmpty(t[key]));
+    const techniques = techniquesFor(rule, target);
+    const keys = TECHNIQUE_KEYS.filter(key => !isEmpty(techniques[key]));
     if (!keys.length) return 'none';
     return keys.map(key => {
       const warning = WARNINGS[target]?.[key];
@@ -32,8 +33,7 @@ export function compatibility(rules) {
     }).join(', ');
   };
 
-  const sorted = [...rules].sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
-  const rows = sorted.map(rule =>
+  const rows = byName(rules).map(rule =>
     row([escape(rule.name), ...TARGETS.map(target => cell(rule, target))]));
 
   return [
@@ -44,7 +44,7 @@ export function compatibility(rules) {
     'Which Techniques each Site uses on each Target. "none" means Burlesco does ' +
       'nothing for that Site on that Target. See GLOSSARY.md for the terms.',
     '',
-    row(['Site', ...TARGETS.map(t => TITLES[t] ?? t)]),
+    row(['Site', ...TARGETS.map(target => TITLES[target] ?? target)]),
     row(['---', ...TARGETS.map(() => '---')]),
     ...rows,
     ...(used.size ? ['', ...[...used].map(([id, text]) => `[^${id}]: ${text}`)] : []),

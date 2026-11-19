@@ -92,3 +92,20 @@ test('every problem in every Rule is reported at once', () =>
 test('connect in the userscript section builds', async () => {
   await build([rule({ userscript: { connect: ['api.sample.com'] } })]);
 });
+
+// The helpers the generated scripts carry live in the privileged
+// environment; code injected into the page can't see them.
+test('site code that calls a privileged helper fails the build, naming it', async () => {
+  /* global eraseAllCookies */
+  await rejects([rule({ siteIdle: () => { eraseAllCookies(); } })],
+    /sample/, /"siteIdle"/, /eraseAllCookies/, /privileged/);
+  await rejects([rule({ userscript: { siteStart: () => { eraseAllCookies(); } } })],
+    /sample/, /"userscript\.siteStart"/, /eraseAllCookies/);
+});
+
+test('privileged code may call the helpers, and site code may use the same word otherwise', async () => {
+  await build([rule({
+    privilegedIdle: () => { eraseAllCookies(); },
+    siteIdle: () => { document.body.dataset.eraseAllCookies = 'no'; },
+  })]);
+});
