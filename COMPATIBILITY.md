@@ -8,6 +8,7 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 | --- | --- | --- |
 | Bloomberg | `privilegedIdle` | none |
 | BR18 | none | none |
+| BRPOLÍTICO | none | `blockRequests` |
 | Correio do Povo | `privilegedStart` | none |
 | El Tiempo | `blockRequests`[^chrome] | none |
 | Financial Times | `privilegedIdle` | none |
@@ -15,9 +16,13 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 | Forbes | `privilegedIdle` | none |
 | Forbes.pl / Newsweek.pl | `privilegedIdle` | none |
 | Foreign Policy | `siteIdle` | none |
+| Gazeta Online | none | `blockCookies` |
 | Gramophone | none | none |
 | Haaretz | `blockRequests`[^chrome], `privilegedIdle` | none |
 | MIT Technology Review | `privilegedIdle` | none |
+| Nexo | none | `blockRequests`, `siteStart`, `siteIdle` |
+| Pioneiro | none | `blockRequests` |
+| Revista Oeste | none | `blockRequests` |
 | The Economist | `siteIdle` | none |
 | The New York Times | `blockRequests`[^chrome], `clearCookies` | none |
 | The Wall Street Journal | `privilegedIdle` | none |

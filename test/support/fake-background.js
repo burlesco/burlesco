@@ -5,7 +5,12 @@
 import vm from 'node:vm';
 import { matchPatternToRegExp } from '../../build/match-pattern.js';
 
-export function runBackground(script) {
+const tick = () => new Promise(resolve => setImmediate(resolve));
+
+// stored: what browser.storage.local holds when the extension starts.
+export async function runBackground(script, stored = {}) {
+  const storage = structuredClone(stored);
+  const onMessage = [];
   const events = {};
   const event = name => {
     const listeners = (events[name] = []);
@@ -24,9 +29,16 @@ export function runBackground(script) {
       onBeforeSendHeaders: event('onBeforeSendHeaders'),
       onHeadersReceived: event('onHeadersReceived'),
     },
+    storage: {
+      local: {
+        get: async key => (key in storage ? { [key]: structuredClone(storage[key]) } : {}),
+      },
+    },
+    runtime: { onMessage: { addListener: fn => onMessage.push(fn) } },
   };
   const context = vm.createContext({ browser, chrome: browser, console });
   vm.runInContext(script, context);
+  await tick();
 
   const applies = (filter, details) =>
     (!filter.types || filter.types.includes(details.type)) &&
@@ -62,6 +74,12 @@ export function runBackground(script) {
     receivedHeaders: (url, type, headers) => fire('onHeadersReceived',
       { url, type, responseHeaders: headers.map(([name, value]) => ({ name, value })) },
       'responseHeaders').headers.map(h => [h.name, h.value]),
+    // The options page saves new choices and sends its message.
+    saveChoices: async sites => {
+      storage.sites = structuredClone(sites);
+      for (const fn of onMessage) fn('update', {});
+      await tick();
+    },
     listenerCount: () => Object.values(events).reduce((n, l) => n + l.length, 0),
   };
 }

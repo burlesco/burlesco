@@ -18,20 +18,35 @@ export function runUserscript(script, href) {
 
 // Loads the content scripts the manifest registers for this URL, each at its
 // run_at moment, as Firefox does.
-export function runContentScripts(files, href) {
+// stored: what browser.storage.local holds. Content scripts read it before
+// running, so each moment settles before the next one starts.
+export function runContentScripts(files, href, stored = {}) {
   const manifest = JSON.parse(files['dist/firefox/manifest.json']);
   const scripts = runAt => (manifest.content_scripts ?? [])
     .filter(cs => cs.run_at === runAt)
     .filter(cs => cs.matches.some(m => matchPatternToRegExp(m).test(href)))
     .flatMap(cs => cs.js.map(js => files[`dist/firefox/${js}`]));
-  return runPage(href, { browser: {} }, run => {
+  const browser = {
+    storage: {
+      local: {
+        get: async key => (key in stored ? { [key]: structuredClone(stored[key]) } : {}),
+      },
+    },
+  };
+  return runPage(href, { browser }, async run => {
     scripts('document_start').forEach(run);
-    return () => scripts('document_idle').forEach(run);
+    await tick();
+    return async () => {
+      scripts('document_idle').forEach(run);
+      await tick();
+    };
   });
 }
 
+const tick = () => new Promise(resolve => setImmediate(resolve));
+
 // load(run) runs the start scripts and returns what to run once the page
-// has loaded.
+// has loaded. Either may be async; then so is runPage.
 function runPage(href, privilegedGlobals, load) {
   const listeners = [];
   const removed = [];
@@ -72,11 +87,14 @@ function runPage(href, privilegedGlobals, load) {
   const privileged = vm.createContext({ document, location, ...privilegedGlobals });
   privileged.window = privileged;
 
+  const result = { log, removed, cookieWrites };
+  const finish = atIdle => {
+    phase = 'idle';
+    document.readyState = 'interactive';
+    for (const fn of listeners) fn();
+    const after = atIdle();
+    return after instanceof Promise ? after.then(() => result) : result;
+  };
   const atIdle = load(script => vm.runInContext(script, privileged));
-  phase = 'idle';
-  document.readyState = 'interactive';
-  for (const fn of listeners) fn();
-  atIdle();
-
-  return { log, removed, cookieWrites };
+  return atIdle instanceof Promise ? atIdle.then(finish) : finish(atIdle);
 }

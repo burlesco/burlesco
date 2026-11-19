@@ -8,7 +8,9 @@ const ROOT = resolve(import.meta.dirname, '..');
 
 try {
   const pkg = JSON.parse(await readFile(resolve(ROOT, 'package.json'), 'utf8'));
-  const files = await build(await loadRules(), { version: pkg.version });
+  // The release workflow sets BURLESCO_VERSION from the tag (#424).
+  const version = process.env.BURLESCO_VERSION || pkg.version;
+  const files = await build(await loadRules(), { version });
   for (const [path, text] of Object.entries(files)) {
     const out = resolve(ROOT, path);
     await mkdir(dirname(out), { recursive: true });
