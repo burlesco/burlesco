@@ -6,7 +6,9 @@ Which Techniques each Site uses on each Target. "none" means Burlesco does nothi
 
 | Site | Userscript | Firefox |
 | --- | --- | --- |
+| Diário Popular | `clearCookies` | `blockCookies` |
 | Folha de S.Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests`, `siteIdle` |
+| GaúchaZH | `blockRequests`[^chrome], `connect`, `siteIdle` | `blockRequests`, `siteIdle` |
 | JOTA | `privilegedStart` | `setRequestHeader`, `siteIdle` |
 | O Estado de S. Paulo | `blockRequests`[^chrome], `siteStart` | `blockRequests` |
 
