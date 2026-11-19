@@ -79,6 +79,16 @@ test('a single @webRequest line carries every userscript request block', async (
   ]);
 });
 
+test('a request block shared by several Sites is in @webRequest once', async () => {
+  const shared = { urls: ['*://*.vendor.com/wall.js'] };
+  const one = { id: 'one', name: 'One', matches: ['*://one.com/*'], blockRequests: [shared] };
+  const two = { id: 'two', name: 'Two', matches: ['*://two.com/*'], blockRequests: [shared] };
+  const h = await header([one, two]);
+  assert.deepEqual(JSON.parse(h.one('webRequest')), [
+    { selector: '*://*.vendor.com/wall.js', action: 'cancel' },
+  ]);
+});
+
 test('@webRequest is emitted even with no request blocks', async () => {
   const h = await header([beta]);
   assert.deepEqual(JSON.parse(h.one('webRequest')), []);

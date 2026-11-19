@@ -56,14 +56,20 @@ function header(sites, version) {
 }
 
 // Tampermonkey selectors have no request types: a block covers every type.
+// A block several Sites share (a vendor's script) is listed once.
 function webRequest(sites) {
-  return sites.flatMap(s => s.techniques.blockRequests).flatMap(b =>
+  const items = sites.flatMap(s => s.techniques.blockRequests).flatMap(b =>
     b.urls.map(url => ({
       selector: b.except.length
         ? { include: url, exclude: b.except.length === 1 ? b.except[0] : b.except }
         : url,
       action: 'cancel',
     })));
+  const seen = new Set();
+  return items.filter(item => {
+    const key = JSON.stringify(item);
+    return !seen.has(key) && seen.add(key);
+  });
 }
 
 // The GM_ APIs that privileged code calls, so each one is granted.
