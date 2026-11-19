@@ -1,9 +1,10 @@
 // Match patterns (https://developer.mozilla.org/docs/Mozilla/Add-ons/WebExtensions/Match_patterns)
 // turned into regular expressions over a full URL.
-
-const PATTERN = /^(\*|https?|wss?|ftp|file):\/\/(\*|(?:\*\.)?[^/*:]+)?(\/.*)$/;
-
+//
+// Self-contained, so the Firefox background can carry a copy of it.
 export function matchPatternToRegExp(pattern) {
+  const PATTERN = /^(\*|https?|wss?|ftp|file):\/\/(\*|(?:\*\.)?[^/*:]+)?(\/.*)$/;
+  const escape = s => s.replace(/[.+?^${}()|[\]\\/]/g, '\\$&');
   const m = typeof pattern === 'string' && PATTERN.exec(pattern);
   if (!m || (m[1] !== 'file' && !m[2])) {
     throw new TypeError(`"${pattern}" is not a valid match pattern`);
@@ -22,5 +23,3 @@ export function matchPatternToRegExp(pattern) {
   re += path.split('*').map(escape).join('.*');
   return new RegExp(re + '$');
 }
-
-const escape = s => s.replace(/[.+?^${}()|[\]\\/]/g, '\\$&');
