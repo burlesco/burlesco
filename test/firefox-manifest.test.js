@@ -50,6 +50,11 @@ test('the extension ships the icon its manifest names', async () => {
   assert.equal(icon.subarray(1, 4).toString(), 'PNG');
 });
 
+test('the extension ships the license, as today', async () => {
+  const files = await build([alpha]);
+  assert.match(String(files['dist/firefox/LICENSE.txt']), /^The MIT License \(MIT\)/);
+});
+
 test('host permissions cover every URL a Firefox network Technique uses, once', async () => {
   const m = await manifest([alpha, beta]);
   const hosts = m.permissions.filter(p => p.includes('://'));

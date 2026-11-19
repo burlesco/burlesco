@@ -12,6 +12,7 @@ import * as options from './firefox-options.js';
 export const FIREFOX_DIR = 'dist/firefox';
 
 const ICON = readFileSync(new URL('./assets/icon.png', import.meta.url));
+const LICENSE = readFileSync(new URL('../LICENSE.txt', import.meta.url), 'utf8');
 
 const NETWORK = ['blockRequests', 'blockCookies', 'setRequestHeader'];
 
@@ -30,6 +31,7 @@ export function firefox(rules, { version }) {
     'manifest.json': JSON.stringify(manifest(sites, content, version), null, 2) + '\n',
     'background.js': background(sites),
     'icon.png': ICON,
+    'LICENSE.txt': LICENSE,
     'options.html': optionsPage(rules.filter(rule => hasTechniques(rule, 'firefox'))),
     'options.js': optionsScript(),
   };
