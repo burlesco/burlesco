@@ -11,3 +11,7 @@ Default canonical labels (needs-triage, needs-info, ready-for-agent, ready-for-h
 ### Domain docs
 
 Single-context: `GLOSSARY.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Paywall testing
+
+Before testing Rules against live Sites or building the compatibility runner, read `docs/paywall-testing.md`.
