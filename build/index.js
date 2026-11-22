@@ -1,0 +1,37 @@
+// The build's single in-memory entry point: Rules in, files out.
+// Keys of the returned object are paths relative to the repo root.
+//
+// 1. Validate every Rule; nothing is generated if one is wrong.
+// 2. Generate each Target's files.
+// 3. Lint the generated scripts; any finding fails the build.
+import { readFileSync } from 'node:fs';
+import { validate } from './validate.js';
+import { userscript } from './userscript.js';
+import { firefox, FIREFOX_DIR } from './firefox.js';
+import { lintOutput } from './lint-output.js';
+import { compatibility } from './compatibility.js';
+
+export { RuleError } from './validate.js';
+export { OutputLintError } from './lint-output.js';
+
+const USERSCRIPT = 'dist/burlesco.user.js';
+
+// The version the repo is at. A release passes its tag's version instead.
+const VERSION = JSON.parse(
+  readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
+
+export async function build(rules, { version = VERSION } = {}) {
+  validate(rules);
+  const files = {
+    [USERSCRIPT]: userscript(rules, { version }),
+    ...firefox(rules, { version }),
+  };
+  files['COMPATIBILITY.md'] = compatibility(rules);
+  await lintOutput([
+    { path: USERSCRIPT, text: files[USERSCRIPT], target: 'userscript' },
+    ...Object.entries(files)
+      .filter(([path]) => path.startsWith(`${FIREFOX_DIR}/`) && path.endsWith('.js'))
+      .map(([path, text]) => ({ path, text, target: 'firefox' })),
+  ]);
+  return files;
+}
